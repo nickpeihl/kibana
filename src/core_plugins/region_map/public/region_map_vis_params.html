@@ -57,7 +57,7 @@
         <select id="joinField"
           class="kuiSelect kuiSideBarSelect"
           ng-model="editorState.params.selectedJoinField"
-          ng-options="field.description for field in editorState.params.selectedLayer.fields track by field.name"
+          ng-options="field.description group by field.type for field in editorState.params.selectedLayer.fields track by field.name"
         >
           <option
             value=''
