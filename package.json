@@ -256,6 +256,7 @@
     "webpack": "4.33.0",
     "webpack-merge": "4.2.1",
     "whatwg-fetch": "^3.0.0",
+    "worker-loader": "^2.0.0",
     "yauzl": "2.10.0"
   },
   "devDependencies": {

@@ -348,6 +348,11 @@ export default class BaseOptimizer {
       module: {
         rules: [
           {
+            test: /\.worker\.js$/,
+            loader: 'worker-loader',
+            options: { inline: true, fallback: false }
+          },
+          {
             test: /\.less$/,
             use: [
               ...getStyleLoaderExtractor(),

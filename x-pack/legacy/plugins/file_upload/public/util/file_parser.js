@@ -5,8 +5,8 @@
  */
 
 import _ from 'lodash';
-import { geoJsonCleanAndValidate } from './geo_json_clean_and_validate';
 import { i18n } from '@kbn/i18n';
+import Worker from './geo_json_clean_and_validate.worker.js';
 
 export async function readFile(file) {
   const readPromise = new Promise((resolve, reject) => {
@@ -62,9 +62,24 @@ export async function parseFile(file, transformDetails, previewCallback = null) 
 
   const rawResults = await readFile(file);
   const parsedJson = JSON.parse(rawResults);
-  const jsonResult = cleanAndValidate(parsedJson);
+  const jsonResult = await cleanAndValidate(parsedJson);
   jsonPreview(jsonResult, previewCallback);
 
   return jsonResult;
+}
+
+function geoJsonCleanAndValidate(json) {
+  const cleanAndValidateWorker = new Worker();
+  return new Promise((resolve, reject) => {
+    cleanAndValidateWorker.onmessage = event => {
+      resolve(event.data);
+    };
+    cleanAndValidateWorker.onerror = err => {
+      reject(err);
+    };
+    cleanAndValidateWorker.postMessage([json]);
+  }).catch(err => {
+    throw err;
+  });
 }
 
