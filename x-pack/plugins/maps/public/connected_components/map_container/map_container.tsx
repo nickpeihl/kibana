@@ -15,6 +15,8 @@ import { Filter } from 'src/plugins/data/public';
 import { ActionExecutionContext, Action } from 'src/plugins/ui_actions/public';
 import { MBMap } from '../mb_map';
 // @ts-expect-error
+import { DeckMap } from '../map_deck';
+// @ts-expect-error
 import { WidgetOverlay } from '../widget_overlay';
 // @ts-expect-error
 import { ToolbarOverlay } from '../toolbar_overlay';
@@ -248,15 +250,15 @@ export class MapContainer extends Component<Props, State> {
           className="mapMapWrapper"
           style={{ backgroundColor: this.props.settings.backgroundColor }}
         >
-          <MBMap
-            addFilters={addFilters}
-            getFilterActions={getFilterActions}
-            getActionContext={getActionContext}
-            onSingleValueTrigger={onSingleValueTrigger}
-            geoFields={this.state.geoFields}
-            renderTooltipContent={renderTooltipContent}
-          />
-          {!this.props.settings.hideToolbarOverlay && (
+          <DeckMap />
+        {/* <MBMap
+          addFilters={addFilters}
+          getFilterActions={getFilterActions}
+          getActionContext={getActionContext}
+          geoFields={this.state.geoFields}
+          renderTooltipContent={renderTooltipContent}
+        /> */}
+          {!this.props.hideToolbarOverlay && (
             <ToolbarOverlay
               addFilters={addFilters}
               geoFields={this.state.geoFields}

@@ -12,7 +12,7 @@ const LAT_INDEX = 0;
 const LON_INDEX = 1;
 const PEW_PEW_BUCKET_KEYS_TO_IGNORE = ['key', 'sourceCentroid'];
 
-function parsePointFromKey(key) {
+export function parsePointFromKey(key) {
   const split = key.split(',');
   const lat = parseFloat(split[LAT_INDEX]);
   const lon = parseFloat(split[LON_INDEX]);
