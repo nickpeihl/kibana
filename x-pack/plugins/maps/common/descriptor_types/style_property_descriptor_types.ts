@@ -62,6 +62,8 @@ export type IconStop = {
   icon: string;
 };
 
+export type DeckGLColor = [number, number, number, number?];
+
 export type ColorDynamicOptions = {
   // ordinal color properties
   color?: string; // TODO move color category ramps to constants and make ENUM type
@@ -192,6 +194,8 @@ export type VectorStylePropertiesDescriptor = {
   [VECTOR_STYLES.LABEL_BORDER_COLOR]: ColorStylePropertyDescriptor;
   [VECTOR_STYLES.LABEL_BORDER_SIZE]: LabelBorderSizeStylePropertyDescriptor;
 };
+
+export type ArcLayerStylePropertiesDescriptor = VectorStylePropertiesDescriptor & {};
 
 export type StyleDescriptor = {
   type: string;

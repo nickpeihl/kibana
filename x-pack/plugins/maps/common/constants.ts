@@ -65,6 +65,7 @@ export function getEditPath(id: string) {
 }
 
 export enum LAYER_TYPE {
+  ARC = 'ARC',
   TILE = 'TILE',
   VECTOR = 'VECTOR',
   VECTOR_TILE = 'VECTOR_TILE', // for static display of mvt vector tiles with a mapbox stylesheet. Does not support any ad-hoc configurations. Used for consuming EMS vector tiles.
@@ -203,6 +204,7 @@ export enum LAYER_STYLE_TYPE {
   VECTOR = 'VECTOR',
   HEATMAP = 'HEATMAP',
   TILE = 'TILE',
+  DECKGL = 'DECKGL',
 }
 
 export enum COLOR_MAP_TYPE {

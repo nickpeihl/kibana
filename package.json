@@ -95,6 +95,9 @@
     "yarn": "^1.21.1"
   },
   "dependencies": {
+    "@deck.gl/core": "^8.4.10",
+    "@deck.gl/layers": "^8.4.10",
+    "@deck.gl/mapbox": "^8.4.10",
     "@elastic/datemath": "link:packages/elastic-datemath",
     "@elastic/elasticsearch": "npm:@elastic/elasticsearch-canary@^8.0.0-canary.3",
     "@elastic/ems-client": "7.12.0",

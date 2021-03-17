@@ -66,7 +66,8 @@ export function migrateJoinAggKey({
   layerList.forEach((layerDescriptor: LayerDescriptor) => {
     if (
       layerDescriptor.type === LAYER_TYPE.VECTOR ||
-      layerDescriptor.type === LAYER_TYPE.BLENDED_VECTOR
+      layerDescriptor.type === LAYER_TYPE.BLENDED_VECTOR ||
+      layerDescriptor.type === LAYER_TYPE.ARC
     ) {
       const vectorLayerDescriptor = layerDescriptor as VectorLayerDescriptor;
 

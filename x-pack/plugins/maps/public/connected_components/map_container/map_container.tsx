@@ -250,14 +250,14 @@ export class MapContainer extends Component<Props, State> {
           className="mapMapWrapper"
           style={{ backgroundColor: this.props.settings.backgroundColor }}
         >
-          <DeckMap />
-        {/* <MBMap
+
+        <MBMap
           addFilters={addFilters}
           getFilterActions={getFilterActions}
           getActionContext={getActionContext}
           geoFields={this.state.geoFields}
           renderTooltipContent={renderTooltipContent}
-        /> */}
+        />
           {!this.props.hideToolbarOverlay && (
             <ToolbarOverlay
               addFilters={addFilters}

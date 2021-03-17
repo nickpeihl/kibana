@@ -16,6 +16,7 @@ import { IVectorLayer, VectorLayer } from '../classes/layers/vector_layer';
 import { VectorStyle } from '../classes/styles/vector/vector_style';
 import { HeatmapLayer } from '../classes/layers/heatmap_layer';
 import { BlendedVectorLayer } from '../classes/layers/blended_vector_layer/blended_vector_layer';
+import { DeckArcLayer } from '../classes/layers/deckgl_layers';
 import { getTimeFilter } from '../kibana_services';
 import {
   getChartsPaletteServiceGetColor,
@@ -88,6 +89,11 @@ export function createLayerInstance(
       return new HeatmapLayer({
         layerDescriptor: layerDescriptor as HeatmapLayerDescriptor,
         source: source as ESGeoGridSource,
+      });
+    case DeckArcLayer.type:
+      return new DeckArcLayer({
+        layerDescriptor: layerDescriptor as VectorLayerDescriptor,
+        source: source as IVectorSource,
       });
     case BlendedVectorLayer.type:
       return new BlendedVectorLayer({

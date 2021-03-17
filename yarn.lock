@@ -1338,7 +1338,7 @@
     cartocolor "^4.0.2"
     d3-scale "^3.2.3"
 
-"@deck.gl/core@8.4.10":
+"@deck.gl/core@8.4.10", "@deck.gl/core@^8.4.10":
   version "8.4.10"
   resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-8.4.10.tgz#de0c545d9e8728d2c5a91ee674d016607ac24e75"
   integrity sha512-/BqDyDXo4PHRfSQC0gsTjhpCiBtfyIV7O+rnCxF6yEbJ59NzpvLbycceIuwO8nF1rrmVMB5I87lZ9oiV06wlaQ==
@@ -1389,7 +1389,7 @@
     d3-dsv "^1.0.8"
     expression-eval "^2.0.0"
 
-"@deck.gl/layers@8.4.10":
+"@deck.gl/layers@8.4.10", "@deck.gl/layers@^8.4.10":
   version "8.4.10"
   resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-8.4.10.tgz#82db12767a850b092a50904276f9879d243860e5"
   integrity sha512-sYAT8wMAiD/+Sz3Kk5nnW0nZOZkKu7G/yJG/7QWHsmI6DLGekzy50E8MZWe0cuUoJFLi2VkMW/W0hNAr5x06Yg==
@@ -1399,7 +1399,7 @@
     "@math.gl/polygon" "^3.4.2"
     earcut "^2.0.6"
 
-"@deck.gl/mapbox@8.4.10":
+"@deck.gl/mapbox@8.4.10", "@deck.gl/mapbox@^8.4.10":
   version "8.4.10"
   resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-8.4.10.tgz#c50bdf1ebcfe49f7da8569a6add44544a74d80fb"
   integrity sha512-IoUWKX0zqLUjYig9uvN7RDxcCIvrnAzICi2cB+XF3jc50wR5l0K2R+quEfGz6rtbBJwf4loxlZRADWtiY/EOKg==

@@ -9,9 +9,11 @@ import React from 'react';
 import { i18n } from '@kbn/i18n';
 import { getDefaultDynamicProperties } from '../../styles/vector/vector_style_defaults';
 import { VectorLayer } from '../../layers/vector_layer';
+import { DeckArcLayer } from '../../layers/deckgl_layers';
 // @ts-ignore
 import { ESPewPewSource, sourceTitle } from './es_pew_pew_source';
 import { VectorStyle } from '../../styles/vector/vector_style';
+import { DeckArcStyle } from '../../styles/deckgl/arc_style';
 import {
   FIELD_ORIGIN,
   COUNT_PROP_NAME,
@@ -40,9 +42,9 @@ export const point2PointLayerWizardConfig: LayerWizard = {
       }
 
       const defaultDynamicProperties = getDefaultDynamicProperties();
-      const layerDescriptor = VectorLayer.createDescriptor({
+      const layerDescriptor = DeckArcLayer.createDescriptor({
         sourceDescriptor: ESPewPewSource.createDescriptor(sourceConfig),
-        style: VectorStyle.createDescriptor({
+        style: DeckArcStyle.createDescriptor({
           [VECTOR_STYLES.LINE_COLOR]: {
             type: STYLE_TYPE.DYNAMIC,
             options: {

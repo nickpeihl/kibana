@@ -49,3 +49,7 @@ export type VectorLayerDescriptor = LayerDescriptor & {
 export type HeatmapLayerDescriptor = LayerDescriptor & {
   style: HeatmapStyleDescriptor;
 };
+
+export type ArcLayerDescriptor = LayerDescriptor & {
+  style: VectorStyleDescriptor;
+};
