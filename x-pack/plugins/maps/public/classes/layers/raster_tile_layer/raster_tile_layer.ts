@@ -67,7 +67,7 @@ export class RasterTileLayer extends AbstractLayer {
     if (prevDataRequest) {
       const prevMeta = prevDataRequest?.getMeta();
       const canSkip = await canSkipSourceUpdate({
-        extentAware: false,
+        extentAware: source.isFilterByMapBounds(),
         source,
         prevDataRequest,
         nextRequestMeta: nextMeta,
