@@ -49,17 +49,19 @@ const mockMBMap = {
 } as unknown as MapboxMap;
 
 test('render', () => {
-  const component = shallow(<ScaleControl mbMap={mockMBMap} isFullScreen={false} />);
+  const component = shallow(
+    <ScaleControl mbMap={mockMBMap} isFullScreen={false} color="#000000" />
+  );
   expect(component).toMatchSnapshot();
 });
 
 test('isFullScreen', () => {
-  const component = shallow(<ScaleControl mbMap={mockMBMap} isFullScreen={true} />);
+  const component = shallow(<ScaleControl mbMap={mockMBMap} isFullScreen={true} color="#000000" />);
   expect(component).toMatchSnapshot();
 });
 
 test('should un-register all map callbacks on unmount', () => {
-  const component = mount(<ScaleControl mbMap={mockMBMap} isFullScreen={false} />);
+  const component = mount(<ScaleControl mbMap={mockMBMap} isFullScreen={false} color="#000000" />);
 
   expect(Object.keys(mockMbMapHandlers).length).toBe(1);
 

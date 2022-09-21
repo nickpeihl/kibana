@@ -105,6 +105,7 @@ export type MapSettings = {
   maxZoom: number;
   minZoom: number;
   showScaleControl: boolean;
+  scaleControlTextColor: string;
   showSpatialFilters: boolean;
   showTimesliderToggleButton: boolean;
   spatialFiltersAlpa: number;

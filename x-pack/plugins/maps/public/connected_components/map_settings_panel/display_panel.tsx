@@ -26,6 +26,29 @@ export function DisplayPanel({ settings, updateMapSetting }: Props) {
     updateMapSetting('showScaleControl', event.target.checked);
   };
 
+  const onScaleControlTextColorChange = (color: string) => {
+    updateMapSetting('scaleControlTextColor', color);
+  };
+
+  const renderScaleStyleInputs = () => {
+    if (!settings.showScaleControl) {
+      return null;
+    }
+    return (
+      <EuiFormRow
+        label={i18n.translate('xpack.maps.mapSettingsPanel.scaleColorLabel', {
+          defaultMessage: 'Scale color',
+        })}
+        display="columnCompressed"
+      >
+        <MbValidatedColorPicker
+          color={settings.scaleControlTextColor}
+          onChange={onScaleControlTextColorChange}
+        />
+      </EuiFormRow>
+    );
+  };
+
   return (
     <EuiPanel>
       <EuiTitle size="xs">
@@ -59,6 +82,7 @@ export function DisplayPanel({ settings, updateMapSetting }: Props) {
           compressed
         />
       </EuiFormRow>
+      {renderScaleStyleInputs()}
     </EuiPanel>
   );
 }

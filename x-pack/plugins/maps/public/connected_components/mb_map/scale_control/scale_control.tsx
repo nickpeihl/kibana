@@ -14,6 +14,7 @@ const MAX_WIDTH = 110;
 interface Props {
   isFullScreen: boolean;
   mbMap: MapboxMap;
+  color: string;
 }
 
 interface State {
@@ -108,12 +109,18 @@ export class ScaleControl extends Component<Props, State> {
   }
 
   render() {
+    const { color } = this.props;
     return (
       <div
         className={classNames('mapScaleControl', {
           mapScaleControlFullScreen: this.props.isFullScreen,
         })}
-        style={{ width: `${this.state.width}px` }}
+        style={{
+          width: `${this.state.width}px`,
+          color,
+          borderLeftColor: color,
+          borderBottomColor: color,
+        }}
       >
         {this.state.label}
       </div>

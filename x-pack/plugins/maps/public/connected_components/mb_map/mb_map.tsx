@@ -451,7 +451,11 @@ export class MbMap extends Component<Props, State> {
         />
       ) : null;
       scaleControl = this.props.settings.showScaleControl ? (
-        <ScaleControl mbMap={this.state.mbMap} isFullScreen={this.props.isFullScreen} />
+        <ScaleControl
+          mbMap={this.state.mbMap}
+          isFullScreen={this.props.isFullScreen}
+          color={this.props.settings.scaleControlTextColor}
+        />
       ) : null;
       keydownScrollZoomControl = this.props.settings.keydownScrollZoom ? (
         <KeydownScrollZoom mbMap={this.state.mbMap} />

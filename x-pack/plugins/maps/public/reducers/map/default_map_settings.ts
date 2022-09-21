@@ -26,6 +26,7 @@ export function getDefaultMapSettings(): MapSettings {
     maxZoom: MAX_ZOOM,
     minZoom: MIN_ZOOM,
     showScaleControl: false,
+    scaleControlTextColor: euiThemeVars.euiTextColor,
     showSpatialFilters: true,
     showTimesliderToggleButton: true,
     spatialFiltersAlpa: 0.3,

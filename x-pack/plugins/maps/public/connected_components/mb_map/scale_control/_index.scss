@@ -4,9 +4,8 @@
   left: $euiSizeM;
   bottom: $euiSizeM;
   pointer-events: none;
-  color: $euiTextColor;
-  border-left: 2px solid $euiTextColor;
-  border-bottom: 2px solid $euiTextColor;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
   text-align: right;
 }
 
