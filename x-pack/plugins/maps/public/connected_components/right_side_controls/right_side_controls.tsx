@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
+import { EuiFlexGroup, EuiFlexItem, EuiThemeProvider } from '@elastic/eui';
 import { LayerControl } from './layer_control';
 import { MouseCoordinatesControl } from './mouse_coordinates_control';
 import { AttributionControl } from './attribution_control';
@@ -17,6 +17,7 @@ export interface Props {
 }
 
 export function RightSideControls({ settings }: Props) {
+  const colorMode = settings.invertOverlayControlColors ? 'inverse' : undefined;
   return (
     <EuiFlexGroup
       className="mapWidgetOverlay"
@@ -28,12 +29,14 @@ export function RightSideControls({ settings }: Props) {
       <EuiFlexItem className="mapWidgetOverlay__layerWrapper">
         {!settings.hideLayerControl && <LayerControl />}
       </EuiFlexItem>
-      <EuiFlexItem grow={false}>
-        {!settings.hideViewControl && <MouseCoordinatesControl />}
-      </EuiFlexItem>
-      <EuiFlexItem grow={false}>
-        <AttributionControl />
-      </EuiFlexItem>
+      <EuiThemeProvider colorMode={colorMode}>
+        <EuiFlexItem grow={false}>
+          {!settings.hideViewControl && <MouseCoordinatesControl />}
+        </EuiFlexItem>
+        <EuiFlexItem grow={false}>
+          <AttributionControl />
+        </EuiFlexItem>
+      </EuiThemeProvider>
     </EuiFlexGroup>
   );
 }

@@ -38,7 +38,7 @@ export function MouseCoordinatesControl({ mouseCoordinates, zoom }: Props) {
 
   return (
     <div className="mapViewControl__coordinates">
-      <EuiText size="xs">
+      <EuiText size="xs" color="default">
         <small>
           {latLon}
           <strong>

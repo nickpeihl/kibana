@@ -26,6 +26,10 @@ export function DisplayPanel({ settings, updateMapSetting }: Props) {
     updateMapSetting('showScaleControl', event.target.checked);
   };
 
+  const onInvertOverlayControlColors = (event: EuiSwitchEvent) => {
+    updateMapSetting('invertOverlayControlColors', event.target.checked);
+  };
+
   return (
     <EuiPanel>
       <EuiTitle size="xs">
@@ -56,6 +60,17 @@ export function DisplayPanel({ settings, updateMapSetting }: Props) {
           })}
           checked={settings.showScaleControl}
           onChange={onShowScale}
+          compressed
+        />
+      </EuiFormRow>
+
+      <EuiFormRow>
+        <EuiSwitch
+          label={i18n.translate('xpack.maps.mapSettingsPanel.showScaleLabel', {
+            defaultMessage: 'Invert overlay color',
+          })}
+          checked={settings.invertOverlayControlColors}
+          onChange={onInvertOverlayControlColors}
           compressed
         />
       </EuiFormRow>

@@ -58,6 +58,13 @@ test('isFullScreen', () => {
   expect(component).toMatchSnapshot();
 });
 
+test('colorMode', () => {
+  const component = shallow(
+    <ScaleControl colorMode="inverse" mbMap={mockMBMap} isFullScreen={false} />
+  );
+  expect(component).toMatchSnapshot();
+});
+
 test('should un-register all map callbacks on unmount', () => {
   const component = mount(<ScaleControl mbMap={mockMBMap} isFullScreen={false} />);
 

@@ -6,9 +6,10 @@
  */
 
 import React, { Component, Fragment } from 'react';
+import { css } from '@emotion/react';
 import _ from 'lodash';
-import { EuiText, EuiLink } from '@elastic/eui';
-import classNames from 'classnames';
+import { EuiText, EuiLink, euiTextBreakWord } from '@elastic/eui';
+import { euiThemeVars } from '@kbn/ui-theme';
 import { Attribution } from '../../../../common/descriptor_types';
 import { ILayer } from '../../../classes/layers/layer';
 import { isScreenshotMode } from '../../../kibana_services';
@@ -99,17 +100,25 @@ export class AttributionControl extends Component<Props, State> {
     if (this.state.uniqueAttributions.length === 0) {
       return null;
     }
+    const marginLeft = this.props.isFullScreen ? `calc(${euiThemeVars.euiSizeXXL} * 4)` : undefined;
     return (
-      <div
-        className={classNames('mapAttributionControl', {
-          // eslint-disable-next-line @typescript-eslint/naming-convention
-          mapAttributionControl__fullScreen: this.props.isFullScreen,
-        })}
+      // <div
+      //   className={classNames('mapAttributionControl', {
+      //     // eslint-disable-next-line @typescript-eslint/naming-convention
+      //     mapAttributionControl__fullScreen: this.props.isFullScreen,
+      //   })}
+      // >
+      <EuiText
+        size="xs"
+        css={css`
+          ${euiTextBreakWord()}
+          pointer-events: all;
+          padding-left: ${euiThemeVars.euiSizeM};
+          margin-left: ${marginLeft};
+        `}
       >
-        <EuiText size="xs">
-          <small>{this._renderAttributions()}</small>
-        </EuiText>
-      </div>
+        <small>{this._renderAttributions()}</small>
+      </EuiText>
     );
   }
 }

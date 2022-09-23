@@ -6,14 +6,23 @@
  */
 
 import { i18n } from '@kbn/i18n';
-import classNames from 'classnames';
+import { css } from '@emotion/react';
 import React, { Component } from 'react';
 import type { Map as MapboxMap } from '@kbn/mapbox-gl';
+import {
+  withEuiTheme,
+  WithEuiThemeProps,
+  EuiText,
+  EuiThemeProvider,
+  EuiThemeColorMode,
+} from '@elastic/eui';
+import { euiThemeVars } from '@kbn/ui-theme';
 const MAX_WIDTH = 110;
 
 interface Props {
   isFullScreen: boolean;
   mbMap: MapboxMap;
+  colorMode?: EuiThemeColorMode;
 }
 
 interface State {
@@ -48,7 +57,7 @@ function getScaleDistance(value: number) {
   return Math.floor(distance) * pow10;
 }
 
-export class ScaleControl extends Component<Props, State> {
+class ScaleControlUI extends Component<Props & WithEuiThemeProps, State> {
   private _isMounted: boolean = false;
 
   state: State = { label: '', width: 0 };
@@ -108,15 +117,34 @@ export class ScaleControl extends Component<Props, State> {
   }
 
   render() {
+    const { euiTheme } = this.props.theme;
+    const bottom = this.props.isFullScreen
+      ? `calc(${euiThemeVars.euiSizeL} * 2)`
+      : euiThemeVars.euiSizeL;
+
     return (
-      <div
-        className={classNames('mapScaleControl', {
-          mapScaleControlFullScreen: this.props.isFullScreen,
-        })}
-        style={{ width: `${this.state.width}px` }}
-      >
-        {this.state.label}
-      </div>
+      <EuiThemeProvider colorMode={this.props.colorMode}>
+        <EuiText
+          size="s"
+          color="default"
+          css={css`
+            position: absolute;
+            z-index: ${euiThemeVars.euiZLevel1};
+            left: ${euiThemeVars.euiSizeM};
+            bottom: ${bottom};
+            pointer-events: none;
+            text-align: right;
+            color: ${euiTheme.colors.text};
+            border-left: 2px solid ${euiTheme.colors.text};
+            border-bottom: 2px solid ${euiTheme.colors.text};
+            width: ${this.state.width}px;
+          `}
+        >
+          {this.state.label}
+        </EuiText>
+      </EuiThemeProvider>
     );
   }
 }
+
+export const ScaleControl = withEuiTheme(ScaleControlUI);

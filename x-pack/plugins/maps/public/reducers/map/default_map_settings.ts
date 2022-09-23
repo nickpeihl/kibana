@@ -26,6 +26,7 @@ export function getDefaultMapSettings(): MapSettings {
     maxZoom: MAX_ZOOM,
     minZoom: MIN_ZOOM,
     showScaleControl: false,
+    invertOverlayControlColors: false,
     showSpatialFilters: true,
     showTimesliderToggleButton: true,
     spatialFiltersAlpa: 0.3,

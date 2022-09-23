@@ -426,6 +426,7 @@ export class MbMap extends Component<Props, State> {
   };
 
   render() {
+    const colorMode = this.props.settings.invertOverlayControlColors ? 'inverse' : undefined;
     let drawFilterControl;
     let drawFeatureControl;
     let tooltipControl;
@@ -451,7 +452,11 @@ export class MbMap extends Component<Props, State> {
         />
       ) : null;
       scaleControl = this.props.settings.showScaleControl ? (
-        <ScaleControl mbMap={this.state.mbMap} isFullScreen={this.props.isFullScreen} />
+        <ScaleControl
+          colorMode={colorMode}
+          mbMap={this.state.mbMap}
+          isFullScreen={this.props.isFullScreen}
+        />
       ) : null;
       keydownScrollZoomControl = this.props.settings.keydownScrollZoom ? (
         <KeydownScrollZoom mbMap={this.state.mbMap} />
