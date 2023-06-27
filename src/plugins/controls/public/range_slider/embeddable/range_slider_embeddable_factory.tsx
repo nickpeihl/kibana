@@ -21,11 +21,19 @@ import {
   RANGE_SLIDER_CONTROL,
 } from '../../../common/range_slider/types';
 import { ControlEmbeddable, DataControlField, IEditableControlFactory } from '../../types';
+import { CONTROL_GROUP_NAME, CONTROL_GROUP_TYPE } from '../../../common';
 
 export class RangeSliderEmbeddableFactory
   implements EmbeddableFactoryDefinition, IEditableControlFactory<RangeSliderEmbeddableInput>
 {
   public type = RANGE_SLIDER_CONTROL;
+
+  public readonly grouping = [
+    {
+      id: CONTROL_GROUP_TYPE,
+      getDisplayName: () => CONTROL_GROUP_NAME,
+    },
+  ];
 
   public getDisplayName = () =>
     i18n.translate('controls.rangeSlider.displayName', {

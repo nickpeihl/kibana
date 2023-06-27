@@ -11,6 +11,7 @@ import { SerializableRecord } from '@kbn/utility-types';
 import { ControlInput, ControlStyle, ControlWidth } from '../types';
 
 export const CONTROL_GROUP_TYPE = 'control_group';
+export const CONTROL_GROUP_NAME = 'Control group';
 
 export interface ControlPanelState<TEmbeddableInput extends ControlInput = ControlInput>
   extends PanelState<TEmbeddableInput> {

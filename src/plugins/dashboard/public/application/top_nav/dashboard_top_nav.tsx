@@ -8,7 +8,7 @@
 
 import UseUnmount from 'react-use/lib/useUnmount';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-
+import { PrimaryButton } from '@kbn/shared-ux-button-toolbar';
 import {
   withSuspense,
   LazyLabsFlyout,
@@ -155,6 +155,10 @@ export function DashboardTopNav({
       visibleSubscription.unsubscribe();
     };
   }, [allowByValueEmbeddables, chromeRecentlyAccessed, dashboardState, getChromeIsVisible$]);
+
+  const addPanel = useCallback(() => {
+    return;
+  }, []);
 
   const addFromLibrary = useCallback(() => {
     if (!isErrorEmbeddable(dashboardAppState.dashboardContainer)) {
@@ -589,23 +593,23 @@ export function DashboardTopNav({
               primaryActionButton: (
                 <PrimaryActionButton
                   isDarkModeEnabled={IS_DARK_THEME}
-                  label={getCreateVisualizationButtonTitle()}
-                  onClick={createNewVisType(lensAlias)}
-                  iconType="lensApp"
+                  label={'Add panel'}
+                  onClick={addFromLibrary}
+                  iconType="plusInCircleFilled"
                   data-test-subj="dashboardAddNewPanelButton"
                 />
               ),
-              quickButtonGroup: <QuickButtonGroup buttons={quickButtons} />,
+              // quickButtonGroup: <QuickButtonGroup buttons={quickButtons} />,
               extraButtons: [
-                <EditorMenu
-                  createNewVisType={createNewVisType}
-                  dashboardContainer={dashboardAppState.dashboardContainer}
-                />,
-                <AddFromLibraryButton
-                  onClick={addFromLibrary}
-                  data-test-subj="dashboardAddPanelButton"
-                />,
-                dashboardAppState.dashboardContainer.controlGroup?.getToolbarButtons(),
+              // <EditorMenu
+              //   createNewVisType={createNewVisType}
+              //   dashboardContainer={dashboardAppState.dashboardContainer}
+              // />,
+              // <AddFromLibraryButton
+              //   onClick={addFromLibrary}
+              //   data-test-subj="dashboardAddPanelButton"
+              // />,
+              // dashboardAppState.dashboardContainer.controlGroup?.getToolbarButtons(),
               ],
             }}
           </SolutionToolbar>

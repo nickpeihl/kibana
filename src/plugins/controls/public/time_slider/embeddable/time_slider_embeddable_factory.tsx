@@ -15,11 +15,19 @@ import {
 } from '../../../common/time_slider/time_slider_persistable_state';
 import { TIME_SLIDER_CONTROL } from '../..';
 import { ControlInput, IEditableControlFactory } from '../../types';
+import { CONTROL_GROUP_NAME, CONTROL_GROUP_TYPE } from '../../../common';
 
 export class TimeSliderEmbeddableFactory
   implements EmbeddableFactoryDefinition, IEditableControlFactory<ControlInput>
 {
   public type = TIME_SLIDER_CONTROL;
+
+  public readonly grouping = [
+    {
+      id: CONTROL_GROUP_TYPE,
+      getDisplayName: () => CONTROL_GROUP_NAME,
+    },
+  ];
 
   constructor() {}
 
@@ -35,6 +43,10 @@ export class TimeSliderEmbeddableFactory
   public isFieldCompatible = () => false;
 
   public isEditable = () => Promise.resolve(false);
+
+  public canCreateNew(): boolean {
+    return false;
+  }
 
   public getDisplayName = () =>
     i18n.translate('controls.timeSlider.displayName', {

@@ -11,6 +11,7 @@ import deepEqual from 'fast-deep-equal';
 import { i18n } from '@kbn/i18n';
 import { lazyLoadReduxEmbeddablePackage } from '@kbn/presentation-util-plugin/public';
 import { EmbeddableFactoryDefinition, IContainer } from '@kbn/embeddable-plugin/public';
+import { CONTROL_GROUP_NAME, CONTROL_GROUP_TYPE } from '../../../common';
 
 import {
   createOptionsListExtract,
@@ -27,6 +28,14 @@ export class OptionsListEmbeddableFactory
   implements EmbeddableFactoryDefinition, IEditableControlFactory<OptionsListEmbeddableInput>
 {
   public type = OPTIONS_LIST_CONTROL;
+
+  public readonly grouping = [
+    {
+      id: CONTROL_GROUP_TYPE,
+      getDisplayName: () => CONTROL_GROUP_NAME,
+    },
+  ];
+
   public canCreateNew = () => false;
 
   constructor() {}

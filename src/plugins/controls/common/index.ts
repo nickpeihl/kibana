@@ -10,6 +10,7 @@ export type { ControlWidth } from './types';
 
 // Control Group exports
 export {
+  CONTROL_GROUP_NAME,
   CONTROL_GROUP_TYPE,
   type ControlsPanels,
   type ControlGroupInput,

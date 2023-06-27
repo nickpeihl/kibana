@@ -10,6 +10,13 @@ import { DataViewsPublicPluginStart } from '@kbn/data-views-plugin/public';
 import { registerExpressionsLanguage } from '.';
 import { PresentationLabsService } from './services/labs';
 
+export interface EditorDefinition {
+  id: string;
+  group: string;
+  label: string;
+  link: Function;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PresentationUtilPluginSetup {}
 
@@ -17,6 +24,7 @@ export interface PresentationUtilPluginStart {
   ContextProvider: React.FC;
   labsService: PresentationLabsService;
   registerExpressionsLanguage: typeof registerExpressionsLanguage;
+  getEditorDefinitions: () => { [key: string]: EditorDefinition };
 }
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PresentationUtilPluginSetupDeps {}

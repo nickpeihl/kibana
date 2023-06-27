@@ -10,6 +10,7 @@ import { CoreSetup, CoreStart, Plugin } from '@kbn/core/public';
 import { pluginServices } from './services';
 import { registry } from './services/kibana';
 import {
+  EditorDefinition,
   PresentationUtilPluginSetupDeps,
   PresentationUtilPluginStartDeps,
   PresentationUtilPluginSetup,
@@ -17,7 +18,6 @@ import {
 } from './types';
 
 import { registerExpressionsLanguage } from '.';
-
 export class PresentationUtilPlugin
   implements
     Plugin<
@@ -27,11 +27,17 @@ export class PresentationUtilPlugin
       PresentationUtilPluginStartDeps
     >
 {
+  private editorDefinitions: { [key: string]: EditorDefinition } = {};
+
   public setup(
     _coreSetup: CoreSetup<PresentationUtilPluginStartDeps, PresentationUtilPluginStart>,
     _setupPlugins: PresentationUtilPluginSetupDeps
   ): PresentationUtilPluginSetup {
-    return {};
+    return {
+      registerEditorDefinition: (editorDefinition: EditorDefinition) => {
+        this.editorDefinitions[editorDefinition.id] = editorDefinition;
+      },
+    };
   }
 
   public start(
@@ -44,6 +50,7 @@ export class PresentationUtilPlugin
       ContextProvider: pluginServices.getContextProvider(),
       labsService: pluginServices.getServices().labs,
       registerExpressionsLanguage,
+      getEditorDefinitions: () => this.editorDefinitions,
     };
   }
 

@@ -41,6 +41,7 @@ export type {
   EmbeddableRendererProps,
   EmbeddableContainerContext,
   EmbeddableContainerSettings,
+  EditorRegistryDefinition,
 } from './lib';
 export {
   ACTION_ADD_PANEL,
@@ -81,6 +82,7 @@ export {
   EmbeddableRenderer,
   useEmbeddableFactory,
   isFilterableEmbeddable,
+  EditorRegistry,
 } from './lib';
 
 export { AttributeService, ATTRIBUTE_SERVICE_KEY } from './lib/attribute_service';

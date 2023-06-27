@@ -12,14 +12,25 @@ import React, { ReactElement } from 'react';
 import { METRIC_TYPE } from '@kbn/analytics';
 import { CoreSetup, SavedObjectAttributes, SimpleSavedObject, Toast } from '@kbn/core/public';
 
-import { EuiContextMenuItem, EuiFlyoutBody, EuiFlyoutHeader, EuiTitle } from '@elastic/eui';
+import {
+  EuiContextMenuItem,
+  EuiContextMenuItemIcon,
+  EuiFlyoutBody,
+  EuiFlyoutHeader,
+  EuiListGroup,
+  EuiListGroupItem,
+  EuiTab,
+  EuiTabs,
+  EuiText,
+  EuiTitle,
+} from '@elastic/eui';
 
 import { UsageCollectionStart } from '@kbn/usage-collection-plugin/public';
 import { EmbeddableFactory, EmbeddableStart } from '../../../../..';
 import { IContainer } from '../../../../containers';
 import { EmbeddableFactoryNotFoundError } from '../../../../errors';
 import { SavedObjectFinderCreateNew } from './saved_object_finder_create_new';
-import { SavedObjectEmbeddableInput } from '../../../../embeddables';
+import { EmbeddableFactoryDefinition, SavedObjectEmbeddableInput } from '../../../../embeddables';
 
 interface Props {
   onClose: () => void;
@@ -32,8 +43,17 @@ interface Props {
   reportUiCounter?: UsageCollectionStart['reportUiCounter'];
 }
 
+interface FactoryGroup {
+  id: string;
+  appName: string;
+  icon: EuiContextMenuItemIcon;
+  panelId: number;
+  factories: EmbeddableFactoryDefinition[];
+}
+
 interface State {
   isCreateMenuOpen: boolean;
+  selectedTab: string;
 }
 
 function capitalize([first, ...letters]: string) {
@@ -45,6 +65,7 @@ export class AddPanelFlyout extends React.Component<Props, State> {
 
   public state = {
     isCreateMenuOpen: false,
+    selectedTab: 'new-panel',
   };
 
   constructor(props: Props) {
@@ -145,7 +166,92 @@ export class AddPanelFlyout extends React.Component<Props, State> {
       ));
   }
 
-  public render() {
+  private getCreatePanelsList(): ReactElement[] {
+    const factories = [...this.props.getAllFactories()].filter(
+      (factory) =>
+      // @ts-expect-error ts 4.5 upgrade
+        factory.isEditable() &&
+        !factory.isContainerType &&
+        factory.canCreateNew() &&
+        factory.type !== 'visualization'
+    );
+
+    const factoryGroupMap: Record<string, FactoryGroup> = {};
+    const ungroupedFactories: EmbeddableFactoryDefinition[] = [];
+    const aggBasedPanelID = 1;
+
+    let panelCount = 1 + aggBasedPanelID;
+
+    factories.forEach((factory) => {
+      const { grouping } = factory;
+
+      if (grouping) {
+        grouping.forEach((group) => {
+          if (factoryGroupMap[group.id]) {
+            factoryGroupMap[group.id].factories.push(factory);
+          } else {
+            factoryGroupMap[group.id] = {
+              id: group.id,
+              appName: group.getDisplayName ? group.getDisplayName('foo') : group.id,
+              icon: 'empty' as EuiContextMenuItemIcon,
+              factories: [factory],
+              panelId: panelCount,
+            };
+
+            panelCount++;
+          }
+        });
+      } else {
+        ungroupedFactories.push(factory);
+      }
+    });
+    return [
+      ...Object.values(factoryGroupMap).map(
+        ({ appName, panelId, factories: groupFactories }: FactoryGroup) => (
+          <>
+            <EuiText size="m" color="subdued">
+              {appName}
+            </EuiText>
+            <EuiListGroup>{this.createGroupFactoriesListGroup(groupFactories)}</EuiListGroup>
+          </>
+        )
+      ),
+      <>
+        <EuiText size="m" color="subdued">
+          Other
+        </EuiText>
+        <EuiListGroup>
+          {[
+            ...ungroupedFactories.map((factory) => (
+              <EuiListGroupItem
+                size="s"
+                label={capitalize(factory.getDisplayName())}
+                onClick={() => this.createNewEmbeddable(factory.type)}
+                iconType={factory.getIconType ? factory.getIconType() : 'empty'}
+              />
+            )),
+          ]}
+        </EuiListGroup>
+      </>,
+    ];
+  }
+
+  private createGroupFactoriesListGroup(groupFactories: EmbeddableFactoryDefinition[]) {
+    return (
+      <EuiListGroup>
+        {groupFactories.map((factory) => (
+          <EuiListGroupItem
+            size="s"
+            label={capitalize(factory.getDisplayName())}
+            onClick={() => this.createNewEmbeddable(factory.type)}
+            iconType={factory.getIconType ? factory.getIconType() : 'empty'}
+          />
+        ))}
+      </EuiListGroup>
+    );
+  }
+
+  private getSavedObjectsFinder() {
     const SavedObjectFinder = this.props.SavedObjectFinder;
     const metaData = [...this.props.getAllFactories()]
       .filter(
@@ -153,7 +259,7 @@ export class AddPanelFlyout extends React.Component<Props, State> {
           Boolean(embeddableFactory.savedObjectMetaData) && !embeddableFactory.isContainerType
       )
       .map(({ savedObjectMetaData }) => savedObjectMetaData);
-    const savedObjectsFinder = (
+    return (
       <SavedObjectFinder
         onChoose={this.onAddPanel}
         savedObjectMetaData={metaData}
@@ -167,7 +273,30 @@ export class AddPanelFlyout extends React.Component<Props, State> {
         ) : null}
       </SavedObjectFinder>
     );
+  }
 
+  private getTabs() {
+    return [
+      {
+        id: 'new-panel',
+        name: 'New',
+        content: this.getCreatePanelsList(),
+      },
+      {
+        id: 'add-panel',
+        name: 'Add from library',
+        content: this.getSavedObjectsFinder(),
+      },
+    ];
+  }
+
+  private getSelectedTabContent() {
+    const tab = this.getTabs().find((t) => t.id === this.state.selectedTab);
+    if (!tab) return;
+    return tab.content;
+  }
+
+  public render() {
     return (
       <>
         <EuiFlyoutHeader hasBorder>
@@ -175,12 +304,27 @@ export class AddPanelFlyout extends React.Component<Props, State> {
             <h2>
               <FormattedMessage
                 id="embeddableApi.addPanel.Title"
-                defaultMessage="Add from library"
+                defaultMessage="Add to dashboard"
               />
             </h2>
           </EuiTitle>
+          <EuiTabs bottomBorder={false}>
+            {this.getTabs().map((tab) => {
+              return (
+                <EuiTab
+                  key={tab.id}
+                  isSelected={tab.id === this.state.selectedTab}
+                  onClick={() => {
+                    this.setState({ selectedTab: tab.id });
+                  }}
+                >
+                  {tab.name}
+                </EuiTab>
+              );
+            })}
+          </EuiTabs>
         </EuiFlyoutHeader>
-        <EuiFlyoutBody>{savedObjectsFinder}</EuiFlyoutBody>
+        <EuiFlyoutBody>{this.getSelectedTabContent()}</EuiFlyoutBody>
       </>
     );
   }

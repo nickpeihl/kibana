@@ -38,3 +38,4 @@ export type EmbeddableFactoryProvider = <
 >(
   def: EmbeddableFactoryDefinition<I, O, E, T>
 ) => EmbeddableFactory<I, O, E, T>;
+
