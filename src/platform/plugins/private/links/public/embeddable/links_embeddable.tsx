@@ -21,10 +21,10 @@ import {
 } from '@kbn/presentation-publishing';
 import { css } from '@emotion/react';
 
+import type { LinksLayoutType } from '../../server';
 import {
   CONTENT_ID,
   DASHBOARD_LINK_TYPE,
-  LinksLayoutType,
   LINKS_HORIZONTAL_LAYOUT,
   LINKS_VERTICAL_LAYOUT,
 } from '../../common/content_management';

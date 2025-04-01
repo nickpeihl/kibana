@@ -7,14 +7,29 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { Link } from '../../common/content_management';
+import type { Reference } from '@kbn/content-management-utils';
+import type { Link, LinksAttributes, SavedObjectLinksAttributes } from '../../server';
 import { extractReferences } from '../../common/persistable_state';
 import { LinksRuntimeState } from '../types';
 
-export const serializeLinksAttributes = (
+export function serializeLinksAttributes(
+  state: LinksRuntimeState,
+  shouldExtractReferences?: false
+): {
+  attributes: LinksAttributes;
+  references: Reference[];
+};
+export function serializeLinksAttributes(
+  state: LinksRuntimeState,
+  shouldExtractReferences?: true
+): {
+  attributes: SavedObjectLinksAttributes;
+  references: Reference[];
+};
+export function serializeLinksAttributes(
   state: LinksRuntimeState,
   shouldExtractReferences: boolean = true
-) => {
+): { attributes: LinksAttributes | SavedObjectLinksAttributes; references: Reference[] } {
   const linksToSave: Link[] | undefined = state.links
     ?.map(({ title, description, error, ...linkToSave }) => linkToSave)
     ?.map(
@@ -25,10 +40,10 @@ export const serializeLinksAttributes = (
         ) as unknown as Link
     );
   const attributes = {
-    title: state.defaultPanelTitle,
+    title: state.defaultPanelTitle ?? '',
     description: state.defaultPanelDescription,
     layout: state.layout,
-    links: linksToSave,
+    links: linksToSave ?? [],
   };
 
   const serializedState = shouldExtractReferences
@@ -36,4 +51,4 @@ export const serializeLinksAttributes = (
     : { attributes, references: [] };
 
   return serializedState;
-};
+}

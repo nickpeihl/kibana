@@ -10,7 +10,7 @@
 import type { SearchQuery } from '@kbn/content-management-plugin/common';
 import { SerializableAttributes, VisualizationClient } from '@kbn/visualizations-plugin/public';
 import { CONTENT_ID as contentTypeId, CONTENT_ID } from '../../common';
-import type { LinksCrudTypes } from '../../common/content_management';
+import type { LinksCrudTypes } from '../../server';
 import { contentManagement } from '../services/kibana_services';
 
 const get = async (id: string) => {

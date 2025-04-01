@@ -13,6 +13,7 @@ import type {
 } from '@kbn/embeddable-plugin/common';
 import type { LinksAttributes, LinksSerializedState } from '../content_management';
 import { extractReferences, injectReferences } from '../../common/persistable_state';
+import { SavedObjectLinksAttributes } from '../saved_objects/schema/v1';
 
 export const inject: NonNullable<EmbeddableRegistryDefinition['inject']> = (state, references) => {
   const typedState = state as EmbeddableStateWithType & LinksSerializedState;
@@ -31,7 +32,7 @@ export const inject: NonNullable<EmbeddableRegistryDefinition['inject']> = (stat
     });
 
     const { attributes: attributesWithInjectedIds } = injectReferences({
-      attributes: attributesWithNoHardCodedIds,
+      attributes: attributesWithNoHardCodedIds as SavedObjectLinksAttributes,
       references,
     });
     return {

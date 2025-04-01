@@ -9,18 +9,6 @@
 
 export { LATEST_VERSION, CONTENT_ID } from '../constants';
 
-export type { LinksContentType } from '../types';
-
-export type {
-  LinkType,
-  LinksLayoutType,
-  LinkOptions,
-  Link,
-  LinksItem,
-  LinksCrudTypes,
-  LinksAttributes,
-} from './latest';
-
 export {
   EXTERNAL_LINK_TYPE,
   DASHBOARD_LINK_TYPE,

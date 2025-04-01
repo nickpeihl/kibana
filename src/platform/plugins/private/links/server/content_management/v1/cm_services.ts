@@ -17,18 +17,24 @@ import {
 import type { ContentManagementServicesDefinition as ServicesDefinition } from '@kbn/object-versioning';
 
 import {
+  dashboardLinkOptionsSchema,
+  externalLinkOptionsSchema,
   dashboardLinkSchema as dashboardLinkSchemaV1,
-  externalLinkSchema,
+  externalLinkSchema as externalLinkSchemaV1,
   savedObjectLinksAttributesSchema as linksAttributesSchemaV1,
 } from '../../saved_objects/schema/v1';
 
 const dashboardLinkSchema = dashboardLinkSchemaV1.extends({
-  destinationRefName: schema.string({ meta: { deprecated: true } }),
+  destinationRefName: schema.maybe(schema.string({ meta: { deprecated: true } })),
   destination: schema.string(),
 });
 
+export { dashboardLinkOptionsSchema, externalLinkOptionsSchema };
+
+export const linkSchema = schema.oneOf([dashboardLinkSchema, externalLinkSchemaV1]);
+
 export const linksAttributesSchema = linksAttributesSchemaV1.extends({
-  links: schema.arrayOf(schema.oneOf([dashboardLinkSchema, externalLinkSchema])),
+  links: schema.arrayOf(linkSchema),
 });
 
 const searchOptionsSchema = schema.maybe(

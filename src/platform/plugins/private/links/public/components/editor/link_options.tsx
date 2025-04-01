@@ -20,13 +20,8 @@ import {
   UrlDrilldownOptionsComponent,
   DEFAULT_URL_DRILLDOWN_OPTIONS,
 } from '@kbn/ui-actions-enhanced-plugin/public';
-
-import {
-  LinkType,
-  EXTERNAL_LINK_TYPE,
-  DASHBOARD_LINK_TYPE,
-  LinkOptions,
-} from '../../../common/content_management';
+import type { LinkType, LinkOptions } from '../../../server';
+import { EXTERNAL_LINK_TYPE, DASHBOARD_LINK_TYPE } from '../../../common/content_management';
 import { LinksStrings } from '../links_strings';
 import { UnorderedLink } from '../../editor/open_link_editor_flyout';
 

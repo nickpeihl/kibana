@@ -8,9 +8,14 @@
  */
 
 export type {
+  Link,
+  LinkType,
   LinksAttributes,
   LinksByValueSerializedState,
   LinksByReferenceSerializedState,
+  LinksCrudTypes,
+  LinksLayoutType,
+  LinkOptions,
   LinksSerializedState,
 } from './latest';
 

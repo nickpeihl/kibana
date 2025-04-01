@@ -20,12 +20,9 @@ import {
   DEFAULT_DASHBOARD_DRILLDOWN_OPTIONS,
   DashboardDrilldownOptions,
 } from '@kbn/presentation-util-plugin/public';
+import type { LinksLayoutType } from '../../../server';
 
-import {
-  DASHBOARD_LINK_TYPE,
-  LINKS_VERTICAL_LAYOUT,
-  LinksLayoutType,
-} from '../../../common/content_management';
+import { DASHBOARD_LINK_TYPE, LINKS_VERTICAL_LAYOUT } from '../../../common/content_management';
 import { trackUiMetric } from '../../services/kibana_services';
 import { LinksParentApi, ResolvedLink } from '../../types';
 import { DashboardLinkStrings } from './dashboard_link_strings';

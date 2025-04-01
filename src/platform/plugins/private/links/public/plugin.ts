@@ -26,8 +26,8 @@ import { VisualizationsSetup } from '@kbn/visualizations-plugin/public';
 import { UiActionsPublicStart } from '@kbn/ui-actions-plugin/public/plugin';
 import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/public';
 import { LinksRuntimeState } from './types';
+import { SavedObjectLinksAttributes, type LinksCrudTypes } from '../server';
 import { APP_ICON, APP_NAME, CONTENT_ID, LATEST_VERSION } from '../common';
-import { LinksCrudTypes } from '../common/content_management';
 import { getLinksClient } from './content_management/links_content_management_client';
 import { setKibanaServices } from './services/kibana_services';
 import { ADD_LINKS_PANEL_ACTION_ID } from './actions/constants';
@@ -62,7 +62,7 @@ export class LinksPlugin
         name: APP_NAME,
       });
 
-      plugins.embeddable.registerAddFromLibraryType({
+      plugins.embeddable.registerAddFromLibraryType<SavedObjectLinksAttributes>({
         onAdd: async (container, savedObject) => {
           const { deserializeLinksSavedObject } = await import('./lib/deserialize_from_library');
           const initialState = await deserializeLinksSavedObject(savedObject);

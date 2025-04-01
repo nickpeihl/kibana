@@ -13,3 +13,14 @@ export const plugin = async (initContext: PluginInitializerContext) => {
   const { LinksServerPlugin } = await import('./plugin');
   return new LinksServerPlugin(initContext);
 };
+
+export type {
+  Link,
+  LinkOptions,
+  LinkType,
+  LinksAttributes,
+  LinksLayoutType,
+  LinksCrudTypes,
+} from './content_management';
+
+export type { SavedObjectLinksAttributes } from './saved_objects/schema/v1/types';

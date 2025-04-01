@@ -10,7 +10,7 @@
 import type { Logger } from '@kbn/logging';
 import { SOContentStorage } from '@kbn/content-management-utils';
 import { CONTENT_ID } from '../../common';
-import type { LinksCrudTypes } from '../../common/content_management';
+import type { LinksCrudTypes } from './latest';
 import { cmServicesDefinition } from './cm_services';
 
 export class LinksStorage extends SOContentStorage<LinksCrudTypes> {

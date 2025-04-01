@@ -27,13 +27,8 @@ import {
   EuiFlyoutHeader,
   EuiRadioGroupOption,
 } from '@elastic/eui';
-
-import {
-  LinkType,
-  EXTERNAL_LINK_TYPE,
-  DASHBOARD_LINK_TYPE,
-  LinkOptions,
-} from '../../../common/content_management';
+import type { LinkType, LinkOptions } from '../../../server';
+import { EXTERNAL_LINK_TYPE, DASHBOARD_LINK_TYPE } from '../../../common/content_management';
 import { LinksStrings } from '../links_strings';
 import { LinkInfo } from './constants';
 import { LinkOptionsComponent } from './link_options';

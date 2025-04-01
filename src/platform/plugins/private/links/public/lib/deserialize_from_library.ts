@@ -8,7 +8,7 @@
  */
 
 import type { SOWithMetadata } from '@kbn/content-management-utils';
-import { LinksAttributes } from '../../common/content_management';
+import type { SavedObjectLinksAttributes } from '../../server';
 import { injectReferences } from '../../common/persistable_state';
 import { LinksByReferenceSerializedState, LinksRuntimeState, LinksSerializedState } from '../types';
 import { resolveLinks } from './resolve_links';
@@ -20,7 +20,7 @@ export const linksSerializeStateIsByReference = (
 };
 
 export const deserializeLinksSavedObject = async (
-  linksSavedObject: SOWithMetadata<LinksAttributes>
+  linksSavedObject: SOWithMetadata<SavedObjectLinksAttributes>
 ): Promise<LinksRuntimeState> => {
   if (linksSavedObject.error) throw linksSavedObject.error;
   const { attributes } = injectReferences(linksSavedObject);

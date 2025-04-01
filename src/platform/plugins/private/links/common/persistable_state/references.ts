@@ -9,7 +9,8 @@
 
 import type { Reference } from '@kbn/content-management-utils';
 import { omit } from 'lodash';
-import { DASHBOARD_LINK_TYPE, LinksAttributes } from '../content_management';
+import type { LinksAttributes, SavedObjectLinksAttributes } from '../../server';
+import { DASHBOARD_LINK_TYPE } from '../content_management';
 
 export function extractReferences({
   attributes,
@@ -17,16 +18,12 @@ export function extractReferences({
 }: {
   attributes: LinksAttributes;
   references?: Reference[];
-}) {
-  if (!attributes.links) {
-    return { attributes, references };
-  }
-
+}): { attributes: SavedObjectLinksAttributes; references: Reference[] } {
   const { links } = attributes;
   const extractedReferences: Reference[] = [];
 
   const newLinks = links.map((link) => {
-    if (link.type === DASHBOARD_LINK_TYPE && link.destination) {
+    if (link.type === DASHBOARD_LINK_TYPE) {
       const refName = `link_${link.id}_dashboard`;
       extractedReferences.push({
         name: refName,
@@ -59,26 +56,28 @@ export function injectReferences({
   attributes,
   references,
 }: {
-  attributes: LinksAttributes;
+  attributes: SavedObjectLinksAttributes;
   references: Reference[];
-}) {
-  if (!attributes.links) {
-    return { attributes };
-  }
-
+}): {
+  attributes: LinksAttributes;
+} {
   const { links } = attributes;
-  links.forEach((link) => {
-    if (link.type === DASHBOARD_LINK_TYPE && link.destinationRefName) {
-      const reference = findReference(link.destinationRefName, references);
-      link.destination = reference.id;
-      delete link.destinationRefName;
+  const newLinks = links.map((link) => {
+    if (link.type === DASHBOARD_LINK_TYPE) {
+      const { destinationRefName, ...restOfLink } = link;
+      const reference = findReference(destinationRefName, references);
+      return {
+        destination: reference.id,
+        ...restOfLink,
+      };
     }
+    return link;
   });
 
   return {
     attributes: {
       ...attributes,
-      links,
+      links: newLinks,
     },
   };
 }

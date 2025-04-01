@@ -18,7 +18,7 @@ import { withSuspense } from '@kbn/shared-ux-utility';
 import { OverlayRef } from '@kbn/core-mount-utils-browser';
 import { tracksOverlays } from '@kbn/presentation-containers';
 import { apiPublishesSavedObjectId } from '@kbn/presentation-publishing';
-import { LinksLayoutType } from '../../common/content_management';
+import type { LinksLayoutType } from '../../server';
 import { linksClient, runSaveToLibrary } from '../content_management';
 import { coreServices } from '../services/kibana_services';
 import { LinksRuntimeState, ResolvedLink } from '../types';

@@ -21,35 +21,35 @@ const baseLinkSchema = {
   order: schema.number(),
 };
 
+export const dashboardLinkOptionsSchema = schema.object(
+  {
+    openInNewTab: schema.boolean(),
+    useCurrentFilters: schema.boolean(),
+    useCurrentDateRange: schema.boolean(),
+  },
+  { unknowns: 'forbid' }
+);
+
+export const externalLinkOptionsSchema = schema.object(
+  {
+    openInNewTab: schema.boolean(),
+    encodeUrl: schema.boolean(),
+  },
+  { unknowns: 'forbid' }
+);
+
 export const dashboardLinkSchema = schema.object({
   ...baseLinkSchema,
   destinationRefName: schema.string(),
   type: schema.literal(DASHBOARD_LINK_TYPE),
-  options: schema.maybe(
-    schema.object(
-      {
-        openInNewTab: schema.boolean(),
-        useCurrentFilters: schema.boolean(),
-        useCurrentDateRange: schema.boolean(),
-      },
-      { unknowns: 'forbid' }
-    )
-  ),
+  options: schema.maybe(dashboardLinkOptionsSchema),
 });
 
 export const externalLinkSchema = schema.object({
   ...baseLinkSchema,
   type: schema.literal(EXTERNAL_LINK_TYPE),
   destination: schema.string(),
-  options: schema.maybe(
-    schema.object(
-      {
-        openInNewTab: schema.boolean(),
-        encodeUrl: schema.boolean(),
-      },
-      { unknowns: 'forbid' }
-    )
-  ),
+  options: schema.maybe(externalLinkOptionsSchema),
 });
 
 export const savedObjectLinksAttributesSchema = schema.object(

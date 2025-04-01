@@ -32,12 +32,8 @@ import {
   UseEuiTheme,
 } from '@elastic/eui';
 import { css, keyframes } from '@emotion/react';
-
-import {
-  LINKS_HORIZONTAL_LAYOUT,
-  LINKS_VERTICAL_LAYOUT,
-  LinksLayoutType,
-} from '../../../common/content_management';
+import type { LinksLayoutType } from '../../../server';
+import { LINKS_HORIZONTAL_LAYOUT, LINKS_VERTICAL_LAYOUT } from '../../../common/content_management';
 import { focusMainFlyout } from '../../editor/links_editor_tools';
 import { openLinkEditorFlyout } from '../../editor/open_link_editor_flyout';
 import { getOrderedLinkList } from '../../lib/resolve_links';
@@ -335,7 +331,7 @@ const styles = {
       opacity: 0;
       transform: translateX(100%);
     }
-  
+
     100% {
       opacity: 1;
       transform: translateX(0%);
@@ -347,7 +343,7 @@ const styles = {
       opacity: 1;
       transform: translateX(0%);
     }
-  
+
     100% {
       opacity: 0;
       transform: translateX(100%);

@@ -10,11 +10,8 @@
 import React, { useState } from 'react';
 
 import { EuiFormRow } from '@elastic/eui';
-import {
-  LinkType,
-  EXTERNAL_LINK_TYPE,
-  DASHBOARD_LINK_TYPE,
-} from '../../../common/content_management';
+import type { LinkType } from '../../../server';
+import { EXTERNAL_LINK_TYPE, DASHBOARD_LINK_TYPE } from '../../../common/content_management';
 import { UnorderedLink } from '../../editor/open_link_editor_flyout';
 import { ExternalLinkDestinationPicker } from '../external_link/external_link_destination_picker';
 import { DashboardLinkDestinationPicker } from '../dashboard_link/dashboard_link_destination_picker';

@@ -14,12 +14,8 @@ import {
   DEFAULT_URL_DRILLDOWN_OPTIONS,
   UrlDrilldownOptions,
 } from '@kbn/ui-actions-enhanced-plugin/public';
-
-import {
-  EXTERNAL_LINK_TYPE,
-  LinksLayoutType,
-  LINKS_VERTICAL_LAYOUT,
-} from '../../../common/content_management';
+import type { LinksLayoutType } from '../../../server';
+import { EXTERNAL_LINK_TYPE, LINKS_VERTICAL_LAYOUT } from '../../../common/content_management';
 import { coreServices, trackUiMetric } from '../../services/kibana_services';
 import { ResolvedLink } from '../../types';
 

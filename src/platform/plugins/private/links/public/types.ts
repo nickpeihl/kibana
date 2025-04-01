@@ -25,7 +25,7 @@ import { DashboardLocatorParams, DASHBOARD_API_TYPE } from '@kbn/dashboard-plugi
 import type { DashboardAttributes } from '@kbn/dashboard-plugin/server';
 
 import { CONTENT_ID } from '../common';
-import { Link, LinksAttributes, LinksLayoutType } from '../common/content_management';
+import type { Link, LinksAttributes, LinksLayoutType } from '../server';
 
 export type LinksParentApi = PresentationContainer &
   HasType<typeof DASHBOARD_API_TYPE> &

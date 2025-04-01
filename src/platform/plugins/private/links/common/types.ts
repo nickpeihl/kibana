@@ -8,10 +8,6 @@
  */
 
 import type { SavedObjectsResolveResponse } from '@kbn/core-saved-objects-api-server';
-import { CONTENT_ID } from './constants';
-
-export type LinksContentType = typeof CONTENT_ID;
-
 export interface SharingSavedObjectProps {
   outcome: SavedObjectsResolveResponse['outcome'];
   aliasTargetId?: SavedObjectsResolveResponse['alias_target_id'];

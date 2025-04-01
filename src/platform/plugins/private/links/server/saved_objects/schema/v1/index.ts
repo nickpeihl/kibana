@@ -8,4 +8,10 @@
  */
 
 export type { SavedObjectLinksAttributes } from './types';
-export { dashboardLinkSchema, externalLinkSchema, savedObjectLinksAttributesSchema } from './v1';
+export {
+  dashboardLinkOptionsSchema,
+  externalLinkOptionsSchema,
+  dashboardLinkSchema,
+  externalLinkSchema,
+  savedObjectLinksAttributesSchema,
+} from './v1';

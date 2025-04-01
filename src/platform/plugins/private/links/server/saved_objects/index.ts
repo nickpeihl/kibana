@@ -8,3 +8,4 @@
  */
 
 export { linksSavedObjectType } from './links';
+export type { SavedObjectLinksAttributes } from './schema/v1';

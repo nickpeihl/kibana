@@ -7,6 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
+import type { LinksAttributes, SavedObjectLinksAttributes } from '../../server';
 import { DASHBOARD_LINK_TYPE, EXTERNAL_LINK_TYPE } from '../content_management';
 import { extractReferences, injectReferences } from './references';
 
@@ -14,7 +15,7 @@ describe('extractReferences', () => {
   test('should handle missing links attribute', () => {
     const attributes = {
       title: 'my links',
-    };
+    } as unknown as LinksAttributes;
     expect(extractReferences({ attributes })).toEqual({
       attributes: {
         title: 'my links',
@@ -91,7 +92,7 @@ describe('injectReferences', () => {
   test('should handle missing links attribute', () => {
     const attributes = {
       title: 'my links',
-    };
+    } as unknown as SavedObjectLinksAttributes;
     expect(injectReferences({ attributes, references: [] })).toEqual({
       attributes: {
         title: 'my links',
