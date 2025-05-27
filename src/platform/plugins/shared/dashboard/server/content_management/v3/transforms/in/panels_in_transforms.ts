@@ -9,14 +9,15 @@
 
 import { v4 as uuidv4 } from 'uuid';
 
-import { EmbeddableStart } from '@kbn/embeddable-plugin/server';
-import { SavedObjectReference } from '@kbn/core/server';
-import { isDashboardSection, prefixReferencesFromPanel } from '../../../../../common';
-import {
+import type { SavedObjectReference } from '@kbn/core/server';
+import type { EmbeddableStart } from '@kbn/embeddable-plugin/server';
+import { ItemAttributesWithReferences } from '@kbn/embeddable-plugin/common/types';
+import type {
   DashboardSavedObjectAttributes,
   SavedDashboardSection,
 } from '../../../../dashboard_saved_object';
-import { DashboardAttributes, DashboardPanel, DashboardSection } from '../../types';
+import type { DashboardAttributes, DashboardPanel, DashboardSection } from '../../types';
+import { isDashboardSection, prefixReferencesFromPanel } from '../../../../../common';
 
 export function transformPanelsIn(
   widgets: DashboardAttributes['panels'] | undefined,
@@ -170,12 +171,26 @@ function extractSections(widgets: Array<DashboardPanel | DashboardSection>, drop
   return { panels, sections };
 }
 
-function transformPanelsProperties(panels: DashboardPanel[]) {
+function panelToSavedObject(
+  panelConfig: DashboardPanel['panelConfig'],
+  panelType: DashboardPanel['type'],
+  embeddable: EmbeddableStart
+) {
+  const embeddableCmDefintions = embeddable.getEmbeddableContentManagementDefinition(panelType);
+  if (!embeddableCmDefintions) return panelConfig;
+  const { itemToSavedObject } =
+    embeddableCmDefintions.versions[embeddableCmDefintions.latestVersion];
+  return (
+    itemToSavedObject?.(panelConfig as unknown as ItemAttributesWithReferences<any>) ?? panelConfig
+  );
+}
+
+function transformPanelsProperties(panels: DashboardPanel[], embeddable: EmbeddableStart) {
   return panels.map(
     ({ panelConfig, gridData, id, panelIndex, panelRefName, title, type, version }) => ({
       gridData,
       id,
-      embeddableConfig: panelConfig,
+      embeddableConfig: panelToSavedObject(panelConfig, type, embeddable),
       panelIndex,
       panelRefName,
       title,

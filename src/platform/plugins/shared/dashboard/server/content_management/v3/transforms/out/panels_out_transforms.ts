@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { SavedObjectReference } from '@kbn/core/server';
+import type { SavedObject, SavedObjectReference } from '@kbn/core/server';
 import type { EmbeddableStart } from '@kbn/embeddable-plugin/server';
 import { SavedDashboardPanel, SavedDashboardSection } from '../../../../dashboard_saved_object';
 import { DashboardAttributes, DashboardPanel, DashboardSection } from '../../types';
@@ -49,27 +49,19 @@ function injectSections(panels: SavedDashboardPanel[], sections: SavedDashboardS
     if (sectionId) {
       (sectionsMap[sectionId] as DashboardSection).panels.push(transformPanelProperties(panel));
     } else {
-      sectionsMap[panel.panelIndex] = transformPanelProperties(panel);
+      sectionsMap[panel.panelIndex] = transformPanelProperties(panel, embeddable);
     }
   });
   return Object.values(sectionsMap);
 }
 
-function transformPanelProperties({
-  embeddableConfig,
-  gridData,
-  id,
-  panelIndex,
-  panelRefName,
-  title,
-  type,
-  version,
-}: SavedDashboardPanel) {
-  const { sectionId, ...rest } = gridData; // drop section ID, if it exists
+function transformPanelProperties(panel: SavedDashboardPanel, embeddable: EmbeddableStart) {
+  const { embeddableConfig, gridData, id, panelIndex, panelRefName, title, type, version } = panel;
+  const { sectionId, ...restOfGridData } = gridData; // drop section ID, if it exists
   return {
-    gridData: rest,
+    gridData: restOfGridData,
     id,
-    panelConfig: embeddableConfig,
+    panelConfig: savedPanelToItem(embeddableConfig, type, embeddable),
     panelIndex,
     panelRefName,
     title,
@@ -139,4 +131,16 @@ function injectPanelSavedObjectId(panel: DashboardPanel, references: SavedObject
       savedObjectId: matchingReference.id,
     },
   };
+}
+
+function savedPanelToItem(
+  embeddableConfig: SavedDashboardPanel['embeddableConfig'],
+  panelType: SavedDashboardPanel['type'],
+  embeddable: EmbeddableStart
+) {
+  const embeddableCmDefintions = embeddable.getEmbeddableContentManagementDefinition(panelType);
+  if (!embeddableCmDefintions) return embeddableConfig;
+  const { savedObjectToItem } =
+    embeddableCmDefintions.versions[embeddableCmDefintions.latestVersion];
+  return savedObjectToItem?.(embeddableConfig as unknown as SavedObject) ?? embeddableConfig;
 }
