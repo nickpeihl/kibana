@@ -26,6 +26,7 @@ export type {
   DashboardUpdateOut,
   DashboardUpdateOptions,
   DashboardOptions,
+  SectionGridData,
 } from './latest';
 
 export { DashboardStorage } from './dashboard_storage';
