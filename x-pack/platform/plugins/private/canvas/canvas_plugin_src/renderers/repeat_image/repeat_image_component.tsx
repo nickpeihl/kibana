@@ -10,6 +10,7 @@ import React, { useEffect, useState } from 'react';
 import { times } from 'lodash';
 import type { IInterpreterRenderHandlers } from '@kbn/expressions-plugin/common';
 import type { RepeatImageRendererConfig } from './types';
+import { isValidUrl } from '../../../public/lib/url';
 
 export interface RepeatImageComponentProps extends RepeatImageRendererConfig {
   onLoaded: IInterpreterRenderHandlers['done'];
@@ -23,6 +24,9 @@ interface LoadedImages {
 
 async function loadImage(src: string): Promise<HTMLImageElement> {
   return new Promise((resolve, reject) => {
+    if (!isValidUrl(src)) {
+      return reject(new Error('Invalid image URL'));
+    }
     const img = new Image();
     img.onload = () => resolve(img);
     img.onerror = (error) => reject(error);
