@@ -167,6 +167,17 @@ export class DashboardPlugin
           },
         })
       );
+
+      // Register dashboard JSON export provider
+      const [coreStart] = await core.getStartServices();
+      const { dashboardExportProvider } = await import(
+        './dashboard_app/top_nav/share/dashboard_export_provider'
+      );
+      share.register(
+        dashboardExportProvider({
+          getSavedObjectsClient: () => coreStart.savedObjects.client,
+        })
+      );
     }
 
     const {
