@@ -96,6 +96,10 @@ export const dashboardExportProvider = ({
           disabled: !objectId,
           sortOrder: 2,
         },
+        // Note: ShareMenuItemV2 label type only supports 'PDF' | 'CSV' | 'PNG'
+        // Using 'CSV' here as the closest match. The actual display name comes from
+        // shareMenuItem.name above. Without a reportType, this label won't be shown
+        // in radio options anyway.
         label: 'CSV' as const,
         requiresSavedState: true,
         generateExport: exportHandler,
