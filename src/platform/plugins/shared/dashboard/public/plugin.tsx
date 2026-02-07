@@ -35,7 +35,7 @@ import type { HomePublicPluginSetup } from '@kbn/home-plugin/public';
 import { i18n } from '@kbn/i18n';
 import type { Start as InspectorStartContract } from '@kbn/inspector-plugin/public';
 import { replaceUrlHashQuery } from '@kbn/kibana-utils-plugin/common';
-import { createKbnUrlTracker } from '@kbn/kibana-utils-plugin/public';
+import { createKbnUrlTracker, createStartServicesGetter } from '@kbn/kibana-utils-plugin/public';
 import type { NavigationPublicPluginStart } from '@kbn/navigation-plugin/public';
 import type { NoDataPagePluginStart } from '@kbn/no-data-page-plugin/public';
 import type {
@@ -151,6 +151,8 @@ export class DashboardPlugin
       schema: {},
     });
 
+    const startServices = createStartServicesGetter(core.getStartServices);
+
     if (share) {
       share.url.locators.create(
         new DashboardAppLocatorDefinition({
@@ -169,14 +171,14 @@ export class DashboardPlugin
       );
 
       // Register dashboard JSON export provider
-      const [coreStart] = await core.getStartServices();
-      const { dashboardExportProvider } = await import(
-        './dashboard_app/top_nav/share/dashboard_export_provider'
-      );
-      share.register(
-        dashboardExportProvider({
-          getSavedObjectsClient: () => coreStart.savedObjects.client,
-        })
+      import('./dashboard_app/top_nav/share/dashboard_export_provider').then(
+        ({ dashboardExportProvider }) => {
+          share.register(
+            dashboardExportProvider({
+              getSavedObjectsClient: () => startServices().core.savedObjects.client,
+            })
+          );
+        }
       );
     }
 
