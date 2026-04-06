@@ -103,6 +103,7 @@ export function getExportObjectTypeMeta() {
       integration: {
         export: {
           exportJson: {},
+          exportPerses: {},
           pdfReports: { draftModeCallOut: true },
           imageReports: { draftModeCallOut: true },
         },
@@ -150,26 +151,33 @@ export const mapExportIntegrationToMetaData = (intgrationId: string) => {
         iconType: 'code',
         order: 0,
       };
+    case 'exportPerses':
+      return {
+        label: topNavStrings.export.persesLabel,
+        testId: 'exportMenuItem-PERSES',
+        iconType: 'exportAction',
+        order: 1,
+      };
     case 'pdfReports':
       return {
         label: topNavStrings.export.pdfLabel,
         testId: 'exportMenuItem-PDF',
         iconType: 'document',
-        order: 1,
+        order: 2,
       };
     case 'imageReports':
       return {
         label: topNavStrings.export.pngLabel,
         testId: 'exportMenuItem-PNG',
         iconType: 'image',
-        order: 2,
+        order: 3,
       };
     case 'scheduledReports':
       return {
         label: topNavStrings.export.scheduleExportLabel,
         testId: 'scheduleExport',
         iconType: 'calendar',
-        order: 3,
+        order: 4,
         separator: 'above' as const,
       };
     default:

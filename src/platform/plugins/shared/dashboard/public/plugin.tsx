@@ -195,6 +195,14 @@ export class DashboardPlugin
           return exportJsonConfig;
         },
       });
+      share.registerShareIntegration<ExportShareDerivatives>('dashboard', {
+        id: 'exportPerses',
+        groupId: 'exportDerivatives',
+        getShareIntegrationConfig: async () => {
+          const { exportPersesConfig } = await import('./dashboard_renderer/dashboard_module');
+          return exportPersesConfig;
+        },
+      });
     }
 
     const {

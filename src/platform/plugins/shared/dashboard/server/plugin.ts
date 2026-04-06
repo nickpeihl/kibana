@@ -125,7 +125,7 @@ export class DashboardPlugin
 
     core.uiSettings.register(getUISettings());
 
-    registerRoutes(core.http);
+    registerRoutes(core.http, core.elasticsearch.publicBaseUrl);
 
     void registerAccessControl({
       http: core.http,

@@ -247,6 +247,9 @@ export const topNavStrings = {
     jsonLabel: i18n.translate('dashboard.topNave.exportJsonButtonAriaLabel', {
       defaultMessage: 'Export JSON',
     }),
+    persesLabel: i18n.translate('dashboard.topNave.exportPersesButtonAriaLabel', {
+      defaultMessage: 'Export to Perses',
+    }),
     pngLabel: i18n.translate('dashboard.topNave.exportPngButtonAriaLabel', {
       defaultMessage: 'PNG reports',
     }),

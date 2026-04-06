@@ -41,6 +41,25 @@ export type EmbeddableTransforms<
     state: StoredEmbeddableState;
     references?: Reference[];
   };
+
+  /**
+   * Optional transform to convert an embeddable state to a Perses Panel resource.
+   *
+   * This is used by consumers that want to export container state (e.g. Dashboard) to Perses.
+   * The returned object is intentionally untyped here to avoid introducing a hard dependency
+   * on Perses types in the embeddable plugin. Implementations should return a JSON object
+   * matching the Perses Panel specification.
+   */
+  toPerses?: (
+    state: EmbeddableState,
+    options?: {
+      /**
+       * Optional name of a datasource defined in the Perses dashboard spec.
+       * If provided, implementations may attach a datasource selector to their queries.
+       */
+      datasourceName?: string;
+    }
+  ) => { panel: unknown } | { error: string };
 };
 
 export type EmbeddableTransformsSetup<

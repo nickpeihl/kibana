@@ -9,10 +9,42 @@
 
 import { getTransformIn } from './get_transform_in';
 import { getTransformOut } from './get_transform_out';
+import type { MarkdownEmbeddableState } from '../../schemas';
 
 export function getTransforms() {
   return {
     transformIn: getTransformIn(),
     transformOut: getTransformOut(),
+    toPerses: (state: MarkdownEmbeddableState) => {
+      if ('ref_id' in state) {
+        return {
+          error: 'Markdown panel is by-reference and was dropped.',
+        };
+      }
+
+      const display = {
+        ...(typeof state.title === 'string' && state.title.length
+          ? { name: state.title }
+          : undefined),
+        ...(typeof state.description === 'string' && state.description.length
+          ? { description: state.description }
+          : undefined),
+      };
+
+      return {
+        panel: {
+          kind: 'Panel',
+          spec: {
+            display,
+            plugin: {
+              kind: 'Markdown',
+              spec: {
+                text: state.content,
+              },
+            },
+          },
+        },
+      };
+    },
   };
 }

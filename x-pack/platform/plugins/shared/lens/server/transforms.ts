@@ -5,7 +5,11 @@
  * 2.0.
  */
 
-import { lensApiStateSchema, type LensConfigBuilder } from '@kbn/lens-embeddable-utils';
+import {
+  lensApiStateSchema,
+  type LensApiSchemaType,
+  type LensConfigBuilder,
+} from '@kbn/lens-embeddable-utils';
 import type { LensSerializedAPIConfig } from '@kbn/lens-common-2';
 
 import { schema } from '@kbn/config-schema';
@@ -28,6 +32,49 @@ import { LENS_EMBEDDABLE_TYPE } from '../common/constants';
 import { getTransformIn } from '../common/transforms/transform_in';
 import { getTransformOut } from '../common/transforms/transform_out';
 import type { LensTransforms } from '../common/transforms/types';
+
+function extractEsqlQueries(attributes: LensApiSchemaType): string[] {
+  const queries: string[] = [];
+
+  if (attributes.type === 'xy') {
+    for (const layer of attributes.layers) {
+      if (!('dataset' in layer)) continue;
+      const dataset = layer.dataset;
+      if (!dataset || dataset.type !== 'esql') continue;
+      const query = dataset.query;
+      if (typeof query === 'string' && query) {
+        queries.push(query);
+      }
+    }
+  } else if ('dataset' in attributes && attributes.dataset?.type === 'esql') {
+    const query = attributes.dataset.query;
+    if (typeof query === 'string' && query) {
+      queries.push(query);
+    }
+  }
+
+  return Array.from(new Set(queries));
+}
+
+function getPersesPanelPlugin(attributes: LensApiSchemaType) {
+  switch (attributes.type) {
+    case 'xy':
+      return { kind: 'TimeSeriesChart', spec: {} };
+    case 'data_table':
+      return { kind: 'Table', spec: {} };
+    case 'metric':
+    case 'legacy_metric':
+      return { kind: 'StatChart', spec: { calculation: 'last' } };
+    case 'gauge':
+      return { kind: 'GaugeChart', spec: { calculation: 'last' } };
+    default:
+      return;
+  }
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null;
+}
 
 /**
  * Triggers that Lens visualizations support, derived from visualization definitions:
@@ -54,6 +101,74 @@ export function registerLensEmbeddableTransforms(
       ({
         transformIn: getTransformIn(builder, drilldownTransforms.transformIn, false),
         transformOut: getTransformOut(builder, drilldownTransforms.transformOut, false),
+        toPerses: (state: unknown, options?: { datasourceName?: string }) => {
+          if (!isRecord(state)) {
+            return { error: 'Lens panel config is invalid and was dropped.' };
+          }
+
+          if (typeof state.ref_id === 'string') {
+            return { error: 'Lens panel is by-reference and was dropped.' };
+          }
+
+          if (!('attributes' in state)) {
+            return { error: 'Lens panel is missing attributes and was dropped.' };
+          }
+
+          let attributes: LensApiSchemaType;
+          try {
+            attributes = lensApiStateSchema.validate(state.attributes);
+          } catch {
+            return { error: 'Lens panel attributes are invalid and were dropped.' };
+          }
+
+          const queries = extractEsqlQueries(attributes);
+          if (queries.length === 0) {
+            return { error: 'Lens panel is not ES|QL and was dropped.' };
+          }
+
+          const plugin = getPersesPanelPlugin(attributes);
+          if (!plugin) {
+            return {
+              error: `Lens chart type "${attributes.type}" is not supported and was dropped.`,
+            };
+          }
+
+          const display = {
+            ...(typeof state.title === 'string' && state.title.length
+              ? { name: state.title }
+              : undefined),
+            ...(typeof state.description === 'string' && state.description.length
+              ? { description: state.description }
+              : undefined),
+          };
+
+          const datasource =
+            options?.datasourceName != null
+              ? { kind: 'ElasticsearchDatasource', name: options.datasourceName }
+              : undefined;
+
+          return {
+            panel: {
+              kind: 'Panel',
+              spec: {
+                display,
+                plugin,
+                queries: queries.map((query) => ({
+                  kind: 'TimeSeriesQuery',
+                  spec: {
+                    plugin: {
+                      kind: 'ElasticsearchESQLQuery',
+                      spec: {
+                        query,
+                        ...(datasource ? { datasource } : undefined),
+                      },
+                    },
+                  },
+                })),
+              },
+            },
+          };
+        },
       } satisfies LensTransforms),
     getSchema: (getDrilldownsSchema) => {
       return getLensPanelSchema(getDrilldownsSchema);

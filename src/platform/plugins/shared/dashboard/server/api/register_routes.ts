@@ -15,8 +15,9 @@ import { registerDeleteRoute } from './delete';
 import { registerSearchRoute } from './search';
 import { registerReadRoute } from './read';
 import { registerSanitizeRoute } from './sanitize';
+import { registerToPersesRoute } from './to_perses';
 
-export function registerRoutes(http: HttpServiceSetup) {
+export function registerRoutes(http: HttpServiceSetup, elasticsearchPublicBaseUrl?: string) {
   const { versioned: versionedRouter } = http.createRouter();
 
   //
@@ -30,6 +31,7 @@ export function registerRoutes(http: HttpServiceSetup) {
   registerDeleteRoute(versionedRouter);
   registerSearchRoute(versionedRouter);
   registerSanitizeRoute(versionedRouter);
+  registerToPersesRoute(versionedRouter, elasticsearchPublicBaseUrl);
 
   //
   // Dashboard application specific routes
