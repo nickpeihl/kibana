@@ -17,8 +17,15 @@ project:
   owner: '@elastic/kibana-presentation'
   sourceRoot: src/platform/packages/shared/as-code/shared-transforms
 dependsOn:
-  - '@kbn/es-query'
+  - '@kbn/as-code-shared-constants'
   - '@kbn/as-code-shared-schemas'
+  - '@kbn/config-schema'
+  - '@kbn/data-views-plugin'
+  - '@kbn/es-query'
+  - '@kbn/es-query-constants'
+  - '@kbn/es-query-server'
+  - '@kbn/logging'
+  - '@kbn/utility-types'
 tags:
   - shared-common
   - package

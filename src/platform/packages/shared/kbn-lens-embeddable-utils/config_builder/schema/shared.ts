@@ -9,7 +9,7 @@
 
 import type { TypeOf } from '@kbn/config-schema';
 import { schema } from '@kbn/config-schema';
-import { asCodeFilterSchema } from '@kbn/as-code-filters-schema';
+import { asCodeFilterSchema } from '@kbn/as-code-shared-schemas';
 import {
   LENS_SAMPLING_MIN_VALUE,
   LENS_SAMPLING_MAX_VALUE,

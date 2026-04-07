@@ -178,7 +178,7 @@ export class DashboardPlugin
           getDashboardFilterFields: async (dashboardId: string) => {
             const [{ dashboardClient }, { toStoredFilters }] = await Promise.all([
               import('./dashboard_client'),
-              import('@kbn/as-code-filters-transforms'),
+              import('@kbn/as-code-shared-transforms'),
               untilPluginStartServicesReady(),
             ]);
 

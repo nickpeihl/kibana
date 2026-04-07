@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { AS_CODE_DATA_VIEW_REFERENCE_TYPE } from '@kbn/as-code-data-views-schema';
+import { AS_CODE_DATA_VIEW_REFERENCE_TYPE } from '@kbn/as-code-shared-constants';
 import { createSearchSourceMock } from '@kbn/data-plugin/public/mocks';
 import { dataViewMock } from '@kbn/discover-utils/src/__mocks__';
 import { discoverServiceMock } from '../../__mocks__/services';

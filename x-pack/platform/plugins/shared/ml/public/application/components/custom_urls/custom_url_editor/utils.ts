@@ -30,7 +30,7 @@ import { parseInterval } from '@kbn/ml-parse-interval';
 
 import type { SharePluginStart } from '@kbn/share-plugin/public';
 import { DASHBOARD_APP_LOCATOR } from '@kbn/deeplinks-analytics';
-import { toStoredFilters } from '@kbn/as-code-filters-transforms';
+import { toStoredFilters } from '@kbn/as-code-shared-transforms';
 import type { DashboardItems } from '../../../services/dashboard_service';
 import { categoryFieldTypes } from '../../../../../common/util/fields_utils';
 import { TIME_RANGE_TYPE, URL_TYPE } from './constants';

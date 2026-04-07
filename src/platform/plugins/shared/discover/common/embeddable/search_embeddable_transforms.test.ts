@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { AS_CODE_DATA_VIEW_REFERENCE_TYPE } from '@kbn/as-code-data-views-schema';
+import { AS_CODE_DATA_VIEW_REFERENCE_TYPE } from '@kbn/as-code-shared-constants';
 import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
 import { getSearchEmbeddableTransforms } from './search_embeddable_transforms';
 import type {

@@ -19,6 +19,9 @@ project:
 dependsOn:
   - '@kbn/config-schema'
   - '@kbn/core'
+  - '@kbn/data-views-plugin'
+  - '@kbn/utility-types'
+  - '@kbn/as-code-shared-constants'
 tags:
   - shared-common
   - package

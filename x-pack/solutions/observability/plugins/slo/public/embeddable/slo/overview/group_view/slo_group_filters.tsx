@@ -6,8 +6,8 @@
  */
 import type { EuiComboBoxOptionOption } from '@elastic/eui';
 import { EuiComboBox, EuiFormRow, EuiSelect, EuiText } from '@elastic/eui';
-import type { AsCodeFilter } from '@kbn/as-code-filters-schema';
-import { fromStoredFilters, toStoredFilters } from '@kbn/as-code-filters-transforms';
+import type { AsCodeFilter } from '@kbn/as-code-shared-schemas';
+import { fromStoredFilters, toStoredFilters } from '@kbn/as-code-shared-transforms';
 import type { Filter } from '@kbn/es-query';
 import { FilterStateStore } from '@kbn/es-query';
 import { i18n } from '@kbn/i18n';

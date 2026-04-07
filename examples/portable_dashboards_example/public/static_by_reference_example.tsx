@@ -10,7 +10,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import type { AsCodeFilter } from '@kbn/as-code-filters-schema';
+import type { AsCodeFilter } from '@kbn/as-code-shared-schemas';
 import type { DataView } from '@kbn/data-views-plugin/public';
 import type { DashboardCreationOptions } from '@kbn/dashboard-plugin/public';
 import { DashboardRenderer } from '@kbn/dashboard-plugin/public';

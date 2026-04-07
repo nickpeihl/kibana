@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import { fromStoredFilters } from '@kbn/as-code-filters-transforms';
+import { fromStoredFilters } from '@kbn/as-code-shared-transforms';
 import type { Filter } from '@kbn/es-query';
 import type {
   GroupOverviewCustomState,

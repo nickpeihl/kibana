@@ -10,7 +10,7 @@
 import {
   AS_CODE_DATA_VIEW_REFERENCE_TYPE,
   AS_CODE_DATA_VIEW_SPEC_TYPE,
-} from '@kbn/as-code-data-views-schema';
+} from '@kbn/as-code-shared-constants';
 import type { SavedObjectReference } from '@kbn/core-saved-objects-common/src/server_types';
 import {
   fromStoredSearchEmbeddable,
@@ -47,7 +47,7 @@ import type {
   DiscoverSessionEmbeddableByValueState,
 } from '../../server';
 import { DataGridDensity } from '@kbn/discover-utils';
-import { ASCODE_FILTER_OPERATOR, ASCODE_FILTER_TYPE } from '@kbn/as-code-filters-constants';
+import { ASCODE_FILTER_OPERATOR, ASCODE_FILTER_TYPE } from '@kbn/as-code-shared-constants';
 
 describe('search embeddable transform utils', () => {
   beforeEach(() => {

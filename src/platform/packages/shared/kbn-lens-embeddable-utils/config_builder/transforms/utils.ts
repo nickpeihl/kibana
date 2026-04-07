@@ -25,8 +25,8 @@ import { getIndexPatternFromESQLQuery, getTimeFieldFromESQLQuery } from '@kbn/es
 import { Sha256 } from '@kbn/crypto-browser';
 import type { DataViewSpec } from '@kbn/data-views-plugin/common';
 import { FILTERS, isOfAggregateQueryType, type Filter, type Query } from '@kbn/es-query';
-import type { AsCodeFilter } from '@kbn/as-code-filters-schema';
-import { fromStoredFilters, toStoredFilters } from '@kbn/as-code-filters-transforms';
+import type { AsCodeFilter } from '@kbn/as-code-shared-schemas';
+import { fromStoredFilters, toStoredFilters } from '@kbn/as-code-shared-transforms';
 import type { LensAttributes, LensDatatableDataset } from '../types';
 import type { LensApiAllOperations, LensApiState, NarrowByType } from '../schema';
 import { fromBucketLensStateToAPI } from './columns/buckets';

@@ -10,7 +10,7 @@ import type { TypeOf } from '@kbn/config-schema';
 import { schema } from '@kbn/config-schema';
 import { ALL_VALUE } from '@kbn/slo-schema';
 import { serializedTitlesSchema } from '@kbn/presentation-publishing-schemas';
-import { asCodeFilterSchema } from '@kbn/as-code-filters-schema';
+import { asCodeFilterSchema } from '@kbn/as-code-shared-schemas';
 import { SLO_EMBEDDABLE_SUPPORTED_TRIGGERS } from '../../../common/embeddables/overview/constants';
 
 const SingleOverviewCustomSchema = schema.object({

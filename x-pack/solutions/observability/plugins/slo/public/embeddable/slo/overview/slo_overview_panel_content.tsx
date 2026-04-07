@@ -10,7 +10,7 @@ import { EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
 import { css } from '@emotion/react';
 import type { Filter } from '@kbn/es-query';
 import { ALL_VALUE } from '@kbn/slo-schema';
-import { toStoredFilters } from '@kbn/as-code-filters-transforms';
+import { toStoredFilters } from '@kbn/as-code-shared-transforms';
 import React from 'react';
 import type { Subject } from 'rxjs';
 import { useFetchSloDetails } from '../../../hooks/use_fetch_slo_details';

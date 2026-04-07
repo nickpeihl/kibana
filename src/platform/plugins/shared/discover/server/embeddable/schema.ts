@@ -18,8 +18,7 @@ import {
   serializedTimeRangeSchema,
 } from '@kbn/presentation-publishing-schemas';
 import { VIEW_MODE } from '@kbn/saved-search-plugin/common';
-import { asCodeFilterSchema } from '@kbn/as-code-filters-schema';
-import { dataViewSchema } from '@kbn/as-code-data-views-schema';
+import { asCodeFilterSchema, dataViewSchema } from '@kbn/as-code-shared-schemas';
 import type { GetDrilldownsSchemaFnType } from '@kbn/embeddable-plugin/server';
 import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
 

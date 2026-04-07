@@ -14,7 +14,7 @@ import type {
 } from '@kbn/dashboard-plugin/public';
 import { DashboardRenderer as DashboardContainerRenderer } from '@kbn/dashboard-plugin/public';
 import type { DashboardLocatorParams } from '@kbn/dashboard-plugin/common';
-import { toAsCodeQuery } from '@kbn/as-code-shared-transforms';
+import { fromStoredFilters, toAsCodeQuery } from '@kbn/as-code-shared-transforms';
 import type { Filter, Query } from '@kbn/es-query';
 import type { ViewMode } from '@kbn/presentation-publishing';
 
@@ -24,7 +24,6 @@ import type {
   DashboardInitializationState,
   DashboardInternalApi,
 } from '@kbn/dashboard-plugin/public/dashboard_api/types';
-import { fromStoredFilters } from '@kbn/as-code-filters-transforms';
 import { APP_UI_ID } from '../../../common';
 import { DASHBOARDS_PATH, SecurityPageName } from '../../../common/constants';
 import { useGetSecuritySolutionUrl } from '../../common/components/link_to';

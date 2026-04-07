@@ -15,3 +15,28 @@ export {
   type AsCodeMeta,
   type AsCodeQuery,
 } from './src/schemas';
+
+export {
+  dataViewReferenceSchema,
+  dataViewSchema,
+  dataViewSpecSchema,
+  runtimeFieldSchema,
+  type AsCodeDataView,
+  type AsCodeDataViewReference,
+  type AsCodeDataViewSpec,
+  type AsCodeRuntimeField,
+} from './src/data_views';
+
+export {
+  asCodeFilterSchema,
+  asCodeConditionFilterSchema,
+  asCodeGroupFilterSchema,
+  asCodeDSLFilterSchema,
+  asCodeSpatialFilterSchema,
+  type AsCodeGroupFilterRecursive,
+  type AsCodeFilter,
+  type AsCodeConditionFilter,
+  type AsCodeGroupFilter,
+  type AsCodeDSLFilter,
+  type AsCodeSpatialFilter,
+} from './src/filters';

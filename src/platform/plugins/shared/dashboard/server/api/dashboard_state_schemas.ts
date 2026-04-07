@@ -10,8 +10,7 @@
 import type { ObjectType, Type } from '@kbn/config-schema';
 import { schema } from '@kbn/config-schema';
 import { refreshIntervalSchema } from '@kbn/data-service-server';
-import { asCodeFilterSchema } from '@kbn/as-code-filters-schema';
-import { asCodeQuerySchema } from '@kbn/as-code-shared-schemas';
+import { asCodeFilterSchema, asCodeQuerySchema } from '@kbn/as-code-shared-schemas';
 /**
  * Currently, controls are the only pinnable panels. However, if we intend to make this extendable, we should instead
  * get the pinned panel schema from a pinned panel registry **independent** from controls

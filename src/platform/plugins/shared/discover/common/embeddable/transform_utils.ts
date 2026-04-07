@@ -16,8 +16,12 @@ import {
   injectReferences,
   parseSearchSourceJSON,
 } from '@kbn/data-plugin/common';
-import { fromStoredFilters, toStoredFilters } from '@kbn/as-code-filters-transforms';
-import { fromStoredDataView, toStoredDataView } from '@kbn/as-code-data-views-transforms';
+import {
+  fromStoredDataView,
+  fromStoredFilters,
+  toStoredDataView,
+  toStoredFilters,
+} from '@kbn/as-code-shared-transforms';
 import type { SavedObjectReference } from '@kbn/core/server';
 import { DataGridDensity } from '@kbn/discover-utils';
 import { isOfAggregateQueryType } from '@kbn/es-query';

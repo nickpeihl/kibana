@@ -11,9 +11,13 @@ import type { GlobalQueryStateFromUrl, RefreshInterval } from '@kbn/data-plugin/
 import { connectToQueryState, syncGlobalQueryStateWithUrl } from '@kbn/data-plugin/public';
 import type { Filter, Query, TimeRange } from '@kbn/es-query';
 import { COMPARE_ALL_OPTIONS, compareFilters, isFilterPinned } from '@kbn/es-query';
-import type { AsCodeFilter } from '@kbn/as-code-filters-schema';
-import { toStoredFilters, fromStoredFilters } from '@kbn/as-code-filters-transforms';
-import { toAsCodeQuery, toStoredQuery } from '@kbn/as-code-shared-transforms';
+import type { AsCodeFilter } from '@kbn/as-code-shared-schemas';
+import {
+  fromStoredFilters,
+  toAsCodeQuery,
+  toStoredFilters,
+  toStoredQuery,
+} from '@kbn/as-code-shared-transforms';
 import type { PublishingSubject, StateComparators } from '@kbn/presentation-publishing';
 import { diffComparators } from '@kbn/presentation-publishing';
 import fastIsEqual from 'fast-deep-equal';
