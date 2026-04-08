@@ -41,6 +41,7 @@
     "@kbn/doc-links",
     "@kbn/core-deprecations-common",
     "@kbn/cps",
+    "@kbn/as-code-shared-constants",
   ],
   "exclude": [
     "target/**/*",

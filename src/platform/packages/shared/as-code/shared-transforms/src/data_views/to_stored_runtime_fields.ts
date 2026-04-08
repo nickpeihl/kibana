@@ -19,13 +19,13 @@
  * Use the three exported helpers together to fully reconstruct the DataViewSpec runtime-field state.
  */
 
-import {
-  type RuntimeFieldSpec,
-  type DataViewSpec,
-  type RuntimePrimitiveTypes,
-  RUNTIME_FIELD_COMPOSITE_TYPE,
+import type {
+  RuntimeFieldSpec,
+  DataViewSpec,
+  RuntimePrimitiveTypes,
 } from '@kbn/data-views-plugin/common';
 import type { AsCodeRuntimeField } from '@kbn/as-code-shared-schemas';
+import { RUNTIME_FIELD_COMPOSITE_TYPE } from '@kbn/as-code-shared-constants';
 
 /**
  * Convert AsCodeRuntimeField[] to the `runtimeFieldMap` entry of a DataViewSpec.

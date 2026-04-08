@@ -7,21 +7,10 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-/**
- * All runtime field types.
- * @public
- */
-export const RUNTIME_FIELD_COMPOSITE_TYPE = 'composite' as const;
-
-export const PRIMITIVE_RUNTIME_FIELD_TYPES = [
-  'keyword',
-  'long',
-  'double',
-  'date',
-  'ip',
-  'boolean',
-  'geo_point',
-] as const;
+import {
+  PRIMITIVE_RUNTIME_FIELD_TYPES,
+  RUNTIME_FIELD_COMPOSITE_TYPE,
+} from '@kbn/as-code-shared-constants';
 
 export const RUNTIME_FIELD_TYPES = [
   ...PRIMITIVE_RUNTIME_FIELD_TYPES,

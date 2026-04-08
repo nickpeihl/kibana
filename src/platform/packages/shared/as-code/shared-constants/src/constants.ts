@@ -35,3 +35,20 @@ export const AS_CODE_DATA_VIEW_REFERENCE_TYPE = 'data_view_reference' as const;
 
 /** `type` discriminator for as-code classic-tab `data_source`: inline DataViewSpec-shaped fields. */
 export const AS_CODE_DATA_VIEW_SPEC_TYPE = 'data_view_spec' as const;
+
+/**
+ * Runtime field constants used by the as-code data view runtime field schema and transforms.
+ *
+ * Note: These values should remain aligned with the runtime field types supported by data views.
+ */
+export const RUNTIME_FIELD_COMPOSITE_TYPE = 'composite' as const;
+
+export const PRIMITIVE_RUNTIME_FIELD_TYPES = [
+  'keyword',
+  'long',
+  'double',
+  'date',
+  'ip',
+  'boolean',
+  'geo_point',
+] as const;

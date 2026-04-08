@@ -19,7 +19,8 @@
  * making the as-code representation self-contained and human-readable.
  */
 
-import { RUNTIME_FIELD_COMPOSITE_TYPE, type DataViewSpec } from '@kbn/data-views-plugin/common';
+import { RUNTIME_FIELD_COMPOSITE_TYPE } from '@kbn/as-code-shared-constants';
+import type { DataViewSpec } from '@kbn/data-views-plugin/common';
 import type { AsCodeRuntimeField } from '@kbn/as-code-shared-schemas';
 
 /**

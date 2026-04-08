@@ -12,7 +12,6 @@
   "kbn_references": [
     "@kbn/config-schema",
     "@kbn/core",
-    "@kbn/data-views-plugin",
     "@kbn/utility-types",
     "@kbn/as-code-shared-constants"
   ]

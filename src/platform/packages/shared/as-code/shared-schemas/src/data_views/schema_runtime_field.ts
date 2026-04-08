@@ -12,7 +12,7 @@ import { schema } from '@kbn/config-schema';
 import {
   PRIMITIVE_RUNTIME_FIELD_TYPES,
   RUNTIME_FIELD_COMPOSITE_TYPE,
-} from '@kbn/data-views-plugin/common';
+} from '@kbn/as-code-shared-constants';
 
 const MAX_NAME_LENGTH = 1000;
 

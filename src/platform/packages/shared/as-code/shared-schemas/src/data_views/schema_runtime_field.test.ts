@@ -10,7 +10,7 @@
 import {
   PRIMITIVE_RUNTIME_FIELD_TYPES,
   RUNTIME_FIELD_COMPOSITE_TYPE,
-} from '@kbn/data-views-plugin/common';
+} from '@kbn/as-code-shared-constants';
 import type {
   compositeRuntimeFieldSchema,
   primitiveRuntimeFieldSchema,
