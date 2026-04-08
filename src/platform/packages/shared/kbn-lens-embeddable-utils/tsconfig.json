@@ -8,6 +8,7 @@
   "exclude": ["target/**/*"],
   "kbn_references": [
     "@kbn/core",
+    "@kbn/as-code-shared-constants",
     "@kbn/as-code-shared-schemas",
     "@kbn/as-code-shared-transforms",
     "@kbn/data-views-plugin",
@@ -22,9 +23,8 @@
     "@kbn/lens-common",
     "@kbn/chart-expressions-common",
     "@kbn/expression-xy-plugin",
-    "@kbn/utility-types",
     "@kbn/transpose-utils",
     "@kbn/palettes",
-    "@kbn/crypto-browser",
+    "@kbn/crypto-browser"
   ]
 }

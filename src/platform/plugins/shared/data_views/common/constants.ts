@@ -12,6 +12,9 @@ import {
   RUNTIME_FIELD_COMPOSITE_TYPE,
 } from '@kbn/as-code-shared-constants';
 
+export type RuntimeFieldCompositeType = typeof RUNTIME_FIELD_COMPOSITE_TYPE;
+export type PrimitiveRuntimeFieldTypes = typeof PRIMITIVE_RUNTIME_FIELD_TYPES;
+
 export const RUNTIME_FIELD_TYPES = [
   ...PRIMITIVE_RUNTIME_FIELD_TYPES,
   RUNTIME_FIELD_COMPOSITE_TYPE,

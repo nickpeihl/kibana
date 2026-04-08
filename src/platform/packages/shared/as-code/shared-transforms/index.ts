@@ -8,6 +8,5 @@
  */
 
 export { toAsCodeQuery, toStoredQuery } from './src/query_transforms';
-
 export * from './src/data_views';
 export * from './src/filters';
