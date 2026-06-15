@@ -13,12 +13,14 @@ import type { DashboardLayout } from '../dashboard_api/layout_manager';
 export interface PanelPlacementReturn {
   newPanelPlacement: GridData;
   otherPanels: DashboardLayout['panels'];
+  otherSections?: DashboardLayout['sections']; // only set by placeAtTop
 }
 
 export interface PanelPlacementProps {
   width: number;
   height: number;
   currentPanels: DashboardLayout['panels'];
+  currentSections?: DashboardLayout['sections']; // only consumed by placeAtTop
   sectionId?: string; // section where panel is being placed
   beside?: string; // the ID of the panel to place the new panel relative to
 }

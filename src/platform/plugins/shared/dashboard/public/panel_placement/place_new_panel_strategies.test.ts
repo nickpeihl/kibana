@@ -116,6 +116,33 @@ describe('new panel placement strategies', () => {
         y: panels['3'].grid.y + newPanelPlacement.h,
       });
     });
+
+    it('pushes sections down when currentSections is provided', () => {
+      const layout: DashboardLayout = getMockLayoutWithSections();
+      const { newPanelPlacement, otherSections } = runPanelPlacementStrategy(
+        PlacementStrategy.placeAtTop,
+        {
+          width: 12,
+          height: 2,
+          currentPanels: layout.panels,
+          currentSections: layout.sections,
+        }
+      );
+      expect(newPanelPlacement).toEqual({ x: 0, y: 0, w: 12, h: 2 });
+      expect(otherSections).toBeDefined();
+      for (const id of Object.keys(layout.sections)) {
+        expect(otherSections![id].grid.y).toEqual(layout.sections[id].grid.y + 2);
+      }
+    });
+
+    it('leaves sections undefined when currentSections is not provided', () => {
+      const { otherSections } = runPanelPlacementStrategy(PlacementStrategy.placeAtTop, {
+        width: 6,
+        height: 6,
+        currentPanels: getMockLayout().panels,
+      });
+      expect(otherSections).toBeUndefined();
+    });
   });
 
   describe('Find top left most open space', () => {

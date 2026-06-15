@@ -12,11 +12,11 @@ import { cloneDeep } from 'lodash';
 import { PlacementStrategy } from '@kbn/embeddable-plugin/public';
 import { DASHBOARD_GRID_COLUMN_COUNT } from '../../common/page_bundle_constants';
 import type { PanelPlacementProps, PanelPlacementReturn } from './types';
-import type { DashboardLayoutPanel } from '../dashboard_api/layout_manager';
+import type { DashboardLayout, DashboardLayoutPanel } from '../dashboard_api/layout_manager';
 
 export const runPanelPlacementStrategy = (
   strategy: PlacementStrategy,
-  { width, height, currentPanels, sectionId, beside }: PanelPlacementProps
+  { width, height, currentPanels, currentSections, sectionId, beside }: PanelPlacementProps
 ): PanelPlacementReturn => {
   let targetPanel: DashboardLayoutPanel | undefined;
   if (beside) {
@@ -36,11 +36,21 @@ export const runPanelPlacementStrategy = (
           }
         }
       }
+
+      let otherSections: DashboardLayout['sections'] | undefined;
+      if (currentSections && !targetPanel) {
+        otherSections = {};
+        for (const [id, section] of Object.entries(currentSections)) {
+          otherSections[id] = { ...section, grid: { y: section.grid.y + height } };
+        }
+      }
+
       return {
         newPanelPlacement: targetPanel
           ? { x: targetPanel.grid.x, y: targetPanel.grid.y, w: width, h: height }
           : { x: 0, y: 0, w: width, h: height },
         otherPanels,
+        otherSections,
       };
 
     case PlacementStrategy.findTopLeftMostOpenSpace:

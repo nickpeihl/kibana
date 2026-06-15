@@ -624,11 +624,12 @@ export function initializeLayoutManager(
           if (newPinnedPanels[panelId].order > originalOrder) newPinnedPanels[panelId].order--;
         }
 
-        // place the new control panel in the top left corner, bumping other panels down as necessary
-        const { newPanelPlacement, otherPanels } = runPanelPlacementStrategy(
+        // place the new control panel in the top left corner, bumping other panels and sections down as necessary
+        const { newPanelPlacement, otherPanels, otherSections } = runPanelPlacementStrategy(
           PlacementStrategy.placeAtTop,
           {
             currentPanels: layout$.value.panels,
+            currentSections: layout$.value.sections,
             height: 2,
             width: 12,
           }
@@ -644,6 +645,7 @@ export function initializeLayoutManager(
               grid: { ...newPanelPlacement },
             },
           },
+          sections: otherSections ?? layout$.getValue().sections,
           pinnedPanels: newPinnedPanels,
         });
       },
