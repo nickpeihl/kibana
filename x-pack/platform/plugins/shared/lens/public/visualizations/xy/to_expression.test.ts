@@ -24,6 +24,13 @@ import { dataPluginMock } from '@kbn/data-plugin/public/mocks';
 import type { IStorageWrapper } from '@kbn/kibana-utils-plugin/public';
 import { unifiedSearchPluginMock } from '@kbn/unified-search-plugin/public/mocks';
 import type { DataViewsServicePublic } from '@kbn/data-views-plugin/public';
+import { LensConfigBuilder } from '@kbn/lens-embeddable-utils';
+import {
+  createHiddenAxisTitleXYAttributes,
+  createHorizontalListLegendXYAttributes,
+  DORMANT_MAX_LINES,
+  HIDDEN_AXIS_TITLE,
+} from '@kbn/lens-embeddable-utils/config_builder/tests/audit/loss_repro_fixtures';
 
 describe('#toExpression', () => {
   const xyVisualization = getXyVisualization({
@@ -188,6 +195,52 @@ describe('#toExpression', () => {
         showTitle: [true],
       })
     );
+  });
+
+  it('shows the renderer divergence after a hidden custom title is re-enabled post API round trip', () => {
+    const builder = new LensConfigBuilder(undefined, true);
+    const original = createHiddenAxisTitleXYAttributes();
+    const roundTripped = builder.fromAPIFormat(builder.toAPIFormat(original));
+
+    const toAuditExpression = (state: XYVisualizationState) =>
+      xyVisualization.toExpression(
+        {
+          ...state,
+          axisTitlesVisibilitySettings: {
+            x: state.axisTitlesVisibilitySettings?.x ?? true,
+            yLeft: true,
+            yRight: state.axisTitlesVisibilitySettings?.yRight ?? true,
+          },
+          layers: [
+            {
+              accessors: ['b'],
+              layerId: 'first',
+              layerType: LayerTypes.DATA,
+              seriesType: 'line',
+              xAccessor: 'a',
+              yConfig: [{ axisMode: Position.Left, forAccessor: 'b' }],
+            },
+          ],
+        },
+        frame.datasourceLayers,
+        undefined,
+        datasourceExpressionsByLayers
+      ) as Ast;
+
+    const originalExpression = toAuditExpression(
+      original.state.visualization as XYVisualizationState
+    );
+    const roundTrippedExpression = toAuditExpression(
+      roundTripped.state.visualization as XYVisualizationState
+    );
+    const originalYAxis = (originalExpression.chain[0].arguments.yAxisConfigs[0] as Ast).chain[0]
+      .arguments;
+    const roundTrippedYAxis = (roundTrippedExpression.chain[0].arguments.yAxisConfigs[0] as Ast)
+      .chain[0].arguments;
+
+    expect(originalYAxis).toMatchObject({ showTitle: [true], title: [HIDDEN_AXIS_TITLE] });
+    expect(roundTrippedYAxis.showTitle).toEqual([true]);
+    expect(roundTrippedYAxis.title).not.toEqual([HIDDEN_AXIS_TITLE]);
   });
 
   it('should generate an expression without x accessor', () => {
@@ -506,6 +559,46 @@ describe('#toExpression', () => {
 
     const legendConfig = (expression.chain[0].arguments.legend[0] as Ast).chain[0].arguments;
     expect(legendConfig.maxLines).toEqual([3]);
+  });
+
+  it('shows the renderer divergence after list legend truncation is re-enabled post API round trip', () => {
+    const builder = new LensConfigBuilder(undefined, true);
+    const original = createHorizontalListLegendXYAttributes();
+    const roundTripped = builder.fromAPIFormat(builder.toAPIFormat(original));
+
+    const toGridLegendExpression = (state: XYVisualizationState) =>
+      xyVisualization.toExpression(
+        {
+          ...state,
+          legend: { ...state.legend, layout: undefined },
+          layers: [
+            {
+              accessors: ['b'],
+              layerId: 'first',
+              layerType: LayerTypes.DATA,
+              seriesType: 'line',
+              xAccessor: 'a',
+            },
+          ],
+        },
+        frame.datasourceLayers,
+        undefined,
+        datasourceExpressionsByLayers
+      ) as Ast;
+
+    const originalExpression = toGridLegendExpression(
+      original.state.visualization as XYVisualizationState
+    );
+    const roundTrippedExpression = toGridLegendExpression(
+      roundTripped.state.visualization as XYVisualizationState
+    );
+    const originalLegend = (originalExpression.chain[0].arguments.legend[0] as Ast).chain[0]
+      .arguments;
+    const roundTrippedLegend = (roundTrippedExpression.chain[0].arguments.legend[0] as Ast).chain[0]
+      .arguments;
+
+    expect(originalLegend.maxLines).toEqual([DORMANT_MAX_LINES]);
+    expect(roundTrippedLegend.maxLines).not.toEqual([DORMANT_MAX_LINES]);
   });
 
   it('should ignore legend size for inside legend', () => {

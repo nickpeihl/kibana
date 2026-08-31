@@ -6,10 +6,22 @@
  */
 
 import { LensConfigBuilder } from '@kbn/lens-embeddable-utils';
-import type { LensByValueSerializedState } from '@kbn/lens-common';
+import type {
+  LensByRefSerializedState,
+  LensByValueSerializedState,
+  XYVisualizationState,
+} from '@kbn/lens-common';
+import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
 
 import { simpleMetricAttributes } from '@kbn/lens-embeddable-utils/config_builder/tests/metric/lens_state_config.mock';
+import {
+  createHiddenAxisTitleXYAttributes,
+  HIDDEN_AXIS_TITLE,
+} from '@kbn/lens-embeddable-utils/config_builder/tests/audit/loss_repro_fixtures';
+import { getTransformIn } from './transform_in';
 import { getTransformOut } from './transform_out';
+import { LENS_SAVED_OBJECT_REF_NAME } from './utils';
+import { DOC_TYPE } from '../constants';
 
 interface MetricPanelWithDurationFormat {
   layers?: Array<{ metrics?: Array<{ format?: unknown }> }>;
@@ -20,6 +32,10 @@ const getDurationFormat = (result: unknown) =>
 
 describe('getTransformOut', () => {
   const transformDrilldownsOut = jest.fn(<T extends { drilldowns?: unknown }>(state: T) => state);
+  const transformDrilldownsIn: DrilldownTransforms['transformIn'] = (state) => ({
+    state,
+    references: [],
+  });
 
   // A defined panel-level title (including an explicit empty string) always wins over the
   // attributes title.
@@ -162,6 +178,58 @@ describe('getTransformOut', () => {
     });
 
     toAPIFormatSpy.mockRestore();
+  });
+
+  describe('lens.apiFormat audit controls', () => {
+    it('reproduces the hidden axis-title loss through the dashboard wire transforms', () => {
+      const builder = new LensConfigBuilder(undefined, true);
+      const transformOut = getTransformOut(builder, transformDrilldownsOut, true);
+      const transformIn = getTransformIn(builder, transformDrilldownsIn, true);
+      const attributes = createHiddenAxisTitleXYAttributes();
+      const storedState: LensByValueSerializedState = {
+        attributes,
+        references: [],
+        title: 'Panel title',
+      };
+
+      const wireConfig = transformOut(storedState, attributes.references);
+      expect(wireConfig).toMatchObject({
+        axis: { y: { title: { visible: false } } },
+        type: 'xy',
+      });
+      expect(
+        (wireConfig as { axis?: { y?: { title?: { text?: string } } } }).axis?.y?.title?.text
+      ).toBeUndefined();
+
+      const inbound = transformIn(wireConfig);
+      if (!('attributes' in inbound.state) || !inbound.state.attributes) {
+        throw new Error('Expected a by-value Lens state');
+      }
+      const visualization = inbound.state.attributes.state.visualization as XYVisualizationState;
+
+      expect(visualization.axisTitlesVisibilitySettings?.yLeft).toBe(false);
+      expect(visualization.yTitle).toBeUndefined();
+      expect(HIDDEN_AXIS_TITLE).not.toBe(visualization.yTitle);
+    });
+
+    it('keeps by-reference panels as an opaque reference in both directions', () => {
+      const builder = new LensConfigBuilder(undefined, true);
+      const transformOut = getTransformOut(builder, transformDrilldownsOut, true);
+      const transformIn = getTransformIn(builder, transformDrilldownsIn, true);
+      const storedState: LensByRefSerializedState = { title: 'By-reference panel' };
+      const savedObjectReference = {
+        id: 'saved-lens-id',
+        name: LENS_SAVED_OBJECT_REF_NAME,
+        type: DOC_TYPE,
+      };
+
+      const wireConfig = transformOut(storedState, [savedObjectReference]);
+      expect(wireConfig).toEqual({ ref_id: savedObjectReference.id, title: storedState.title });
+
+      const inbound = transformIn(wireConfig);
+      expect(inbound.state).toEqual({ title: storedState.title });
+      expect(inbound.references).toEqual([savedObjectReference]);
+    });
   });
 
   describe('BWC: by-ref panels missing their savedObjectRef reference', () => {
