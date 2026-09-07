@@ -15,6 +15,7 @@ import type {
   PublishesDataViews,
   PublishesDataLoading,
   PublishesEsqlUsage,
+  PublishesWritableUnifiedSearch,
 } from '@kbn/presentation-publishing';
 import {
   initializeTitleManager,
@@ -25,6 +26,8 @@ import {
   apiPublishesTimeRange,
   apiIsPresentationContainer,
   fetch$,
+  initializePanelFiltersManager,
+  panelFiltersComparators,
 } from '@kbn/presentation-publishing';
 import { openLazyFlyout, tracksOverlays } from '@kbn/presentation-util';
 import { i18n } from '@kbn/i18n';
@@ -64,7 +67,8 @@ export type CustomContentApi = DefaultEmbeddableApi<CustomContentEmbeddableState
   HasEditCapabilities &
   PublishesDataViews &
   PublishesDataLoading &
-  PublishesEsqlUsage;
+  PublishesEsqlUsage &
+  PublishesWritableUnifiedSearch;
 
 export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
   CustomContentEmbeddableState,
@@ -73,6 +77,7 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
   type: CUSTOM_CONTENT_EMBEDDABLE_TYPE,
   buildEmbeddable: async ({ initialState, finalizeApi, parentApi, uuid }) => {
     const titleManager = initializeTitleManager(initialState);
+    const panelFiltersManager = initializePanelFiltersManager(initialState);
     let isRetained = false;
     const esqlQuery$ = new BehaviorSubject<string | undefined>(readEsqlQuery(initialState));
     const template$ = new BehaviorSubject<string | undefined>(initialState.template);
@@ -80,8 +85,13 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
     const usesEsql$ = new BehaviorSubject<boolean>(Boolean(readEsqlQuery(initialState)));
     const isApproximate$ = new BehaviorSubject<boolean>(false);
     const projectRouting$ = new BehaviorSubject<ProjectRouting | undefined>(undefined);
-    const query$ = new BehaviorSubject<Query | AggregateQuery | undefined>(undefined);
-    const filters$ = new BehaviorSubject<Filter[] | undefined>(undefined);
+    // Effective query/filters from the dashboard fetch context (NOT panel-level).
+    const effectiveQuery$ = new BehaviorSubject<Query | AggregateQuery | undefined>(undefined);
+    const effectiveFilters$ = new BehaviorSubject<Filter[] | undefined>(undefined);
+    // Required by PublishesUnifiedSearch; reflects the parent time range (read-only passthrough).
+    const timeRange$ = new BehaviorSubject<TimeRange | undefined>(
+      apiPublishesTimeRange(parentApi) ? parentApi.timeRange$.getValue() ?? undefined : undefined
+    );
     const dataViews$ = new BehaviorSubject<DataView[] | undefined>(undefined);
     // Starts true so the panel is not reported as render-complete before its first fetch resolves;
     // screenshotting would otherwise capture an empty panel.
@@ -89,6 +99,7 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
 
     const serializeState = (): CustomContentEmbeddableState => ({
       ...titleManager.getLatestState(),
+      ...panelFiltersManager.getLatestState(),
       esql_query: toEsqlQueryState(esqlQuery$.getValue()),
       template: template$.getValue(),
     });
@@ -104,6 +115,7 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
       serializeState,
       anyStateChange$: merge(
         titleManager.anyStateChange$,
+        panelFiltersManager.anyStateChange$,
         esqlQuery$.pipe(
           skip(1),
           map(() => undefined)
@@ -115,11 +127,13 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
       ),
       getComparators: () => ({
         ...titleComparators,
+        ...panelFiltersComparators,
         esql_query: 'deepEquality',
         template: 'referenceEquality',
       }),
       applySerializedState: (lastSaved) => {
         titleManager.reinitializeState(lastSaved ?? {});
+        panelFiltersManager.reinitializeState(lastSaved ?? {});
         esqlQuery$.next(lastSaved ? readEsqlQuery(lastSaved) : undefined);
         template$.next(lastSaved?.template);
       },
@@ -128,6 +142,11 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
     const api = finalizeApi({
       ...stateApi,
       ...titleManager.api,
+      ...panelFiltersManager.api,
+      // Required by PublishesUnifiedSearch / PublishesWritableUnifiedSearch. Custom Content
+      // inherits time range from the dashboard; setTimeRange is intentionally a no-op here.
+      timeRange$,
+      setTimeRange: () => {},
       serializeState,
       usesEsql$,
       dataViews$,
@@ -190,8 +209,8 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
               );
               const [isApproximate, setIsApproximate] = useState(isApproximate$.getValue());
               const [projectRouting, setProjectRouting] = useState(projectRouting$.getValue());
-              const [query, setQuery] = useState(query$.getValue());
-              const [filters, setFilters] = useState(filters$.getValue());
+              const [query, setQuery] = useState(effectiveQuery$.getValue());
+              const [filters, setFilters] = useState(effectiveFilters$.getValue());
 
               useEffect(() => {
                 const subs = [
@@ -200,8 +219,8 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
                     : []),
                   isApproximate$.subscribe(setIsApproximate),
                   projectRouting$.subscribe(setProjectRouting),
-                  query$.subscribe(setQuery),
-                  filters$.subscribe(setFilters),
+                  effectiveQuery$.subscribe(setQuery),
+                  effectiveFilters$.subscribe(setFilters),
                 ];
                 return () => subs.forEach((s) => s.unsubscribe());
               }, []);
@@ -269,8 +288,8 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
     const fetchSubscription = fetch$(api).subscribe((ctx) => {
       isApproximate$.next(ctx.isApproximate);
       projectRouting$.next(ctx.projectRouting);
-      query$.next(ctx.query);
-      filters$.next(ctx.filters);
+      effectiveQuery$.next(ctx.query);
+      effectiveFilters$.next(ctx.filters);
       if (!ctx.isReload) {
         previewHtml$.next(null);
       }
@@ -285,8 +304,10 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
           panelTitle,
           isApproximate,
           projectRouting,
-          query,
-          filters,
+          effectiveQuery,
+          effectiveFilters,
+          panelFilters,
+          panelQuery,
           previewHtml,
         ] = useBatchedPublishingSubjects(
           esqlQuery$,
@@ -294,10 +315,14 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
           titleManager.api.title$,
           isApproximate$,
           projectRouting$,
-          query$,
-          filters$,
+          effectiveQuery$,
+          effectiveFilters$,
+          panelFiltersManager.api.filters$,
+          panelFiltersManager.api.query$,
           previewHtml$
         );
+        const query = panelQuery ?? effectiveQuery;
+        const filters: Filter[] = [...(effectiveFilters ?? []), ...(panelFilters ?? [])];
         const [generationVersion, setGenerationVersion] = useState(0);
         const [timeRange, setTimeRange] = useState<TimeRange | undefined>(
           apiPublishesTimeRange(parentApi)
@@ -321,7 +346,11 @@ export const customContentEmbeddableFactory: EmbeddablePublicDefinition<
 
         useEffect(() => {
           if (!apiPublishesTimeRange(parentApi)) return;
-          const sub = parentApi.timeRange$.subscribe((tr) => setTimeRange(tr ?? undefined));
+          const sub = parentApi.timeRange$.subscribe((tr) => {
+            const resolved = tr ?? undefined;
+            setTimeRange(resolved);
+            timeRange$.next(resolved);
+          });
           return () => sub.unsubscribe();
         }, []);
 

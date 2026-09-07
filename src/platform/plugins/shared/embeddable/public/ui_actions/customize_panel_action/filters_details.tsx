@@ -7,14 +7,18 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useMount from 'react-use/lib/useMount';
 
 import { EuiButtonEmpty, EuiCodeBlock, EuiFlexGroup, EuiFormRow } from '@elastic/eui';
+import type { Filter } from '@kbn/es-query';
 import { getAggregateQueryMode, isOfQueryType, type AggregateQuery } from '@kbn/es-query';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n-react';
-import { hasEditCapabilities } from '@kbn/presentation-publishing';
+import {
+  apiPublishesWritableUnifiedSearch,
+  hasEditCapabilities,
+} from '@kbn/presentation-publishing';
 import { FilterItems } from '@kbn/unified-search-plugin/public';
 import type { CustomizePanelActionApi } from './customize_panel_action';
 import { executeEditPanelAction } from '../edit_panel_action/execute_edit_action';
@@ -38,12 +42,21 @@ interface FiltersDetailsProps {
 export function FiltersDetails({ editMode, api }: FiltersDetailsProps) {
   const [queryString, setQueryString] = useState<string>('');
   const [queryLanguage, setQueryLanguage] = useState<'sql' | 'esql' | undefined>();
+  const [incompatibleQueryLanguage, setIncompatibleQueryLanguage] = useState(false);
+
   const dataViews = api.dataViews$?.value ?? [];
 
-  const filters = useMemo(() => api.filters$?.value ?? [], [api]);
+  // React to live filter changes so that the flyout reflects updates made via setFilters.
+  const [filters, setFiltersState] = useState<Filter[]>(api.filters$?.value ?? []);
+  useEffect(() => {
+    if (!api.filters$) return;
+    const sub = api.filters$.subscribe((newFilters) => setFiltersState(newFilters ?? []));
+    return () => sub.unsubscribe();
+  }, [api.filters$]);
 
-  const [incompatibleQueryLanguage, setIncompatibleQueryLanguage] = useState(false);
-  const showEditButton = hasEditCapabilities(api) && editMode && !incompatibleQueryLanguage;
+  const isWritable = editMode && apiPublishesWritableUnifiedSearch(api);
+  const showNavigateAwayEditButton =
+    hasEditCapabilities(api) && editMode && !incompatibleQueryLanguage && !isWritable;
 
   useMount(() => {
     const localQuery = api.query$?.value;
@@ -63,6 +76,12 @@ export function FiltersDetails({ editMode, api }: FiltersDetailsProps) {
     }
   });
 
+  const handleFiltersUpdated = (newFilters: Filter[]) => {
+    if (isWritable) {
+      api.setFilters(newFilters.length > 0 ? newFilters : undefined);
+    }
+  };
+
   return (
     <>
       {queryString !== '' && (
@@ -71,7 +90,7 @@ export function FiltersDetails({ editMode, api }: FiltersDetailsProps) {
           label={filterDetailsActionStrings.getQueryTitle()}
           display="rowCompressed"
           labelAppend={
-            showEditButton ? (
+            showNavigateAwayEditButton ? (
               <EuiButtonEmpty
                 size="xs"
                 data-test-subj="customizePanelEditQueryButton"
@@ -97,18 +116,18 @@ export function FiltersDetails({ editMode, api }: FiltersDetailsProps) {
             paddingSize="s"
             fontSize="s"
             aria-labelledby={`${filterDetailsActionStrings.getQueryTitle()}: ${queryString}`}
-            tabIndex={0} // focus so that keyboard controls will not skip over the code block
+            tabIndex={0}
           >
             {queryString}
           </EuiCodeBlock>
         </EuiFormRow>
       )}
-      {filters.length > 0 && (
+      {(filters.length > 0 || isWritable) && (
         <EuiFormRow
           data-test-subj="panelCustomFiltersRow"
           label={filterDetailsActionStrings.getFiltersTitle()}
           labelAppend={
-            showEditButton ? (
+            showNavigateAwayEditButton ? (
               <EuiButtonEmpty
                 size="xs"
                 data-test-subj="customizePanelEditFiltersButton"
@@ -129,7 +148,12 @@ export function FiltersDetails({ editMode, api }: FiltersDetailsProps) {
           }
         >
           <EuiFlexGroup wrap={true} gutterSize="xs">
-            <FilterItems filters={filters} indexPatterns={dataViews} readOnly={true} />
+            <FilterItems
+              filters={filters}
+              indexPatterns={dataViews}
+              readOnly={!isWritable}
+              onFiltersUpdated={isWritable ? handleFiltersUpdated : undefined}
+            />
           </EuiFlexGroup>
         </EuiFormRow>
       )}

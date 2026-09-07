@@ -24,6 +24,7 @@ import type {
   PublishesViewMode,
   PublishesWritableDescription,
   PublishesWritableTitle,
+  PublishesWritableUnifiedSearch,
   PublishesUnsavedChanges,
   SerializedTitles,
   SerializedTimeRange,
@@ -100,6 +101,8 @@ export type LensApi = Simplify<
     PublishesBlockingError &
     // This is used by dashboard/container to show filters/queries on the panel
     PublishesUnifiedSearch &
+    // Allows inline panel-level filter editing in the Settings flyout
+    Pick<PublishesWritableUnifiedSearch, 'setFilters' | 'setQuery'> &
     // Forward the search session id
     PublishesSearchSession &
     // Let the container know the loading state

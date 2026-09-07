@@ -20,7 +20,7 @@ import type {
   SerializedDrilldowns,
 } from '@kbn/embeddable-plugin/public';
 import { BehaviorSubject, combineLatest, EMPTY, map, merge, skip, switchMap, tap } from 'rxjs';
-import type { Query } from '@kbn/es-query';
+import type { Filter, Query } from '@kbn/es-query';
 import { parse } from 'hjson';
 import { ON_APPLY_FILTER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
 import {
@@ -29,9 +29,11 @@ import {
   areTriggersDisabled,
   fetch$,
   getInheritedViewMode,
+  initializePanelFiltersManager,
   initializeStateApi,
   initializeTimeRangeManager,
   initializeTitleManager,
+  panelFiltersComparators,
   type HasEditCapabilities,
   type ProjectRoutingOverrides,
   type PublishesBlockingError,
@@ -39,10 +41,12 @@ import {
   type PublishesDataViews,
   type PublishesWritableDescription,
   type PublishesWritableTitle,
+  type PublishesWritableUnifiedSearch,
   type PublishesEsqlUsage,
   type PublishesProjectRoutingOverrides,
   type PublishesRendered,
   type HasSupportedTriggers,
+  type SerializedPanelFilters,
   type SerializedTimeRange,
   type SerializedTitles,
   timeRangeComparators,
@@ -89,6 +93,7 @@ interface VegaRenderInput {
  */
 export type VegaByValueState = SerializedTitles &
   SerializedTimeRange &
+  SerializedPanelFilters &
   SerializedDrilldowns & {
     /** The Vega or Vega-Lite specification as an HJSON or JSON string. */
     spec: string;
@@ -103,6 +108,7 @@ export type VegaEmbeddableApi = DefaultEmbeddableApi<VegaByValueState> &
   PublishesDataLoading &
   PublishesWritableDescription &
   PublishesWritableTitle &
+  PublishesWritableUnifiedSearch &
   PublishesEsqlUsage &
   PublishesProjectRoutingOverrides &
   PublishesDataViews &
@@ -127,6 +133,7 @@ export const vegaEmbeddableFactory = (
   }) => {
     const titleManager = initializeTitleManager(initialState);
     const timeRangeManager = initializeTimeRangeManager(initialState);
+    const panelFiltersManager = initializePanelFiltersManager(initialState);
     const drilldownsManager = initializeDrilldownsManager(uuid, initialState);
     const spec$ = new BehaviorSubject(initialState.spec);
     const usesEsql$ = new BehaviorSubject(false);
@@ -159,12 +166,14 @@ export const vegaEmbeddableFactory = (
       serializeState: () => ({
         ...titleManager.getLatestState(),
         ...timeRangeManager.getLatestState(),
+        ...panelFiltersManager.getLatestState(),
         ...drilldownsManager.getLatestState(),
         spec: spec$.getValue(),
       }),
       anyStateChange$: merge(
         titleManager.anyStateChange$,
         timeRangeManager.anyStateChange$,
+        panelFiltersManager.anyStateChange$,
         drilldownsManager.anyStateChange$,
         spec$.pipe(
           skip(1),
@@ -174,12 +183,14 @@ export const vegaEmbeddableFactory = (
       getComparators: () => ({
         ...titleComparators,
         ...timeRangeComparators,
+        ...panelFiltersComparators,
         ...drilldownsManager.comparators,
         spec: 'referenceEquality',
       }),
       applySerializedState: (nextState) => {
         titleManager.reinitializeState(nextState);
         timeRangeManager.reinitializeState(nextState);
+        panelFiltersManager.reinitializeState(nextState);
         drilldownsManager.reinitializeState(nextState);
         spec$.next(nextState.spec);
       },
@@ -188,6 +199,7 @@ export const vegaEmbeddableFactory = (
     const api = finalizeApi({
       ...titleManager.api,
       ...timeRangeManager.api,
+      ...panelFiltersManager.api,
       ...drilldownsManager.api,
       ...stateApi,
       blockingError$,
@@ -268,9 +280,15 @@ export const vegaEmbeddableFactory = (
       rendered$.next(true);
     };
 
-    const fetchSubscription = combineLatest([spec$, fetch$(api)])
+    // Include panel-level filter/query subjects so data re-loads when they change.
+    const fetchSubscription = combineLatest([
+      spec$,
+      fetch$(api),
+      panelFiltersManager.api.filters$,
+      panelFiltersManager.api.query$,
+    ])
       .pipe(
-        switchMap(async ([spec, data]) => {
+        switchMap(async ([spec, data, panelFilters, panelQuery]) => {
           abortController.abort();
           abortController = new AbortController();
           const { signal } = abortController;
@@ -288,6 +306,11 @@ export const vegaEmbeddableFactory = (
               }
             : data.timeRange;
 
+          // Merge dashboard-level context filters with panel-level filters stored in state.
+          const mergedFilters: Filter[] = [...(data.filters ?? []), ...(panelFilters ?? [])];
+          // Vega only supports KQL/Lucene queries, not ES|QL (AggregateQuery).
+          const effectiveQuery = (panelQuery ?? data.query) as Query;
+
           try {
             const { createVegaRequestHandler } = await import('../async_services');
             const requestHandler = createVegaRequestHandler(deps.visualizationDependencies, {
@@ -296,8 +319,8 @@ export const vegaEmbeddableFactory = (
             });
             const visData = await requestHandler({
               timeRange,
-              query: data.query as Query,
-              filters: data.filters,
+              query: effectiveQuery,
+              filters: mergedFilters,
               visParams: { spec },
               searchSessionId: data.searchSessionId,
               executionContext: getExecutionContext(),

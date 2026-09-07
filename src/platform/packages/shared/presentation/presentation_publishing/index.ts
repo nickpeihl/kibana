@@ -44,6 +44,11 @@ export {
   timeRangeComparators,
   type SerializedTimeRange,
 } from './interfaces/fetch/time_range_manager';
+export {
+  initializePanelFiltersManager,
+  panelFiltersComparators,
+  type SerializedPanelFilters,
+} from './interfaces/fetch/panel_filters_manager';
 export { transformTimeRangeOut } from './interfaces/fetch/bwc/time_range_transforms';
 export { apiPublishesReload, type PublishesReload } from './interfaces/fetch/publishes_reload';
 export {
