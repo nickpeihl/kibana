@@ -9,9 +9,10 @@
 
 import type { GlobalMeta } from '@kbn/zod/v4';
 
-export type { SerializedTimeRange, SerializedTitles } from './src/types';
+export type { SerializedTimeRange, SerializedTitles, SerializedPanelFilters } from './src/types';
 export { serializedTimeRangeSchema } from './src/time_range_schema';
 export { serializedTitlesSchema } from './src/titles_schema';
+export { serializedPanelFiltersSchema } from './src/panel_filters_schema';
 
 export const BY_REF_SCHEMA_META = {
   description: 'Panel configuration stored in a linked library item',

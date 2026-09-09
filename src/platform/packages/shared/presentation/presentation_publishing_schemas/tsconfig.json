@@ -16,5 +16,6 @@
   "kbn_references": [
     "@kbn/zod",
     "@kbn/es-query-server",
+    "@kbn/as-code-filters-schema",
   ]
 }
