@@ -8,6 +8,7 @@
  */
 
 import React, { useEffect, useRef, useState } from 'react';
+import { isEqual } from 'lodash';
 import {
   EuiButton,
   EuiButtonEmpty,
@@ -20,13 +21,17 @@ import {
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 import { i18n } from '@kbn/i18n';
+import type { Filter, Query } from '@kbn/es-query';
+import type { DataView } from '@kbn/data-views-plugin/public';
+import type { StatefulSearchBarProps } from '@kbn/unified-search-plugin/public';
 import { VegaSpecEditor } from '../components/vega_vis_editor';
 
 const bodyCss = css({
   '.euiFlyoutBody__overflowContent': {
     display: 'flex',
+    flexDirection: 'column',
     height: '100%',
-    '.vgaEditor': { minHeight: 0 },
+    '.vgaEditor': { flex: 1, minHeight: 0 },
   },
 });
 
@@ -34,6 +39,10 @@ export const VegaEditorFlyout = ({
   ariaLabelledBy,
   closeFlyout,
   initialSpec,
+  initialFilters,
+  initialQuery,
+  indexPatterns,
+  SearchBar,
   isNewPanel = false,
   onPreview,
   onRevert,
@@ -42,16 +51,27 @@ export const VegaEditorFlyout = ({
   ariaLabelledBy: string;
   closeFlyout: () => void;
   initialSpec: string;
-
+  initialFilters: Filter[] | undefined;
+  initialQuery: Query | undefined;
+  indexPatterns: DataView[] | undefined;
+  SearchBar: React.ComponentType<StatefulSearchBarProps>;
   isNewPanel?: boolean;
   onPreview: (spec: string) => void;
   onRevert: () => void;
-  onSave: (spec: string) => void;
+  onSave: (spec: string, filters: Filter[] | undefined, query: Query | undefined) => void;
 }) => {
   const [spec, setSpec] = useState(initialSpec);
   const [previewedSpec, setPreviewedSpec] = useState(initialSpec);
+  const [filters, setFilters] = useState<Filter[]>(initialFilters ?? []);
+  const [query, setQuery] = useState<Query | undefined>(initialQuery);
+
   const canPreview = spec !== previewedSpec;
-  const canSave = isNewPanel || spec !== initialSpec;
+  const canSave =
+    isNewPanel ||
+    spec !== initialSpec ||
+    !isEqual(filters, initialFilters ?? []) ||
+    !isEqual(query, initialQuery);
+
   const previewChanges = () => {
     onPreview(spec);
     setPreviewedSpec(spec);
@@ -73,9 +93,10 @@ export const VegaEditorFlyout = ({
 
   const handleSave = () => {
     saved.current = true;
-    onSave(spec);
+    onSave(spec, filters.length > 0 ? filters : undefined, query);
     closeFlyout();
   };
+
   return (
     <>
       <EuiFlyoutHeader hasBorder>
@@ -83,6 +104,19 @@ export const VegaEditorFlyout = ({
           <h2 id={ariaLabelledBy}>Vega</h2>
         </EuiTitle>
       </EuiFlyoutHeader>
+      <SearchBar
+        appName="vega"
+        indexPatterns={indexPatterns ?? []}
+        query={query}
+        onQueryChange={({ query: newQuery }) => setQuery(newQuery as Query | undefined)}
+        onQuerySubmit={({ query: newQuery }) => setQuery(newQuery as Query | undefined)}
+        filters={filters}
+        onFiltersUpdated={(newFilters) => setFilters(newFilters)}
+        showDatePicker={false}
+        showFilterBar={true}
+        showQueryInput={true}
+        disableSubscribingToGlobalDataServices={true}
+      />
       <EuiFlyoutBody css={bodyCss}>
         <VegaSpecEditor editorValue={spec} onChange={setSpec} />
       </EuiFlyoutBody>

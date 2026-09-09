@@ -22,6 +22,7 @@ import type { MapsEmsPluginPublicStart } from '@kbn/maps-ems-plugin/public';
 import type { UsageCollectionStart } from '@kbn/usage-collection-plugin/public';
 import type { EmbeddableSetup, EmbeddableStart } from '@kbn/embeddable-plugin/public';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
+import type { UnifiedSearchPublicPluginStart } from '@kbn/unified-search-plugin/public';
 import {
   ADD_CANVAS_ELEMENT_TRIGGER,
   ADD_PANEL_TRIGGER,
@@ -79,6 +80,7 @@ export interface VegaPluginStartDependencies {
   uiActions: UiActionsStart;
   usageCollection: UsageCollectionStart;
   inspector: InspectorStart;
+  unifiedSearch: UnifiedSearchPublicPluginStart;
 }
 
 /** @internal */
@@ -123,6 +125,7 @@ export class VegaPlugin implements Plugin<void, void> {
       const { vegaEmbeddableFactory } = await import('./embeddable/vega_embeddable');
       return vegaEmbeddableFactory(startCore, {
         uiActions: startDeps.uiActions,
+        unifiedSearch: startDeps.unifiedSearch,
         visualizationDependencies,
       });
     });

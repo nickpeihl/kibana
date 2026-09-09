@@ -39,6 +39,10 @@ describe('VegaEditorFlyout', () => {
         ariaLabelledBy="vega-flyout-title"
         closeFlyout={closeFlyout}
         initialSpec="{ mark: point }"
+        initialFilters={undefined}
+        initialQuery={undefined}
+        indexPatterns={[]}
+        SearchBar={() => null}
         isNewPanel={isNewPanel}
         onPreview={onPreview}
         onRevert={onRevert}

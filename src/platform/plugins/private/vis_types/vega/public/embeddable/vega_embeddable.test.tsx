@@ -106,6 +106,13 @@ describe('vegaEmbeddableFactory', () => {
   const buildEmbeddable = async () => {
     const factory = vegaEmbeddableFactory(coreMock.createStart(), {
       uiActions: { executeTriggerActions },
+      unifiedSearch: {
+        ui: {
+          SearchBar: jest.fn(),
+          AggregateQuerySearchBar: jest.fn(),
+          getCustomSearchBar: jest.fn(),
+        },
+      } as any,
       visualizationDependencies,
     });
     const uuid = 'vega-panel';

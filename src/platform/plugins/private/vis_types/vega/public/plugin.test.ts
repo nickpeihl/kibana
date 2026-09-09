@@ -105,6 +105,13 @@ describe('VegaPlugin', () => {
         // No public start mocks exist for these; the plugin only stores them at start.
         mapsEms: {} as MapsEmsPluginPublicStart,
         usageCollection: {} as UsageCollectionStart,
+        unifiedSearch: {
+          ui: {
+            SearchBar: jest.fn(),
+            AggregateQuerySearchBar: jest.fn(),
+            getCustomSearchBar: jest.fn(),
+          },
+        } as any,
       };
 
       const plugin = new VegaPlugin(

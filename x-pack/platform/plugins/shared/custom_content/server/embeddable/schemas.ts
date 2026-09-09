@@ -6,15 +6,12 @@
  */
 
 import { z } from '@kbn/zod/v4';
-import type { SerializedPanelFilters } from '@kbn/presentation-publishing-schemas';
 import { serializedTitlesSchema } from '@kbn/presentation-publishing-schemas';
 import { customContentStateSchema } from '@kbn/custom-content-common';
 
 export const customContentEmbeddableSchema = z.object({
   ...customContentStateSchema.shape,
   ...serializedTitlesSchema.shape,
-  filters: z.custom<SerializedPanelFilters['filters']>().optional(),
-  query: z.custom<SerializedPanelFilters['query']>().optional(),
 });
 
 export type CustomContentEmbeddableState = z.output<typeof customContentEmbeddableSchema>;

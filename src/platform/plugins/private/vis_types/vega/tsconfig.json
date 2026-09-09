@@ -51,6 +51,7 @@
     "@kbn/esql-utils",
     "@kbn/scout",
     "@kbn/presentation-util",
+    "@kbn/unified-search-plugin",
   ],
   "exclude": [
     "target/**/*",

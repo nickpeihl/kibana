@@ -14,11 +14,7 @@ import type {
   PublishesUnifiedSearch,
   StateComparators,
 } from '@kbn/presentation-publishing';
-import {
-  initializeTimeRangeManager,
-  timeRangeComparators,
-  type PublishesWritableUnifiedSearch,
-} from '@kbn/presentation-publishing';
+import { initializeTimeRangeManager, timeRangeComparators } from '@kbn/presentation-publishing';
 import type { PublishesSearchSession } from '@kbn/presentation-publishing/interfaces/fetch/publishes_search_session';
 import { apiPublishesSearchSession } from '@kbn/presentation-publishing/interfaces/fetch/publishes_search_session';
 import type { Observable } from 'rxjs';
@@ -41,7 +37,6 @@ export const searchContextComparators: StateComparators<LensUnifiedSearchContext
 
 export interface SearchContextConfig {
   api: PublishesUnifiedSearch &
-    Pick<PublishesWritableUnifiedSearch, 'setFilters' | 'setQuery'> &
     PublishesSearchSession &
     PublishesProjectRoutingOverrides &
     PublishesEsqlUsage;
@@ -108,24 +103,6 @@ export function initializeSearchContext(
     query$.pipe(map(isOfAggregateQueryType), distinctUntilChanged()).subscribe(usesEsql$),
   ];
 
-  const setFilters = (newFilters: Filter[] | undefined) => {
-    const currentAttributes = internalApi.attributes$.getValue();
-    internalApi.updateAttributes({
-      ...currentAttributes,
-      state: { ...currentAttributes.state, filters: newFilters ?? [] },
-    });
-  };
-
-  const setQuery = (newQuery: Query | undefined) => {
-    const currentAttributes = internalApi.attributes$.getValue();
-    // Lens state.query cannot be undefined; fall back to the existing query when cleared.
-    const resolvedQuery = newQuery ?? currentAttributes.state.query;
-    internalApi.updateAttributes({
-      ...currentAttributes,
-      state: { ...currentAttributes.state, query: resolvedQuery },
-    });
-  };
-
   return {
     api: {
       searchSessionId$,
@@ -135,8 +112,6 @@ export function initializeSearchContext(
       projectRoutingOverrides$,
       usesEsql$,
       isCompatibleWithUnifiedSearch: () => true,
-      setFilters,
-      setQuery,
       ...timeRangeManager.api,
     },
     anyStateChange$: merge(timeRangeManager.anyStateChange$),

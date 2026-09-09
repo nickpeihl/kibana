@@ -54,6 +54,7 @@ import {
   useBatchedPublishingSubjects,
 } from '@kbn/presentation-publishing';
 import { openLazyFlyout } from '@kbn/presentation-util';
+import type { UnifiedSearchPublicPluginStart } from '@kbn/unified-search-plugin/public';
 import { VEGA_EMBEDDABLE_TYPE, VEGA_EVENT_APPLY_FILTER } from '../constants';
 import type { VegaEvent } from '../types';
 import type { VegaPluginStartDependencies, VegaVisualizationDependencies } from '../plugin';
@@ -116,6 +117,7 @@ export type VegaEmbeddableApi = DefaultEmbeddableApi<VegaByValueState> &
 
 interface VegaEmbeddableDependencies {
   uiActions: Pick<VegaPluginStartDependencies['uiActions'], 'executeTriggerActions'>;
+  unifiedSearch: UnifiedSearchPublicPluginStart;
   visualizationDependencies: VegaVisualizationDependencies;
 }
 
@@ -133,7 +135,8 @@ export const vegaEmbeddableFactory = (
   }) => {
     const titleManager = initializeTitleManager(initialState);
     const timeRangeManager = initializeTimeRangeManager(initialState);
-    const panelFiltersManager = initializePanelFiltersManager(initialState);
+
+    const panelFiltersManager = initializePanelFiltersManager(initialState as any);
     const drilldownsManager = initializeDrilldownsManager(uuid, initialState);
     const spec$ = new BehaviorSubject(initialState.spec);
     const usesEsql$ = new BehaviorSubject(false);
@@ -190,7 +193,8 @@ export const vegaEmbeddableFactory = (
       applySerializedState: (nextState) => {
         titleManager.reinitializeState(nextState);
         timeRangeManager.reinitializeState(nextState);
-        panelFiltersManager.reinitializeState(nextState);
+
+        panelFiltersManager.reinitializeState(nextState as any);
         drilldownsManager.reinitializeState(nextState);
         spec$.next(nextState.spec);
       },
@@ -213,6 +217,8 @@ export const vegaEmbeddableFactory = (
       isEditingEnabled: () => true,
       onEdit: async ({ isNewPanel = false, returnFocus } = {}) => {
         const initialSpec = spec$.getValue();
+        const initialFilters = panelFiltersManager.api.filters$.getValue();
+        const initialQuery = panelFiltersManager.api.query$.getValue() as Query | undefined;
         openLazyFlyout({
           core,
           parentApi,
@@ -229,14 +235,24 @@ export const vegaEmbeddableFactory = (
                 ariaLabelledBy={ariaLabelledBy}
                 closeFlyout={closeFlyout}
                 initialSpec={initialSpec}
+                initialFilters={initialFilters}
+                initialQuery={initialQuery}
+                indexPatterns={dataViews$.getValue()}
+                SearchBar={deps.unifiedSearch.ui.SearchBar}
                 isNewPanel={isNewPanel}
                 onPreview={(spec) => spec$.next(spec)}
-                onSave={(spec) => spec$.next(spec)}
+                onSave={(spec, filters, query) => {
+                  spec$.next(spec);
+                  panelFiltersManager.api.setFilters(filters);
+                  panelFiltersManager.api.setQuery(query);
+                }}
                 onRevert={() => {
                   if (isNewPanel && apiIsPresentationContainer(parentApi)) {
                     parentApi.removePanel(api.uuid);
                   } else {
                     spec$.next(initialSpec);
+                    panelFiltersManager.api.setFilters(initialFilters);
+                    panelFiltersManager.api.setQuery(initialQuery);
                   }
                 }}
               />
