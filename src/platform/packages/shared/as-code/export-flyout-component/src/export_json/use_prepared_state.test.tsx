@@ -24,6 +24,7 @@ describe('usePreparedState', () => {
     const prepareExportJson = jest.fn().mockResolvedValue({
       data: { ...state, title: 'my object (prepared)' },
       warnings: ['Unsupported property removed'],
+      relatedItems: [{ type: 'index-pattern', id: 'dv-1' }],
     });
 
     const { result } = renderHook(() => usePreparedState({ state, prepareExportJson }));
@@ -35,6 +36,22 @@ describe('usePreparedState', () => {
 
     expect(prepareExportJson).toHaveBeenCalledTimes(1);
     expect(result.current.warnings).toEqual(['Unsupported property removed']);
+    expect(result.current.relatedItems).toEqual([{ type: 'index-pattern', id: 'dv-1' }]);
+  });
+
+  test('defaults relatedItems to an empty array when prepare omits them', async () => {
+    const prepareExportJson = jest.fn().mockResolvedValue({
+      data: state,
+      warnings: [],
+    });
+
+    const { result } = renderHook(() => usePreparedState({ state, prepareExportJson }));
+
+    await waitFor(() => {
+      expect(result.current.status).toBe('success');
+    });
+
+    expect(result.current.relatedItems).toEqual([]);
   });
 
   test('retries when retry is called', async () => {

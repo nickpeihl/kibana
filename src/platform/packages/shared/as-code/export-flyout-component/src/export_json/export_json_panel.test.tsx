@@ -27,6 +27,7 @@ describe('ExportJsonPanel', () => {
       status: 'loading',
       data: undefined,
       warnings: [],
+      relatedItems: [],
       error: undefined,
     };
     render(<ExportJsonPanel {...preparedState} dataTestSubjPrefix="test" onRetry={jest.fn()} />);
@@ -39,6 +40,7 @@ describe('ExportJsonPanel', () => {
       status: 'success',
       data: {},
       warnings: ['Dropped panel panel1, panel schema not available for panel type: foo.'],
+      relatedItems: [],
       error: undefined,
     };
 
@@ -57,11 +59,46 @@ describe('ExportJsonPanel', () => {
     expect(screen.getByTestId('exportAssetValue')).toBeInTheDocument();
   });
 
+  it('renders related items when prepare returns them', () => {
+    const preparedState: ExportJsonPreparedState<{}> = {
+      status: 'success',
+      data: {},
+      warnings: [],
+      relatedItems: [
+        { type: 'index-pattern', id: 'dv-1' },
+        { type: 'tag', id: 'tag-1' },
+      ],
+      error: undefined,
+    };
+
+    render(<ExportJsonPanel {...preparedState} dataTestSubjPrefix="test" onRetry={jest.fn()} />);
+
+    expect(screen.getByTestId('testExportSourceRelatedItems')).toBeInTheDocument();
+    expect(screen.getByText('Related items not included in this export')).toBeInTheDocument();
+    expect(screen.getByText('index-pattern: dv-1')).toBeInTheDocument();
+    expect(screen.getByText('tag: tag-1')).toBeInTheDocument();
+  });
+
+  it('omits related items callout when the list is empty', () => {
+    const preparedState: ExportJsonPreparedState<{}> = {
+      status: 'success',
+      data: {},
+      warnings: [],
+      relatedItems: [],
+      error: undefined,
+    };
+
+    render(<ExportJsonPanel {...preparedState} dataTestSubjPrefix="test" onRetry={jest.fn()} />);
+
+    expect(screen.queryByTestId('testExportSourceRelatedItems')).not.toBeInTheDocument();
+  });
+
   it('renders Open in Console using the consumer request', () => {
     const preparedState: ExportJsonPreparedState<{ key: string }> = {
       status: 'success',
       data: { key: 'value' },
       warnings: [],
+      relatedItems: [],
       error: undefined,
     };
     const jsonValue = '{\n  "key": "value"\n}';
@@ -108,6 +145,7 @@ describe('ExportJsonPanel', () => {
       status: 'error',
       data: undefined,
       warnings: [],
+      relatedItems: [],
       error: new Error('boom'),
     };
     render(<ExportJsonPanel {...preparedState} dataTestSubjPrefix="test" onRetry={jest.fn()} />);
@@ -125,6 +163,7 @@ describe('ExportJsonPanel', () => {
       status: 'error',
       data: undefined,
       warnings: [],
+      relatedItems: [],
       error: new Error('boom'),
     };
 

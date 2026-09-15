@@ -7,6 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
+import { uniqBy } from 'lodash';
 import type { DashboardState } from '@kbn/as-code-dashboard-schema';
 import type { Warnings } from '../types';
 import type { DashboardSanitizeResponseBody } from './types';
@@ -42,6 +43,10 @@ export async function sanitize(
   // TODO: As part of sanitization, we should drop panels, filters, etc. that exceed their max array sizes
   const sanitizedDashboardState = dashboardStateSchema.parse(scopedDashboardState);
 
+  const relatedItems = uniqBy(references ?? [], ({ type, id }) => `${type}:${id}`).map(
+    ({ type, id }) => ({ type, id })
+  );
+
   // access_control is separate from the transforms and stripping logic since it is not part of the
   // dashboard saved object attributes but it should be preserved in the sanitized output if present
   // in the incoming dashboard state
@@ -52,5 +57,6 @@ export async function sanitize(
       ...(access_control !== undefined && { access_control }),
     },
     ...(warnings.length ? { warnings } : {}),
+    ...(relatedItems.length ? { related_items: relatedItems } : {}),
   };
 }

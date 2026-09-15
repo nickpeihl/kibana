@@ -128,6 +128,7 @@ export class ExportJSONAction implements Action<EmbeddableApiContext> {
                     ? undefined
                     : result.data.panels[0].config,
                 warnings: result.warnings ?? [],
+                relatedItems: result.related_items ?? [],
               };
             }}
             titleId={ariaLabelledBy}

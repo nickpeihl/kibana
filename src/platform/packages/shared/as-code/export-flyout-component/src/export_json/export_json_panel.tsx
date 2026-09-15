@@ -28,8 +28,12 @@ import {
 import { css } from '@emotion/react';
 import { CodeEditor, XJsonLang } from '@kbn/code-editor';
 import { i18n } from '@kbn/i18n';
-import { KbnWarningCallout } from '@kbn/ui-callout';
-import type { ExportJsonOpenInConsoleConfig, ExportJsonPreparedState } from './types';
+import { KbnInfoCallout, KbnWarningCallout } from '@kbn/ui-callout';
+import type {
+  ExportJsonOpenInConsoleConfig,
+  ExportJsonPreparedState,
+  ExportJsonRelatedItem,
+} from './types';
 
 export type ExportJsonPanelProps<PreparedState extends object> =
   ExportJsonPreparedState<PreparedState> & {
@@ -114,6 +118,38 @@ function WarningsCallout({
           ) : null}
         </EuiAccordion>
       </KbnWarningCallout>
+    </EuiFlexItem>
+  );
+}
+
+function RelatedItemsCallout({
+  relatedItems,
+  dataTestSubjPrefix,
+}: {
+  relatedItems: ReadonlyArray<ExportJsonRelatedItem>;
+  dataTestSubjPrefix: string;
+}) {
+  if (!relatedItems.length) return null;
+
+  return (
+    <EuiFlexItem grow={false}>
+      <KbnInfoCallout
+        title={i18n.translate('asCodeExport.exportJson.relatedItemsTitle', {
+          defaultMessage: 'Related items not included in this export',
+        })}
+        size="s"
+        data-test-subj={`${dataTestSubjPrefix}ExportSourceRelatedItems`}
+      >
+        <EuiText size="s" data-test-subj={`${dataTestSubjPrefix}ExportSourceRelatedItemsList`}>
+          <ul>
+            {relatedItems.map(({ type, id }) => (
+              <li key={`${type}:${id}`}>
+                {type}: {id}
+              </li>
+            ))}
+          </ul>
+        </EuiText>
+      </KbnInfoCallout>
     </EuiFlexItem>
   );
 }
@@ -330,6 +366,7 @@ export const ExportJsonPanel = <State extends object, PreparedState extends obje
   status,
   data,
   warnings,
+  relatedItems,
   error,
   onRetry,
   openInConsole,
@@ -367,6 +404,8 @@ export const ExportJsonPanel = <State extends object, PreparedState extends obje
             setIsWarningsExpanded(false);
           }}
         />
+
+        <RelatedItemsCallout relatedItems={relatedItems} dataTestSubjPrefix={dataTestSubjPrefix} />
 
         <EuiFlexItem grow css={{ minHeight: 0 }}>
           {status === 'loading' ? (

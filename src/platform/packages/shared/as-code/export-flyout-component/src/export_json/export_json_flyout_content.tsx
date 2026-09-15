@@ -86,7 +86,10 @@ export const ExportJsonFlyoutContent = <
 }: ExportJsonFlyoutContentProps<State, PreparedState>) => {
   const state = useMemo(() => getExportJson(), [getExportJson]);
 
-  const { status, data, warnings, error, retry } = usePreparedState<State, PreparedState>({
+  const { status, data, warnings, relatedItems, error, retry } = usePreparedState<
+    State,
+    PreparedState
+  >({
     state,
     prepareExportJson,
   });
@@ -159,6 +162,7 @@ export const ExportJsonFlyoutContent = <
             status={status}
             data={data}
             warnings={warnings}
+            relatedItems={relatedItems}
             error={error}
             onRetry={retry}
             openInConsole={openInConsole}

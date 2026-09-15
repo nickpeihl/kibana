@@ -11,11 +11,26 @@ import { z } from '@kbn/zod';
 import { getDashboardStateSchema } from '../dashboard_state_schemas';
 import { warningsSchema } from '../warnings_schema';
 
+const relatedItemSchema = z
+  .object({
+    type: z.string().meta({ description: 'Saved object type of the related item.' }),
+    id: z.string().meta({ description: 'Saved object id of the related item.' }),
+  })
+  .strict();
+
 export function getSanitizeResponseBodySchema() {
   return z
     .object({
       data: getDashboardStateSchema(false),
       warnings: warningsSchema.optional(),
+      related_items: z
+        .array(relatedItemSchema)
+        .max(100)
+        .optional()
+        .meta({
+          description:
+            'Related saved objects discovered during sanitization that are not inlined in the export JSON.',
+        }),
     })
     .strict();
 }

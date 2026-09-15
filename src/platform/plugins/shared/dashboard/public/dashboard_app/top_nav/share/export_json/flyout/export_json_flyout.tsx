@@ -35,6 +35,7 @@ export const DashboardPanelExportJsonFlyout = <State extends object, PreparedSta
   sanitizeState: (state: State) => Promise<{
     data: PreparedState | undefined;
     warnings: NonNullable<DashboardSanitizeResponseBody['warnings']>;
+    relatedItems?: NonNullable<DashboardSanitizeResponseBody['related_items']>;
   }>;
   titleId: string;
 }) => {
@@ -54,6 +55,7 @@ export const DashboardPanelExportJsonFlyout = <State extends object, PreparedSta
       return {
         data: result.data,
         warnings: result.warnings.map(({ message }) => message),
+        relatedItems: result.relatedItems ?? [],
       };
     },
     [sanitizeState]

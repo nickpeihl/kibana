@@ -30,16 +30,23 @@ export interface ExportJsonSharingData<State extends object> {
   getExportJson: () => State;
 }
 
+export interface ExportJsonRelatedItem {
+  type: string;
+  id: string;
+}
+
 export interface ExportJsonPreparedState<PreparedState extends object> {
   status: ExportJsonStatus;
   data: PreparedState | undefined;
   warnings: string[];
+  relatedItems: ReadonlyArray<ExportJsonRelatedItem>;
   error: Error | undefined;
 }
 
 export interface ExportJsonPreparationResult<PreparedState extends object> {
   data: PreparedState | undefined;
   warnings: readonly string[];
+  relatedItems?: ReadonlyArray<ExportJsonRelatedItem>;
 }
 
 export type PrepareExportJsonFunction<State extends object, PreparedState extends object> = (

@@ -119,4 +119,65 @@ describe('sanitize', () => {
 
     expect(result.warnings).toEqual([transformWarning, scopeWarning]);
   });
+
+  test('returns related_items from transformDashboardIn references, including tags and deduped by type+id', async () => {
+    mockedTransformDashboardIn.mockReturnValue({
+      attributes: storedAttributes,
+      references: [
+        { name: 'panel_0_indexpattern', type: 'index-pattern', id: 'dv-1' },
+        { name: 'panel_1_indexpattern', type: 'index-pattern', id: 'dv-1' },
+        { name: 'panel_0_lens', type: 'lens', id: 'lens-1' },
+        { name: 'tag-ref-a', type: 'tag', id: 'tag-1' },
+        { name: 'tag-ref-b', type: 'tag', id: 'tag-1' },
+        { name: 'tag-ref-c', type: 'tag', id: 'tag-2' },
+      ],
+    });
+    mockedTransformDashboardOut.mockReturnValue({
+      dashboardState: baseDashboardState,
+      warnings: [],
+    });
+    mockedStripUnmappedKeys.mockReturnValue({
+      data: baseDashboardState,
+      warnings: [],
+    });
+
+    const dashboardStateSchema = {
+      parse: jest.fn().mockReturnValue(baseDashboardState),
+    };
+
+    const result = await sanitize(
+      dashboardStateSchema as unknown as ReturnType<typeof getDashboardStateSchema>,
+      baseDashboardState
+    );
+
+    expect(result.related_items).toEqual([
+      { type: 'index-pattern', id: 'dv-1' },
+      { type: 'lens', id: 'lens-1' },
+      { type: 'tag', id: 'tag-1' },
+      { type: 'tag', id: 'tag-2' },
+    ]);
+  });
+
+  test('omits related_items when there are no references', async () => {
+    mockedTransformDashboardIn.mockReturnValue({ attributes: storedAttributes, references: [] });
+    mockedTransformDashboardOut.mockReturnValue({
+      dashboardState: baseDashboardState,
+      warnings: [],
+    });
+    mockedStripUnmappedKeys.mockReturnValue({
+      data: baseDashboardState,
+      warnings: [],
+    });
+
+    const dashboardStateSchema = {
+      parse: jest.fn().mockReturnValue(baseDashboardState),
+    };
+
+    const result = await sanitize(
+      dashboardStateSchema as unknown as ReturnType<typeof getDashboardStateSchema>,
+      baseDashboardState
+    );
+
+    expect(result).not.toHaveProperty('related_items');
+  });
 });

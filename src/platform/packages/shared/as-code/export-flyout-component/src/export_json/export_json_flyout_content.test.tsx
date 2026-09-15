@@ -69,6 +69,54 @@ describe('ExportJsonFlyoutContent', () => {
     );
   });
 
+  it('renders related items from prepareExportJson', async () => {
+    renderWithI18n(
+      <ExportJsonFlyoutContent
+        title="My object"
+        objectType="Object"
+        closeFlyout={jest.fn()}
+        dataTestSubjPrefix="test"
+        downloadExportJson={jest.fn()}
+        getExportJson={() => ({ title: 'My object' })}
+        isTechnicalPreview
+        prepareExportJson={async (state) => ({
+          data: state,
+          warnings: [],
+          relatedItems: [
+            { type: 'index-pattern', id: 'dv-1' },
+            { type: 'tag', id: 'tag-1' },
+          ],
+        })}
+      />
+    );
+
+    await waitFor(() => {
+      expect(screen.getByTestId('testExportSourceRelatedItems')).toBeInTheDocument();
+    });
+    expect(screen.getByText('index-pattern: dv-1')).toBeInTheDocument();
+    expect(screen.getByText('tag: tag-1')).toBeInTheDocument();
+  });
+
+  it('omits related items callout when prepareExportJson returns none', async () => {
+    renderWithI18n(
+      <ExportJsonFlyoutContent
+        title="My object"
+        objectType="Object"
+        closeFlyout={jest.fn()}
+        dataTestSubjPrefix="test"
+        downloadExportJson={jest.fn()}
+        getExportJson={() => ({ title: 'My object' })}
+        isTechnicalPreview
+        prepareExportJson={async (state) => ({ data: state, warnings: [] })}
+      />
+    );
+
+    await waitFor(() =>
+      expect(screen.getByRole('button', { name: 'Download JSON' })).toBeEnabled()
+    );
+    expect(screen.queryByTestId('testExportSourceRelatedItems')).not.toBeInTheDocument();
+  });
+
   it('waits for the download before closing the flyout', async () => {
     const user = userEvent.setup();
     let resolveDownload: () => void = () => {};

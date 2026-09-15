@@ -24,5 +24,6 @@ export async function sanitizeDashboard(dashboardState: DashboardState) {
   return {
     data: result.data,
     warnings: (result.warnings ?? []).map(({ message }) => message),
+    relatedItems: result.related_items ?? [],
   };
 }

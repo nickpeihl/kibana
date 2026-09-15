@@ -24,6 +24,7 @@ interface MockExportJsonFlyoutContentProps {
   prepareExportJson: (state: object) => Promise<{
     data: object | undefined;
     warnings: readonly string[];
+    relatedItems?: ReadonlyArray<{ type: string; id: string }>;
   }>;
 }
 
@@ -60,6 +61,10 @@ describe('DashboardPanelExportJsonFlyout', () => {
     const sanitizeState = jest.fn(async (state: object) => ({
       data: state,
       warnings,
+      relatedItems: [
+        { type: 'index-pattern', id: 'dv-1' },
+        { type: 'tag', id: 'tag-1' },
+      ],
     }));
 
     renderWithI18n(
@@ -90,6 +95,10 @@ describe('DashboardPanelExportJsonFlyout', () => {
     await expect(getLatestSharedProps().prepareExportJson({ key: 'value' })).resolves.toEqual({
       data: { key: 'value' },
       warnings: ['Dropped property'],
+      relatedItems: [
+        { type: 'index-pattern', id: 'dv-1' },
+        { type: 'tag', id: 'tag-1' },
+      ],
     });
 
     await getLatestSharedProps().downloadExportJson('panel.json', '{}');

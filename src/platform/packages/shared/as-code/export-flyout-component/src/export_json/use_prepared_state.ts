@@ -10,7 +10,12 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { apm } from '@elastic/apm-rum';
-import type { ExportJsonPreparedState, ExportJsonStatus, PrepareExportJsonFunction } from './types';
+import type {
+  ExportJsonPreparedState,
+  ExportJsonRelatedItem,
+  ExportJsonStatus,
+  PrepareExportJsonFunction,
+} from './types';
 
 export type UsePreparedStateResult<PreparedState extends object> =
   ExportJsonPreparedState<PreparedState> & {
@@ -28,6 +33,7 @@ export function usePreparedState<State extends object, PreparedState extends obj
   const [error, setError] = useState<Error | undefined>(undefined);
   const [data, setData] = useState<PreparedState | undefined>(undefined);
   const [warnings, setWarnings] = useState<string[]>([]);
+  const [relatedItems, setRelatedItems] = useState<ReadonlyArray<ExportJsonRelatedItem>>([]);
   // reloadCount is used to trigger a reload of the state when retry is called
   const [reloadCount, setReloadCount] = useState(0);
 
@@ -36,6 +42,7 @@ export function usePreparedState<State extends object, PreparedState extends obj
     error,
     data,
     warnings,
+    relatedItems,
   });
 
   // debounce state changes to prevent "blip" of loading spinner, especially when toggling isByReference
@@ -43,15 +50,15 @@ export function usePreparedState<State extends object, PreparedState extends obj
     let timer: NodeJS.Timeout | undefined;
     if (status === 'loading') {
       timer = setTimeout(() => {
-        setDebouncedState({ status, error, data, warnings });
+        setDebouncedState({ status, error, data, warnings, relatedItems });
       }, 250);
     } else {
-      setDebouncedState({ status, error, data, warnings });
+      setDebouncedState({ status, error, data, warnings, relatedItems });
     }
     return () => {
       if (timer) clearTimeout(timer);
     };
-  }, [status, error, data, warnings]);
+  }, [status, error, data, warnings, relatedItems]);
 
   const retry = useCallback(() => {
     setReloadCount((count) => count + 1);
@@ -64,11 +71,13 @@ export function usePreparedState<State extends object, PreparedState extends obj
     setError(undefined);
     setData(undefined);
     setWarnings([]);
+    setRelatedItems([]);
 
     prepareExportJson(state)
       .then((response) => {
         if (!isMounted) return;
         setWarnings([...response.warnings]);
+        setRelatedItems([...(response.relatedItems ?? [])]);
         setData(response.data);
         setStatus('success');
       })
