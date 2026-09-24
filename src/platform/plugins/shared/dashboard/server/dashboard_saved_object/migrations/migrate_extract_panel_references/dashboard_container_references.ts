@@ -11,7 +11,7 @@ import type { Reference } from '@kbn/content-management-utils';
 import type {
   EmbeddablePersistableStateService,
   EmbeddableStateWithType,
-} from '@kbn/embeddable-plugin/common';
+} from '@kbn/embeddable-transforms';
 import type { ParsedDashboardAttributesWithType810 } from '../types';
 
 export const getReferencesForPanelId = (id: string, references: Reference[]): Reference[] => {

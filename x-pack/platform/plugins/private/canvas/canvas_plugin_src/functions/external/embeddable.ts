@@ -6,7 +6,7 @@
  */
 
 import { mapValues } from 'lodash';
-import type { EmbeddableStateWithType } from '@kbn/embeddable-plugin/common';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 import type {
   ExpressionFunctionDefinition,
   ExpressionAstFunction,

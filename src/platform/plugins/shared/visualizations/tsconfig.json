@@ -15,6 +15,7 @@
     "@kbn/ui-actions-plugin",
     "@kbn/embeddable-plugin",
     "@kbn/embeddable-drilldowns",
+    "@kbn/embeddable-transforms",
     "@kbn/inspector-plugin",
     "@kbn/saved-objects-plugin",
     "@kbn/saved-objects-tagging-oss-plugin",

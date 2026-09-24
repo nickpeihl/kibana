@@ -8,7 +8,7 @@
  */
 
 import { ZodError } from '@kbn/zod';
-import { transformType } from '@kbn/embeddable-plugin/server';
+import { transformType } from '@kbn/embeddable-transforms';
 import { stringifyZodError } from '@kbn/zod-helpers/v4';
 import {
   discoverSessionApiControlPanelSchema,

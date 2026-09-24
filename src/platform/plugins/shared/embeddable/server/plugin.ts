@@ -18,8 +18,12 @@ import type {
   PersistableState,
 } from '@kbn/kibana-utils-plugin/common';
 import type { ZodObjectType } from '@kbn/zod';
-import type { EmbeddableFactoryRegistry, EmbeddableRegistryDefinition } from './types';
-import type { EmbeddableStateWithType } from './persistable_state/types';
+import type {
+  EmbeddableStateWithType,
+  EmbeddableRegistryDefinition,
+} from '@kbn/embeddable-transforms';
+import type { EmbeddableTransforms, EmbeddableServerDefinition } from '@kbn/embeddable-transforms';
+import type { EmbeddableFactoryRegistry } from './types';
 import {
   getExtractFunction,
   getInjectFunction,
@@ -27,10 +31,8 @@ import {
   getTelemetryFunction,
 } from './persistable_state';
 import { getAllMigrations } from './persistable_state/get_all_migrations';
-import type { EmbeddableTransforms } from '../common';
 import type { DrilldownSetup, DrilldownState } from './drilldowns/types';
 import { getDrilldownRegistry } from './drilldowns/registry';
-import type { EmbeddableServerDefinition } from './embeddable_transforms/types';
 import { getEmbeddableServerRegistry } from './embeddable_transforms/registry';
 import { registerSearchRoute } from './search_route';
 

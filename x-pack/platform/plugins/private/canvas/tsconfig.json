@@ -31,6 +31,7 @@
     "@kbn/data-plugin",
     "@kbn/share-plugin",
     "@kbn/embeddable-plugin",
+    "@kbn/embeddable-transforms",
     "@kbn/expressions-plugin",
     "@kbn/home-plugin",
     "@kbn/inspector-plugin",

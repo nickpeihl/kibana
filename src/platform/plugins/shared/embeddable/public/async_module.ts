@@ -22,5 +22,4 @@ export { InspectPanelAction } from './ui_actions/inspect_panel_action/inspect_pa
 export { PresentationPanel } from './react_embeddable_system/panel_component/presentation_panel';
 export { PresentationPanelError } from './react_embeddable_system/panel_component/presentation_panel_error';
 export { buildEmbeddable } from './react_embeddable_system/build_embeddable';
-export { transformType } from '../common/bwc/transform_type';
 export { PhaseTracker } from './react_embeddable_system/phase_tracker';

@@ -9,7 +9,7 @@
 
 import { asyncMap } from '@kbn/std';
 import type { Reference } from '@kbn/content-management-utils';
-import { transformType } from '@kbn/embeddable-plugin/public';
+import { transformType } from '@kbn/embeddable-transforms';
 import { flow } from 'lodash';
 import { transformTimeRangeOut, transformTitlesOut } from '@kbn/presentation-publishing';
 import type { DashboardState, DashboardPanel } from '@kbn/as-code-dashboard-schema';
@@ -42,7 +42,7 @@ const defaultTransform = (config: object): object => {
 };
 
 async function transformPanel(legacyPanel: DashboardPanel, references?: Reference[]) {
-  const type = await transformType(legacyPanel.type);
+  const type = transformType(legacyPanel.type);
   const panel = {
     ...legacyPanel,
     type,

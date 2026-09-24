@@ -11,7 +11,7 @@ import type { Reference } from '@kbn/content-management-utils';
 import type {
   EmbeddablePersistableStateService,
   EmbeddableStateWithType,
-} from '@kbn/embeddable-plugin/common';
+} from '@kbn/embeddable-transforms';
 
 import {
   convertPanelMapToSavedPanels,

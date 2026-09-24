@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import type { EmbeddableTransforms } from '@kbn/embeddable-plugin/common';
+import type { EmbeddableTransforms } from '@kbn/embeddable-transforms';
 import type { Required } from 'utility-types';
 
 import type {

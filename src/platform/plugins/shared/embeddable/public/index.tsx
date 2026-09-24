@@ -68,11 +68,6 @@ export const PresentationPanelError = (props: PresentationPanelErrorProps) => {
   );
 };
 
-export async function transformType(type: string) {
-  const { transformType: transformTypeFn } = await import('./async_module');
-  return transformTypeFn(type);
-}
-
 export type { SerializedDrilldowns } from '../server';
 
 export function plugin(initializerContext: PluginInitializerContext) {

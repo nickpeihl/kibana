@@ -8,7 +8,7 @@
  */
 
 import { flow, mapValues } from 'lodash';
-import type { EmbeddableRegistryDefinition } from '@kbn/embeddable-plugin/server';
+import type { EmbeddableRegistryDefinition } from '@kbn/embeddable-transforms';
 import type { SerializableRecord } from '@kbn/utility-types';
 import type { SerializedSearchSourceFields } from '@kbn/data-plugin/common';
 import type { MigrateFunctionsObject, MigrateFunction } from '@kbn/kibana-utils-plugin/common';

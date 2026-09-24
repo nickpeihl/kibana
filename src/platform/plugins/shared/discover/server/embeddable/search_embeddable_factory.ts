@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { EmbeddableRegistryDefinition } from '@kbn/embeddable-plugin/server';
+import type { EmbeddableRegistryDefinition } from '@kbn/embeddable-transforms';
 import { SEARCH_EMBEDDABLE_TYPE } from '@kbn/discover-utils';
 
 export const createSearchEmbeddableFactory = (): EmbeddableRegistryDefinition => ({

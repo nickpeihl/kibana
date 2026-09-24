@@ -27,7 +27,8 @@ import type {
   TaskManagerSetupContract,
   TaskManagerStartContract,
 } from '@kbn/task-manager-plugin/server';
-import type { EmbeddableRegistryDefinition, EmbeddableSetup } from '@kbn/embeddable-plugin/server';
+import type { EmbeddableRegistryDefinition } from '@kbn/embeddable-transforms';
+import type { EmbeddableSetup } from '@kbn/embeddable-plugin/server';
 import { DataViewPersistableStateService } from '@kbn/data-views-plugin/common';
 import type { SharePluginSetup } from '@kbn/share-plugin/server';
 import { LensConfigBuilder } from '@kbn/lens-embeddable-utils';

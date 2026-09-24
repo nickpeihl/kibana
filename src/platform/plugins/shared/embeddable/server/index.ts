@@ -11,7 +11,7 @@ import type { EmbeddableSetup, EmbeddableStart } from './plugin';
 
 export type { EmbeddableSetup, EmbeddableStart };
 
-export type { EmbeddableRegistryDefinition } from './types';
+export type { EmbeddableRegistryDefinition } from '@kbn/embeddable-transforms';
 
 export type {
   DrilldownState,
@@ -19,14 +19,12 @@ export type {
   GetDrilldownsSchemaFnType,
 } from './drilldowns/types';
 
-export type { EmbeddableTransforms } from './embeddable_transforms/types';
+export type { EmbeddableTransforms } from '@kbn/embeddable-transforms';
 
 export type {
   EmbeddableStateWithType,
   EmbeddablePersistableStateService,
-} from './persistable_state';
-
-export { transformType } from '../common/bwc/transform_type';
+} from '@kbn/embeddable-transforms';
 
 export const plugin = async () => {
   const { EmbeddableServerPlugin } = await import('./plugin');

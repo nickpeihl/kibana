@@ -7,7 +7,8 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { DrilldownTransforms, EmbeddableTransforms } from '../../common';
+import type { EmbeddableTransforms } from '@kbn/embeddable-transforms';
+import type { DrilldownTransforms } from '../../common';
 import type { getTransformDrilldownsOut } from '../../common/drilldowns/transform_drilldowns_out';
 
 const registry: {

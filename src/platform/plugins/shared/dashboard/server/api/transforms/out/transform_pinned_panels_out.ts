@@ -14,7 +14,7 @@ import {
   type LegacyIgnoreParentSettings,
   type LegacyStoredPinnedControlState,
 } from '@kbn/controls-schemas';
-import { transformType } from '@kbn/embeddable-plugin/server';
+import { transformType } from '@kbn/embeddable-transforms';
 import { pinnedControlSchema } from '@kbn/controls-schemas/src/controls_group_schema';
 
 import type {

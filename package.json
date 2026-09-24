@@ -698,6 +698,7 @@
     "@kbn/embeddable-drilldowns": "workspace:*",
     "@kbn/embeddable-examples-plugin": "workspace:*",
     "@kbn/embeddable-plugin": "workspace:*",
+    "@kbn/embeddable-transforms": "workspace:*",
     "@kbn/embedded-lens-example-plugin": "workspace:*",
     "@kbn/encrypted-saved-objects-plugin": "workspace:*",
     "@kbn/encrypted-saved-objects-shared": "workspace:*",

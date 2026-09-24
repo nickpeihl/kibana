@@ -9,13 +9,13 @@
 
 import type { ZodObjectType } from '@kbn/zod';
 import type { Reference } from '@kbn/content-management-utils';
-import type { DrilldownTransforms } from '../../common';
-import type { GetDrilldownsSchemaFnType } from '../drilldowns/types';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
+import type { GetDrilldownsSchemaFnType } from '@kbn/embeddable-drilldowns';
 
-export type EmbeddableTransforms<
+export interface EmbeddableTransforms<
   StoredEmbeddableState extends object = object,
   EmbeddableState extends object = object
-> = {
+> {
   /**
    * Converts StoredEmbeddableState and injects references into EmbeddableState
    * @param storedState
@@ -41,12 +41,12 @@ export type EmbeddableTransforms<
     state: StoredEmbeddableState;
     references?: Reference[];
   };
-};
+}
 
-export type EmbeddableServerDefinition<
+export interface EmbeddableServerDefinition<
   StoredEmbeddableState extends object = object,
   EmbeddableState extends object = object
-> = {
+> {
   /**
    * Title displayed in Open API documenation
    */
@@ -79,4 +79,4 @@ export type EmbeddableServerDefinition<
    * Throws error when panel config is not supported.
    */
   throwOnUnmappedPanel?: (config: EmbeddableState) => void;
-};
+}

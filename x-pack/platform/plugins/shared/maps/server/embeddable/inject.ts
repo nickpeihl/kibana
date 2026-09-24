@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import type { EmbeddableStateWithType } from '@kbn/embeddable-plugin/common';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 import type { Reference } from '@kbn/content-management-utils';
 import { extractReferences, injectReferences } from '../../common/migrations/references';
 import type { StoredMapAttributes } from '../saved_objects/types';

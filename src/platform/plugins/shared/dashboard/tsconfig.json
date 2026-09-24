@@ -27,6 +27,7 @@
     "@kbn/data-plugin",
     "@kbn/embeddable-plugin",
     "@kbn/embeddable-drilldowns",
+    "@kbn/embeddable-transforms",
     "@kbn/home-plugin",
     "@kbn/navigation-plugin",
     "@kbn/saved-objects-tagging-oss-plugin",

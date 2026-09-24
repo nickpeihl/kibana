@@ -7,8 +7,8 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { EmbeddablePersistableStateService } from '@kbn/embeddable-plugin/common';
-import type { EmbeddableRegistryDefinition } from '@kbn/embeddable-plugin/server';
+import type { EmbeddablePersistableStateService } from '@kbn/embeddable-transforms';
+import type { EmbeddableRegistryDefinition } from '@kbn/embeddable-transforms';
 import {
   createExtract,
   createInject,

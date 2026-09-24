@@ -1,0 +1,19 @@
+{
+  "extends": "@kbn/tsconfig-base/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "target/types",
+  },
+  "include": [
+    "**/*.ts",
+  ],
+  "exclude": [
+    "target/**/*"
+  ],
+  "kbn_references": [
+    "@kbn/embeddable-drilldowns",
+    "@kbn/kibana-utils-plugin",
+    "@kbn/utility-types",
+    "@kbn/zod",
+    "@kbn/content-management-utils"
+  ]
+}

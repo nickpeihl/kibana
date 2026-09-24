@@ -9,7 +9,7 @@
 
 import type { ZodObjectType } from '@kbn/zod';
 import type { getDrilldownRegistry } from '../drilldowns/registry';
-import type { EmbeddableServerDefinition } from './types';
+import type { EmbeddableServerDefinition } from '@kbn/embeddable-transforms';
 
 export function getEmbeddableServerRegistry(
   drilldownRegistry: ReturnType<typeof getDrilldownRegistry>

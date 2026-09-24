@@ -8,11 +8,11 @@
  */
 
 import { z } from '@kbn/zod';
+import type { EmbeddableServerDefinition } from '@kbn/embeddable-transforms';
 import { createEmbeddablePersistableStateServiceMock } from '../common/mocks';
 import type { EmbeddableSetup, EmbeddableStart } from './plugin';
 import type { GetDrilldownsSchemaFnType } from './drilldowns/types';
 import { getDrilldownRegistry } from './drilldowns/registry';
-import type { EmbeddableServerDefinition } from './embeddable_transforms/types';
 
 const mockEmbeddableServerDefinitionRegistry: {
   [type: string]: EmbeddableServerDefinition<any, any>;

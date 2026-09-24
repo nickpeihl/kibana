@@ -9,8 +9,8 @@
 
 import type { SavedObjectReference } from '@kbn/core/types';
 import type { PersistableState } from '@kbn/kibana-utils-plugin/common';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 import { enhancementsPersistableState } from '../../common/bwc/enhancements/enhancements_persistable_state';
-import type { EmbeddableStateWithType } from './types';
 import { injectBaseEmbeddableInput } from './migrate_base_input';
 
 export const getInjectFunction = (

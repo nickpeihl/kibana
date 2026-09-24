@@ -9,7 +9,7 @@
 
 import type { SavedObjectReference } from '@kbn/core/types';
 import type { MigrateFunctionsObject } from '@kbn/kibana-utils-plugin/common';
-import type { EmbeddableStateWithType } from './types';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 
 export const telemetryBaseEmbeddableInput = (
   state: EmbeddableStateWithType,

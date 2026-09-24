@@ -9,7 +9,7 @@ import type { Ast } from '@kbn/interpreter';
 import { fromExpression, toExpression } from '@kbn/interpreter';
 import type { SavedObjectReference } from '@kbn/core/server';
 import type { TimeRange } from '@kbn/es-query';
-import { transformType } from '@kbn/embeddable-plugin/server';
+import { transformType } from '@kbn/embeddable-transforms';
 import { MAP_SAVED_OBJECT_TYPE } from '@kbn/maps-plugin/common';
 import { VISUALIZE_EMBEDDABLE_TYPE } from '@kbn/visualizations-common';
 import { LENS_EMBEDDABLE_TYPE } from '@kbn/lens-common';

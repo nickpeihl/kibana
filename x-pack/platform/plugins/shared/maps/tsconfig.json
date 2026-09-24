@@ -24,6 +24,7 @@
     "@kbn/expressions-plugin",
     "@kbn/visualizations-plugin",
     "@kbn/embeddable-plugin",
+    "@kbn/embeddable-transforms",
     "@kbn/saved-objects-plugin",
     "@kbn/share-plugin",
     "@kbn/presentation-util-plugin",

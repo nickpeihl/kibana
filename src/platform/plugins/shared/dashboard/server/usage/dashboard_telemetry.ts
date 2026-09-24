@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { EmbeddablePersistableStateService } from '@kbn/embeddable-plugin/common';
+import type { EmbeddablePersistableStateService } from '@kbn/embeddable-transforms';
 import type { TaskManagerStartContract } from '@kbn/task-manager-plugin/server';
 import type { LegacyStoredPinnedControlState } from '@kbn/controls-schemas';
 

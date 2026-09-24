@@ -9,7 +9,7 @@
 
 import type { Reference } from '@kbn/content-management-utils';
 
-import type { EmbeddableStateWithType } from '@kbn/embeddable-plugin/common';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 import type { GridData } from '../schema/v2';
 
 export interface DashboardPanelMap810 {

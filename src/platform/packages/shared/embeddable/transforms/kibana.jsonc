@@ -1,0 +1,8 @@
+{
+  "type": "shared-common",
+  "id": "@kbn/embeddable-transforms",
+  "owner": ["@elastic/kibana-dashboards"],
+  "group": "platform",
+  "visibility": "shared",
+  "description": "Transform types and utilities for embeddable panels"
+}

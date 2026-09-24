@@ -17,7 +17,7 @@ import {
   createExtract,
   createInject,
 } from './migrate_extract_panel_references/dashboard_container_references';
-import type { EmbeddableStateWithType } from '@kbn/embeddable-plugin/common';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 import { createDashboardSavedObjectTypeMigrations } from './dashboard_saved_object_migrations';
 import type { DashboardDoc730ToLatest } from './migrate_to_730/types';
 

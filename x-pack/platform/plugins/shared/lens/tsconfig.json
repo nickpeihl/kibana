@@ -33,6 +33,7 @@
     "@kbn/kibana-utils-plugin",
     "@kbn/kibana-react-plugin",
     "@kbn/embeddable-plugin",
+    "@kbn/embeddable-transforms",
     "@kbn/presentation-util-plugin",
     "@kbn/field-formats-plugin",
     "@kbn/expression-partition-vis-plugin",

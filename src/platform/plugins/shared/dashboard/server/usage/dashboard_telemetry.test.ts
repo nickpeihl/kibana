@@ -13,7 +13,7 @@ import {
   collectPanelsByType,
   collectSectionsAndAccessControl,
 } from './dashboard_telemetry';
-import type { EmbeddableStateWithType } from '@kbn/embeddable-plugin/common';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 import { createEmbeddablePersistableStateServiceMock } from '@kbn/embeddable-plugin/common/mocks';
 import type { DashboardHit } from './types';
 

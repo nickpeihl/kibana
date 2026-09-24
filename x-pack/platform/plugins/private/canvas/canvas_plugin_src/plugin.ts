@@ -10,7 +10,7 @@ import type { ChartsPluginStart } from '@kbn/charts-plugin/public';
 import type { EmbeddableStart } from '@kbn/embeddable-plugin/public';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
 import type { Start as InspectorStart } from '@kbn/inspector-plugin/public';
-import type { EmbeddableStateWithType } from '@kbn/embeddable-plugin/server';
+import type { EmbeddableStateWithType } from '@kbn/embeddable-transforms';
 import type { Reference } from '@kbn/content-management-utils';
 import type { CanvasSetup } from '../public';
 

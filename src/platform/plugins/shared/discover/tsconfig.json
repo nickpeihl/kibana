@@ -19,6 +19,7 @@
     "@kbn/expressions-plugin",
     "@kbn/embeddable-plugin",
     "@kbn/embeddable-drilldowns",
+    "@kbn/embeddable-transforms",
     "@kbn/inspector-plugin",
     "@kbn/url-forwarding-plugin",
     "@kbn/saved-objects-plugin",
