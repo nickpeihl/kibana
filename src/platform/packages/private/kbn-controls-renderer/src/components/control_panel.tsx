@@ -25,7 +25,7 @@ import {
 import { css } from '@emotion/react';
 import type { HasCustomPrepend, PinnedControlLayoutState } from '@kbn/controls-schemas';
 import { useMemoCss } from '@kbn/css-utils/public/use_memo_css';
-import { EmbeddableRenderer, type DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
 import { i18n } from '@kbn/i18n';
 import {
   apiCanCancelRequests,
@@ -37,7 +37,7 @@ import {
   apiPublishesTooltipLabel,
   type PublishesTooltipLabel,
 } from '@kbn/controls-schemas/src/types';
-import type { ControlsRendererParentApi } from '../types';
+import type { ControlRendererServices, ControlsRendererParentApi } from '../types';
 import { apiPublishesLabel } from '../utils';
 import { controlWidthStyles } from './control_panel.styles';
 import { DragHandle } from './drag_handle';
@@ -49,10 +49,12 @@ export const ControlPanel = ({
   parentApi,
   control: { id, grow, width, type },
   setControlPanelRef,
+  services,
 }: {
   parentApi: ControlsRendererParentApi;
   control: Required<PinnedControlLayoutState>;
   setControlPanelRef: (id: string, ref: HTMLElement | null) => void;
+  services: ControlRendererServices;
 }) => {
   const styles = useMemoCss(controlPanelStyles);
 
@@ -270,7 +272,7 @@ export const ControlPanel = ({
             }
             compressed={parentApi.isCompressed ? parentApi.isCompressed() : true}
           >
-            <EmbeddableRenderer
+            <services.embeddable.EmbeddableRenderer
               key={id}
               maybeId={id}
               type={type}

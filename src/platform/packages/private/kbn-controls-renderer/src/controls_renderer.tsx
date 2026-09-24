@@ -31,17 +31,19 @@ import { EuiFlexGroup } from '@elastic/eui';
 
 import { ControlClone } from './components/control_clone';
 import { ControlPanel } from './components/control_panel';
-import type { ControlsLayout, ControlsRendererParentApi } from './types';
+import type { ControlRendererServices, ControlsLayout, ControlsRendererParentApi } from './types';
 import { apiPublishesFocusedPanelId } from './utils';
 
 export const ControlsRenderer = ({
   controls: controlState,
   onControlsChanged,
   parentApi,
+  services,
 }: {
   controls: ControlsLayout;
   onControlsChanged: (controls: ControlsLayout) => void;
   parentApi: ControlsRendererParentApi;
+  services: ControlRendererServices;
 }) => {
   const controlPanelRefs = useRef<{ [id: string]: HTMLElement | null }>({});
   const setControlPanelRef = useCallback((id: string, ref: HTMLElement | null) => {
@@ -133,6 +135,7 @@ export const ControlsRenderer = ({
                 id: control.id!,
               }}
               setControlPanelRef={setControlPanelRef}
+              services={services}
             />
           ))}
         </EuiFlexGroup>

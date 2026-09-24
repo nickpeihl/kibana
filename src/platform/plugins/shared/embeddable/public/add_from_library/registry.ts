@@ -81,3 +81,12 @@ export function useAddFromLibraryTypes() {
 export const getAddFromLibraryType = (libraryType: string) => {
   return registry.get(libraryType);
 };
+
+/**
+ * Returns all saved object types from the AddFromLibrary registry, sorted by type.
+ */
+export const getAddFromLibraryTypes = () => {
+  return [...registry.entries()]
+    .map(([, registryItem]) => registryItem.savedObjectMetaData)
+    .sort((a, b) => a.type.localeCompare(b.type));
+};

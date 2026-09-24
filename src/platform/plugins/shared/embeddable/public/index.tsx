@@ -8,12 +8,15 @@
  */
 
 import type { PluginInitializerContext } from '@kbn/core/public';
-import React, { Suspense } from 'react';
 import { EmbeddablePublicPlugin } from './plugin';
 
 export type { DrilldownDefinition, DrilldownEditorProps } from './drilldowns/types';
 
-export { getAddFromLibraryType, useAddFromLibraryTypes } from './add_from_library/registry';
+export {
+  getAddFromLibraryType,
+  getAddFromLibraryTypes,
+  useAddFromLibraryTypes,
+} from './add_from_library/registry';
 export { PanelNotFoundError, PanelIncompatibleError } from './react_embeddable_system';
 export { EmbeddableStateTransfer } from './state_transfer';
 export { ACTION_EDIT_PANEL } from './ui_actions/edit_panel_action/constants';
@@ -55,18 +58,7 @@ export type { PresentationPanelProps } from './react_embeddable_system/panel_com
 
 export type { DrilldownsManager, HasDrilldowns } from './drilldowns/types';
 
-import type { PresentationPanelErrorProps } from './react_embeddable_system/panel_component/presentation_panel_error';
-const LazyPanelError = React.lazy(async () => {
-  const { PresentationPanelError } = await import('./async_module');
-  return { default: PresentationPanelError };
-});
-export const PresentationPanelError = (props: PresentationPanelErrorProps) => {
-  return (
-    <Suspense>
-      <LazyPanelError {...props} />
-    </Suspense>
-  );
-};
+export { PresentationPanelError } from './presentation_panel_error_lazy';
 
 export async function transformType(type: string) {
   const { transformType: transformTypeFn } = await import('./async_module');

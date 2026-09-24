@@ -10,7 +10,6 @@ import { css } from '@emotion/react';
 import { BehaviorSubject } from 'rxjs';
 import { i18n } from '@kbn/i18n';
 import type { TimeRange } from '@kbn/es-query';
-import { EmbeddableRenderer } from '@kbn/embeddable-plugin/public';
 import { VISUALIZE_EMBEDDABLE_TYPE } from '@kbn/visualizations-common';
 import {
   ActionButtonType,
@@ -179,7 +178,7 @@ export function VisualizeVega({
       <div
         css={[visualizationEmbeddableStyles(DEFAULT_VISUALIZATION_HEIGHT), css({ width: '100%' })]}
       >
-        <EmbeddableRenderer
+        <embeddable.EmbeddableRenderer
           type={VISUALIZE_EMBEDDABLE_TYPE}
           getParentApi={getParentApi}
           hidePanelChrome

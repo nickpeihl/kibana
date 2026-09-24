@@ -19,7 +19,13 @@ import type { Storage } from '@kbn/kibana-utils-plugin/public';
 import { EmbeddableStateTransfer } from './state_transfer';
 import { setKibanaServices } from './kibana_services';
 import { registerEmbeddablePublicDefinition } from './react_embeddable_system';
-import { registerAddFromLibraryType } from './add_from_library/registry';
+import { EmbeddableRenderer } from './react_embeddable_system/react_embeddable_renderer';
+import { PresentationPanelError } from './presentation_panel_error_lazy';
+import {
+  registerAddFromLibraryType,
+  getAddFromLibraryType,
+  getAddFromLibraryTypes,
+} from './add_from_library/registry';
 import type {
   EmbeddableSetup,
   EmbeddableSetupDependencies,
@@ -72,6 +78,10 @@ export class EmbeddablePublicPlugin implements Plugin<EmbeddableSetup, Embeddabl
     );
 
     const embeddableStart: EmbeddableStart = {
+      EmbeddableRenderer,
+      PresentationPanelError,
+      getAddFromLibraryType,
+      getAddFromLibraryTypes,
       getSavedObjects: async (request: SearchLibraryRequestType) => {
         try {
           const result = await core.http.post(SEARCH_ROUTE_PATH, {

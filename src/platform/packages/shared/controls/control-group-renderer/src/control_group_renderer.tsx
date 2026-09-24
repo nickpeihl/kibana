@@ -10,8 +10,13 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { BehaviorSubject, Subject, Subscription, combineLatest, map } from 'rxjs';
 
-import { ControlsRenderer, type ControlsRendererParentApi } from '@kbn/controls-renderer';
+import {
+  ControlsRenderer,
+  type ControlRendererServices,
+  type ControlsRendererParentApi,
+} from '@kbn/controls-renderer';
 import type { AggregateQuery, Filter, ProjectRouting, Query, TimeRange } from '@kbn/es-query';
+import type { EmbeddableStart } from '@kbn/embeddable-plugin/public';
 import { useKibana } from '@kbn/kibana-react-plugin/public';
 import {
   apiHasSerializableState,
@@ -68,10 +73,18 @@ export const ControlGroupRenderer = ({
   compressed,
 }: ControlGroupRendererProps) => {
   const {
-    services: { uiActions },
+    services: { uiActions, embeddable },
   } = useKibana<{
     uiActions: UiActionsStart;
+    embeddable: Pick<EmbeddableStart, 'EmbeddableRenderer'>;
   }>();
+
+  const controlsRendererServices = useMemo<ControlRendererServices>(
+    () => ({ uiActions, embeddable }),
+    // Services are stable singletons; no need to re-create on every render.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const lastSavedState$Ref = useRef(new BehaviorSubject<ControlPanelsState>({}));
 
@@ -248,6 +261,7 @@ export const ControlGroupRenderer = ({
       onControlsChanged={(newControls) => {
         parentApi.layout$.next(newControls);
       }}
+      services={controlsRendererServices}
     />
   );
 };

@@ -18,11 +18,24 @@ import type { Action } from '@kbn/ui-actions-plugin/public';
 import type { ControlsRendererParentApi } from '../types';
 import { ControlPanel } from './control_panel';
 
-// Stub the async embeddable renderer: the width/grow assertions read classes that
-// `ControlPanel` renders synchronously from props, independent of the renderer.
-jest.mock('@kbn/embeddable-plugin/public', () => ({
-  EmbeddableRenderer: () => null,
+jest.mock('@kbn/kibana-react-plugin/public', () => ({
+  useKibana: jest.fn().mockImplementation(() => mockServices),
 }));
+
+// Alias required so the jest.mock factory can reference useEffect without triggering
+// Babel's hoisting guard (only `mock`-prefixed names are allowed inside factories).
+const mockUseEffect = React.useEffect;
+
+// Captures the onApiAvailable callback from the most-recently-rendered EmbeddableRenderer
+// so tests can simulate the control API becoming available after mount.
+let capturedOnApiAvailable: ((api: DefaultEmbeddableApi) => void) | undefined;
+
+const mockEmbeddableRenderer = ({ onApiAvailable, maybeId }: any) => {
+  mockUseEffect(() => {
+    capturedOnApiAvailable = onApiAvailable;
+  }, []);
+  return <div data-test-subj="mockEmbeddableRenderer">{maybeId}</div>;
+};
 
 const mockServices = {
   services: {
@@ -37,33 +50,11 @@ const mockServices = {
       getFrequentlyChangingActionsForTrigger: jest.fn().mockResolvedValue([]),
       getTrigger: jest.fn().mockResolvedValue({}),
     },
+    embeddable: {
+      EmbeddableRenderer: mockEmbeddableRenderer,
+    },
   },
 };
-
-jest.mock('@kbn/kibana-react-plugin/public', () => ({
-  useKibana: jest.fn().mockImplementation(() => mockServices),
-}));
-
-// Alias required so the jest.mock factory can reference useEffect without triggering
-// Babel's hoisting guard (only `mock`-prefixed names are allowed inside factories).
-const mockUseEffect = React.useEffect;
-
-// Captures the onApiAvailable callback from the most-recently-rendered EmbeddableRenderer
-// so tests can simulate the control API becoming available after mount.
-let capturedOnApiAvailable: ((api: DefaultEmbeddableApi) => void) | undefined;
-
-jest.mock('@kbn/embeddable-plugin/public', () => {
-  const original = jest.requireActual('@kbn/embeddable-plugin/public');
-  return {
-    ...original,
-    EmbeddableRenderer: ({ onApiAvailable, maybeId }: any) => {
-      mockUseEffect(() => {
-        capturedOnApiAvailable = onApiAvailable;
-      }, []);
-      return <div data-test-subj="mockEmbeddableRenderer">{maybeId}</div>;
-    },
-  };
-});
 
 const parentApi = {
   getSerializedStateForChild: jest.fn().mockReturnValue({ type: OPTIONS_LIST_CONTROL }),
@@ -89,6 +80,7 @@ describe('render', () => {
           }}
           parentApi={parentApi}
           setControlPanelRef={jest.fn()}
+          services={mockServices.services as any}
         />
       );
       const controlFrame = controlPanel.getByTestId('control-frame');
@@ -108,6 +100,7 @@ describe('render', () => {
           }}
           parentApi={parentApi}
           setControlPanelRef={jest.fn()}
+          services={mockServices.services as any}
         />
       );
       const controlFrame = controlPanel.getByTestId('control-frame');
@@ -142,6 +135,7 @@ const renderControlPanel = () =>
       }}
       parentApi={parentApi}
       setControlPanelRef={jest.fn()}
+      services={mockServices.services as any}
     />
   );
 

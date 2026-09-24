@@ -62,6 +62,10 @@ const createSetupContract = (): Setup => {
 
 const createStartContract = (): Start => {
   const startContract: Start = {
+    EmbeddableRenderer: jest.fn() as unknown as Start['EmbeddableRenderer'],
+    PresentationPanelError: jest.fn() as unknown as Start['PresentationPanelError'],
+    getAddFromLibraryType: jest.fn(),
+    getAddFromLibraryTypes: jest.fn(() => []),
     getAddFromLibraryComponent: jest.fn(),
     getAddFromLibraryContentComponent: jest.fn(),
     getEmbeddableDefinition: jest.fn(),

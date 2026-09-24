@@ -10,7 +10,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, map } from 'rxjs';
 import { isEqual } from 'lodash';
-import { EmbeddableRenderer } from '@kbn/embeddable-plugin/public';
 import { SEARCH_EMBEDDABLE_TYPE, getDefaultSort } from '@kbn/discover-utils';
 import {
   type SearchEmbeddableApi,
@@ -33,7 +32,7 @@ export const SavedSearchComponent: React.FC<SavedSearchComponentProps> = (props)
   const [error, setError] = useState<Error | undefined>();
 
   const {
-    dependencies: { dataViews, searchSource: searchSourceService },
+    dependencies: { dataViews, searchSource: searchSourceService, embeddable },
     timeRange,
     query,
     filters,
@@ -335,6 +334,7 @@ const SavedSearchComponentTable: React.FC<
     [onTableConfigChange, isEmbeddableApiAvailable]
   );
 
+  const { EmbeddableRenderer } = embeddable;
   return (
     <EmbeddableRenderer<SearchEmbeddablePanelApiState, SearchEmbeddableApi>
       maybeId={undefined}

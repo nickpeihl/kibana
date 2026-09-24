@@ -10,7 +10,7 @@
 import type { BehaviorSubject } from 'rxjs';
 
 import type { ControlsGroupState, PinnedControlLayoutState } from '@kbn/controls-schemas';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi, EmbeddableStart } from '@kbn/embeddable-plugin/public';
 import type {
   CanIndicateRelatedChildren,
   HasSerializedChildState,
@@ -27,6 +27,7 @@ export type ControlPanelState = Pick<ControlState, 'width' | 'grow'> & { order: 
 
 export interface ControlRendererServices {
   uiActions: UiActionsStart;
+  embeddable: Pick<EmbeddableStart, 'EmbeddableRenderer'>;
 }
 
 export interface ControlsLayout {

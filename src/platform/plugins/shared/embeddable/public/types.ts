@@ -15,7 +15,11 @@ import type { ContentManagementPublicStart } from '@kbn/content-management-plugi
 import type { SavedObjectTaggingOssPluginStart } from '@kbn/saved-objects-tagging-oss-plugin/public';
 import type { Storage } from '@kbn/kibana-utils-plugin/public';
 import type { LicensingPluginStart } from '@kbn/licensing-plugin/public';
-import type { registerAddFromLibraryType } from './add_from_library/registry';
+import type { SavedObjectMetaData } from '@kbn/saved-objects-finder-plugin/public';
+import type React from 'react';
+import type { registerAddFromLibraryType, RegistryItem } from './add_from_library/registry';
+import type { EmbeddableRenderer } from './react_embeddable_system/react_embeddable_renderer';
+import type { PresentationPanelErrorProps } from './react_embeddable_system/panel_component/presentation_panel_error';
 import type {
   DefaultEmbeddableApi,
   EmbeddablePublicDefinition,
@@ -99,6 +103,14 @@ export interface EmbeddableSetup {
 }
 
 export interface EmbeddableStart {
+  /** Renders a component from the React Embeddable registry into a Presentation Panel. */
+  EmbeddableRenderer: typeof EmbeddableRenderer;
+  /** Lazily renders PresentationPanelError inside a Suspense boundary. */
+  PresentationPanelError: React.FC<PresentationPanelErrorProps>;
+  /** Returns the registry item for the given saved object type, or undefined if not registered. */
+  getAddFromLibraryType: (libraryType: string) => RegistryItem | undefined;
+  /** Returns all saved object types registered with the "Add from library" flyout, sorted by type. */
+  getAddFromLibraryTypes: () => SavedObjectMetaData[];
   getAddFromLibraryComponent: () => Promise<React.FC<AddFromLibraryFormProps>>;
   getAddFromLibraryContentComponent: () => Promise<React.FC<AddFromLibraryContentProps>>;
   getEmbeddableDefinition: <

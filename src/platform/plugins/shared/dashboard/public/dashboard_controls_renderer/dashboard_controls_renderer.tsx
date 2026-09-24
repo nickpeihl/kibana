@@ -9,15 +9,23 @@
 
 import type { ControlsLayout } from '@kbn/controls-renderer';
 import { ControlsRenderer } from '@kbn/controls-renderer';
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useCallback, useMemo, useState } from 'react';
 import { combineLatest, map, of, switchMap } from 'rxjs';
 import type { PublishesDataLoading } from '@kbn/presentation-publishing';
 import { apiPublishesDataLoading } from '@kbn/presentation-publishing';
 import type { DashboardLayout } from '../dashboard_api/layout_manager';
 import { useDashboardApi } from '../dashboard_api/use_dashboard_api';
+import { embeddableService, uiActionsService } from '../services/kibana_services';
 
 export const DashboardControlsRenderer = () => {
   const dashboardApi = useDashboardApi();
+  const controlsRendererServices = useMemo(
+    () => ({
+      uiActions: uiActionsService,
+      embeddable: embeddableService,
+    }),
+    []
+  );
   const onControlsLayoutChanged = useCallback(
     ({ controls }: ControlsLayout) => {
       dashboardApi.layout$.next({
@@ -84,6 +92,7 @@ export const DashboardControlsRenderer = () => {
         parentApi={dashboardApi}
         controls={controls} // only controls can currently be pinned
         onControlsChanged={onControlsLayoutChanged}
+        services={controlsRendererServices}
       />
     </span>
   );
