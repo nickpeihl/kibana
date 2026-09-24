@@ -7,6 +7,7 @@
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/controls-constants",
     "@kbn/controls-schemas",
     "@kbn/i18n",

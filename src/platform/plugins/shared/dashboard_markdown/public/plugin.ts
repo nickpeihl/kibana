@@ -11,7 +11,7 @@ import type { ContentManagementPublicSetup } from '@kbn/content-management-plugi
 import type { CoreSetup, CoreStart, Plugin } from '@kbn/core/public';
 import type { EmbeddableSetup } from '@kbn/embeddable-plugin/public';
 import type { ExpressionsPublicPlugin } from '@kbn/expressions-plugin/public/plugin';
-import { ADD_PANEL_TRIGGER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
 import type { VisualizationsSetup } from '@kbn/visualizations-plugin/public';
 import {

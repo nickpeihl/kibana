@@ -16,7 +16,7 @@ import {
   ON_OPEN_PANEL_MENU,
   ON_CLICK_ROW,
   ON_CLICK_VALUE,
-} from '../../common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { ACTION_HELLO_WORLD } from './test_samples/hello_world_action';
 
 const coreStart = coreMock.createStart();

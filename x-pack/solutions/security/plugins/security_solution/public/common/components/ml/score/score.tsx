@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { SecurityCellActions, CellActionsMode } from '../../cell_actions';
 import type { Anomaly } from '../types';
 import { Spacer } from '../../page';

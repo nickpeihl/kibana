@@ -10,7 +10,7 @@ import type { EuiBasicTableColumn } from '@elastic/eui';
 import { EuiText } from '@elastic/eui';
 import { ALERT_RULE_NAME } from '@kbn/rule-data-utils';
 import { TableId } from '@kbn/securitysolution-data-table';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { FormattedCount } from '../../../../common/components/formatted_number';
 import { COUNT_TABLE_TITLE } from '../alerts_count_panel/translations';
 import {

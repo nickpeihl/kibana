@@ -11,7 +11,7 @@ import { TableId } from '@kbn/securitysolution-data-table';
 import {
   SECURITY_CELL_ACTIONS_DEFAULT,
   SECURITY_CELL_ACTIONS_DETAILS_FLYOUT,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { AlertsTableImperativeApi } from '@kbn/response-ops-alerts-table/types';
 import { TimelineId } from '../../../../common/types/timeline';
 import { PageScope } from '../../../data_view_manager/constants';

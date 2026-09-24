@@ -32,7 +32,7 @@ import {
   type ProjectRoutingOverrides,
 } from '@kbn/presentation-publishing';
 import { i18n } from '@kbn/i18n';
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { triggers } from '@kbn/ui-actions-plugin/public';
 import { CPS_USAGE_OVERRIDES_BADGE } from './constants';
 import { uiActions, core } from '../../kibana_services';

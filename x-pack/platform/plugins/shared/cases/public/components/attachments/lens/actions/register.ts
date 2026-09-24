@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import type { CasesActionContextProps, Services } from './types';
 import { ADD_TO_EXISTING_CASE_ACTION_ID } from './constants';
 

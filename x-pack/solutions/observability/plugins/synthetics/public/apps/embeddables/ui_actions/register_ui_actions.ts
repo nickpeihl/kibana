@@ -6,7 +6,7 @@
  */
 
 import type { CoreStart } from '@kbn/core/public';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import type { ClientPluginsStart } from '../../../plugin';
 import {
   ADD_SYNTHETICS_MONITORS_OVERVIEW_ACTION_ID,

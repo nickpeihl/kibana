@@ -10,7 +10,7 @@
 import type { PluginInitializerContext, CoreSetup, CoreStart, Plugin } from '@kbn/core/public';
 import type { IStorageWrapper } from '@kbn/kibana-utils-plugin/public';
 import { Storage, createStartServicesGetter } from '@kbn/kibana-utils-plugin/public';
-import { ON_CLICK_VALUE, ON_SELECT_RANGE } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_CLICK_VALUE, ON_SELECT_RANGE } from '@kbn/ui-actions-browser';
 import {
   EVENT_PROPERTY_EXECUTION_CONTEXT,
   EVENT_PROPERTY_SEARCH_TIMEOUT_MS,

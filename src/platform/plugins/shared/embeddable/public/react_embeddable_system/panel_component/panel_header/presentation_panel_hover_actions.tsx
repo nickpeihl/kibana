@@ -31,7 +31,7 @@ import { apiCanLockHoverActions, useBatchedPublishingSubjects } from '@kbn/prese
 import { getPanelContextMenuTriggerId } from '@kbn/presentation-util';
 import type { ActionWithContext } from '@kbn/ui-actions-plugin/public/context_menu/build_eui_context_menu_panels';
 import { BehaviorSubject, Subscription, switchMap } from 'rxjs';
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { uiActions } from '../../../kibana_services';
 import type { DefaultPresentationPanelApi, PresentationPanelProps } from '../types';
 import {

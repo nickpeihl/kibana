@@ -80,7 +80,7 @@ import {
   VISUALIZE_EDITOR_TRIGGER,
   VISUALIZE_FIELD_TRIGGER,
   FEATURED_ADD_PANEL_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
 import type { EditorFrameService as EditorFrameServiceType } from './editor_frame_service';
 import type {

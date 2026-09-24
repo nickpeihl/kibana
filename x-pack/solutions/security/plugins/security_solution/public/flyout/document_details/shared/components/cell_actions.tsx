@@ -7,7 +7,7 @@
 
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
-import { SECURITY_CELL_ACTIONS_DETAILS_FLYOUT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DETAILS_FLYOUT } from '@kbn/ui-actions-browser';
 import { useAlertsContext } from '../../../../detections/components/alerts_table/alerts_context';
 import { useDocumentDetailsContext } from '../context';
 import { getSourcererScopeId } from '../../../../helpers';

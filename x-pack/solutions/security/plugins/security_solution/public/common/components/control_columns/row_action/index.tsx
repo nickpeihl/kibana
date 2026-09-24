@@ -15,7 +15,7 @@ import { TableId } from '@kbn/securitysolution-data-table';
 import {
   SECURITY_CELL_ACTIONS_CASE_EVENTS,
   SECURITY_CELL_ACTIONS_DETAILS_FLYOUT,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { AlertsTableImperativeApi } from '@kbn/response-ops-alerts-table/types';
 import {
   createCellActionRenderer,

@@ -46,7 +46,7 @@ import type { AlertFormatter } from '@kbn/alerts-ui-shared/src/common/types';
 import type { CloudSetup } from '@kbn/cloud-plugin/public';
 import type { FieldsMetadataPublicStart } from '@kbn/fields-metadata-plugin/public';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
-import { ON_OPEN_PANEL_MENU, ALERT_RULE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU, ALERT_RULE_TRIGGER } from '@kbn/ui-actions-browser';
 import type { SharePluginSetup, SharePluginStart } from '@kbn/share-plugin/public';
 import type { CPSPluginStart } from '@kbn/cps/public';
 import type { Start as InspectorStart } from '@kbn/inspector-plugin/public';

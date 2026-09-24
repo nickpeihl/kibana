@@ -12,7 +12,7 @@ import type { DataView } from '@kbn/data-views-plugin/public';
 import { type VisualizeFieldContext } from '@kbn/ui-actions-plugin/public';
 import type { Refresh } from '@kbn/ml-date-picker';
 import { mlTimefilterRefresh$ } from '@kbn/ml-date-picker';
-import { VISUALIZE_GEO_FIELD_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { VISUALIZE_GEO_FIELD_TRIGGER } from '@kbn/ui-actions-browser';
 import { getCompatibleLensDataType, getLensAttributes } from './lens_utils';
 import type { CombinedQuery } from '../../../../index_data_visualizer/types/combined_query';
 import type { FieldVisConfig } from '../../stats_table/types';

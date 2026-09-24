@@ -8,7 +8,7 @@
  */
 
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { type ActionExecutionMeta, triggers } from '@kbn/ui-actions-plugin/public';
 import { ACTION_EDIT_PANEL } from './constants';
 import { uiActions } from '../../kibana_services';

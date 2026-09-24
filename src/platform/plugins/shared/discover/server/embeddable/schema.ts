@@ -15,7 +15,7 @@ import {
   serializedTimeRangeSchema,
 } from '@kbn/presentation-publishing-schemas';
 import type { GetDrilldownsSchemaFnType } from '@kbn/embeddable-plugin/server';
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import {
   discoverSessionApiEmbeddableByValueConfigSchema,
   discoverSessionApiEmbeddableByReferenceConfigSchema,

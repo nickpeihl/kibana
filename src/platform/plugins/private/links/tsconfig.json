@@ -12,6 +12,7 @@
     "test/scout/**/*"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/core",
     "@kbn/i18n",
     "@kbn/dashboard-plugin",

@@ -8,7 +8,7 @@
 import { EuiIcon, EuiLink, EuiText, EuiToolTip } from '@elastic/eui';
 import React from 'react';
 import type { SyntheticEvent } from 'react';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import type { CriticalityLevelWithUnassigned } from '../../../../../common/entity_analytics/asset_criticality/types';
 import { AssetCriticalityBadge } from '../../../../entity_analytics/components/asset_criticality';
 import { SecurityCellActions, CellActionsMode } from '../../../../common/components/cell_actions';

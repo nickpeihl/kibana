@@ -18,7 +18,7 @@ import {
   type MonacoCommandDependencies,
 } from './custom_editor_commands';
 import type { ESQLEditorTelemetryService } from './telemetry/telemetry_service';
-import { ESQL_CONTROL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ESQL_CONTROL_TRIGGER } from '@kbn/ui-actions-browser';
 
 const mockModel = {
   getValue: jest.fn(),

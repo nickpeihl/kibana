@@ -30,7 +30,7 @@ import { renderSearchError } from '@kbn/search-errors';
 import { Markdown } from '@kbn/shared-ux-markdown';
 import type { ActionExecutionMeta } from '@kbn/ui-actions-plugin/public';
 
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { triggers } from '@kbn/ui-actions-plugin/public';
 import { uiActions } from '../../kibana_services';
 import { ACTION_EDIT_PANEL } from '../../ui_actions/edit_panel_action/constants';

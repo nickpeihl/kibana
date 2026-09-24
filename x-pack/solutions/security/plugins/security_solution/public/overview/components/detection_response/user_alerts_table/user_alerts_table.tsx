@@ -20,7 +20,7 @@ import {
 } from '@elastic/eui';
 
 import { ALERT_SEVERITY } from '@kbn/rule-data-utils';
-import { SECURITY_CELL_ACTIONS_ALERTS_COUNT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_ALERTS_COUNT } from '@kbn/ui-actions-browser';
 import { PageScope } from '../../../../data_view_manager/constants';
 import { useNavigateToAlertsPageWithFilters } from '../../../../common/hooks/use_navigate_to_alerts_page_with_filters';
 import { FormattedCount } from '../../../../common/components/formatted_number';

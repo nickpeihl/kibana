@@ -13,6 +13,7 @@
     "**/*.tsx"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/i18n",
     "@kbn/es-query",
     "@kbn/core",

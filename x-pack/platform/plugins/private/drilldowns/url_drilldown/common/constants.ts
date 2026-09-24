@@ -11,7 +11,7 @@ import {
   ON_CLICK_ROW,
   ON_OPEN_PANEL_MENU,
   ON_CLICK_IMAGE,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 
 // Do not change constant value - part of public REST API
 export const URL_DRILLDOWN_TYPE = 'url_drilldown';

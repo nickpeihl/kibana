@@ -20,7 +20,7 @@ import {
   ON_CLICK_ROW,
   ON_APPLY_FILTER,
   ON_OPEN_PANEL_MENU,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { BY_REF_SCHEMA_META, BY_VALUE_SCHEMA_META } from '@kbn/presentation-publishing-schemas';
 import { LENS_EMBEDDABLE_TYPE } from '@kbn/lens-common';
 import { getTransformIn } from '../common/transforms/transform_in';

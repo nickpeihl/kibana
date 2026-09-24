@@ -23,7 +23,7 @@ import {
 } from '@kbn/presentation-publishing';
 import type { Action, ActionExecutionContext } from '@kbn/ui-actions-plugin/public';
 
-import { CONTROL_HOVER_TRIGGER_ID } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { CONTROL_HOVER_TRIGGER_ID } from '@kbn/ui-actions-browser';
 import type { ControlRendererServices } from '../types';
 
 export interface FloatingActionsProps {

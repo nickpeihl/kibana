@@ -52,7 +52,7 @@ import type { DocViewFilterFn } from '@kbn/unified-doc-viewer/types';
 import type { DiscoverGridSettings } from '@kbn/saved-search-plugin/common';
 import useLatest from 'react-use/lib/useLatest';
 import { isOfAggregateQueryType } from '@kbn/es-query';
-import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-browser';
 import { BehaviorSubject } from 'rxjs';
 import { DiscoverGrid } from '../../../../components/discover_grid';
 import { getDefaultRowsPerPage } from '../../../../../common/constants';

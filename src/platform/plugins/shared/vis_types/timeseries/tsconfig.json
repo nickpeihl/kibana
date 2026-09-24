@@ -12,6 +12,7 @@
     "*.ts"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/core",
     "@kbn/charts-plugin",
     "@kbn/data-plugin",

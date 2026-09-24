@@ -14,7 +14,7 @@ import {
   ON_SELECT_RANGE,
   ON_CLICK_VALUE,
   MULTI_VALUE_CLICK_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 
 export interface VisEventToTrigger {
   ['applyFilter']: typeof ON_APPLY_FILTER;

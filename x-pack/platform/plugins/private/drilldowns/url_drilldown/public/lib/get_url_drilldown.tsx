@@ -23,7 +23,7 @@ import {
   ON_CLICK_ROW,
   ON_SELECT_RANGE,
   ON_CLICK_VALUE,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { UrlDrilldownConfig, UrlDrilldownGlobalScope } from './types';
 import type { UrlTemplateEditorVariable } from './components/url_template_editor';
 import {

@@ -12,7 +12,7 @@ import { capitalize } from 'lodash';
 import { ALERT_SEVERITY } from '@kbn/rule-data-utils';
 import type { Severity } from '@kbn/securitysolution-io-ts-alerting-types';
 import { TableId } from '@kbn/securitysolution-data-table';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import type { SeverityBuckets as SeverityData } from '../../../../overview/components/detection_response/alerts_by_status/types';
 import { FormattedCount } from '../../../../common/components/formatted_number';
 import { COUNT_TABLE_TITLE } from '../alerts_count_panel/translations';

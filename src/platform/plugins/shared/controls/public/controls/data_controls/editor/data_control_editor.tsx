@@ -42,7 +42,7 @@ import { asyncForEach } from '@kbn/std';
 import { KbnDangerCallout } from '@kbn/ui-callout';
 
 import { triggers } from '@kbn/ui-actions-plugin/public';
-import { CONTROL_MENU_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { CONTROL_MENU_TRIGGER } from '@kbn/ui-actions-browser';
 import { ControlValuesSource, DEFAULT_CONTROL_VALUES_SOURCE } from '@kbn/controls-constants';
 import { useStateFromPublishingSubject } from '@kbn/presentation-publishing';
 import type { PublishesESQLVariables } from '@kbn/esql-types';

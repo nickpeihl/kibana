@@ -50,7 +50,7 @@ import {
   SECURITY_CELL_ACTIONS_ALERTS_COUNT,
   SECURITY_CELL_ACTIONS_CASE_EVENTS,
   FEATURED_ADD_PANEL_TRIGGER,
-} from '../common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { Trigger } from './types';
 
 export const triggers: { [key: string]: Trigger } = {

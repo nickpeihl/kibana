@@ -19,7 +19,7 @@ import { uiActions } from '../../kibana_services';
 import * as openCustomizePanel from '../../ui_actions/customize_panel_action/open_customize_panel';
 import type { DefaultPresentationPanelApi, PresentationPanelProps } from './types';
 import { EuiThemeProvider } from '@elastic/eui';
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { PresentationPanel } from './presentation_panel';
 
 describe('Presentation panel', () => {

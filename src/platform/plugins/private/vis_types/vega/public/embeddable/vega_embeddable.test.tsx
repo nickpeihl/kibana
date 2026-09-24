@@ -18,7 +18,7 @@ import { ESQLVariableType } from '@kbn/esql-types';
 import { getESQLQueryVariables } from '@kbn/esql-utils';
 import { apiPublishesEsql, type ViewMode } from '@kbn/presentation-publishing';
 import { getMockPresentationContainer } from '@kbn/presentation-publishing/interfaces/containers/mocks';
-import { ON_APPLY_FILTER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import type { VegaParser } from '../data_model/vega_parser';
 import type { VegaVisualizationDependencies } from '../plugin';
 import { VEGA_EMBEDDABLE_TYPE, VEGA_STANDALONE_EMBEDDABLE_FLAG } from '../../common/constants';

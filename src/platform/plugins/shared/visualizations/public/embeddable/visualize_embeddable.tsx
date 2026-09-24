@@ -42,7 +42,7 @@ import {
   ON_APPLY_FILTER,
   ON_OPEN_PANEL_MENU,
   ON_SELECT_RANGE,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { VisualizeEmbeddableState } from '../../common/embeddable/types';
 import { VIS_EVENT_TO_TRIGGER } from './events';
 import { getInspector, getUiActions, getUsageCollection } from '../services';

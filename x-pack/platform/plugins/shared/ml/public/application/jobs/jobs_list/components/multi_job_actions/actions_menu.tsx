@@ -18,7 +18,7 @@ import {
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n-react';
 import type { MlSummaryJob } from '@kbn/ml-common-types/anomaly_detection_jobs/summary_job';
-import { UPDATE_AD_JOBS_PROJECT_ROUTING_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { UPDATE_AD_JOBS_PROJECT_ROUTING_TRIGGER } from '@kbn/ui-actions-browser';
 
 import { getIsMlCpsEnabled } from '../../../../services/ml_server_info';
 import { usePermissionCheck } from '../../../../capabilities/check_capabilities';

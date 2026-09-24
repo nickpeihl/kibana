@@ -40,7 +40,7 @@ import { useQuerySubscriber } from '@kbn/unified-field-list';
 import useObservable from 'react-use/lib/useObservable';
 import { map } from 'rxjs';
 import type { DocViewerApi } from '@kbn/unified-doc-viewer';
-import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-browser';
 import { DiscoverGrid } from '../../components/discover_grid';
 import { getDefaultRowsPerPage } from '../../../common/constants';
 import { LoadingStatus } from './services/context_query_state';

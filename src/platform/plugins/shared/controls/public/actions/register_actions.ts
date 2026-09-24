@@ -19,7 +19,7 @@ import {
   ON_OPEN_PANEL_MENU,
   CONTROL_HOVER_TRIGGER_ID,
   CONTROL_MENU_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import {
   ACTION_CLEAR_CONTROL,
   ACTION_EDIT_CONTROL_DISPLAY_SETTINGS,

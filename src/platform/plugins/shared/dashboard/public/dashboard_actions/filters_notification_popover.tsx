@@ -33,7 +33,7 @@ import {
   getViewModeSubject,
   useBatchedPublishingSubjects,
 } from '@kbn/presentation-publishing';
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { type ActionExecutionMeta, triggers } from '@kbn/ui-actions-plugin/public';
 import { BehaviorSubject } from 'rxjs';
 import { uiActionsService } from '../services/kibana_services';

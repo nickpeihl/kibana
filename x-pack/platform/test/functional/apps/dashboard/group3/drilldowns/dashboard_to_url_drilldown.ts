@@ -6,7 +6,7 @@
  */
 
 import expect from '@kbn/expect';
-import { ON_SELECT_RANGE } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_SELECT_RANGE } from '@kbn/ui-actions-browser';
 import type { FtrProviderContext } from '../../../../ftr_provider_context';
 
 const DRILLDOWN_TO_DISCOVER_URL = 'Go to discover';

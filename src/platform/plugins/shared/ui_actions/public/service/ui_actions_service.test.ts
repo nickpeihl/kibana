@@ -13,7 +13,7 @@ import { ActionInternal } from '../actions';
 import { createHelloWorldAction } from '../tests/test_samples';
 import type { ActionRegistry } from '../types';
 import { coreMock } from '@kbn/core/public/mocks';
-import { ON_OPEN_PANEL_MENU } from '../../common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { triggers } from '../triggers';
 import { ACTION_HELLO_WORLD } from '../tests/test_samples/hello_world_action';
 

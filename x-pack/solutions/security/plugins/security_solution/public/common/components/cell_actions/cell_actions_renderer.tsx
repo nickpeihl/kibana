@@ -9,7 +9,7 @@ import type { ToolTipPositions } from '@elastic/eui';
 import { EuiToolTip } from '@elastic/eui';
 import React, { useContext, useMemo } from 'react';
 import styled from '@emotion/styled';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { TimelineId } from '../../../../common/types';
 import type { SecurityCellActionsData } from '.';
 import { CellActionsMode, SecurityCellActions, SecurityCellActionType } from '.';

@@ -9,7 +9,7 @@ import React, { useContext, useMemo } from 'react';
 import { EuiFlexGroup, EuiFlexItem } from '@elastic/eui';
 import { css } from '@emotion/css';
 import classNames from 'classnames';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { PageScope } from '../../../../data_view_manager/constants';
 import { TimelineContext } from '../../timeline/context';
 import { getSourcererScopeId } from '../../../../helpers';

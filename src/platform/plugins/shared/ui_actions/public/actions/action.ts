@@ -8,7 +8,7 @@
  */
 
 import type { FC } from 'react';
-import type { Presentable } from '@kbn/ui-actions-browser/src/types';
+import type { Presentable } from '@kbn/ui-actions-browser';
 import type { IconType } from '@elastic/eui';
 import type { Observable } from 'rxjs';
 import type { Trigger } from '../types';

@@ -5,6 +5,7 @@
   },
   "include": ["*.ts", "common/**/*", "public/**/*", "server/**/*", "test/scout/**/*"],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/css-utils",
     "@kbn/core",
     "@kbn/i18n",

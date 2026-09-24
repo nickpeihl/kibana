@@ -8,7 +8,7 @@
 import type { ValueClickTriggerEventScope } from './event_variables';
 import { getEventScopeValues, getEventVariableList } from './event_variables';
 import type { RowClickContext } from '@kbn/ui-actions-plugin/public';
-import { ON_CLICK_ROW } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_CLICK_ROW } from '@kbn/ui-actions-browser';
 import { createPoint, rowClickData } from '../test/data';
 
 describe('on_click_value', () => {

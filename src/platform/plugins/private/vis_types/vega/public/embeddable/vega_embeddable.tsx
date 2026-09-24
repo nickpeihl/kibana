@@ -31,7 +31,7 @@ import {
 } from 'rxjs';
 import type { AggregateQuery, Query } from '@kbn/es-query';
 import { parse } from 'hjson';
-import { ON_APPLY_FILTER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
 import {
   apiHasExecutionContext,
   apiIsPresentationContainer,

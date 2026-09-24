@@ -10,7 +10,7 @@
 import type { AggregateQuery } from '@kbn/es-query';
 import type { Datatable } from '@kbn/expressions-plugin/public';
 import type { UiActionsActionDefinition, UiActionsStart } from '@kbn/ui-actions-plugin/public';
-import { ON_APPLY_FILTER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
 
 export interface SelectRangeActionContext {
   // Need to make this unknown to prevent circular dependencies.

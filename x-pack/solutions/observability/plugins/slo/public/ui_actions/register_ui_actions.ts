@@ -6,7 +6,7 @@
  */
 
 import type { CoreSetup } from '@kbn/core/public';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import type { UiActionsPublicSetup } from '@kbn/ui-actions-plugin/public/plugin';
 import { ADD_SLO_ALERTS_ACTION_ID } from '../../common/embeddables/alerts/constants';
 import type { SLOPublicPluginsStart } from '..';

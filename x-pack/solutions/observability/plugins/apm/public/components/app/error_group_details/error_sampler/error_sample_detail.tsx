@@ -30,7 +30,7 @@ import { useHistory } from 'react-router-dom';
 import useAsync from 'react-use/lib/useAsync';
 import { ExceptionStacktrace, PlaintextStacktrace, Stacktrace } from '@kbn/event-stacktrace';
 import { Timestamp } from '@kbn/apm-ui-shared';
-import { O11Y_APM_ERROR_CONTEXT_MENU_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { O11Y_APM_ERROR_CONTEXT_MENU_TRIGGER } from '@kbn/ui-actions-browser';
 import type { APIReturnType } from '@kbn/apm-api-shared';
 import { getTimestampUs } from '../../../../../common/utils/get_timestamp_us';
 import type { AT_TIMESTAMP } from '../../../../../common/es_fields/apm';

@@ -17,7 +17,7 @@ import type { Action } from '@kbn/ui-actions-plugin/public';
 import { DiscoverFlyouts, dismissAllFlyoutsExceptFor } from '@kbn/discover-utils';
 import { openLazyFlyout } from '@kbn/presentation-util';
 import { css } from '@emotion/react';
-import { ALERT_RULE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ALERT_RULE_TRIGGER } from '@kbn/ui-actions-browser';
 import { LENS_EMBEDDABLE_TYPE } from '@kbn/lens-common';
 import { type ServiceDependencies } from './rule_flyout_component';
 

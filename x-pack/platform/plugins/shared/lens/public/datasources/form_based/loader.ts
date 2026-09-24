@@ -25,7 +25,7 @@ import type {
 } from '@kbn/lens-common';
 
 import { getFormulaColumnsFromLayer, hasStateFormulaColumn } from '@kbn/lens-common';
-import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-browser';
 import { memoizedGetAvailableOperationsByMetadata, updateLayerIndexPattern } from './operations';
 import { readFromStorage, writeToStorage } from '../../settings_storage';
 import { insertOrReplaceFormulaColumn } from './operations/definitions/formula';

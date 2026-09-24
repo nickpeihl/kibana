@@ -12,8 +12,8 @@ import useAsync from 'react-use/lib/useAsync';
 import { merge, startWith, type Observable } from 'rxjs';
 
 import { ADD_PANEL_OTHER_GROUP } from '@kbn/embeddable-plugin/public';
-import type { PresentableGroup } from '@kbn/ui-actions-browser/src/types';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import type { PresentableGroup } from '@kbn/ui-actions-browser';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import { triggers, type Action, type ActionExecutionContext } from '@kbn/ui-actions-plugin/public';
 
 import type { DashboardApi } from '../../../dashboard_api/types';

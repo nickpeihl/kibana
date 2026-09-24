@@ -25,7 +25,7 @@ import type {
   LensRuntimeState,
 } from '@kbn/lens-common';
 import type { LensApi } from '@kbn/lens-common-2';
-import { CELL_VALUE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { CELL_VALUE_TRIGGER } from '@kbn/ui-actions-browser';
 import { triggers } from '@kbn/ui-actions-plugin/public';
 import {
   isLensFilterEvent,

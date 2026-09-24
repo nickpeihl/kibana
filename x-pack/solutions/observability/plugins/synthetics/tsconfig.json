@@ -15,6 +15,7 @@
     "../../../../../typings/**/*"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/synthtrace",
     "@kbn/synthtrace-client",
     "@kbn/alerting-plugin",

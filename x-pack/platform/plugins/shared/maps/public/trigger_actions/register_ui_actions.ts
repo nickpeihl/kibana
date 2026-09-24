@@ -10,7 +10,7 @@ import {
   ADD_CANVAS_ELEMENT_TRIGGER,
   ON_OPEN_PANEL_MENU,
   VISUALIZE_GEO_FIELD_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { ACTION_VISUALIZE_GEO_FIELD } from '@kbn/ui-actions-plugin/public';
 import type { CoreStart } from '@kbn/core/public';
 import { FILTER_BY_MAP_EXTENT } from './filter_by_map_extent/constants';

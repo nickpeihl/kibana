@@ -11,7 +11,7 @@ import type { AlertsTableImperativeApi } from '@kbn/response-ops-alerts-table/ty
 import {
   SECURITY_CELL_ACTIONS_CASE_EVENTS,
   SECURITY_CELL_ACTIONS_DEFAULT,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import {
   type CellActionFieldValue,
   CellActionsMode,

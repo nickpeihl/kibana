@@ -14,7 +14,7 @@ import type { UsageCollectionSetup } from '@kbn/usage-collection-plugin/public';
 import {
   ON_APPLY_FILTER,
   UPDATE_FILTER_REFERENCES_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { setCoreStart, setIndexPatterns } from './services';
 import { createSearchBar } from './search_bar/create_search_bar';
 import { createIndexPatternSelect } from './index_pattern_select';

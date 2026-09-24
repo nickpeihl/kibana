@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom';
 import { EuiFlexGroup, EuiFlexItem, EuiHorizontalRule, EuiSpacer } from '@elastic/eui';
 import { getEsQueryConfig } from '@kbn/data-plugin/common';
 import { buildEsQuery } from '@kbn/es-query';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { PageScope } from '../../../../data_view_manager/constants';
 import { AlertsByStatus } from '../../../../overview/components/detection_response/alerts_by_status';
 import { useSignalIndex } from '../../../../detections/containers/detection_engine/alerts/use_signal_index';

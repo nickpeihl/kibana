@@ -32,7 +32,7 @@ import useUnmount from 'react-use/lib/useUnmount';
 import { BehaviorSubject, distinctUntilChanged, map, merge, Subscription } from 'rxjs';
 import fastIsEqual from 'fast-deep-equal';
 import { initializeStateApi } from '@kbn/presentation-publishing';
-import { SWIM_LANE_SELECTION_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SWIM_LANE_SELECTION_TRIGGER } from '@kbn/ui-actions-browser';
 import { ANOMALY_SWIMLANE_EMBEDDABLE_TYPE } from '@kbn/ml-common-types/embeddables/anomaly_swimlane';
 import type { AnomalySwimlaneEmbeddableServices } from '..';
 import type { MlDependencies } from '../../application/app';

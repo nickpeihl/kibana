@@ -12,7 +12,7 @@ import { EuiCheckbox } from '@elastic/eui';
 import type { Filter } from '@kbn/es-query';
 import type { TableId } from '@kbn/securitysolution-data-table';
 import { dataTableActions } from '@kbn/securitysolution-data-table';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { PageScope } from '../../../data_view_manager/constants';
 import { useBulkAddEventsToCaseActions } from '../../../cases/attachments/event/hooks/use_bulk_event_actions';
 import type { CustomBulkAction } from '../../../../common/types';

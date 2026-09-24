@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 
 //
 // Do not change constant values - part of public REST APIs

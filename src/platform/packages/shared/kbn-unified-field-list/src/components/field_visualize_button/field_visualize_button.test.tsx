@@ -13,10 +13,7 @@ import { ACTION_VISUALIZE_LENS_FIELD, ActionInternal } from '@kbn/ui-actions-plu
 import { uiActionsPluginMock } from '@kbn/ui-actions-plugin/public/mocks';
 import { getFieldVisualizeButton } from './field_visualize_button';
 import type { VisualizeFieldContext } from '@kbn/ui-actions-plugin/public';
-import {
-  VISUALIZE_FIELD_TRIGGER,
-  VISUALIZE_GEO_FIELD_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { VISUALIZE_FIELD_TRIGGER, VISUALIZE_GEO_FIELD_TRIGGER } from '@kbn/ui-actions-browser';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

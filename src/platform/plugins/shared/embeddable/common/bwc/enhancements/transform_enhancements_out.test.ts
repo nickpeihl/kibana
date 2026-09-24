@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { ON_APPLY_FILTER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
 import { transformEnhancementsOut } from './transform_enhancements_out';
 
 describe('transformEnhancementsOut', () => {

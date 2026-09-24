@@ -10,7 +10,7 @@ import type { SyntheticEvent } from 'react';
 import { useDispatch } from 'react-redux-v7';
 
 import { EuiLink, EuiText } from '@elastic/eui';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { useExpandableFlyoutApi } from '@kbn/expandable-flyout';
 import { AssetCriticalityBadge } from '../../../../entity_analytics/components/asset_criticality';
 import type { CriticalityLevelWithUnassigned } from '../../../../../common/entity_analytics/asset_criticality/types';

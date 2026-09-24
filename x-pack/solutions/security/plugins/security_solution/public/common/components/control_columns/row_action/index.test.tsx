@@ -6,7 +6,7 @@
  */
 
 import { TableId } from '@kbn/securitysolution-data-table';
-import { SECURITY_CELL_ACTIONS_DETAILS_FLYOUT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DETAILS_FLYOUT } from '@kbn/ui-actions-browser';
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
 import type { RowActionProps } from '.';

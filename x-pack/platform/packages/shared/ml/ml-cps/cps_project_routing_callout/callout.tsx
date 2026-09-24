@@ -13,7 +13,7 @@ import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n-react';
 import type { HttpStart } from '@kbn/core-http-browser';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
-import { UPDATE_AD_JOBS_PROJECT_ROUTING_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { UPDATE_AD_JOBS_PROJECT_ROUTING_TRIGGER } from '@kbn/ui-actions-browser';
 
 const BULK_UPDATE_PROJECT_ROUTING_PATH = '/internal/ml/jobs/bulk_update_project_routing' as const;
 

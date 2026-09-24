@@ -11,7 +11,7 @@ import type { DataView } from '@kbn/data-views-plugin/common';
 import type { TimeRange } from '@kbn/es-query';
 import type { TypedLensByValueInput } from '@kbn/lens-plugin/public';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import type { VISUALIZE_FIELD_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import type { VISUALIZE_FIELD_TRIGGER } from '@kbn/ui-actions-browser';
 import type { UnifiedHistogramServices } from '../../..';
 
 // Avoid taking a dependency on uiActionsPlugin just for this const

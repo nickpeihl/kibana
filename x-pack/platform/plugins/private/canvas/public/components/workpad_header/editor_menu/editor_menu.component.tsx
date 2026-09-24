@@ -12,7 +12,7 @@ import { EuiContextMenu } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { ToolbarPopover } from '@kbn/shared-ux-button-toolbar';
 import type { Action, ActionExecutionContext } from '@kbn/ui-actions-plugin/public/actions';
-import { ADD_CANVAS_ELEMENT_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_CANVAS_ELEMENT_TRIGGER } from '@kbn/ui-actions-browser';
 
 import { useCanvasApi } from '../../hooks/use_canvas_api';
 

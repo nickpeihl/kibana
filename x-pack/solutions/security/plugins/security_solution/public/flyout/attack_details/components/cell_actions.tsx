@@ -7,7 +7,7 @@
 
 import type { FC } from 'react';
 import React, { useMemo } from 'react';
-import { SECURITY_CELL_ACTIONS_DETAILS_FLYOUT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DETAILS_FLYOUT } from '@kbn/ui-actions-browser';
 import { PageScope } from '../../../data_view_manager/constants';
 import { CellActionsMode, SecurityCellActions } from '../../../common/components/cell_actions';
 

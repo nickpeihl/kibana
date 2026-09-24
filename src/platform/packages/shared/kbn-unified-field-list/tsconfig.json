@@ -5,6 +5,7 @@
   },
   "include": ["*.ts", "src/**/*", "test/**/*", "__mocks__/**/*.ts"],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/i18n",
     "@kbn/data-views-plugin",
     "@kbn/ui-actions-plugin",

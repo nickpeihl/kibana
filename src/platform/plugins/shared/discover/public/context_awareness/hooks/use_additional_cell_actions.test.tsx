@@ -8,7 +8,7 @@
  */
 
 import { renderHook, act } from '@testing-library/react';
-import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-browser';
 import {
   DISCOVER_CELL_ACTION_TYPE,
   createCellAction,
