@@ -42,7 +42,7 @@ import type {
 } from '@kbn/lens-common';
 import type { PublishesSearchSession } from '@kbn/presentation-publishing/interfaces/fetch/publishes_search_session';
 import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 
 /**
  * Panel-level connfigurations that should be persisted for by-value Lens panels.

@@ -7,7 +7,8 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { DrilldownTransforms, EmbeddableTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
+import type { EmbeddableTransforms } from '@kbn/embeddable-plugin/common';
 import type { SearchEmbeddablePanelApiState, StoredSearchEmbeddableState } from './types';
 import { getTransformIn } from './get_transform_in';
 import { getTransformOut } from './get_transform_out';

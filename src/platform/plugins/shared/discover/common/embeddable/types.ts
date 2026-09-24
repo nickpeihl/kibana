@@ -8,7 +8,7 @@
  */
 
 import type { SerializedTimeRange, SerializedTitles } from '@kbn/presentation-publishing';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 import type {
   SavedSearchAttributes,
   SavedSearchByValueAttributes,

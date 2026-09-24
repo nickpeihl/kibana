@@ -45,6 +45,7 @@
     "@kbn/search-types",
     "@kbn/presentation-publishing",
     "@kbn/embeddable-plugin",
+    "@kbn/embeddable-drilldowns",
     "@kbn/ui-actions-plugin",
     "@kbn/css-utils",
     "@kbn/visualizations-common",

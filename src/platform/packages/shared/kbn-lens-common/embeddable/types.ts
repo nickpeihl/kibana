@@ -48,7 +48,7 @@ import type { Adapters } from '@kbn/inspector-plugin/common';
 import type { InspectorOptions } from '@kbn/inspector-plugin/public';
 import type { DefaultInspectorAdapters, RenderMode } from '@kbn/expressions-plugin/common';
 import type { Ast } from '@kbn/interpreter';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 import type {
   IndexPatternMap,
   IndexPatternRef,

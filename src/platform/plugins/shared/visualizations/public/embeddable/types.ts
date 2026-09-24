@@ -29,7 +29,7 @@ import type {
 } from '@kbn/presentation-publishing';
 import type { DeepPartial } from '@kbn/utility-types';
 import type { VisParams } from '@kbn/visualizations-common';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 import type { VisualizeEmbeddableState } from '../../common/embeddable/types';
 import type { HasVisualizeConfig } from './interfaces/has_visualize_config';
 import type { Vis, VisSavedObject } from '../types';

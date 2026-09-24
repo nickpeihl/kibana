@@ -12,4 +12,24 @@ export type {
   SerializedDrilldowns,
   DrilldownSetup,
   GetDrilldownsSchemaFnType,
-} from '@kbn/embeddable-drilldowns';
+  DrilldownTransforms,
+} from './types';
+
+export type {
+  DrilldownActionState,
+  DrilldownDefinition,
+  DrilldownEditorProps,
+  DrilldownsManager,
+  HasDrilldowns,
+  DrilldownRegistryEntry,
+} from './drilldown_definition';
+
+export { apiHasDrilldowns } from './api_has_drilldowns';
+
+export type {
+  SerializedAction,
+  SerializedEvent,
+  DynamicActionsState,
+} from './dynamic_actions_types';
+
+export { EMBEDDABLE_TO_DASHBOARD_DRILLDOWN, generateRefName } from './generate_ref_name';

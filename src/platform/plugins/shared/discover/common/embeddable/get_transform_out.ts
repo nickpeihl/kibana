@@ -8,7 +8,7 @@
  */
 
 import type { SavedObjectReference } from '@kbn/core/server';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import { flow } from 'lodash';
 import { transformTimeRangeOut, transformTitlesOut } from '@kbn/presentation-publishing';
 import type { SearchEmbeddablePanelApiState, StoredSearchEmbeddableState } from './types';

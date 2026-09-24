@@ -11,7 +11,7 @@ import { omit, pick } from 'lodash';
 import deepEqual from 'react-fast-compare';
 import { type SerializedTimeRange, type SerializedTitles } from '@kbn/presentation-publishing';
 import { type SavedSearch, toSavedSearchAttributes } from '@kbn/saved-search-plugin/common';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 import type {
   EditableSavedSearchAttributes,
   SearchEmbeddableByReferenceState,

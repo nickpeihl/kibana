@@ -7,4 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export type { SerializedAction, SerializedEvent, DynamicActionsState } from '@kbn/embeddable-drilldowns';
+export const EMBEDDABLE_TO_DASHBOARD_DRILLDOWN = 'DASHBOARD_TO_DASHBOARD_DRILLDOWN';
+
+export const generateRefName = (eventId: string) =>
+  `drilldown:${EMBEDDABLE_TO_DASHBOARD_DRILLDOWN}:${eventId}:dashboardId`;

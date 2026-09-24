@@ -8,7 +8,8 @@
  */
 
 import type { DataTableRecord } from '@kbn/discover-utils/types';
-import type { DefaultEmbeddableApi, HasDrilldowns } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { HasDrilldowns } from '@kbn/embeddable-drilldowns';
 import type { HasInspectorAdapters } from '@kbn/inspector-plugin/public';
 import type {
   CanCancelRequests,
@@ -37,7 +38,7 @@ import type {
 import type { DataTableColumnsMeta } from '@kbn/unified-data-table';
 import type { BehaviorSubject } from 'rxjs';
 import type { PublishesWritableDataViews } from '@kbn/presentation-publishing/interfaces/publishes_data_views';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 import type {
   NonPersistedDisplayOptions,
   SearchEmbeddablePanelApiState,

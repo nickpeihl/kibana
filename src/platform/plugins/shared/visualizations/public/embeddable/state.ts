@@ -10,7 +10,7 @@
 import type { SerializedSearchSourceFields } from '@kbn/data-plugin/public';
 import type { SerializedTitles } from '@kbn/presentation-publishing';
 import { isEmpty } from 'lodash';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 import type {
   VisualizeByReferenceState,
   VisualizeByValueState,

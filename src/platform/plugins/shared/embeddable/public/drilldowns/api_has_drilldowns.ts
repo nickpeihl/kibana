@@ -7,12 +7,4 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { HasDrilldowns } from './types';
-
-export const apiHasDrilldowns = (api: unknown): api is HasDrilldowns => {
-  return Boolean(
-    api &&
-      typeof (api as HasDrilldowns).setDrilldowns === 'function' &&
-      (api as HasDrilldowns).drilldowns$
-  );
-};
+export { apiHasDrilldowns } from '@kbn/embeddable-drilldowns';

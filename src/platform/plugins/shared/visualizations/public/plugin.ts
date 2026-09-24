@@ -72,7 +72,7 @@ import {
   VISUALIZE_SAVED_OBJECT_TYPE,
 } from '@kbn/visualizations-common';
 import type { KqlPluginStart } from '@kbn/kql/public';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import { ProjectRoutingAccess } from '@kbn/cps-utils';
 import type { TypesSetup, TypesStart } from './vis_types';
 import type { VisualizeServices } from './visualize_app/types';

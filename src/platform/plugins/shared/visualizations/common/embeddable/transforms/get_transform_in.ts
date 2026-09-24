@@ -9,7 +9,7 @@
 
 import type { Reference } from '@kbn/content-management-utils';
 import { VISUALIZE_SAVED_OBJECT_TYPE } from '@kbn/visualizations-common';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import type {
   VisualizeByReferenceState,
   VisualizeByValueState,

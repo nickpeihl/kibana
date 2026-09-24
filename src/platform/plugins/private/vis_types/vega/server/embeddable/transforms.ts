@@ -8,7 +8,7 @@
  */
 
 import type { SavedObjectReference } from '@kbn/core/server';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import type { VegaByValueState } from './schema';
 
 export function getTransforms(drilldownTransforms: DrilldownTransforms) {

@@ -7,4 +7,20 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export type { SerializedAction, SerializedEvent, DynamicActionsState } from '@kbn/embeddable-drilldowns';
+import type { SerializableRecord } from '@kbn/utility-types';
+
+export type SerializedAction<Config extends SerializableRecord = SerializableRecord> = {
+  readonly factoryId: string;
+  readonly name: string;
+  readonly config: Config;
+};
+
+export type SerializedEvent = {
+  eventId: string;
+  triggers: string[];
+  action: SerializedAction;
+};
+
+export type DynamicActionsState = {
+  events: SerializedEvent[];
+};

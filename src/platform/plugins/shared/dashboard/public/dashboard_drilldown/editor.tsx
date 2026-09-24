@@ -12,7 +12,7 @@ import type { EuiComboBoxOptionOption } from '@elastic/eui';
 import { EuiFormRow, EuiComboBox, EuiSkeletonText } from '@elastic/eui';
 
 import { i18n } from '@kbn/i18n';
-import type { DrilldownEditorProps } from '@kbn/embeddable-plugin/public';
+import type { DrilldownEditorProps } from '@kbn/embeddable-drilldowns';
 import useDebounce from 'react-use/lib/useDebounce';
 import { DEFAULT_DASHBOARD_NAVIGATION_OPTIONS } from '@kbn/dashboard-navigation-options-common';
 import { DashboardNavigationOptionsEditor } from '@kbn/dashboard-navigation-options-components';

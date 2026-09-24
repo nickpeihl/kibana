@@ -9,7 +9,7 @@
 
 import { AS_CODE_DATA_VIEW_REFERENCE_TYPE } from '@kbn/as-code-data-views-schema';
 import type { DiscoverSessionApiClassicTabBase } from '@kbn/as-code-discover-schema';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import { getSearchEmbeddableTransforms } from './search_embeddable_transforms';
 import type {
   DiscoverSessionEmbeddableByReferenceState,

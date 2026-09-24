@@ -9,7 +9,7 @@
 
 import type { SerializedTimeRange, SerializedTitles } from '@kbn/presentation-publishing';
 import type { VisParams } from '@kbn/visualizations-common';
-import type { SerializedDrilldowns } from '@kbn/embeddable-plugin/server';
+import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 import type { SerializedVis } from '../types';
 
 export type VisualizeEmbeddableBaseState = SerializedTitles &

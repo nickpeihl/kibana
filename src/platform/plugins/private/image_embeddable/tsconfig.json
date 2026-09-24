@@ -7,6 +7,7 @@
   "kbn_references": [
     "@kbn/core",
     "@kbn/embeddable-plugin",
+    "@kbn/embeddable-drilldowns",
     "@kbn/files-plugin",
     "@kbn/security-plugin",
     "@kbn/shared-ux-file-context",

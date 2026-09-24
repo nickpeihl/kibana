@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 import type { Reference } from '@kbn/content-management-utils';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import { convertCamelCasedKeysToSnakeCase, transformTitlesOut } from '@kbn/presentation-publishing';
 import { flow } from 'lodash';
 import type { ImageEmbeddableState } from '../server';

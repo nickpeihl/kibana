@@ -9,7 +9,7 @@
 
 import type { SavedObjectReference } from '@kbn/core/server';
 import { extractReferences, parseSearchSourceJSON } from '@kbn/data-plugin/common';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import { SavedSearchType } from '@kbn/saved-search-plugin/common';
 import { SAVED_SEARCH_SAVED_OBJECT_REF_NAME } from './constants';
 import { isSearchEmbeddableByValueState, isSearchEmbeddableLegacyPanelState } from './type_guards';

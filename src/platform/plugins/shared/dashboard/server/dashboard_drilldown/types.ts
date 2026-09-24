@@ -8,7 +8,7 @@
  */
 
 import type { z } from '@kbn/zod';
-import type { DrilldownState } from '@kbn/embeddable-plugin/server';
+import type { DrilldownState } from '@kbn/embeddable-drilldowns';
 import type { dashboardDrilldownSchema } from './schemas';
 
 export type DashboardDrilldownState = DrilldownState & z.output<typeof dashboardDrilldownSchema>;

@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import { createEmbeddableSetupMock } from '@kbn/embeddable-plugin/server/mocks';
 import { registerTimeSliderControlTransforms } from './time_slider_control_transforms';
 

@@ -7,4 +7,12 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export type { SerializedAction, SerializedEvent, DynamicActionsState } from '@kbn/embeddable-drilldowns';
+import type { HasDrilldowns } from './drilldown_definition';
+
+export const apiHasDrilldowns = (api: unknown): api is HasDrilldowns => {
+  return Boolean(
+    api &&
+      typeof (api as HasDrilldowns).setDrilldowns === 'function' &&
+      (api as HasDrilldowns).drilldowns$
+  );
+};

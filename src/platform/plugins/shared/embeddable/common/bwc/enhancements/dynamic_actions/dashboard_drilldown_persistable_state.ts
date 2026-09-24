@@ -9,11 +9,9 @@
 
 import type { Reference } from '@kbn/content-management-utils';
 import type { SerializedAction, SerializedEvent } from './types';
+import { generateRefName, EMBEDDABLE_TO_DASHBOARD_DRILLDOWN } from '@kbn/embeddable-drilldowns';
 
-export const EMBEDDABLE_TO_DASHBOARD_DRILLDOWN = 'DASHBOARD_TO_DASHBOARD_DRILLDOWN';
-
-export const generateRefName = (eventId: string) =>
-  `drilldown:${EMBEDDABLE_TO_DASHBOARD_DRILLDOWN}:${eventId}:dashboardId`;
+export { generateRefName, EMBEDDABLE_TO_DASHBOARD_DRILLDOWN };
 
 export const dashboardDrilldownPersistableState = {
   extract: (state: SerializedEvent) => {

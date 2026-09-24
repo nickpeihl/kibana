@@ -26,7 +26,7 @@ import { i18n } from '@kbn/i18n';
 import { once } from 'lodash';
 import { DISCOVER_ESQL_LOCATOR } from '@kbn/deeplinks-analytics';
 import { ADD_PANEL_TRIGGER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
-import type { DrilldownTransforms } from '@kbn/embeddable-plugin/common';
+import type { DrilldownTransforms } from '@kbn/embeddable-drilldowns';
 import { ProjectRoutingAccess } from '@kbn/cps-utils';
 import type { DiscoverSessionAttributes } from '@kbn/saved-search-plugin/server';
 import type { TimeRange } from '@kbn/es-query';

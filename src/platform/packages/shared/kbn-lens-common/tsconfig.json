@@ -29,6 +29,7 @@
     "@kbn/esql-types",
     "@kbn/inspector-plugin",
     "@kbn/embeddable-plugin",
+    "@kbn/embeddable-drilldowns",
     "@kbn/interpreter",
     "@kbn/data-plugin",
     "@kbn/share-plugin",
