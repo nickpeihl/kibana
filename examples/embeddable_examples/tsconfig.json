@@ -13,6 +13,7 @@
   ],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/core",
     "@kbn/ui-actions-plugin",
     "@kbn/dashboard-plugin",

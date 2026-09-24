@@ -11,7 +11,7 @@ import { FilterManager } from '@kbn/data-plugin/public';
 import { FilterStateStore } from '@kbn/es-query';
 import { coreMock } from '@kbn/core/public/mocks';
 import { triggers } from '@kbn/ui-actions-plugin/public';
-import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-browser';
 import type { UpdateFilterReferencesActionContext } from './update_filter_references_action';
 import { createUpdateFilterReferencesAction } from './update_filter_references_action';
 import { mockFilter } from '../mocks/get_stub_filter';

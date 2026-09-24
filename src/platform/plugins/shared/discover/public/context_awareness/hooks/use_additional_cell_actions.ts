@@ -10,7 +10,7 @@
 import { createCellActionFactory } from '@kbn/cell-actions/actions';
 import { useEffect, useMemo, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { DISCOVER_CELL_ACTIONS_TRIGGER_ID } from '@kbn/ui-actions-browser';
 import {
   type AdditionalCellAction,
   type AdditionalCellActionContext,

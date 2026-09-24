@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { ON_OPEN_PANEL_MENU, PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU, PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-browser';
 import type { UiActionsSetup } from '@kbn/ui-actions-plugin/public';
 import { ACTION_EDIT_PANEL } from './edit_panel_action/constants';
 import { ACTION_INSPECT_PANEL } from './inspect_panel_action/constants';

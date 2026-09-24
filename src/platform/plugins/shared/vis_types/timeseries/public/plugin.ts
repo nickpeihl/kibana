@@ -22,7 +22,7 @@ import type { IStorageWrapper } from '@kbn/kibana-utils-plugin/public';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
 import type { EmbeddableStart } from '@kbn/embeddable-plugin/public';
 import type { KqlPluginStart } from '@kbn/kql/public';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import type { VisTypeTimeseriesPublicConfig } from '../server/config';
 
 import { EditorController, TSVB_EDITOR_NAME } from './application/editor_controller';

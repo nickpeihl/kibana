@@ -10,7 +10,7 @@ import {
   ADD_PANEL_TRIGGER,
   CATEGORIZE_FIELD_TRIGGER,
   ON_OPEN_PANEL_MENU,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { AiopsCoreSetup } from '../types';
 
 export function registerAiopsUiActions(

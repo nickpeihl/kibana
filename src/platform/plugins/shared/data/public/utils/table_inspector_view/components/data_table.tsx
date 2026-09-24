@@ -28,7 +28,7 @@ import {
   withEuiTablePersist,
   type EuiTablePersistInjectedProps,
 } from '@kbn/shared-ux-table-persist/src';
-import { ON_CLICK_VALUE } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_CLICK_VALUE } from '@kbn/ui-actions-browser';
 import type { DataViewRow, DataViewColumn } from '../types';
 
 const PAGE_SIZE_OPTIONS = [10, 20, 50];

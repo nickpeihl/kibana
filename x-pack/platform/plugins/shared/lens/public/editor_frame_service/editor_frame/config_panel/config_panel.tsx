@@ -13,7 +13,7 @@ import { UPDATE_FILTER_REFERENCES_ACTION } from '@kbn/unified-search-plugin/publ
 import type { DragDropIdentifier, DropType } from '@kbn/dom-drag-drop';
 import { css } from '@emotion/react';
 import type { AddLayerFunction, DragDropOperation, Visualization } from '@kbn/lens-common';
-import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-browser';
 import { DRAG_DROP_EXTRA_TARGETS_WIDTH, DRAG_DROP_EXTRA_TARGETS_PADDING } from '@kbn/lens-common';
 import {
   changeIndexPattern,

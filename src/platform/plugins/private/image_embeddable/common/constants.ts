@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { ON_CLICK_IMAGE, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_CLICK_IMAGE, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 
 export const IMAGE_EMBEDDABLE_TYPE = 'image';
 export const ADD_IMAGE_EMBEDDABLE_ACTION_ID = 'create_image_embeddable';

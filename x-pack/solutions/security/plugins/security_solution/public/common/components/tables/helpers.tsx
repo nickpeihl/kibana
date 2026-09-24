@@ -20,7 +20,7 @@ import {
   useEuiFontSize,
   useEuiTheme,
 } from '@elastic/eui';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { CellActionsMode, SecurityCellActions } from '../cell_actions';
 import { escapeDataProviderId } from '../drag_and_drop/helpers';
 import { defaultToEmptyTag, getEmptyTagValue } from '../empty_value';

@@ -9,6 +9,7 @@
     "server/**/*",
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/esql-editor",
     "@kbn/kibana-react-plugin",
     "@kbn/core",

@@ -8,7 +8,7 @@
  */
 
 import type { DataPublicPluginStart } from '@kbn/data-plugin/public';
-import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
 import { ACTION_EDIT_IN_LENS } from './constants';
 import type { TypesStart } from '../vis_types/types_service';

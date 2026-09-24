@@ -32,7 +32,7 @@ import {
   ON_CLICK_VALUE,
   ON_OPEN_PANEL_MENU,
   ON_SELECT_RANGE,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { APP_ID, getEditPath } from '../../../common/constants';
 import type { LensEmbeddableStartServices } from '../types';
 import {

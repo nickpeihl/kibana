@@ -23,7 +23,7 @@ import { useExpandableFlyoutApi } from '@kbn/expandable-flyout';
 import {
   SECURITY_CELL_ACTIONS_DEFAULT,
   SECURITY_CELL_ACTIONS_DETAILS_FLYOUT,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { createCellActionRenderer } from '../../../../../flyout_v2/shared/components/cell_actions';
 import { useFlyoutApi } from '../../../../../flyout_v2/use_flyout_api';
 import { JEST_ENVIRONMENT } from '../../../../../../common/constants';

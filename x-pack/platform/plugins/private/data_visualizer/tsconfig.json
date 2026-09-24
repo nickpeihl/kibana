@@ -13,6 +13,7 @@
     "test/scout/**/*"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/aiops-components",
     "@kbn/charts-plugin",
     "@kbn/cloud-plugin",

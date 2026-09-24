@@ -21,7 +21,7 @@ import useObservable from 'react-use/lib/useObservable';
 import type { TimeRange } from '@kbn/es-query';
 import { ML_APP_LOCATOR } from '@kbn/ml-common-types/locator_app_locator';
 import type { MlLocatorParams } from '@kbn/ml-common-types/locator';
-import { EXPLORER_ENTITY_FIELD_SELECTION_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { EXPLORER_ENTITY_FIELD_SELECTION_TRIGGER } from '@kbn/ui-actions-browser';
 import type { SeverityThreshold } from '@kbn/ml-server-schemas/embeddables/anomaly_charts';
 import type {
   AnomalyChartsEmbeddableServices,

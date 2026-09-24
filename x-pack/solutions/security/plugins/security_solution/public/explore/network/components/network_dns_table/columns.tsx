@@ -8,7 +8,7 @@
 import numeral from '@elastic/numeral';
 import React from 'react';
 
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { SecurityCellActions, CellActionsMode } from '../../../../common/components/cell_actions';
 import type { NetworkDnsItem } from '../../../../../common/search_strategy';
 import { NetworkDnsFields } from '../../../../../common/search_strategy';

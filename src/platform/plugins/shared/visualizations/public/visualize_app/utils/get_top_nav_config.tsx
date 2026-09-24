@@ -34,7 +34,7 @@ import { VisualizeConstants, VISUALIZE_EMBEDDABLE_TYPE } from '@kbn/visualizatio
 import {
   AGG_BASED_VISUALIZATION_TRIGGER,
   VISUALIZE_EDITOR_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { saveVisualization } from '../../utils/saved_visualize_utils';
 import { getFullPath } from '../..';
 

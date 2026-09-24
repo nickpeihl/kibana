@@ -28,7 +28,7 @@ import type { ProfilingLocators } from '@kbn/observability-shared-plugin/public'
 import { getLogsLocatorFromUrlService } from '@kbn/logs-shared-plugin/common';
 import { uptimeOverviewLocatorID } from '@kbn/observability-plugin/common';
 import { DISCOVER_APP_LOCATOR } from '@kbn/deeplinks-analytics';
-import { O11Y_APM_TRANSACTION_CONTEXT_MENU_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { O11Y_APM_TRANSACTION_CONTEXT_MENU_TRIGGER } from '@kbn/ui-actions-browser';
 import { useAnyOfApmParams } from '../../../hooks/use_apm_params';
 import { ApmFeatureFlagName } from '../../../../common/apm_feature_flags';
 import type { Transaction } from '../../../../typings/es_schemas/ui/transaction';

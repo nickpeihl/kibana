@@ -15,8 +15,5 @@
     "requiredBundles": [
       "kibanaUtils"
     ],
-    "extraPublicDirs": [
-      "common/trigger_ids"
-    ]
   },
 }

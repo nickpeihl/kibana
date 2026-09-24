@@ -8,7 +8,7 @@
 import type { Filter } from '@kbn/es-query';
 import type { ActionExecutionContext } from '@kbn/ui-actions-plugin/public';
 import { ACTION_GLOBAL_APPLY_FILTER } from '@kbn/unified-search-plugin/public';
-import { ON_APPLY_FILTER, ON_CLICK_VALUE } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER, ON_CLICK_VALUE } from '@kbn/ui-actions-browser';
 import type { RawValue } from '../../common/constants';
 import type { MapApi } from './types';
 import { getUiActions } from '../kibana_services';

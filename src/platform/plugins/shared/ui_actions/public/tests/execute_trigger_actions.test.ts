@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { ON_OPEN_PANEL_MENU } from '../../common/trigger_ids';
+import { ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import type { ActionDefinition } from '../actions';
 import { openContextMenu } from '../context_menu';
 import { uiActionsPluginMock } from '../mocks';

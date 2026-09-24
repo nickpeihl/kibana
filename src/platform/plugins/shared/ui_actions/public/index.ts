@@ -25,7 +25,7 @@ export type {
   Presentable as UiActionsPresentable,
   PresentableGroup as UiActionsPresentableGroup,
   PresentableGrouping as UiActionsPresentableGrouping,
-} from '@kbn/ui-actions-browser/src/types';
+} from '@kbn/ui-actions-browser';
 export type { Trigger, RowClickContext, VisualizeFieldContext } from './types';
 export {
   ACTION_VISUALIZE_FIELD,

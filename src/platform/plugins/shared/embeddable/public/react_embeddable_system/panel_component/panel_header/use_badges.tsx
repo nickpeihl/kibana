@@ -11,7 +11,7 @@ import { EuiBadge, EuiToolTip } from '@elastic/eui';
 import React, { useEffect, useMemo, useState } from 'react';
 import { Subscription, switchMap } from 'rxjs';
 
-import { PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-browser';
 import type { Action } from '@kbn/ui-actions-plugin/public';
 import { triggers } from '@kbn/ui-actions-plugin/public';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';

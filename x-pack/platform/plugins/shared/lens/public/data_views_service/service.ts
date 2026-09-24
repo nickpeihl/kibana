@@ -11,7 +11,7 @@ import { i18n } from '@kbn/i18n';
 import type { ActionExecutionContext, UiActionsStart } from '@kbn/ui-actions-plugin/public';
 import { UPDATE_FILTER_REFERENCES_ACTION } from '@kbn/unified-search-plugin/public';
 import type { IndexPattern, IndexPatternMap, DataViewsState } from '@kbn/lens-common';
-import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-browser';
 import { ensureIndexPattern, loadIndexPatterns } from './loader';
 import { generateId } from '../id_generator';
 

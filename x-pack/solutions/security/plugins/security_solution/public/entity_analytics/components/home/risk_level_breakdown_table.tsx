@@ -9,7 +9,7 @@ import React, { useCallback, useMemo } from 'react';
 import type { EuiBasicTableColumn } from '@elastic/eui';
 import { EuiInMemoryTable, EuiText, useEuiTheme } from '@elastic/eui';
 import { FormattedMessage } from '@kbn/i18n-react';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import type { DataView } from '@kbn/data-views-plugin/public';
 import { CellActions } from '@kbn/cell-actions';
 import { CellActionsMode } from '@kbn/cell-actions/constants';

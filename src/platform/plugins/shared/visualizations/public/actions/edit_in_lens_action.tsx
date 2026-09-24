@@ -27,7 +27,7 @@ import {
 import type { Action } from '@kbn/ui-actions-plugin/public';
 import React from 'react';
 import { take } from 'rxjs';
-import { DASHBOARD_VISUALIZATION_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { DASHBOARD_VISUALIZATION_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import {
   apiHasVisualizeConfig,
   type HasVisualizeConfig,

@@ -5,6 +5,7 @@
   },
   "include": ["__mocks__/**/*", "common/**/*", "public/**/*", "server/**/*"],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/config-schema",
     "@kbn/core",
     "@kbn/core-elasticsearch-server",

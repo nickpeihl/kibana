@@ -8,7 +8,7 @@
  */
 
 import { useEffect, useState } from 'react';
-import { FEATURED_ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { FEATURED_ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import { uiActionsService } from '../../../services/kibana_services';
 import type { DashboardApi } from '../../../dashboard_api/types';
 import type { MenuItem } from './types';

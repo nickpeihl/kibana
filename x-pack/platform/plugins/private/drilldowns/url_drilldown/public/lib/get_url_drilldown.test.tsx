@@ -7,7 +7,7 @@
 
 import React from 'react';
 import { render, waitFor } from '@testing-library/react';
-import { ON_CLICK_ROW } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_CLICK_ROW } from '@kbn/ui-actions-browser';
 import { getUrlDrilldown } from './get_url_drilldown';
 import { rowClickData } from './test/data';
 

@@ -23,8 +23,8 @@ import {
   isRowClickTriggerContext,
 } from '@kbn/embeddable-plugin/public';
 import type { RowClickContext } from '@kbn/ui-actions-plugin/public';
-import { ON_CLICK_ROW } from '@kbn/ui-actions-plugin/common/trigger_ids';
-import { ON_CLICK_VALUE, ON_SELECT_RANGE } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_CLICK_ROW } from '@kbn/ui-actions-browser';
+import { ON_CLICK_VALUE, ON_SELECT_RANGE } from '@kbn/ui-actions-browser';
 import type { UrlTemplateEditorVariable } from '../components/url_template_editor';
 import type { Primitive } from './util';
 import { deleteUndefinedKeys, toPrimitiveOrUndefined } from './util';

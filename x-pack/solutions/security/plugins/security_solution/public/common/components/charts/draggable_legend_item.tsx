@@ -10,7 +10,7 @@ import numeral from '@elastic/numeral';
 import React, { useMemo } from 'react';
 import styled from '@emotion/styled';
 
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { DEFAULT_NUMBER_FORMAT } from '../../../../common/constants';
 import { CellActionsRenderer } from '../cell_actions/cell_actions_renderer';
 import { useUiSetting$ } from '../../lib/kibana';

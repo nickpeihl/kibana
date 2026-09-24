@@ -18,7 +18,7 @@ import type { KqlPluginSetup, KqlPluginStart } from '@kbn/kql/public';
 import type { Plugin as ExpressionsPublicPlugin } from '@kbn/expressions-plugin/public';
 import type { VisualizationsSetup, VisualizationsStart } from '@kbn/visualizations-plugin/public';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
-import { PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-browser';
 import { createInputControlVisFn } from './input_control_fn';
 import { getInputControlVisRenderer } from './input_control_vis_renderer';
 import { createInputControlVisTypeDefinition } from './input_control_vis_type';

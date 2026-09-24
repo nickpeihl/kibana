@@ -12,10 +12,7 @@ import { type UiActionsStart } from '@kbn/ui-actions-plugin/public';
 import type { AggregateQuery } from '@kbn/es-query';
 import type { DataViewField, DataView } from '@kbn/data-views-plugin/public';
 import { KBN_FIELD_TYPES } from '@kbn/field-types';
-import {
-  VISUALIZE_GEO_FIELD_TRIGGER,
-  VISUALIZE_FIELD_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { VISUALIZE_GEO_FIELD_TRIGGER, VISUALIZE_FIELD_TRIGGER } from '@kbn/ui-actions-browser';
 import { triggers } from '@kbn/ui-actions-plugin/public';
 
 export function getTriggerConstant(type: string) {

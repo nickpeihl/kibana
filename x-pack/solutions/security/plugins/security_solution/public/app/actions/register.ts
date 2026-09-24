@@ -14,7 +14,7 @@ import {
   SECURITY_CELL_ACTIONS_CASE_EVENTS,
   SECURITY_CELL_ACTIONS_DEFAULT,
   SECURITY_CELL_ACTIONS_DETAILS_FLYOUT,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { SecurityAppStore } from '../../common/store/types';
 import type { StartServices } from '../../types';
 import {

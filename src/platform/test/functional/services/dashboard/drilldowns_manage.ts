@@ -13,7 +13,7 @@ import type {
   ON_CLICK_VALUE,
   ON_OPEN_PANEL_MENU,
   ON_SELECT_RANGE,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import type { FtrProviderContext } from '../../ftr_provider_context';
 
 const CREATE_DRILLDOWN_FLYOUT_DATA_TEST_SUBJ = 'createDrilldownFlyout';

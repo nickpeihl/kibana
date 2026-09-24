@@ -16,6 +16,7 @@
     "test/scout_search_sessions/**/*"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/scout",
     "@kbn/core-http-common",
     "@kbn/core",

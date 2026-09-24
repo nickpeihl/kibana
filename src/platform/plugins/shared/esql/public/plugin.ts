@@ -28,7 +28,7 @@ import type { FileUploadPluginStart } from '@kbn/file-upload-plugin/public';
 import {
   ESQL_CONTROL_TRIGGER,
   UPDATE_ESQL_QUERY_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import { ACTION_CREATE_ESQL_CONTROL, ACTION_UPDATE_ESQL_QUERY } from './triggers/constants';
 import { setKibanaServices } from './kibana_services';
 import { EsqlVariablesService } from './variables_service';

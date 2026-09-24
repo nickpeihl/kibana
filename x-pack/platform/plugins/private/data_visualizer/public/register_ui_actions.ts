@@ -9,7 +9,7 @@ import type { CoreStart } from '@kbn/core/public';
 import { OPEN_FILE_UPLOAD_LITE_ACTION } from '@kbn/file-upload-common';
 import type { FileUploadStartDependencies } from '@kbn/file-upload';
 import { createOpenFileUploadLiteAction } from '@kbn/file-upload/src/file_upload_component/new/file_upload_lite_action';
-import { OPEN_FILE_UPLOAD_LITE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { OPEN_FILE_UPLOAD_LITE_TRIGGER } from '@kbn/ui-actions-browser';
 import type { DataVisualizerStartDependencies } from './application/common/types/data_visualizer_plugin';
 
 export function registerUiActions(coreStart: CoreStart, plugins: DataVisualizerStartDependencies) {

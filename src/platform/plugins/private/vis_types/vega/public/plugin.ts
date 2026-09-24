@@ -25,7 +25,7 @@ import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
 import {
   ADD_CANVAS_ELEMENT_TRIGGER,
   ADD_PANEL_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
 import {
   setNotifications,
   setData,

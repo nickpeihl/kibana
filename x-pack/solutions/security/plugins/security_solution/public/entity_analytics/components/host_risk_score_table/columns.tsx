@@ -7,7 +7,7 @@
 
 import React, { type SyntheticEvent } from 'react';
 import { EuiLink, EuiText, EuiToolTip } from '@elastic/eui';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { SecurityCellActions, CellActionsMode } from '../../../common/components/cell_actions';
 import { getEmptyTagValue } from '../../../common/components/empty_value';
 import { HostDetailsLink } from '../../../common/components/links';

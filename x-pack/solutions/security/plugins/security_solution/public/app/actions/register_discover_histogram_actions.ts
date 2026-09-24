@@ -8,7 +8,7 @@
 import { createFilterAction } from '@kbn/unified-search-plugin/public';
 import type { History } from 'history';
 import type { CoreSetup } from '@kbn/core/public';
-import { SECURITY_ESQL_IN_TIMELINE_HISTOGRAM_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_ESQL_IN_TIMELINE_HISTOGRAM_TRIGGER } from '@kbn/ui-actions-browser';
 import type { SecurityAppStore } from '../../common/store';
 import type { StartServices } from '../../types';
 import { EsqlInTimelineAction } from './constants';

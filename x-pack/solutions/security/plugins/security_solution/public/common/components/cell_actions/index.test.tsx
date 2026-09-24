@@ -9,7 +9,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { CellActionsMode, SecurityCellActions } from '.';
 import { CellActions } from '@kbn/cell-actions';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 
 jest.mock('../../../data_view_manager/hooks/use_data_view', () => ({
   useDataView: jest.fn(() => ({

@@ -17,7 +17,7 @@ import type { DashboardStart } from '@kbn/dashboard-plugin/public';
 import type { EmbeddableSetup, EmbeddableStart } from '@kbn/embeddable-plugin/public';
 import { i18n } from '@kbn/i18n';
 import type { SavedObjectTaggingOssPluginStart } from '@kbn/saved-objects-tagging-oss-plugin/public';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import type { UiActionsPublicSetup } from '@kbn/ui-actions-plugin/public/plugin';
 import type { UsageCollectionStart } from '@kbn/usage-collection-plugin/public';
 import type { VisualizationClient, VisualizationsSetup } from '@kbn/visualizations-plugin/public';

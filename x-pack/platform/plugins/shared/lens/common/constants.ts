@@ -8,7 +8,7 @@
 import rison from '@kbn/rison';
 import { type RefreshInterval, type TimeRange } from '@kbn/data-plugin/common';
 import type { Filter } from '@kbn/es-query';
-import { ON_APPLY_FILTER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
 import type { RouteAccess } from '@kbn/core-http-server';
 
 export * from './paths';

@@ -13,7 +13,7 @@ import type { PublishingSubject } from '@kbn/presentation-publishing';
 import { useBatchedPublishingSubjects } from '@kbn/presentation-publishing';
 
 import { BehaviorSubject } from 'rxjs';
-import { ON_CLICK_IMAGE } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_CLICK_IMAGE } from '@kbn/ui-actions-browser';
 import type { ImageEmbeddableApi } from '../types';
 import type { FileImageMetadata, FilesClient } from '../imports';
 import { imageEmbeddableFileKind } from '../imports';

@@ -18,6 +18,7 @@
     , "../../../x-pack/platform/test/serverless/functional/test_suites/saved_objects_management/export_transform copy.ts"  ],
   "exclude": ["target/**/*", "*/plugins/**/*", "plugins/**/*"],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/core",
     "@kbn/app-header",
     "@kbn/content-list-common",

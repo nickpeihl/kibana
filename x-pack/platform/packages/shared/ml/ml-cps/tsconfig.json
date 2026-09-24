@@ -12,6 +12,7 @@
     "target/**/*"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/cps-utils",
     "@kbn/es-query",
     "@kbn/i18n",

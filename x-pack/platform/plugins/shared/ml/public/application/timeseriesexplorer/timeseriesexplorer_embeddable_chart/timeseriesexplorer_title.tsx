@@ -19,7 +19,7 @@ import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n-react';
 import { type MlEntityFieldOperation, ML_ENTITY_FIELD_OPERATIONS } from '@kbn/ml-anomaly-utils';
 
-import { SINGLE_METRIC_VIEWER_ENTITY_FIELD_SELECTION_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SINGLE_METRIC_VIEWER_ENTITY_FIELD_SELECTION_TRIGGER } from '@kbn/ui-actions-browser';
 import { useMlKibana } from '../../contexts/kibana';
 import type { MlEntity, SingleMetricViewerEmbeddableApi } from '../../../embeddables/types';
 import { TimeSeriesExplorerHelpPopover } from '../timeseriesexplorer_help_popover';

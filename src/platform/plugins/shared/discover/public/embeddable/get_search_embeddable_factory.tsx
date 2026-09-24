@@ -31,7 +31,7 @@ import useObservable from 'react-use/lib/useObservable';
 import type { DocViewFilterFn } from '@kbn/unified-doc-viewer/types';
 import type { DataTableRecord } from '@kbn/discover-utils/types';
 import type { DocViewerApi } from '@kbn/unified-doc-viewer';
-import { ON_APPLY_FILTER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER, ON_OPEN_PANEL_MENU } from '@kbn/ui-actions-browser';
 import { PresentationPanelError } from '@kbn/embeddable-plugin/public';
 import { getDiscoverSessionEmbeddableComparators } from './utils/get_search_embeddable_comparators';
 import type { DiscoverServices } from '../build_services';

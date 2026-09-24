@@ -14,8 +14,8 @@ import {
   EXPLORER_ENTITY_FIELD_SELECTION_TRIGGER,
   SINGLE_METRIC_VIEWER_ENTITY_FIELD_SELECTION_TRIGGER,
   SWIM_LANE_SELECTION_TRIGGER,
-} from '@kbn/ui-actions-plugin/common/trigger_ids';
-import { UPDATE_AD_JOBS_PROJECT_ROUTING_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+} from '@kbn/ui-actions-browser';
+import { UPDATE_AD_JOBS_PROJECT_ROUTING_TRIGGER } from '@kbn/ui-actions-browser';
 import type { MlPluginStart, MlStartDependencies } from '../plugin';
 import { CONTROLLED_BY_SINGLE_METRIC_VIEWER_FILTER } from './constants';
 /**

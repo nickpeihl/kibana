@@ -31,7 +31,7 @@ import { i18n } from '@kbn/i18n';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
 import type { Action, UiActionsStart } from '@kbn/ui-actions-plugin/public';
 
-import { CONTROL_MENU_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { CONTROL_MENU_TRIGGER } from '@kbn/ui-actions-browser';
 import type {
   ControlGroupRuntimeState,
   ControlPanelState,

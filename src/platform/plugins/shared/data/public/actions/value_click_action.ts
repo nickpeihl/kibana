@@ -11,7 +11,7 @@ import type { Filter, AggregateQuery } from '@kbn/es-query';
 import { isOfAggregateQueryType } from '@kbn/es-query';
 import type { Datatable } from '@kbn/expressions-plugin/public';
 import type { UiActionsActionDefinition, UiActionsStart } from '@kbn/ui-actions-plugin/public';
-import { ON_APPLY_FILTER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
 
 export type ValueClickActionContext = ValueClickContext;
 export const ACTION_VALUE_CLICK = 'ACTION_VALUE_CLICK';

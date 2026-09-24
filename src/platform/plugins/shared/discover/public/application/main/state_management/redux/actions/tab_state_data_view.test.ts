@@ -24,7 +24,7 @@ import { getPersistedTabMock, getTabStateMock } from '../__mocks__/internal_stat
 import * as tabStateActions from './tab_state';
 import { selectDataSourceProfileId } from '../runtime_state';
 import type { Action } from '@kbn/ui-actions-plugin/public';
-import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { UPDATE_FILTER_REFERENCES_TRIGGER } from '@kbn/ui-actions-browser';
 import { UPDATE_FILTER_REFERENCES_ACTION } from '@kbn/unified-search-plugin/public';
 
 const setup = async ({ dataView = dataViewMockWithTimeField }: { dataView?: DataView } = {}) => {

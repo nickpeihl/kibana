@@ -10,7 +10,7 @@ import { FormattedMessage } from '@kbn/i18n-react';
 import { EuiButton, EuiButtonEmpty } from '@elastic/eui';
 import type { FileUploadResults } from '@kbn/file-upload-common';
 import { i18n } from '@kbn/i18n';
-import { OPEN_FILE_UPLOAD_LITE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { OPEN_FILE_UPLOAD_LITE_TRIGGER } from '@kbn/ui-actions-browser';
 import { useKibana } from '../hooks/use_kibana';
 import { useSourceIndicesFields } from '../hooks/use_source_indices_field';
 

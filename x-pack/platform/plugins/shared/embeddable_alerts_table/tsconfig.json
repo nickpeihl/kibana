@@ -14,6 +14,7 @@
   ],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/i18n",
     "@kbn/core",
     "@kbn/scout",

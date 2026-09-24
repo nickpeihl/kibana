@@ -21,7 +21,7 @@ import {
 import React, { useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { TableId } from '@kbn/securitysolution-data-table';
-import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_CELL_ACTIONS_DEFAULT } from '@kbn/ui-actions-browser';
 import { ProgressBarRow } from './alerts_progress_bar_row';
 import type { AlertsProgressBarData, GroupBySelection } from './types';
 import type { AddFilterProps } from '../common/types';

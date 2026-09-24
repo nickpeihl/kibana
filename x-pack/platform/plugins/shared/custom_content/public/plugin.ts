@@ -10,7 +10,7 @@ import type { EmbeddableSetup } from '@kbn/embeddable-plugin/public';
 import type { DataPublicPluginStart } from '@kbn/data-plugin/public';
 import type { AgentBuilderPluginStart } from '@kbn/agent-builder-browser';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
 import { CUSTOM_CONTENT_EMBEDDABLE_TYPE } from '@kbn/custom-content-common';
 import { CUSTOM_CONTENT_CONTEXT_ATTACHMENT_TYPE } from '../common/panel_context_attachment';

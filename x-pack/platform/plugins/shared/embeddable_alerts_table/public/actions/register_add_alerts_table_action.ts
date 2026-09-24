@@ -8,7 +8,7 @@
 import type { CoreStart } from '@kbn/core/public';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
 import type { UiActionsStart } from '@kbn/ui-actions-plugin/public';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import { ADD_ALERTS_TABLE_ACTION_ID } from '../constants';
 
 export interface AddAlertsTableActionDeps {

@@ -47,7 +47,7 @@ import { FilterStateStore } from '@kbn/es-query';
 import { ENABLE_ESQL, getESQLAdHocDataview } from '@kbn/esql-utils';
 import { ACTION_GLOBAL_APPLY_FILTER } from '@kbn/unified-search-plugin/public';
 import { FormattedMessage } from '@kbn/i18n-react';
-import { ON_APPLY_FILTER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
 import type { FieldStatsTableEmbeddableState } from '@kbn/data-visualizer-server-schemas/embeddables/field_stats';
 import type { DataVisualizerTableState } from '../../../../../common/types';
 import type { DataVisualizerPluginStart } from '../../../../plugin';

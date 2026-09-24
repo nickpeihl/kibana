@@ -5,7 +5,7 @@
  * 2.0.
  */
 import type { CoreSetup } from '@kbn/core/public';
-import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { ADD_PANEL_TRIGGER } from '@kbn/ui-actions-browser';
 import {
   APM_ALERTING_FAILED_TRANSACTIONS_CHART_EMBEDDABLE,
   APM_ALERTING_LATENCY_CHART_EMBEDDABLE,

@@ -34,7 +34,7 @@ import {
 } from '../utils/test_utils';
 import { useKibana } from '../../../../../../common/lib/kibana';
 import { mockPreventDefault } from '../mocks';
-import { SECURITY_ESQL_IN_TIMELINE_HISTOGRAM_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { SECURITY_ESQL_IN_TIMELINE_HISTOGRAM_TRIGGER } from '@kbn/ui-actions-browser';
 
 const mockDataService = dataPluginMock.createStartContract();
 

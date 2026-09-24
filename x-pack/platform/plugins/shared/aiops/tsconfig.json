@@ -12,6 +12,7 @@
     "types/**/*"
   ],
   "kbn_references": [
+    "@kbn/ui-actions-browser",
     "@kbn/aiops-change-point-detection",
     "@kbn/aiops-common",
     "@kbn/aiops-components",

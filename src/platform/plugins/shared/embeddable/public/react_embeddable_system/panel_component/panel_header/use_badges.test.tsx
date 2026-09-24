@@ -9,7 +9,7 @@
 
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
-import { PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
+import { PANEL_BADGE_TRIGGER } from '@kbn/ui-actions-browser';
 import { triggers } from '@kbn/ui-actions-plugin/public';
 import type { Action, ActionMenuItemProps } from '@kbn/ui-actions-plugin/public';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
