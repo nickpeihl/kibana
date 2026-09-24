@@ -7,11 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import type {
-  CellValueContext,
-  ValueClickContext,
-  MultiValueClickContext,
-} from '@kbn/embeddable-plugin/public';
+import type { CellValueContext, ValueClickContext, MultiValueClickContext } from '@kbn/embeddable-actions';
 import type { ChartsPluginSetup, ChartsPluginStart } from '@kbn/charts-plugin/public';
 import type {
   Plugin as ExpressionsPublicPlugin,

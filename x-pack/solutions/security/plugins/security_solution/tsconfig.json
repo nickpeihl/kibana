@@ -27,6 +27,7 @@
     "@kbn/setup-node-env",
     "@kbn/core",
     "@kbn/data-plugin",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/files-plugin",
     "@kbn/home-plugin",

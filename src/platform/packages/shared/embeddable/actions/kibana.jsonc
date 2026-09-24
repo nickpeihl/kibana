@@ -1,0 +1,8 @@
+{
+  "type": "shared-common",
+  "id": "@kbn/embeddable-actions",
+  "owner": ["@elastic/kibana-dashboards"],
+  "group": "platform",
+  "visibility": "shared",
+  "description": "Action IDs, panel groups, and chart context types for embeddable panels"
+}

@@ -25,7 +25,7 @@ import {
 import { css } from '@emotion/react';
 import type { AggregateQuery } from '@kbn/es-query';
 import { getAggregateQueryMode, isOfQueryType } from '@kbn/es-query';
-import { ACTION_EDIT_PANEL } from '@kbn/embeddable-plugin/public';
+import { ACTION_EDIT_PANEL } from '@kbn/embeddable-actions';
 import { FilterItems } from '@kbn/unified-search-plugin/public';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
 import {

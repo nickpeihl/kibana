@@ -11,7 +11,7 @@ import { IncompatibleActionError } from '@kbn/ui-actions-plugin/public';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
 import { apiHasAppContext } from '@kbn/presentation-publishing';
 import { apiIsPresentationContainer } from '@kbn/presentation-publishing';
-import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-plugin/public';
+import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-actions';
 import { ENABLE_ESQL } from '@kbn/esql-utils';
 import type { LensApi } from '@kbn/lens-common-2';
 import { LENS_EMBEDDABLE_TYPE } from '@kbn/lens-common';

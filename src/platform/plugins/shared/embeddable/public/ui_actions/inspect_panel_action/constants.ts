@@ -7,4 +7,4 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export const ACTION_INSPECT_PANEL = 'openInspector';
+export { ACTION_INSPECT_PANEL } from '@kbn/embeddable-actions';

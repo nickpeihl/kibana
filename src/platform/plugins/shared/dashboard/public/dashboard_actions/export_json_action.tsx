@@ -10,7 +10,7 @@
 import React from 'react';
 
 import { buildPath } from '@kbn/core-http-browser';
-import { EXPORT_ACTION_GROUP } from '@kbn/embeddable-plugin/public';
+import { EXPORT_ACTION_GROUP } from '@kbn/embeddable-actions';
 import { i18n } from '@kbn/i18n';
 import type {
   EmbeddableApiContext,

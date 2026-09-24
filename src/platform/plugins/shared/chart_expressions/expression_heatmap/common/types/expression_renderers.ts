@@ -11,11 +11,7 @@ import type { PaletteRegistry } from '@kbn/coloring';
 import type { ChartsPluginSetup, ChartsPluginStart } from '@kbn/charts-plugin/public';
 import type { DatatableUtilitiesService } from '@kbn/data-plugin/common';
 import type { IFieldFormat, SerializedFieldFormat } from '@kbn/field-formats-plugin/common';
-import type {
-  RangeSelectContext,
-  ValueClickContext,
-  MultiValueClickContext,
-} from '@kbn/embeddable-plugin/public';
+import type { RangeSelectContext, ValueClickContext, MultiValueClickContext } from '@kbn/embeddable-actions';
 import type { PersistedState } from '@kbn/visualizations-common';
 import type { IInterpreterRenderHandlers } from '@kbn/expressions-plugin/common';
 import type { CoreSetup } from '@kbn/core/public';

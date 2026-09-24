@@ -12,7 +12,7 @@ import {
   valueToArray,
 } from '@kbn/cell-actions/actions/utils';
 import { hasBlockingError } from '@kbn/presentation-publishing';
-import type { CellValueContext } from '@kbn/embeddable-plugin/public';
+import type { CellValueContext } from '@kbn/embeddable-actions';
 import { createAction } from '@kbn/ui-actions-plugin/public';
 import { ACTION_INCOMPATIBLE_VALUE_WARNING } from '@kbn/cell-actions/src/actions/translations';
 import { i18n } from '@kbn/i18n';

@@ -15,7 +15,7 @@ import type { Action } from '@kbn/ui-actions-plugin/public';
 import { IncompatibleActionError } from '@kbn/ui-actions-plugin/public';
 import type { HasInspectorAdapters } from '@kbn/inspector-plugin/public';
 import { apiHasInspectorAdapters, type Adapters } from '@kbn/inspector-plugin/public';
-import { EXPORT_ACTION_GROUP } from '@kbn/embeddable-plugin/public';
+import { EXPORT_ACTION_GROUP } from '@kbn/embeddable-actions';
 import type { EmbeddableApiContext, PublishesTitle } from '@kbn/presentation-publishing';
 import { getTitle } from '@kbn/presentation-publishing';
 

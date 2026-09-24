@@ -28,6 +28,7 @@
     "@kbn/coloring",
     "@kbn/esql-types",
     "@kbn/inspector-plugin",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/interpreter",
     "@kbn/data-plugin",

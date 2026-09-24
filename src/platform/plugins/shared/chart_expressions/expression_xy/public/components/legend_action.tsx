@@ -14,7 +14,7 @@ import {
   isFilterableColumnSet,
   getFilterDrilldownWarningMessage,
 } from '@kbn/chart-expressions-common';
-import type { CellValueContext } from '@kbn/embeddable-plugin/public';
+import type { CellValueContext } from '@kbn/embeddable-actions';
 import { ESQL_TABLE_TYPE } from '@kbn/data-plugin/common';
 import type { LayerCellValueActions, FilterEvent } from '../types';
 import type { CommonXYDataLayerConfig } from '../../common';

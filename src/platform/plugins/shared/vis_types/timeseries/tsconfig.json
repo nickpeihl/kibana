@@ -33,6 +33,7 @@
     "@kbn/coloring",
     "@kbn/test-jest-helpers",
     "@kbn/safer-lodash-set",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/handlebars",
     "@kbn/rison",

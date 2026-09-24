@@ -23,6 +23,7 @@
     "@kbn/navigation-plugin",
     "@kbn/expressions-plugin",
     "@kbn/visualizations-plugin",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/saved-objects-plugin",
     "@kbn/share-plugin",

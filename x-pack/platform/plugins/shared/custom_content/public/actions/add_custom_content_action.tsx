@@ -6,7 +6,7 @@
  */
 
 import { i18n } from '@kbn/i18n';
-import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-plugin/public';
+import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-actions';
 import {
   apiIsPresentationContainer,
   hasEditCapabilities,

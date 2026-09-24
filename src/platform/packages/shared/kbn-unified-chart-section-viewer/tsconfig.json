@@ -37,6 +37,7 @@
     "@kbn/es-types",
     "@kbn/inspector-plugin",
     "@kbn/esql-language",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/discover-shared-plugin",
     "@kbn/logging",

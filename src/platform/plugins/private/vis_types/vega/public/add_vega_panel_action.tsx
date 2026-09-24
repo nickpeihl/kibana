@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-plugin/public';
+import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-actions';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
 import { apiHasAppContext } from '@kbn/presentation-publishing';
 

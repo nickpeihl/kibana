@@ -13,7 +13,7 @@ import type {
   RangeSelectContext,
   ValueClickContext,
   MultiValueClickContext,
-} from '@kbn/embeddable-plugin/public';
+} from '@kbn/embeddable-actions';
 import { ChartsPlugin } from './plugin';
 
 export const plugin = () => new ChartsPlugin();

@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import type { MultiValueClickContext } from '@kbn/embeddable-plugin/public';
+import type { MultiValueClickContext } from '@kbn/embeddable-actions';
 import type { TimeRange } from '@kbn/es-query';
 import type {
   DatatableColumn,

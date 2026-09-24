@@ -6,6 +6,7 @@
   "include": ["*.ts", "common/**/*", "public/**/*", "server/**/*", "test/scout/**/*"],
   "kbn_references": [
     "@kbn/core",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/presentation-publishing",
     "@kbn/presentation-publishing-schemas",

@@ -17,6 +17,7 @@
     "@kbn/saved-search-plugin",
     "@kbn/data-plugin",
     "@kbn/expressions-plugin",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/inspector-plugin",
     "@kbn/url-forwarding-plugin",

@@ -12,16 +12,8 @@ import {
   isEmbeddableApiContext,
   type PublishesTitle,
 } from '@kbn/presentation-publishing';
-import type {
-  ChartActionContext,
-  RangeSelectContext,
-  ValueClickContext,
-} from '@kbn/embeddable-plugin/public';
-import {
-  isRangeSelectTriggerContext,
-  isValueClickTriggerContext,
-  isRowClickTriggerContext,
-} from '@kbn/embeddable-plugin/public';
+import type { ChartActionContext, RangeSelectContext, ValueClickContext } from '@kbn/embeddable-actions';
+import { isRangeSelectTriggerContext, isValueClickTriggerContext, isRowClickTriggerContext } from '@kbn/embeddable-actions';
 import type { RowClickContext } from '@kbn/ui-actions-plugin/public';
 import { ON_CLICK_ROW } from '@kbn/ui-actions-plugin/common/trigger_ids';
 import { ON_CLICK_VALUE, ON_SELECT_RANGE } from '@kbn/ui-actions-plugin/common/trigger_ids';

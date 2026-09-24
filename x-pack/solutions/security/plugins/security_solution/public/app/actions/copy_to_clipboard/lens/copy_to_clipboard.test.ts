@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import type { CellValueContext } from '@kbn/embeddable-plugin/public';
+import type { CellValueContext } from '@kbn/embeddable-actions';
 import type { LensApi } from '@kbn/lens-plugin/public';
 import { createCopyToClipboardLensAction } from './copy_to_clipboard';
 import { KibanaServices } from '../../../../common/lib/kibana';

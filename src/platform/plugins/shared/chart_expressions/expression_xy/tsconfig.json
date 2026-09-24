@@ -20,6 +20,7 @@
     "@kbn/coloring",
     "@kbn/i18n",
     "@kbn/utility-types",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/i18n-react",
     "@kbn/test-jest-helpers",

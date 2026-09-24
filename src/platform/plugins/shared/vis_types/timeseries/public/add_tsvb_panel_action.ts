@@ -12,7 +12,7 @@ import type { ActionDefinition } from '@kbn/ui-actions-plugin/public/actions';
 import { apiHasAppContext, type EmbeddableApiContext } from '@kbn/presentation-publishing';
 import type { EmbeddableStart } from '@kbn/embeddable-plugin/public';
 
-import { ADD_PANEL_LEGACY_GROUP } from '@kbn/embeddable-plugin/public';
+import { ADD_PANEL_LEGACY_GROUP } from '@kbn/embeddable-actions';
 import { apiIsPresentationContainer } from '@kbn/presentation-publishing';
 import { TSVB_ICON, TSVB_DESCRIPTION, TSVB_TITLE } from './metrics_type';
 

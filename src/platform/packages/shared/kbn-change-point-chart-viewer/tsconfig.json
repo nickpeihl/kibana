@@ -18,6 +18,7 @@
     "@kbn/shared-ux-utility",
     "@kbn/ui-actions-plugin",
     "@kbn/unified-histogram",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/esql-types",
     "@kbn/esql-language",

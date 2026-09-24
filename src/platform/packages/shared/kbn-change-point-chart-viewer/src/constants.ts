@@ -14,7 +14,7 @@ export const CHANGE_POINT_GRID_PAGINATION_DATA_TEST_SUBJ = 'changePointChartView
 export const CHANGE_POINT_TYPE_COLUMN = 'type';
 export const CHANGE_POINT_PVALUE_COLUMN = 'pvalue';
 
+export { ACTION_INSPECT_PANEL } from '@kbn/embeddable-actions';
 export const ACTION_EXPLORE_IN_DISCOVER_TAB = 'ACTION_CHANGE_POINT_CHART_EXPLORE_IN_DISCOVER_TAB';
 export const ACTION_FOCUSED_VIEW = 'ACTION_CHANGE_POINT_CHART_FOCUSED_VIEW';
-export const ACTION_INSPECT_PANEL = 'openInspector';
 export const ADD_TO_EXISTING_CASE_ACTION_ID = 'embeddable_addToExistingCase';

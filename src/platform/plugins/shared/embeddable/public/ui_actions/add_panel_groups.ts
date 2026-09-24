@@ -7,45 +7,9 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { i18n } from '@kbn/i18n';
-
-export const ADD_PANEL_VISUALIZATION_GROUP = {
-  id: 'visualizations',
-  getDisplayName: () =>
-    i18n.translate('embeddableApi.common.constants.grouping.otherVisualizations', {
-      defaultMessage: 'Other visualizations',
-    }),
-  getIconType: () => {
-    return 'chartGauge';
-  },
-  order: 1000,
-};
-
-export const ADD_PANEL_ANNOTATION_GROUP = {
-  id: 'annotation-and-navigation',
-  getDisplayName: () =>
-    i18n.translate('embeddableApi.common.constants.grouping.annotations', {
-      defaultMessage: 'Annotations and Navigation',
-    }),
-  order: 900, // This is the order of the group in the context menu
-};
-
-export const ADD_PANEL_OTHER_GROUP = {
-  id: 'other',
-  getDisplayName: () =>
-    i18n.translate('embeddableApi.common.constants.grouping.other', {
-      defaultMessage: 'Other',
-    }),
-  getIconType: () => 'empty',
-  order: -1, // Given an item that doesn't specify a group is assigned zero, this forces other to come after all intentionally grouped section
-};
-
-export const ADD_PANEL_LEGACY_GROUP = {
-  id: 'legacy',
-  getDisplayName: () =>
-    i18n.translate('embeddableApi.common.constants.grouping.legacy', {
-      defaultMessage: 'Legacy',
-    }),
-  getIconType: () => 'empty',
-  order: -10, // Given an item that doesn't specify a group is assigned zero, this forces other to come after all intentionally grouped section
-};
+export {
+  ADD_PANEL_ANNOTATION_GROUP,
+  ADD_PANEL_LEGACY_GROUP,
+  ADD_PANEL_OTHER_GROUP,
+  ADD_PANEL_VISUALIZATION_GROUP,
+} from '@kbn/embeddable-actions';

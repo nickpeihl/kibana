@@ -7,4 +7,4 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export const ACTION_REMOVE_PANEL = 'deletePanel';
+export { ACTION_REMOVE_PANEL } from '@kbn/embeddable-actions';

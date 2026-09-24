@@ -11,11 +11,8 @@ import React, { useContext } from 'react';
 import '@testing-library/jest-dom';
 import { act, render } from '@testing-library/react';
 import { EuiThemeProvider } from '@elastic/eui';
-import {
-  ACTION_INSPECT_PANEL,
-  EmbeddableRendererContext,
-  type QuickActionIds,
-} from '@kbn/embeddable-plugin/public';
+import { EmbeddableRendererContext, type QuickActionIds } from '@kbn/embeddable-plugin/public';
+import { ACTION_INSPECT_PANEL } from '@kbn/embeddable-actions';
 import { LensWrapper } from './lens_wrapper';
 import type { LensWrapperProps } from './lens_wrapper';
 import { ESQLVariableType } from '@kbn/esql-types';

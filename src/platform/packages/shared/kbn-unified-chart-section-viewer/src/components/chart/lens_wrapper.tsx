@@ -9,7 +9,8 @@
 import React, { useCallback, useMemo } from 'react';
 import { useEuiTheme } from '@elastic/eui';
 import { css } from '@emotion/react';
-import { ACTION_INSPECT_PANEL, EmbeddableRendererContext } from '@kbn/embeddable-plugin/public';
+import { ACTION_INSPECT_PANEL } from '@kbn/embeddable-actions';
+import { EmbeddableRendererContext } from '@kbn/embeddable-plugin/public';
 import type { QuickActionIds } from '@kbn/embeddable-plugin/public';
 import { getRepresentativeQuery, EMPTY_KQL_QUERY } from '@kbn/lens-common';
 import type { LensProps } from './hooks/use_lens_props';

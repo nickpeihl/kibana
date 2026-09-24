@@ -8,11 +8,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import type { SettingsStart } from '@kbn/core-ui-settings-browser';
 import type { IExternalUrl, ThemeServiceStart } from '@kbn/core/public';
-import {
-  type ChartActionContext,
-  type DrilldownDefinition,
-  type DrilldownEditorProps,
-} from '@kbn/embeddable-plugin/public';
+import { type DrilldownDefinition, type DrilldownEditorProps } from '@kbn/embeddable-plugin/public';
+import type { ChartActionContext } from '@kbn/embeddable-actions';
 import { i18n } from '@kbn/i18n';
 import type { EmbeddableApiContext } from '@kbn/presentation-publishing';
 import { getInheritedViewMode } from '@kbn/presentation-publishing';

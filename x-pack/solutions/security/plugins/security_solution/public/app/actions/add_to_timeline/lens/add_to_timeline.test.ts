@@ -5,7 +5,7 @@
  * 2.0.
  */
 import { BehaviorSubject, Subject } from 'rxjs';
-import type { CellValueContext } from '@kbn/embeddable-plugin/public';
+import type { CellValueContext } from '@kbn/embeddable-actions';
 import type { SecurityAppStore } from '../../../../common/store/types';
 import { createAddToTimelineLensAction, getInvestigatedValue } from './add_to_timeline';
 import { KibanaServices } from '../../../../common/lib/kibana';

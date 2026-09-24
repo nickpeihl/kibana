@@ -32,6 +32,7 @@
     "@kbn/saved-objects-plugin",
     "@kbn/kibana-utils-plugin",
     "@kbn/kibana-react-plugin",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/presentation-util-plugin",
     "@kbn/field-formats-plugin",

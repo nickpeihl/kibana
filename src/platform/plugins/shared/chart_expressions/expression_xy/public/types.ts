@@ -12,12 +12,7 @@ import type { DataPublicPluginSetup } from '@kbn/data-plugin/public';
 import type { FieldFormatsSetup } from '@kbn/field-formats-plugin/public';
 import type { ChartsPluginSetup, AnnotationClickTriggerEvent } from '@kbn/charts-plugin/public';
 import type { IFieldFormat, SerializedFieldFormat } from '@kbn/field-formats-plugin/common';
-import type {
-  CellValueContext,
-  RangeSelectContext,
-  ValueClickContext,
-  MultiValueClickContext,
-} from '@kbn/embeddable-plugin/public';
+import type { CellValueContext, RangeSelectContext, ValueClickContext, MultiValueClickContext } from '@kbn/embeddable-actions';
 import type { ExpressionsServiceStart, ExpressionsSetup } from '@kbn/expressions-plugin/public';
 import type { CoreStart } from '@kbn/core/public';
 

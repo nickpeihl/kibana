@@ -44,7 +44,10 @@
       "src/platform/packages/shared/kbn-discover-contextual-components"
     ],
     "savedSearch": "src/platform/plugins/shared/saved_search",
-    "embeddableApi": "src/platform/plugins/shared/embeddable",
+    "embeddableApi": [
+      "src/platform/plugins/shared/embeddable",
+      "src/platform/packages/shared/embeddable/actions"
+    ],
     "embeddableExamples": "examples/embeddable_examples",
     "esQuery": "src/platform/packages/shared/kbn-es-query/src",
     "kbnGridLayout": "src/platform/packages/private/kbn-grid-layout",

@@ -8,7 +8,7 @@
  */
 
 import type { XYChartSeriesIdentifier, GeometryValue } from '@elastic/charts';
-import type { ValueClickContext } from '@kbn/embeddable-plugin/public';
+import type { ValueClickContext } from '@kbn/embeddable-actions';
 import { X_ACCESSOR_INDEX } from '../../visualizations/constants';
 import { BUCKET_TYPES } from '../../../../common/enums';
 import type { TimeseriesVisParams } from '../../../types';

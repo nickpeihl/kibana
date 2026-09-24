@@ -15,6 +15,7 @@
     "@kbn/core",
     "@kbn/i18n",
     "@kbn/dashboard-plugin",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/content-management-utils",
     "@kbn/content-management-plugin",

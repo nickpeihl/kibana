@@ -18,6 +18,7 @@
     "@kbn/i18n",
     "@kbn/coloring",
     "@kbn/data-plugin",
+    "@kbn/embeddable-actions",
     "@kbn/embeddable-plugin",
     "@kbn/kibana-utils-plugin",
     "@kbn/test-jest-helpers",

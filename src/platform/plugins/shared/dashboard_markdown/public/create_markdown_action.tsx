@@ -9,7 +9,7 @@
 
 import { i18n } from '@kbn/i18n';
 import { apiCanAddNewPanel } from '@kbn/presentation-publishing';
-import { ADD_PANEL_ANNOTATION_GROUP } from '@kbn/embeddable-plugin/public';
+import { ADD_PANEL_ANNOTATION_GROUP } from '@kbn/embeddable-actions';
 import { type EmbeddableApiContext } from '@kbn/presentation-publishing';
 import type { ActionDefinition } from '@kbn/ui-actions-plugin/public/actions';
 import { IncompatibleActionError } from '@kbn/ui-actions-plugin/public';

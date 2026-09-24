@@ -16,16 +16,16 @@ export type { DrilldownDefinition, DrilldownEditorProps } from './drilldowns/typ
 export { getAddFromLibraryType, useAddFromLibraryTypes } from './add_from_library/registry';
 export { PanelNotFoundError, PanelIncompatibleError } from './react_embeddable_system';
 export { EmbeddableStateTransfer } from './state_transfer';
-export { ACTION_EDIT_PANEL } from './ui_actions/edit_panel_action/constants';
-export { ACTION_INSPECT_PANEL } from './ui_actions/inspect_panel_action/constants';
-export { ACTION_REMOVE_PANEL } from './ui_actions/remove_panel_action/constants';
 export {
+  ACTION_EDIT_PANEL,
+  ACTION_INSPECT_PANEL,
+  ACTION_REMOVE_PANEL,
+  EXPORT_ACTION_GROUP,
   isMultiValueClickTriggerContext,
   isRangeSelectTriggerContext,
   isRowClickTriggerContext,
   isValueClickTriggerContext,
-} from './ui_actions/triggers';
-export { EXPORT_ACTION_GROUP } from './ui_actions/constants';
+} from '@kbn/embeddable-actions';
 
 export type {
   CellValueContext,
@@ -33,7 +33,7 @@ export type {
   MultiValueClickContext,
   RangeSelectContext,
   ValueClickContext,
-} from './ui_actions/triggers';
+} from '@kbn/embeddable-actions';
 export type {
   EmbeddableEditorState,
   EmbeddableEditorBreadcrumb,
@@ -81,7 +81,7 @@ export function plugin(initializerContext: PluginInitializerContext) {
 
 export {
   ADD_PANEL_ANNOTATION_GROUP,
+  ADD_PANEL_LEGACY_GROUP,
   ADD_PANEL_OTHER_GROUP,
   ADD_PANEL_VISUALIZATION_GROUP,
-  ADD_PANEL_LEGACY_GROUP,
-} from './ui_actions/add_panel_groups';
+} from '@kbn/embeddable-actions';

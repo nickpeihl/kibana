@@ -5,7 +5,7 @@
  * 2.0.
  */
 import React from 'react';
-import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-plugin/public';
+import { ADD_PANEL_VISUALIZATION_GROUP } from '@kbn/embeddable-actions';
 import { apiIsPresentationContainer } from '@kbn/presentation-publishing';
 import { openLazyFlyout } from '@kbn/presentation-util';
 import { IncompatibleActionError } from '@kbn/ui-actions-plugin/public';

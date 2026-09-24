@@ -12,7 +12,7 @@ import type { ExpressionRendererEvent } from '@kbn/expressions-plugin/public';
 import { toExpression } from '@kbn/interpreter';
 import { noop } from 'lodash';
 import { VIS_EVENT_TO_TRIGGER } from '@kbn/visualizations-plugin/public';
-import type { CellValueContext } from '@kbn/embeddable-plugin/public';
+import type { CellValueContext } from '@kbn/embeddable-actions';
 import type {
   DocumentToExpressionReturnType,
   LensDocument,
