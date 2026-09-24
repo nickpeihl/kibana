@@ -12,6 +12,7 @@
     "test/scout/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-api",
     "@kbn/core",
     "@kbn/i18n",
     "@kbn/dashboard-plugin",

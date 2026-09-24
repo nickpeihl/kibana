@@ -15,8 +15,8 @@ import React, { createContext, useMemo } from 'react';
 import { BehaviorSubject, map, merge, skip } from 'rxjs';
 
 import { css } from '@emotion/react';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
-import { PanelIncompatibleError } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
+import { PanelIncompatibleError } from '@kbn/embeddable-api';
 import type { SerializedTitles } from '@kbn/presentation-publishing';
 import {
   apiIsPresentationContainer,

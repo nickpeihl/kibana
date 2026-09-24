@@ -41,7 +41,7 @@ import type {
   LensSerializedState,
 } from '@kbn/lens-common';
 import type { PublishesSearchSession } from '@kbn/presentation-publishing/interfaces/fetch/publishes_search_session';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { SerializedDrilldowns } from '@kbn/embeddable-drilldowns';
 
 /**

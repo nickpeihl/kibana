@@ -11,7 +11,7 @@ import type { ChartsPluginStart } from '@kbn/charts-plugin/public';
 import type { DataPublicPluginStart } from '@kbn/data-plugin/public';
 import type { DataViewsPublicPluginStart } from '@kbn/data-views-plugin/public';
 import type { DataView } from '@kbn/data-views-plugin/common';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { FieldFormatsStart } from '@kbn/field-formats-plugin/public';
 import type { PublishesUnsavedChanges, SerializedTitles } from '@kbn/presentation-publishing';
 

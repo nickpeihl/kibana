@@ -13,11 +13,8 @@ import type { CoreStart } from '@kbn/core/public';
 import type { DataView } from '@kbn/data-views-plugin/public';
 import { dispatchRenderComplete } from '@kbn/kibana-utils-plugin/public';
 import type { HasInspectorAdapters } from '@kbn/inspector-plugin/public';
-import type {
-  DefaultEmbeddableApi,
-  EmbeddablePublicDefinition,
-  HasDrilldowns,
-} from '@kbn/embeddable-plugin/public';
+import type { HasDrilldowns } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi, EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import {
   BehaviorSubject,
   combineLatest,

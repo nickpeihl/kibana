@@ -8,8 +8,8 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { EuiLoadingSpinner } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import type {
   CanExpandPanels,
   HasEditCapabilities,

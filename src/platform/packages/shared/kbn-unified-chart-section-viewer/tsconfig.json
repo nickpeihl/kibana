@@ -6,6 +6,7 @@
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/embeddable-api",
     "@kbn/field-types",
     "@kbn/lens-common",
     "@kbn/react-field",

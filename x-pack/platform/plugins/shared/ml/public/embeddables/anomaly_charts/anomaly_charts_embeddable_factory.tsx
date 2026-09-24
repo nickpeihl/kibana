@@ -23,7 +23,7 @@ import {
 import { initializeStateApi } from '@kbn/presentation-publishing';
 import { distinctUntilChanged } from 'rxjs';
 import fastIsEqual from 'fast-deep-equal';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import type { TimeRange } from '@kbn/es-query';
 import { css } from '@emotion/react';
 import { useEuiTheme } from '@elastic/eui';

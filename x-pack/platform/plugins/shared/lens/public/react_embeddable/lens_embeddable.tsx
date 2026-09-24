@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import { initializeTitleManager } from '@kbn/presentation-publishing';
 import { initializeStateApi } from '@kbn/presentation-publishing';
 import { merge } from 'rxjs';

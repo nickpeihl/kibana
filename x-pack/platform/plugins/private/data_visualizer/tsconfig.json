@@ -13,6 +13,7 @@
     "test/scout/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-api",
     "@kbn/aiops-components",
     "@kbn/charts-plugin",
     "@kbn/cloud-plugin",

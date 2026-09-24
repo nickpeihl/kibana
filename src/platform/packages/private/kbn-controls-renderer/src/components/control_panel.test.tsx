@@ -11,7 +11,7 @@ import React from 'react';
 import { BehaviorSubject } from 'rxjs';
 
 import { OPTIONS_LIST_CONTROL, DEFAULT_PINNED_CONTROL_STATE } from '@kbn/controls-constants';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import { act, render } from '@testing-library/react';
 import type { Action } from '@kbn/ui-actions-plugin/public';
 

@@ -6,6 +6,7 @@
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/embeddable-api",
     "@kbn/data-plugin",
     "@kbn/es-query",
     "@kbn/esql-utils",

@@ -15,7 +15,7 @@ import {
   combineCompatibleChildrenApis,
 } from '@kbn/presentation-publishing';
 import { AbortReason } from '@kbn/kibana-utils-plugin/common';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 
 export function initializeDataLoadingManager(
   children$: PublishingSubject<{ [key: string]: DefaultEmbeddableApi }>

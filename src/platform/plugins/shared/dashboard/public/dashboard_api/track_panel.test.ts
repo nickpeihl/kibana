@@ -8,7 +8,7 @@
  */
 
 import { BehaviorSubject } from 'rxjs';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import { initializeTrackPanel } from './track_panel';
 import type { DashboardChildren } from './layout_manager/types';
 import type { ViewMode } from '@kbn/presentation-publishing';

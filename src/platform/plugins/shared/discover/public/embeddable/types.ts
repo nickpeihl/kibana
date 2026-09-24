@@ -8,7 +8,7 @@
  */
 
 import type { DataTableRecord } from '@kbn/discover-utils/types';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { HasDrilldowns } from '@kbn/embeddable-drilldowns';
 import type { HasInspectorAdapters } from '@kbn/inspector-plugin/public';
 import type {

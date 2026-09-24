@@ -5,8 +5,8 @@
  * 2.0.
  */
 import React from 'react';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import {
   initializeTitleManager,
   titleComparators,

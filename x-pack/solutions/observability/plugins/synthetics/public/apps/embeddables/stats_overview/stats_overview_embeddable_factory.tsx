@@ -8,11 +8,8 @@
 import { i18n } from '@kbn/i18n';
 
 import React, { useEffect } from 'react';
-import type {
-  DefaultEmbeddableApi,
-  EmbeddablePublicDefinition,
-  HasDrilldowns,
-} from '@kbn/embeddable-plugin/public';
+import type { HasDrilldowns } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi, EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import type {
   PublishesWritableTitle,
   PublishesTitle,

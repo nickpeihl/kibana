@@ -6,7 +6,7 @@
  */
 import type { ApplicationStart, IUiSettingsClient, NotificationsStart } from '@kbn/core/public';
 import { type CoreStart } from '@kbn/core/public';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { PublishesTitle, PublishesWritableTitle } from '@kbn/presentation-publishing';
 import type { Subject } from 'rxjs';
 import type { BurnRateEmbeddableState } from '../../../../common/embeddables/burn_rate/types';

@@ -15,6 +15,7 @@
     "../../../../../typings/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-api",
     "@kbn/synthtrace",
     "@kbn/synthtrace-client",
     "@kbn/alerting-plugin",

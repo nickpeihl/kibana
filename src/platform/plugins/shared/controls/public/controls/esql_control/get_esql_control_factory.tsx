@@ -12,7 +12,7 @@ import React, { useEffect } from 'react';
 import { BehaviorSubject, combineLatest, map, merge } from 'rxjs';
 import { ESQL_CONTROL } from '@kbn/controls-constants';
 import type { OptionsListESQLControlState } from '@kbn/controls-schemas';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import {
   apiPublishesESQLVariables,
   ESQLVariableType,

@@ -17,7 +17,7 @@ import type {
 } from '@kbn/presentation-publishing';
 import type { SavedSearch } from '@kbn/saved-search-plugin/public';
 import { type BehaviorSubject } from 'rxjs';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { DataVisualizerTableState } from '@kbn/data-visualizer-plugin/common/types';
 
 export interface RandomSamplingOption {

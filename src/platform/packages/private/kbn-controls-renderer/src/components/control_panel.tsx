@@ -25,7 +25,8 @@ import {
 import { css } from '@emotion/react';
 import type { HasCustomPrepend, PinnedControlLayoutState } from '@kbn/controls-schemas';
 import { useMemoCss } from '@kbn/css-utils/public/use_memo_css';
-import { EmbeddableRenderer, type DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import { EmbeddableRenderer } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import { i18n } from '@kbn/i18n';
 import {
   apiCanCancelRequests,

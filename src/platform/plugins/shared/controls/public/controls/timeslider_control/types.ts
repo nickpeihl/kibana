@@ -13,7 +13,7 @@ import type {
   PublishesUnsavedChanges,
   PublishesRelatedPanels,
 } from '@kbn/presentation-publishing';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { HasCustomPrepend, TimeSliderControlState } from '@kbn/controls-schemas';
 import type { initializeLabelManager } from '../control_labels';
 

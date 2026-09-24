@@ -7,16 +7,4 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { i18n } from '@kbn/i18n';
-
-export class PanelIncompatibleError extends Error {
-  code = 'PANEL_INCOMPATIBLE';
-
-  constructor() {
-    super(
-      i18n.translate('embeddableApi.errors.panelIncompatibleError', {
-        defaultMessage: 'Panel api is incompatible',
-      })
-    );
-  }
-}
+export { PanelIncompatibleError } from '@kbn/embeddable-api';

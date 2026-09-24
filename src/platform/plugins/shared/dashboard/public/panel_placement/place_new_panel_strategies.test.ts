@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { PlacementStrategy } from '@kbn/embeddable-plugin/public';
+import { PlacementStrategy } from '@kbn/embeddable-api';
 import type { DashboardLayout } from '../dashboard_api/layout_manager';
 import { getMockLayout, getMockLayoutWithSections } from '../mocks';
 import { runPanelPlacementStrategy } from './place_new_panel_strategies';

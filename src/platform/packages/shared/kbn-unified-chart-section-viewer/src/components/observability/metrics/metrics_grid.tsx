@@ -13,7 +13,8 @@ import { EuiFlexGrid, EuiFlexItem, useEuiTheme } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { css } from '@emotion/react';
 import type { EmbeddableComponentProps } from '@kbn/lens-plugin/public';
-import { ACTION_INSPECT_PANEL, type QuickActionIds } from '@kbn/embeddable-plugin/public';
+import { ACTION_INSPECT_PANEL } from '@kbn/embeddable-plugin/public';
+import type { QuickActionIds } from '@kbn/embeddable-api';
 import {
   DiscoverFlyouts,
   dismissAllFlyoutsExceptFor,

@@ -8,7 +8,7 @@
  */
 
 import type { OverlayRef } from '@kbn/core-mount-utils-browser';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { TimeRange } from '@kbn/es-query';
 import type { HasInspectorAdapters } from '@kbn/inspector-plugin/public';
 import type {

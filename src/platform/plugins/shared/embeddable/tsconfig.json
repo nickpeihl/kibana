@@ -39,7 +39,8 @@
     "@kbn/config-schema",
     "@kbn/zod",
     "@kbn/esql-browser",
-    "@kbn/embeddable-drilldowns"
+    "@kbn/embeddable-drilldowns",
+    "@kbn/embeddable-api"
   ],
   "exclude": ["target/**/*"]
 }

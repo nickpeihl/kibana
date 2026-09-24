@@ -8,7 +8,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { BehaviorSubject, map, merge, skip } from 'rxjs';
 import type { CoreStart } from '@kbn/core-lifecycle-browser';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import {
   initializeTimeRangeManager,
   initializeTitleManager,

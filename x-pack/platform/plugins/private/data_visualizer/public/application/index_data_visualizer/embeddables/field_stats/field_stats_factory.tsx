@@ -8,7 +8,7 @@
 import type { StartServicesAccessor } from '@kbn/core-lifecycle-browser';
 import { generateFilters, type DataPublicPluginStart } from '@kbn/data-plugin/public';
 import type { DataViewField } from '@kbn/data-views-plugin/common';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import { i18n } from '@kbn/i18n';
 import {
   apiHasExecutionContext,

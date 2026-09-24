@@ -12,7 +12,7 @@ import type {
   ControlWidth as PinnedPanelWidth,
   PinnedControlLayoutState as PinnedPanelLayoutState,
 } from '@kbn/controls-schemas';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { DashboardPanel, DashboardSection } from '@kbn/as-code-dashboard-schema';
 
 export interface DashboardChildren {

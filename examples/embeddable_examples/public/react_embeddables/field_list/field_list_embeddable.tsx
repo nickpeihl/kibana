@@ -11,7 +11,7 @@ import { EuiFlexGroup, EuiFlexItem, useEuiTheme } from '@elastic/eui';
 import { css } from '@emotion/react';
 import type { CoreStart } from '@kbn/core-lifecycle-browser';
 import { type DataViewsPublicPluginStart } from '@kbn/data-views-plugin/public';
-import { PlacementStrategy, type EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import { PlacementStrategy, type EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import { i18n } from '@kbn/i18n';
 import {
   type WithAllKeys,

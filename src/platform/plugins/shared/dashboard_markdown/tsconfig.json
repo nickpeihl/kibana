@@ -5,6 +5,7 @@
   },
   "include": ["*.ts", "common/**/*", "public/**/*", "server/**/*", "test/scout/**/*"],
   "kbn_references": [
+    "@kbn/embeddable-api",
     "@kbn/css-utils",
     "@kbn/core",
     "@kbn/i18n",

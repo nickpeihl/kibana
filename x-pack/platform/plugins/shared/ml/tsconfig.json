@@ -18,6 +18,7 @@
   ],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/embeddable-api",
     "@kbn/core",
     // add references to other TypeScript projects the plugin depends on
     "@kbn/actions-plugin",

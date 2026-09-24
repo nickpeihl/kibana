@@ -5,10 +5,7 @@
  * 2.0.
  */
 
-import type {
-  DefaultEmbeddableApi,
-  EmbeddablePublicDefinition,
-} from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi, EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import type {
   HasTypeDisplayName,
   HasEditCapabilities,

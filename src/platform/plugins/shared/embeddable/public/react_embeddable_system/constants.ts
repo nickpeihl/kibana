@@ -7,9 +7,5 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export enum PlacementStrategy {
-  /** Place on the very top of the Dashboard, add the height of this panel to all other panels. */
-  placeAtTop = 'placeAtTop',
-  /** Look for the smallest y and x value where the default panel will fit. */
-  findTopLeftMostOpenSpace = 'findTopLeftMostOpenSpace',
-}
+export { PlacementStrategy, DEFAULT_QUICK_ACTIONS } from '@kbn/embeddable-api';
+export type { QuickActionIds } from '@kbn/embeddable-api';

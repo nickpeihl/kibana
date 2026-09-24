@@ -8,7 +8,7 @@
  */
 
 import { DASHBOARD_GRID_COLUMN_COUNT } from '@kbn/dashboard-plugin/public';
-import { PlacementStrategy } from '@kbn/embeddable-plugin/public';
+import { PlacementStrategy } from '@kbn/embeddable-api';
 
 import type { LinksEmbeddableState } from '../../common';
 import { LINKS_HORIZONTAL_LAYOUT } from '../../common/constants';

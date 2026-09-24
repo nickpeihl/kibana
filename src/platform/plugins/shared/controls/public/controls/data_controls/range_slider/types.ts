@@ -8,7 +8,7 @@
  */
 
 import type { RangeSliderControlState } from '@kbn/controls-schemas';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type {
   CanCancelRequests,
   PublishesRelatedPanels,

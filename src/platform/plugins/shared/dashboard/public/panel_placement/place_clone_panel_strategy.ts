@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { PanelNotFoundError } from '@kbn/embeddable-plugin/public';
+import { PanelNotFoundError } from '@kbn/embeddable-api';
 import { cloneDeep, forOwn } from 'lodash';
 
 import type { GridData } from '@kbn/as-code-dashboard-schema';

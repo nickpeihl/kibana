@@ -15,7 +15,7 @@ import type {
   LensXYConfig,
 } from '@kbn/lens-embeddable-utils/config_builder';
 import { i18n } from '@kbn/i18n';
-import { EmbeddableRendererContext } from '@kbn/embeddable-plugin/public';
+import { EmbeddableRendererContext } from '@kbn/embeddable-api';
 import type { TimeRange } from '@kbn/data-plugin/common';
 import type { Action } from '@kbn/ui-actions-plugin/public';
 import React, { useMemo, useRef } from 'react';

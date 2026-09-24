@@ -9,7 +9,7 @@
 
 import { i18n } from '@kbn/i18n';
 import { cloneDeep } from 'lodash';
-import { PlacementStrategy } from '@kbn/embeddable-plugin/public';
+import { PlacementStrategy } from '@kbn/embeddable-api';
 import { DASHBOARD_GRID_COLUMN_COUNT } from '../../common/page_bundle_constants';
 import type { PanelPlacementProps, PanelPlacementReturn } from './types';
 import type { DashboardLayoutPanel } from '../dashboard_api/layout_manager';

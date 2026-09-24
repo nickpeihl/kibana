@@ -8,7 +8,7 @@
  */
 
 import type { HasDrilldowns } from '@kbn/embeddable-drilldowns';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type {
   HasEditCapabilities,
   HasSupportedTriggers,

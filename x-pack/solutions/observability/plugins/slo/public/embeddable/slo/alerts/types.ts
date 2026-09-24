@@ -4,7 +4,8 @@
  * 2.0; you may not use this file except in compliance with the Elastic License
  * 2.0.
  */
-import type { DefaultEmbeddableApi, HasDrilldowns } from '@kbn/embeddable-plugin/public';
+import type { HasDrilldowns } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { IUiSettingsClient, ApplicationStart, NotificationsStart } from '@kbn/core/public';
 import { type CoreStart } from '@kbn/core/public';
 import type { TriggersAndActionsUIPublicPluginStart } from '@kbn/triggers-actions-ui-plugin/public';

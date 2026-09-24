@@ -5,7 +5,7 @@
  * 2.0.
  */
 
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type {
   HasEditCapabilities,
   PublishesBlockingError,

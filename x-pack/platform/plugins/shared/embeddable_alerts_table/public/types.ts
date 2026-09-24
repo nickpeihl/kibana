@@ -6,7 +6,8 @@
  */
 
 import type { DataPublicPluginStart } from '@kbn/data-plugin/public/types';
-import type { DefaultEmbeddableApi, EmbeddableSetup } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableSetup } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { FieldFormatsRegistry } from '@kbn/field-formats-plugin/common';
 import type {
   HasEditCapabilities,

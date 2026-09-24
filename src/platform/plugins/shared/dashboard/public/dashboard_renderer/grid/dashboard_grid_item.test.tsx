@@ -10,7 +10,7 @@
 import React from 'react';
 import { BehaviorSubject } from 'rxjs';
 
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import { buildMockDashboardApi } from '../../mocks';
 import type { Props as DashboardGridItemProps } from './dashboard_grid_item';
 import { DashboardGridItem } from './dashboard_grid_item';

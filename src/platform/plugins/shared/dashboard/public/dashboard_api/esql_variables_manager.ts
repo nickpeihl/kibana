@@ -9,7 +9,7 @@
 
 import deepEqual from 'fast-deep-equal';
 
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { PublishesESQLVariable } from '@kbn/esql-types';
 import { apiPublishesESQLVariable, type ESQLControlVariable } from '@kbn/esql-types';
 import { combineCompatibleChildrenApis } from '@kbn/presentation-publishing';

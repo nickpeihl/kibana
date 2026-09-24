@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { PlacementStrategy } from '@kbn/embeddable-plugin/public';
+import { PlacementStrategy } from '@kbn/embeddable-api';
 import { embeddableService } from '../services/kibana_services';
 import { DEFAULT_PANEL_HEIGHT, DEFAULT_PANEL_WIDTH } from '../../common/constants';
 

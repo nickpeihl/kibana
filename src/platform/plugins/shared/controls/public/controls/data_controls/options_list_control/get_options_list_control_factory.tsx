@@ -27,7 +27,7 @@ import {
   DEFAULT_DSL_OPTIONS_LIST_STATE,
 } from '@kbn/controls-constants';
 import type { OptionsListSelection, OptionsListDSLControlState } from '@kbn/controls-schemas';
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import {
   apiHasPinnedPanels,
   apiHasSections,

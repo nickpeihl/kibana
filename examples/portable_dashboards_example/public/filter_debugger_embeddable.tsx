@@ -9,10 +9,7 @@
 
 import React from 'react';
 import { css } from '@emotion/react';
-import type {
-  DefaultEmbeddableApi,
-  EmbeddablePublicDefinition,
-} from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi, EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import type { PublishesUnifiedSearch } from '@kbn/presentation-publishing';
 import { useStateFromPublishingSubject } from '@kbn/presentation-publishing';
 import { EuiCodeBlock, EuiPanel, EuiTitle } from '@elastic/eui';

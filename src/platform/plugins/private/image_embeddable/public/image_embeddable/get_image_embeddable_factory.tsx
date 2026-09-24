@@ -10,7 +10,7 @@
 import React, { useEffect } from 'react';
 import { BehaviorSubject, map, merge, skip } from 'rxjs';
 
-import type { EmbeddablePublicDefinition } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePublicDefinition } from '@kbn/embeddable-api';
 import { i18n } from '@kbn/i18n';
 import { openLazyFlyout } from '@kbn/presentation-util';
 import {

@@ -9,7 +9,8 @@ import type {
   PublishesWritableTitle,
   PublishesTitle,
 } from '@kbn/presentation-publishing';
-import type { DefaultEmbeddableApi, HasDrilldowns } from '@kbn/embeddable-plugin/public';
+import type { HasDrilldowns } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { Subject } from 'rxjs';
 import type { ErrorBudgetEmbeddableState } from '../../../../common/embeddables/error_budget/types';
 

@@ -8,7 +8,7 @@
  */
 
 import type { DataView } from '@kbn/data-views-plugin/common';
-import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi } from '@kbn/embeddable-api';
 import type { PublishesDataViews, PublishingSubject } from '@kbn/presentation-publishing';
 import { apiPublishesDataViews, combineCompatibleChildrenApis } from '@kbn/presentation-publishing';
 import { uniqBy } from 'lodash';
