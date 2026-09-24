@@ -21,7 +21,7 @@ import { unifiedSearchPluginMock } from '@kbn/unified-search-plugin/public/mocks
 
 import { createEmbeddableStateTransferMock } from '@kbn/embeddable-plugin/public/mocks';
 import { fieldFormatsServiceMock } from '@kbn/field-formats-plugin/public/mocks';
-import type { EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 
 import { uiActionsPluginMock } from '@kbn/ui-actions-plugin/public/mocks';
 import type { EventAnnotationServiceType } from '@kbn/event-annotation-plugin/public';

@@ -13,7 +13,7 @@ import { coreMock } from '@kbn/core/public/mocks';
 import { ESQL_CONTROL } from '@kbn/controls-constants';
 import type { OptionsListESQLControlState } from '@kbn/controls-schemas';
 import type { ControlPanelsState } from '@kbn/control-group-renderer';
-import type { EmbeddableEditorState, EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableEditorState, EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 import { embeddablePluginMock } from '@kbn/embeddable-plugin/public/mocks';
 import { EmbeddableEditorService, TransferAction } from './embeddable_editor_service';
 import { mockControlState } from '../__mocks__/esql_controls';

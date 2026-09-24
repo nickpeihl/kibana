@@ -9,7 +9,7 @@
 
 import { BehaviorSubject } from 'rxjs';
 
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 
 import { dataService } from '../../services/kibana_services';
 import type { DashboardApi, DashboardCreationOptions, DashboardInternalApi } from '../types';

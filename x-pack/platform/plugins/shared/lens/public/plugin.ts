@@ -29,7 +29,7 @@ import {
 import type { UrlForwardingSetup } from '@kbn/url-forwarding-plugin/public';
 import type { GlobalSearchPluginSetup } from '@kbn/global-search-plugin/public';
 import type { ChartsPluginSetup, ChartsPluginStart } from '@kbn/charts-plugin/public';
-import { EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import { EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 import type { UiActionsStart, VisualizeFieldContext } from '@kbn/ui-actions-plugin/public';
 import { ACTION_VISUALIZE_FIELD, ACTION_VISUALIZE_LENS_FIELD } from '@kbn/ui-actions-plugin/public';
 import { createStartServicesGetter } from '@kbn/kibana-utils-plugin/public';
@@ -761,7 +761,9 @@ export class LensPlugin {
         }
         const transfer = new EmbeddableStateTransfer(
           core.application.navigateToApp,
-          core.application.currentAppId$
+          core.application.currentAppId$,
+          undefined,
+          new Storage(sessionStorage)
         );
         transfer.navigateToEditor(APP_ID, {
           openInNewTab,

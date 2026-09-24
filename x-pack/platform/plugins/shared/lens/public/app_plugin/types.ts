@@ -15,7 +15,7 @@ import type {
   ACTION_VISUALIZE_LENS_FIELD,
 } from '@kbn/ui-actions-plugin/public';
 import type { ACTION_CONVERT_TO_LENS } from '@kbn/visualizations-plugin/public';
-import type { EmbeddableEditorState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableEditorState } from '@kbn/embeddable-state-transfer';
 import type {
   LensAppLocatorParams,
   LensSerializedState,

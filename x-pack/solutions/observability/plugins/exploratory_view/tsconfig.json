@@ -12,6 +12,7 @@
     "../../../../../typings/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/core",
     "@kbn/data-plugin",
     "@kbn/home-plugin",

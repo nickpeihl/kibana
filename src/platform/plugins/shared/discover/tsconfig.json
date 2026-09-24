@@ -12,6 +12,7 @@
     ".storybook/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/core",
     "@kbn/charts-plugin",
     "@kbn/saved-search-plugin",

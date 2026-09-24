@@ -7,7 +7,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import type { EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 import type { ScopedHistory } from '@kbn/core/public';
 import { MapsListView } from './maps_list_view';
 import { APP_ID } from '../../../common/constants';

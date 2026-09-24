@@ -8,10 +8,7 @@
 import _ from 'lodash';
 import { METRIC_TYPE } from '@kbn/analytics';
 import { i18n } from '@kbn/i18n';
-import type {
-  EmbeddableStateTransfer,
-  EmbeddableEditorBreadcrumb,
-} from '@kbn/embeddable-plugin/public';
+import type { EmbeddableStateTransfer, EmbeddableEditorBreadcrumb } from '@kbn/embeddable-state-transfer';
 import type { ScopedHistory } from '@kbn/core/public';
 import type { OnSaveProps } from '@kbn/saved-objects-plugin/public';
 import type { Writable } from '@kbn/utility-types';

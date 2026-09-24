@@ -32,11 +32,8 @@ import type {
   PinnedControlLayoutState,
   PinnedControlLayoutState as PinnedPanelLayoutState,
 } from '@kbn/controls-schemas';
-import type {
-  DefaultEmbeddableApi,
-  EmbeddablePackageState,
-  LayoutConstraints,
-} from '@kbn/embeddable-plugin/public';
+import type { DefaultEmbeddableApi, LayoutConstraints } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import { PanelNotFoundError, PlacementStrategy } from '@kbn/embeddable-plugin/public';
 import type { GridLayoutData, GridPanelData, GridSectionData } from '@kbn/grid-layout';
 import { i18n } from '@kbn/i18n';

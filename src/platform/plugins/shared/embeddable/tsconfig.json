@@ -6,6 +6,7 @@
   "include": ["*.ts", "common/**/*", "public/**/*", "server/**/*", "public/react_embeddable_system/embeddable_renderer_context.tsx"],
   "kbn_references": [
     "@kbn/core",
+    "@kbn/embeddable-state-transfer",
     "@kbn/inspector-plugin",
     "@kbn/kibana-utils-plugin",
     "@kbn/ui-actions-plugin",

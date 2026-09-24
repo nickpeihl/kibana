@@ -18,6 +18,7 @@
     "test/scenarios/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/synthtrace",
     "@kbn/apm-embeddable-common",
     "@kbn/core",

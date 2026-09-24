@@ -8,10 +8,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux-v7';
 import type { AppMountParameters, ScopedHistory } from '@kbn/core/public';
-import type {
-  EmbeddableStateTransfer,
-  EmbeddableEditorBreadcrumb,
-} from '@kbn/embeddable-plugin/public';
+import type { EmbeddableStateTransfer, EmbeddableEditorBreadcrumb } from '@kbn/embeddable-state-transfer';
 import { MapApp } from './map_app';
 import {
   SavedMap,

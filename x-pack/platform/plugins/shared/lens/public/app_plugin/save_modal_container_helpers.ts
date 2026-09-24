@@ -8,7 +8,7 @@
 import { omit } from 'lodash';
 
 import type { ControlPanelsState } from '@kbn/control-group-renderer';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import {
   LENS_EMBEDDABLE_TYPE,
   type LensAppServices,

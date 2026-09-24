@@ -8,13 +8,17 @@
  */
 
 export {
+  EmbeddableStateTransfer,
+  EMBEDDABLE_STATE_TRANSFER_STORAGE_KEY,
+} from './embeddable_state_transfer';
+export {
   EMBEDDABLE_EDITOR_STATE_KEY,
   EMBEDDABLE_PACKAGE_STATE_KEY,
   isEmbeddableEditorState,
   isEmbeddablePackageState,
-} from '@kbn/embeddable-state-transfer';
+} from './types';
 export type {
   EmbeddableEditorBreadcrumb,
   EmbeddableEditorState,
   EmbeddablePackageState,
-} from '@kbn/embeddable-state-transfer';
+} from './types';

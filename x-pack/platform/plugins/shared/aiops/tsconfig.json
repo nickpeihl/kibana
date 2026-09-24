@@ -12,6 +12,7 @@
     "types/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/aiops-change-point-detection",
     "@kbn/aiops-common",
     "@kbn/aiops-components",

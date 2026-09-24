@@ -9,7 +9,7 @@ import React, { useCallback, useState } from 'react';
 import { EuiButtonIcon, EuiToolTip } from '@elastic/eui';
 import type { SerializedStyles } from '@emotion/serialize';
 import { i18n } from '@kbn/i18n';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import type { Filter } from '@kbn/es-query';
 import {
   escapeQuotes,

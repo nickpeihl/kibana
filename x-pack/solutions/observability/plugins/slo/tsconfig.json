@@ -12,6 +12,7 @@
   ],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/i18n",
     "@kbn/i18n-react",
     "@kbn/shared-ux-router",

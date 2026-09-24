@@ -24,10 +24,7 @@ import type {
 import { showSaveModal, SavedObjectSaveModalOrigin } from '@kbn/saved-objects-plugin/public';
 import { SavedObjectSaveModalDashboard } from '@kbn/presentation-util-plugin/public';
 import { unhashUrl } from '@kbn/kibana-utils-plugin/public';
-import type {
-  EmbeddableStateTransfer,
-  EmbeddableEditorBreadcrumb,
-} from '@kbn/embeddable-plugin/public';
+import type { EmbeddableStateTransfer, EmbeddableEditorBreadcrumb } from '@kbn/embeddable-state-transfer';
 import { VISUALIZE_APP_LOCATOR } from '@kbn/deeplinks-analytics';
 
 import { VisualizeConstants, VISUALIZE_EMBEDDABLE_TYPE } from '@kbn/visualizations-common';

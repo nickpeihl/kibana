@@ -16,7 +16,8 @@ import type {
 } from '@kbn/presentation-publishing';
 import { apiHasAppContext, apiPublishesDisabledActionIds } from '@kbn/presentation-publishing';
 import { noop } from 'lodash';
-import { EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import { EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
+import { Storage } from '@kbn/kibana-utils-plugin/public';
 import { i18n } from '@kbn/i18n';
 import { BehaviorSubject } from 'rxjs';
 import type { Filter } from '@kbn/es-query';
@@ -319,7 +320,9 @@ export function initializeEditApi(
           const navigateFn = navigateToLensEditor(
             new EmbeddableStateTransfer(
               startDependencies.coreStart.application.navigateToApp,
-              startDependencies.coreStart.application.currentAppId$
+              startDependencies.coreStart.application.currentAppId$,
+              undefined,
+              new Storage(sessionStorage)
             ),
             true
           );

@@ -17,7 +17,7 @@ import type {
   OverlayStart,
   ThemeServiceStart,
 } from '@kbn/core/public';
-import type { EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 import type { NavigationPublicPluginStart } from '@kbn/navigation-plugin/public';
 import type { IStorageWrapper } from '@kbn/kibana-utils-plugin/public';
 import type { DataPublicPluginStart } from '@kbn/data-plugin/public';

@@ -15,7 +15,7 @@ import type {
   Plugin,
   PublicAppInfo,
 } from '@kbn/core/public';
-import type { Storage } from '@kbn/kibana-utils-plugin/public';
+import { Storage } from '@kbn/kibana-utils-plugin/public';
 import { EmbeddableStateTransfer } from './state_transfer';
 import { setKibanaServices } from './kibana_services';
 import { registerEmbeddablePublicDefinition } from './react_embeddable_system';
@@ -68,7 +68,8 @@ export class EmbeddablePublicPlugin implements Plugin<EmbeddableSetup, Embeddabl
     this.stateTransferService = new EmbeddableStateTransfer(
       core.application.navigateToApp,
       core.application.currentAppId$,
-      this.appList
+      this.appList,
+      new Storage(sessionStorage)
     );
 
     const embeddableStart: EmbeddableStart = {

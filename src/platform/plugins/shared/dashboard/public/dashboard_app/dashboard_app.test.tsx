@@ -19,7 +19,7 @@ import { DashboardTopNav } from '../dashboard_top_nav';
 import { buildMockDashboardApi } from '../mocks';
 import { dataService, embeddableService } from '../services/kibana_services';
 import { DashboardApp } from './dashboard_app';
-import type { EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 import { createEmbeddableStateTransferMock } from '@kbn/embeddable-plugin/public/mocks';
 
 jest.mock('../dashboard_renderer/dashboard_renderer');

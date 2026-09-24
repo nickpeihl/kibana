@@ -15,6 +15,7 @@
     "test/scout_search_sessions/**/*",
   ],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/core",
     "@kbn/inspector-plugin",
     "@kbn/kibana-react-plugin",

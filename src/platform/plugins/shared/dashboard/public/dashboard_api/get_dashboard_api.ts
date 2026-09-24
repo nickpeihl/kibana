@@ -12,7 +12,7 @@ import { BehaviorSubject, combineLatest, concatMap, map, merge, of, Subject } fr
 import { v4 } from 'uuid';
 
 import type { EuiFlyoutProps } from '@elastic/eui';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 
 import type { DashboardState } from '@kbn/as-code-dashboard-schema';
 import { getLastSavedState } from '../../common/default_dashboard_state';

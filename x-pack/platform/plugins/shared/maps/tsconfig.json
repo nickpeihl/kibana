@@ -14,6 +14,7 @@
     "test/scout/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/core",
     "@kbn/app-header",
     "@kbn/maps-ems-plugin",

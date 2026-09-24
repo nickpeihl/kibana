@@ -13,6 +13,7 @@
     "test/scout_search_sessions/**/*"
   ],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/spaces-plugin",
     "@kbn/core",
     "@kbn/task-manager-plugin",

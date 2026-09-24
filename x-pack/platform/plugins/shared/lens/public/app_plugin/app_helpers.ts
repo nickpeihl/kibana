@@ -19,10 +19,7 @@ import type {
   LensAppLocatorParams,
   LensDocument,
 } from '@kbn/lens-common';
-import type {
-  EmbeddableEditorBreadcrumb,
-  EmbeddableEditorState,
-} from '@kbn/embeddable-plugin/public';
+import type { EmbeddableEditorBreadcrumb, EmbeddableEditorState } from '@kbn/embeddable-state-transfer';
 import type { RedirectToOriginProps } from './types';
 
 const VISUALIZE_APP_ID = 'visualize';

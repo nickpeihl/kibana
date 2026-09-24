@@ -26,7 +26,7 @@ import { SavedObjectSaveModalDashboard } from '@kbn/presentation-util-plugin/pub
 import React, { useCallback, useState } from 'react';
 import { useMemo } from 'react';
 import type { DataView } from '@kbn/data-views-plugin/common';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import type { PatternAnalysisEmbeddableState } from '@kbn/aiops-server-schemas/embeddables/pattern_analysis';
 import {
   DEFAULT_MINIMUM_TIME_RANGE,

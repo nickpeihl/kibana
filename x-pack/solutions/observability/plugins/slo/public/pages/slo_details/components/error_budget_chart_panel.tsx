@@ -6,7 +6,7 @@
  */
 
 import { EuiFlexGroup, EuiPanel } from '@elastic/eui';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import { i18n } from '@kbn/i18n';
 import type { SaveModalDashboardProps } from '@kbn/presentation-util-plugin/public';
 import { SavedObjectSaveModalDashboard } from '@kbn/presentation-util-plugin/public';

@@ -18,7 +18,7 @@ import {
   EuiRadio,
   EuiSpacer,
 } from '@elastic/eui';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import { LazyDashboardPicker, withSuspense } from '@kbn/presentation-util-plugin/public';
 import React, { useCallback, useMemo, useState } from 'react';
 import { CREATE_NEW_DASHBOARD_URL, createDashboardEditUrl } from '../utils/urls';

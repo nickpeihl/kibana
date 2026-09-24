@@ -27,7 +27,7 @@ import { css } from '@emotion/react';
 import type { ContentManagementPublicStart } from '@kbn/content-management-plugin/public';
 import type { TypedLensByValueInput, LensSavedObjectAttributes } from '@kbn/lens-plugin/public';
 import { LENS_EMBEDDABLE_TYPE } from '@kbn/lens-common';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import { SavedObjectFinder } from '@kbn/saved-objects-finder-plugin/public';
 import type { SavedObjectCommon } from '@kbn/saved-objects-finder-plugin/common';
 import type { TimeRange } from '@kbn/data-plugin/common';

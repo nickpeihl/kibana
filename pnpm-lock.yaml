@@ -2011,6 +2011,9 @@ importers:
       '@kbn/embeddable-plugin':
         specifier: workspace:*
         version: link:src/platform/plugins/shared/embeddable
+      '@kbn/embeddable-state-transfer':
+        specifier: workspace:*
+        version: link:src/platform/packages/shared/embeddable/state_transfer
       '@kbn/embedded-lens-example-plugin':
         specifier: workspace:*
         version: link:x-pack/examples/embedded_lens_example
@@ -7872,6 +7875,8 @@ importers:
   src/platform/packages/shared/deeplinks/workflows: {}
 
   src/platform/packages/shared/deeplinks/workplace_ai: {}
+
+  src/platform/packages/shared/embeddable/state_transfer: {}
 
   src/platform/packages/shared/esql/kbn-esql-browser: {}
 

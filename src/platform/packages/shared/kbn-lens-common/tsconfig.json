@@ -7,6 +7,7 @@
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["target/**/*"],
   "kbn_references": [
+    "@kbn/embeddable-state-transfer",
     "@kbn/lens-test-helpers",
     "@kbn/lens-formula-docs",
     "@kbn/navigation-plugin",

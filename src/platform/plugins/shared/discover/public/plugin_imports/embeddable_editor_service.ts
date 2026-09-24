@@ -11,7 +11,7 @@ import type {
   SavedSearchByValueAttributes,
 } from '@kbn/saved-search-plugin/common';
 import { SEARCH_EMBEDDABLE_TYPE } from '@kbn/discover-utils';
-import type { EmbeddableEditorState, EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableEditorState, EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 import type { ApplicationStart } from '@kbn/core/public';
 import type { OptionsListESQLControlState } from '@kbn/controls-schemas';
 import type { ControlPanelState, ControlPanelsState } from '@kbn/control-group-renderer';

@@ -8,7 +8,7 @@
  */
 
 import type { ScopedHistory } from '@kbn/core-application-browser';
-import type { EmbeddablePackageState } from '@kbn/embeddable-plugin/public';
+import type { EmbeddablePackageState } from '@kbn/embeddable-state-transfer';
 import type { IKbnUrlStateStorage } from '@kbn/kibana-utils-plugin/public';
 import type { ViewMode } from '@kbn/presentation-publishing';
 import type { History } from 'history';

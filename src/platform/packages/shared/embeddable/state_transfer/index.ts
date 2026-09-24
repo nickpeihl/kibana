@@ -7,14 +7,4 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export {
-  EMBEDDABLE_EDITOR_STATE_KEY,
-  EMBEDDABLE_PACKAGE_STATE_KEY,
-  isEmbeddableEditorState,
-  isEmbeddablePackageState,
-} from '@kbn/embeddable-state-transfer';
-export type {
-  EmbeddableEditorBreadcrumb,
-  EmbeddableEditorState,
-  EmbeddablePackageState,
-} from '@kbn/embeddable-state-transfer';
+export * from './src';

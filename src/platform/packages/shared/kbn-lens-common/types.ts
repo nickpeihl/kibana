@@ -25,12 +25,8 @@ import type {
   IInterpreterRenderHandlers,
 } from '@kbn/expressions-plugin/common';
 import type { UiActionsStart, VisualizeFieldContext } from '@kbn/ui-actions-plugin/public';
-import type {
-  CellValueContext,
-  EmbeddableEditorBreadcrumb,
-  EmbeddableEditorState,
-  EmbeddableStateTransfer,
-} from '@kbn/embeddable-plugin/public';
+import type { CellValueContext } from '@kbn/embeddable-plugin/public';
+import type { EmbeddableEditorBreadcrumb, EmbeddableEditorState, EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
 import type { SavedObjectsResolveResponse } from '@kbn/core-saved-objects-api-server';
 import type {
   BrushTriggerEvent,

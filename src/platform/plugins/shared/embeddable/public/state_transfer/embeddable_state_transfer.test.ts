@@ -68,7 +68,12 @@ describe('embeddable state transfer', () => {
       ['testId', { title: 'State Transfer Test App Hello' } as PublicAppInfo],
       ['testId2', { title: 'State Transfer Test App Goodbye' } as PublicAppInfo],
     ]);
-    stateTransfer = new EmbeddableStateTransfer(application.navigateToApp, currentAppId$, appsList);
+    stateTransfer = new EmbeddableStateTransfer(
+      application.navigateToApp,
+      currentAppId$,
+      appsList,
+      store
+    );
     expect(stateTransfer.getAppNameFromId('kibanana')).toBeUndefined();
   });
 
@@ -77,7 +82,12 @@ describe('embeddable state transfer', () => {
       ['testId', { title: 'State Transfer Test App Hello' } as PublicAppInfo],
       ['testId2', { title: 'State Transfer Test App Goodbye' } as PublicAppInfo],
     ]);
-    stateTransfer = new EmbeddableStateTransfer(application.navigateToApp, currentAppId$, appsList);
+    stateTransfer = new EmbeddableStateTransfer(
+      application.navigateToApp,
+      currentAppId$,
+      appsList,
+      store
+    );
     expect(stateTransfer.getAppNameFromId('testId')).toBe('State Transfer Test App Hello');
     expect(stateTransfer.getAppNameFromId('testId2')).toBe('State Transfer Test App Goodbye');
   });

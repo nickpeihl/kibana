@@ -5,7 +5,8 @@
  * 2.0.
  */
 
-import { EmbeddableStateTransfer } from '@kbn/embeddable-plugin/public';
+import { EmbeddableStateTransfer } from '@kbn/embeddable-state-transfer';
+import { Storage } from '@kbn/kibana-utils-plugin/public';
 import React from 'react';
 import type {
   GetStateType,
@@ -128,7 +129,9 @@ export function prepareInlineEditPanel(
             ? navigateToLensEditor(
                 new EmbeddableStateTransfer(
                   coreStart.application.navigateToApp,
-                  coreStart.application.currentAppId$
+                  coreStart.application.currentAppId$,
+                  undefined,
+                  new Storage(sessionStorage)
                 ),
                 true
               )
