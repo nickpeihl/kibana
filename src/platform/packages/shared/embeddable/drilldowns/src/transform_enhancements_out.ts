@@ -8,9 +8,9 @@
  */
 
 import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
-import type { SerializedDrilldowns } from '../../../server';
-import { generateRefName } from './dynamic_actions/dashboard_drilldown_persistable_state';
-import type { DynamicActionsState, SerializedEvent } from './dynamic_actions/types';
+import type { SerializedDrilldowns } from './types';
+import { generateRefName } from './generate_ref_name';
+import type { DynamicActionsState, SerializedEvent } from './dynamic_actions_types';
 
 export function transformEnhancementsOut<StoredState extends SerializedDrilldowns>(
   state: StoredState & { enhancements?: { dynamicActions?: DynamicActionsState } }

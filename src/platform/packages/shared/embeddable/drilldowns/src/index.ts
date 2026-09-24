@@ -33,3 +33,7 @@ export type {
 } from './dynamic_actions_types';
 
 export { EMBEDDABLE_TO_DASHBOARD_DRILLDOWN, generateRefName } from './generate_ref_name';
+
+export { getTransformDrilldownsIn } from './transform_drilldowns_in';
+export { getTransformDrilldownsOut } from './transform_drilldowns_out';
+export { transformEnhancementsOut } from './transform_enhancements_out';

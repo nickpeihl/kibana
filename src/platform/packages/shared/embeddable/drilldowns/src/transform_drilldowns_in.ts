@@ -8,7 +8,7 @@
  */
 
 import type { Reference } from '@kbn/content-management-utils';
-import type { SerializedDrilldowns, DrilldownState } from '../../server';
+import type { SerializedDrilldowns, DrilldownState } from './types';
 
 export function getTransformDrilldownsIn(
   getTranformIn: (type: string) =>

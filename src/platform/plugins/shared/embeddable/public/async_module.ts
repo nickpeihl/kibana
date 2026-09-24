@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export { getTransformDrilldownsOut } from '../common/drilldowns/transform_drilldowns_out';
+export { getTransformDrilldownsOut } from '@kbn/embeddable-drilldowns';
 export { transformDashboardDrilldown } from './bwc/dashboard_drilldown';
 export { openCreateDrilldownFlyout } from './ui_actions/open_create_drilldown_flyout';
 export { openManageDrilldownsFlyout } from './ui_actions/open_manage_drilldowns_flyout';

@@ -11,6 +11,7 @@
     "@kbn/zod",
     "@kbn/content-management-utils",
     "@kbn/utility-types",
-    "@kbn/ui-actions-plugin"
+    "@kbn/ui-actions-plugin",
+    "@kbn/ui-actions-browser"
   ]
 }

@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { getTransformDrilldownsOut } from './transform_drilldowns_out';
+import { getTransformDrilldownsOut } from '@kbn/embeddable-drilldowns';
 
 describe('transformDrilldownsOut', () => {
   test('Should transform drilldowns that use legacy trigger ids', () => {

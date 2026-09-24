@@ -8,9 +8,8 @@
  */
 
 import { z } from '@kbn/zod';
+import { getTransformDrilldownsIn, getTransformDrilldownsOut } from '@kbn/embeddable-drilldowns';
 import type { DrilldownSetup } from './types';
-import { getTransformDrilldownsIn } from '../../common/drilldowns/transform_drilldowns_in';
-import { getTransformDrilldownsOut } from '../../common/drilldowns/transform_drilldowns_out';
 
 export function getDrilldownRegistry() {
   const registry: { [key: string]: DrilldownSetup } = {};

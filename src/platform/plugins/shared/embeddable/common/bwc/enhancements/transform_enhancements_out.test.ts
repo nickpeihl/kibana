@@ -8,7 +8,7 @@
  */
 
 import { ON_APPLY_FILTER } from '@kbn/ui-actions-browser';
-import { transformEnhancementsOut } from './transform_enhancements_out';
+import { transformEnhancementsOut } from '@kbn/embeddable-drilldowns';
 
 describe('transformEnhancementsOut', () => {
   test('should convert dashboard drilldown event', () => {

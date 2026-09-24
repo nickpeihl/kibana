@@ -16,8 +16,8 @@ import {
   ON_OPEN_PANEL_MENU,
   ON_SELECT_RANGE,
 } from '@kbn/ui-actions-browser';
-import type { SerializedDrilldowns, DrilldownState } from '../../server';
-import { transformEnhancementsOut } from '../bwc/enhancements/transform_enhancements_out';
+import type { SerializedDrilldowns, DrilldownState } from './types';
+import { transformEnhancementsOut } from './transform_enhancements_out';
 
 export function getTransformDrilldownsOut(
   getTranformOut: (
