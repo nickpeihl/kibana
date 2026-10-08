@@ -29,6 +29,7 @@ import {
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n-react';
 import { KbnWarningCallout } from '@kbn/ui-callout';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 
 import { useDashboardApi } from '../../dashboard_api/use_dashboard_api';
 import { cpsService, savedObjectsTaggingService } from '../../services/kibana_services';
@@ -42,6 +43,8 @@ interface DashboardSettingsProps {
 
 const DUPLICATE_TITLE_CALLOUT_ID = 'duplicateTitleCallout';
 
+const { displayName: titleLimits, description: descriptionLimits } = STRING_HELPER_DEFAULTS;
+
 export const DashboardSettingsFlyout = ({ onClose, ariaLabelledBy }: DashboardSettingsProps) => {
   const dashboardApi = useDashboardApi();
 
@@ -52,6 +55,10 @@ export const DashboardSettingsFlyout = ({ onClose, ariaLabelledBy }: DashboardSe
   const [isApplying, setIsApplying] = useState(false);
 
   const isMounted = useMountedState();
+
+  const isTitleTooLong = localSettings.title.length > titleLimits.maxLength;
+  const isDescriptionTooLong =
+    (localSettings.description ?? '').length > descriptionLimits.maxLength;
 
   const onApply = async () => {
     setIsApplying(true);
@@ -153,6 +160,14 @@ export const DashboardSettingsFlyout = ({ onClose, ariaLabelledBy }: DashboardSe
                 defaultMessage="Title"
               />
             }
+            isInvalid={isTitleTooLong}
+            error={i18n.translate(
+              'dashboard.embeddableApi.showSettings.flyout.form.titleTooLongError',
+              {
+                defaultMessage: 'Title must be {maxLength} characters or fewer',
+                values: { maxLength: titleLimits.maxLength },
+              }
+            )}
           >
             <EuiFieldText
               compressed
@@ -164,6 +179,8 @@ export const DashboardSettingsFlyout = ({ onClose, ariaLabelledBy }: DashboardSe
               name="title"
               type="text"
               value={localSettings.title}
+              maxLength={titleLimits.maxLength}
+              isInvalid={isTitleTooLong}
               onChange={(event) => {
                 setIsTitleDuplicate(false);
                 setIsTitleDuplicateConfirmed(false);
@@ -186,6 +203,14 @@ export const DashboardSettingsFlyout = ({ onClose, ariaLabelledBy }: DashboardSe
                 defaultMessage="Description"
               />
             }
+            isInvalid={isDescriptionTooLong}
+            error={i18n.translate(
+              'dashboard.embeddableApi.showSettings.flyout.form.descriptionTooLongError',
+              {
+                defaultMessage: 'Description must be {maxLength} characters or fewer',
+                values: { maxLength: descriptionLimits.maxLength },
+              }
+            )}
           >
             <EuiTextArea
               compressed
@@ -195,6 +220,8 @@ export const DashboardSettingsFlyout = ({ onClose, ariaLabelledBy }: DashboardSe
               data-test-subj="dashboardDescriptionInput"
               name="description"
               value={localSettings.description ?? ''}
+              maxLength={descriptionLimits.maxLength}
+              isInvalid={isDescriptionTooLong}
               onChange={(event) => updateDashboardSetting({ description: event.target.value })}
               aria-label={i18n.translate(
                 'dashboard.embeddableApi.showSettings.flyout.form.panelDescriptionAriaLabel',
@@ -448,6 +475,7 @@ export const DashboardSettingsFlyout = ({ onClose, ariaLabelledBy }: DashboardSe
               fill
               aria-describedby={isTitleDuplicate ? DUPLICATE_TITLE_CALLOUT_ID : undefined}
               isLoading={isApplying}
+              isDisabled={isTitleTooLong || isDescriptionTooLong}
             >
               {isTitleDuplicate ? (
                 <FormattedMessage

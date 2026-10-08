@@ -51,6 +51,7 @@ dependsOn:
   - '@kbn/config-schema'
   - '@kbn/zod'
   - '@kbn/esql-browser'
+  - '@kbn/schema-string-helpers'
 tags:
   - plugin
   - prod

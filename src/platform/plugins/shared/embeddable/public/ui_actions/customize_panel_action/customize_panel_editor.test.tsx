@@ -201,6 +201,19 @@ describe('customize panel editor', () => {
       );
     });
 
+    it('should flag an existing custom title that exceeds the length limit and block apply', () => {
+      setTitle('a'.repeat(1025));
+      renderPanelEditor();
+      expect(screen.getByText('Title must be 1024 characters or fewer')).toBeInTheDocument();
+      expect(screen.getByTestId('saveCustomizePanelButton')).toBeDisabled();
+    });
+
+    it('should not block apply when an over-limit title comes from the library item', () => {
+      api.defaultTitle$ = new BehaviorSubject<string | undefined>('a'.repeat(1025));
+      renderPanelEditor();
+      expect(screen.getByTestId('saveCustomizePanelButton')).toBeEnabled();
+    });
+
     it('should hide description reset when no default exists', async () => {
       api.defaultDescription$ = new BehaviorSubject<string | undefined>(undefined);
       setDescription('Initial description');

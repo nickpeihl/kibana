@@ -9,7 +9,7 @@
 
 import { once } from 'lodash';
 
-import { z } from '@kbn/zod';
+import { z, savedObjectId } from '@kbn/zod';
 import { telemetryHandler } from '@kbn/as-code-shared-telemetry';
 import { logRequest } from '@kbn/as-code-utils';
 import type { VersionedRouter } from '@kbn/core-http-server';
@@ -53,7 +53,7 @@ export function registerDeleteRoute(
         request: {
           params: z
             .object({
-              id: z.string().meta({
+              id: savedObjectId().meta({
                 description: 'The dashboard ID, as returned by the create or search endpoints.',
               }),
             })

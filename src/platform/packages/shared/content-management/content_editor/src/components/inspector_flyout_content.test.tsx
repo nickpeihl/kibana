@@ -189,6 +189,39 @@ describe('<ContentEditorFlyoutContent />', () => {
       expect(errorCallout.text()).toContain('A name is required.');
     });
 
+    test('should flag an existing name that exceeds the length limit and block saving', async () => {
+      const onSave = jest.fn();
+
+      await act(async () => {
+        testBed = await setup({
+          onSave,
+          isReadonly: false,
+          item: { ...savedObjectItem, title: 'a'.repeat(1025) },
+        });
+      });
+
+      const {
+        find,
+        component,
+        form: { setInputValue, getErrorsMessages },
+      } = testBed!;
+
+      expect(getErrorsMessages()).toEqual(['Name must be 1024 characters or fewer.']);
+
+      await act(async () => {
+        setInputValue('metadataForm.descriptionInput', 'newDescription');
+      });
+      await waitForValidationResults();
+      component.update();
+
+      await act(async () => {
+        find('saveButton').simulate('click');
+      });
+      component.update();
+
+      expect(onSave).not.toHaveBeenCalled();
+    });
+
     test('should notify saving errors', async () => {
       const notifyError = jest.fn();
       const onSave = async () => {

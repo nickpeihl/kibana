@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, description, displayName, savedObjectId } from '@kbn/zod';
 import { getAsCodeTagsSchema } from '@kbn/as-code-shared-schemas';
 import { dashboardNavigationOptionsSchema } from '@kbn/dashboard-navigation-options-schema';
 import {
@@ -24,14 +24,19 @@ import {
 } from '../../common/constants';
 
 const baseLinkSchemaShape = {
-  label: z.string().optional().meta({ description: 'The label of the link displayed in the UI.' }),
+  label: displayName
+    .warn({ minLength: 0, label: 'links.link.label' })
+    .optional()
+    .meta({ description: 'The label of the link displayed in the UI.' }),
 };
 
 export const dashboardLinkSchema = z
   .object({
     ...baseLinkSchemaShape,
     type: z.literal(DASHBOARD_LINK_TYPE),
-    destination: z.string().meta({ description: 'Linked dashboard saved object ID.' }),
+    destination: savedObjectId
+      .warn({ minLength: 0, label: 'links.link.dashboard_destination' })
+      .meta({ description: 'Linked dashboard saved object ID.' }),
     options: dashboardNavigationOptionsSchema,
   })
   .strict()
@@ -91,7 +96,7 @@ export const linksByValueSchema = serializedTitlesSchema
 
 export const linksByReferenceSchema = serializedTitlesSchema
   .extend({
-    ref_id: z.string().meta({
+    ref_id: savedObjectId.warn({ minLength: 0, label: 'links.ref_id' }).meta({
       title: 'Reference ID',
       description: 'The unique identifier of the links library item.',
     }),
@@ -104,7 +109,7 @@ export const linksEmbeddableSchema = z.union([linksByValueSchema, linksByReferen
 });
 
 export const linksApiStateSchema = linksStateSchema.extend({
-  title: z.string(), // title is required - all links library items must have a title
-  description: z.string().optional(), // description of links library item is optional
+  title: displayName.warn({ minLength: 0, label: 'links.title' }), // title is required - all links library items must have a title
+  description: description.warn({ label: 'links.description' }).optional(), // description of links library item is optional
   tags: getAsCodeTagsSchema().optional(),
 });

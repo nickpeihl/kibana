@@ -7,12 +7,15 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, savedObjectId } from '@kbn/zod';
 import { panelGridSchema } from './panel_grid';
 
 export const basePanelSchema = z
   .object({
-    id: z.string().optional().meta({ description: 'The unique ID of the panel.' }),
+    id: savedObjectId
+      .warn({ minLength: 0, label: 'dashboard.panel.id' })
+      .optional()
+      .meta({ description: 'The unique ID of the panel.' }),
     type: z.string(),
     grid: panelGridSchema,
     // TODO: enforce Serializable type, see https://github.com/elastic/kibana/pull/269196

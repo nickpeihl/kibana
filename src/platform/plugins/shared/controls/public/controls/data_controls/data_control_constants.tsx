@@ -164,6 +164,11 @@ export const DataControlEditorStrings = {
         i18n.translate('controls.controlGroup.manageControl.displaySettings.titleInputTitle', {
           defaultMessage: 'Label',
         }),
+      getTitleTooLongError: (maxLength: number) =>
+        i18n.translate('controls.controlGroup.manageControl.displaySettings.titleTooLongError', {
+          defaultMessage: 'Label must be {maxLength} characters or fewer',
+          values: { maxLength },
+        }),
     },
     getSaveChangesTitle: () =>
       i18n.translate('controls.controlGroup.manageControl.saveChangesTitle', {

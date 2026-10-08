@@ -12,7 +12,7 @@ import { logRequest } from '@kbn/as-code-utils';
 import type { VersionedRouter } from '@kbn/core-http-server';
 import type { Logger, RequestHandlerContext } from '@kbn/core/server';
 import type { UsageCounter } from '@kbn/usage-collection-plugin/server';
-import { z } from '@kbn/zod';
+import { z, savedObjectId } from '@kbn/zod';
 import { once } from 'lodash';
 import { getDashboardStateSchema } from '../dashboard_state_schemas';
 import { getRouteConfig } from '../get_route_config';
@@ -54,7 +54,7 @@ export function registerReadRoute(
         request: {
           params: z
             .object({
-              id: z.string().meta({
+              id: savedObjectId().meta({
                 description: 'The dashboard ID, as returned by the create or search endpoints.',
               }),
             })

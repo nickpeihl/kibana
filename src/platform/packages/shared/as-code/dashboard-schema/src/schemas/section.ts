@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, displayName, savedObjectId } from '@kbn/zod';
 import { MAX_PANELS } from '../constants';
 
 export const sectionGridSchema = z
@@ -19,7 +19,9 @@ export const sectionGridSchema = z
 export function getSectionSchema<T extends z.ZodTypeAny>(panelSchema: T) {
   return z
     .object({
-      title: z.string().meta({ description: 'The title of the section.' }),
+      title: displayName
+        .warn({ minLength: 0, label: 'dashboard.section.title' })
+        .meta({ description: 'The title of the section.' }),
       collapsed: z.boolean().default(false).meta({
         description:
           'When `true`, the section is collapsed and its panels are not rendered until expanded. Useful for improving initial load time on large dashboards. Defaults to `false`.',
@@ -30,7 +32,10 @@ export function getSectionSchema<T extends z.ZodTypeAny>(panelSchema: T) {
         .max(MAX_PANELS)
         .default([])
         .meta({ description: 'The panels that belong to the section.' }),
-      id: z.string().optional().meta({ description: 'The unique ID of the section.' }),
+      id: savedObjectId
+        .warn({ minLength: 0, label: 'dashboard.section.id' })
+        .optional()
+        .meta({ description: 'The unique ID of the section.' }),
     })
     .strict()
     .meta({

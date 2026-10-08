@@ -9,8 +9,11 @@
 
 import { useState, useCallback, useMemo, useRef } from 'react';
 import { i18n } from '@kbn/i18n';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 
 import type { Item } from '../types';
+
+export const { displayName: titleLimits, description: descriptionLimits } = STRING_HELPER_DEFAULTS;
 
 export interface Field<TValueType = unknown> {
   value: TValueType;
@@ -42,6 +45,24 @@ type SetFieldValueGetter<TField extends keyof Fields = keyof Fields> = (
   fieldName: TField
 ) => SetFieldValueFn<TField>;
 
+const validateTitleLength = (value: string) => {
+  if (value.length > titleLimits.maxLength) {
+    return i18n.translate('contentManagement.contentEditor.metadataForm.nameTooLongError', {
+      defaultMessage: 'Name must be {maxLength} characters or fewer.',
+      values: { maxLength: titleLimits.maxLength },
+    });
+  }
+};
+
+const validateDescriptionLength = (value: string) => {
+  if (value.length > descriptionLimits.maxLength) {
+    return i18n.translate('contentManagement.contentEditor.metadataForm.descriptionTooLongError', {
+      defaultMessage: 'Description must be {maxLength} characters or fewer.',
+      values: { maxLength: descriptionLimits.maxLength },
+    });
+  }
+};
+
 const basicValidators: BasicValidators = {
   title: [
     {
@@ -54,8 +75,13 @@ const basicValidators: BasicValidators = {
         }
       },
     },
+    { type: 'error', fn: validateTitleLength },
   ],
+  description: [{ type: 'error', fn: validateDescriptionLength }],
 };
+
+/** Flags pre-existing values that already exceed the length limits when the form opens. */
+const getInitialErrors = (error: string | undefined) => (error ? [error] : undefined);
 
 function getCustomValidation<TField extends keyof Fields>(
   field: TField,
@@ -108,10 +134,15 @@ export const useMetadataForm = ({
 }) => {
   const changingValueTimeout = useRef<{ [key in keyof Fields]?: NodeJS.Timeout | null }>({});
   const [fields, setFields] = useState<Fields>({
-    title: { value: item.title, isChangingValue: false },
+    title: {
+      value: item.title,
+      isChangingValue: false,
+      errors: getInitialErrors(validateTitleLength(item.title)),
+    },
     description: {
       value: item.description ?? '',
       isChangingValue: false,
+      errors: getInitialErrors(validateDescriptionLength(item.description ?? '')),
     },
     tags: {
       value: normalizeTagIds(item.tags),

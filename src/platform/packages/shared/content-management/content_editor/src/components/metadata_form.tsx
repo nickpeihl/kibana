@@ -14,6 +14,7 @@ import { EuiFieldText, EuiForm, EuiFormRow, EuiSpacer, EuiTextArea } from '@elas
 import { KbnInfoCallout } from '@kbn/ui-callout';
 
 import { ContentEditorFlyoutWarningsCallOut } from './editor_flyout_warnings';
+import { descriptionLimits, titleLimits } from './use_metadata_form';
 import type { Field, MetadataFormState } from './use_metadata_form';
 import type { Services } from '../services';
 
@@ -71,6 +72,7 @@ export const MetadataForm: FC<React.PropsWithChildren<Props>> = ({
         <EuiFieldText
           isInvalid={!isFormFieldValid(title)}
           value={title.value}
+          maxLength={titleLimits.maxLength}
           onChange={(e) => {
             setTitle(e.target.value);
           }}
@@ -97,6 +99,7 @@ export const MetadataForm: FC<React.PropsWithChildren<Props>> = ({
         <EuiTextArea
           isInvalid={!isFormFieldValid(description)}
           value={description.value}
+          maxLength={descriptionLimits.maxLength}
           onChange={(e) => {
             setDescription(e.target.value);
           }}

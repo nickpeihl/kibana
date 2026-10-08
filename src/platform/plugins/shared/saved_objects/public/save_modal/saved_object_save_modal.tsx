@@ -34,8 +34,11 @@ import { FormattedMessage } from '@kbn/i18n-react';
 import React from 'react';
 import { i18n } from '@kbn/i18n';
 import { KbnWarningCallout } from '@kbn/ui-callout';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 import { css } from '@emotion/react';
 import type { SaveResult } from './show_saved_object_save_modal';
+
+const { displayName: titleLimits, description: descriptionLimits } = STRING_HELPER_DEFAULTS;
 
 export interface OnSaveProps {
   newTitle: string;
@@ -127,9 +130,11 @@ class SavedObjectSaveModalComponent<T = void> extends React.Component<
     const modalTitleId = this.props.modalTitleId ?? generateId('saveModal');
     const hasColumns = !!this.props.rightOptions;
 
+    const isTitleTooLong = title.length > titleLimits.maxLength;
     const titleInputValid =
-      hasAttemptedSubmit &&
-      ((!isTitleDuplicateConfirmed && hasTitleDuplicate) || title.length === 0);
+      isTitleTooLong ||
+      (hasAttemptedSubmit &&
+        ((!isTitleDuplicateConfirmed && hasTitleDuplicate) || title.length === 0));
 
     const formBodyContent = (
       <>
@@ -137,14 +142,22 @@ class SavedObjectSaveModalComponent<T = void> extends React.Component<
           fullWidth
           label={<FormattedMessage id="savedObjects.saveModal.titleLabel" defaultMessage="Title" />}
           isInvalid={titleInputValid}
-          error={i18n.translate('savedObjects.saveModal.titleRequired', {
-            defaultMessage: 'A title is required',
-          })}
+          error={
+            isTitleTooLong
+              ? i18n.translate('savedObjects.saveModal.titleTooLong', {
+                  defaultMessage: 'Title must be {maxLength} characters or fewer',
+                  values: { maxLength: titleLimits.maxLength },
+                })
+              : i18n.translate('savedObjects.saveModal.titleRequired', {
+                  defaultMessage: 'A title is required',
+                })
+          }
         >
           <EuiFieldText
             fullWidth
             data-test-subj="savedObjectTitle"
             value={title}
+            maxLength={titleLimits.maxLength}
             onChange={this.onTitleChange}
             isInvalid={titleInputValid}
             aria-describedby={this.state.hasTitleDuplicate ? duplicateWarningId : undefined}
@@ -249,9 +262,17 @@ class SavedObjectSaveModalComponent<T = void> extends React.Component<
       return;
     }
 
+    const isDescriptionTooLong =
+      this.state.visualizationDescription.length > descriptionLimits.maxLength;
+
     return (
       <EuiFormRow
         fullWidth
+        isInvalid={isDescriptionTooLong}
+        error={i18n.translate('savedObjects.saveModal.descriptionTooLong', {
+          defaultMessage: 'Description must be {maxLength} characters or fewer',
+          values: { maxLength: descriptionLimits.maxLength },
+        })}
         labelAppend={
           <EuiText size="xs" color="subdued">
             <FormattedMessage id="savedObjects.saveModal.optional" defaultMessage="Optional" />
@@ -268,7 +289,9 @@ class SavedObjectSaveModalComponent<T = void> extends React.Component<
           fullWidth
           data-test-subj="savedObjectDescription"
           value={this.state.visualizationDescription}
+          maxLength={descriptionLimits.maxLength}
           onChange={this.onDescriptionChange}
+          isInvalid={isDescriptionTooLong}
         />
       </EuiFormRow>
     );
@@ -367,15 +390,19 @@ class SavedObjectSaveModalComponent<T = void> extends React.Component<
   private onFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const { hasAttemptedSubmit, title } = this.state;
+    const { hasAttemptedSubmit, title, visualizationDescription } = this.state;
 
     if (!hasAttemptedSubmit) {
       this.setState({ hasAttemptedSubmit: true });
     }
 
     const isValid = this.props.isValid !== undefined ? this.props.isValid : true;
+    const isWithinLengthLimits =
+      title.length <= titleLimits.maxLength &&
+      (!this.props.showDescription ||
+        visualizationDescription.length <= descriptionLimits.maxLength);
 
-    if (title.length !== 0 && isValid) {
+    if (title.length !== 0 && isValid && isWithinLengthLimits) {
       this.saveSavedObject();
     }
   };

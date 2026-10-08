@@ -7,14 +7,13 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
-import { MAX_ID_LENGTH } from '../../constants';
+import { z, savedObjectId } from '@kbn/zod';
 
 export const MAX_TAG_C0UNT = 1_000;
 
 export const getAsCodeTagsSchema = (customDescrption?: string, customMaxSize?: number) =>
   z
-    .array(z.string().max(MAX_ID_LENGTH))
+    .array(savedObjectId({ minLength: 0 }))
     .max(customMaxSize ?? MAX_TAG_C0UNT)
     .default([])
     .meta({ description: customDescrption ?? 'Tag IDs associated with this library item.' });

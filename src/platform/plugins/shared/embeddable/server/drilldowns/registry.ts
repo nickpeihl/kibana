@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, displayName } from '@kbn/zod';
 import type { DrilldownSetup } from './types';
 import { getTransformDrilldownsIn } from '../../common/drilldowns/transform_drilldowns_in';
 import { getTransformDrilldownsOut } from '../../common/drilldowns/transform_drilldowns_out';
@@ -49,7 +49,7 @@ export function getDrilldownRegistry() {
           drilldownSetup.schema
             .and(
               z.object({
-                label: z.string(),
+                label: displayName.warn({ minLength: 0, label: 'drilldown.label' }),
                 trigger: z.union(
                   drilldownSetup.supportedTriggers
                     // narrow drilldown triggers to only those that intersect with supported triggers

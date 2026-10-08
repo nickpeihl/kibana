@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, displayName, querySortField, searchFilter } from '@kbn/zod';
 import {
   DEFAULT_DSL_OPTIONS_LIST_STATE,
   DEFAULT_ESQL_OPTIONS_LIST_STATE,
@@ -23,7 +23,7 @@ import {
 
 export const optionsListDisplaySettingsSchema = z
   .object({
-    placeholder: z.string().optional().meta({
+    placeholder: displayName.warn({ minLength: 0, label: 'control.placeholder' }).optional().meta({
       description: 'Placeholder text displayed in the control input when no option is selected.',
     }),
     hide_action_bar: z.boolean().optional().meta({
@@ -134,7 +134,7 @@ const baseEsqlControlSchema = z
       description:
         'When `true`, only one option can be selected at a time. Selecting a new option deselects any previously selected option. Defaults to `true`.',
     }),
-    variable_name: z.string().meta({
+    variable_name: querySortField.warn({ label: 'control.variable_name' }).meta({
       description:
         'The name of the ES|QL variable that this control populates. The variable is referenced in ES|QL queries using the `?variable_name` syntax.',
     }),
@@ -171,7 +171,7 @@ export const optionsListESQLControlSchema = z.discriminatedUnion('control_type',
   baseEsqlControlSchema
     .extend({
       control_type: z.literal('VALUES_FROM_QUERY'),
-      esql_query: z.string().meta({
+      esql_query: searchFilter.warn({ label: 'control.esql_query' }).meta({
         description:
           'An ES|QL query whose results populate the list of available options in the control popover.',
       }),

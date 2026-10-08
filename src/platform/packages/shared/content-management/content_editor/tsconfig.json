@@ -32,6 +32,7 @@
     "@kbn/core-user-profile-browser",
     "@kbn/react-query",
     "@kbn/ui-callout",
+    "@kbn/schema-string-helpers",
   ],
   "exclude": [
     "target/**/*"

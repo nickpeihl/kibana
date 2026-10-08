@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, description, savedObjectId } from '@kbn/zod';
 import type { GetDrilldownsSchemaFnType } from '@kbn/embeddable-plugin/server';
 import { serializedTitlesSchema } from '@kbn/presentation-publishing-schemas';
 import { DEFAULT_OBJECT_FIT, IMAGE_EMBEDDABLE_SUPPORTED_TRIGGERS } from '../common';
@@ -15,7 +15,7 @@ import { DEFAULT_OBJECT_FIT, IMAGE_EMBEDDABLE_SUPPORTED_TRIGGERS } from '../comm
 const imageFileSrcSchema = z
   .object({
     type: z.literal('file'),
-    file_id: z.string(),
+    file_id: savedObjectId.warn({ minLength: 0, label: 'image.file_id' }),
   })
   .strict()
   .meta({
@@ -35,7 +35,7 @@ const imageUrlSrcSchema = z
 const imageConfigSchema = z
   .object({
     src: z.union([imageFileSrcSchema, imageUrlSrcSchema]).meta({ description: 'Image source' }),
-    alt_text: z.string().optional(),
+    alt_text: description.warn({ label: 'image.alt_text' }).optional(),
     object_fit: z
       .union([z.literal('fill'), z.literal('contain'), z.literal('cover'), z.literal('none')])
       .default(DEFAULT_OBJECT_FIT)

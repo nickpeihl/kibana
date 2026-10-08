@@ -40,6 +40,7 @@ import {
 } from '@kbn/presentation-util-plugin/public';
 import { asyncForEach } from '@kbn/std';
 import { KbnDangerCallout } from '@kbn/ui-callout';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 
 import { triggers } from '@kbn/ui-actions-plugin/public';
 import { CONTROL_MENU_TRIGGER } from '@kbn/ui-actions-plugin/common/trigger_ids';
@@ -56,6 +57,8 @@ import { DataControlEditorStrings } from '../data_control_constants';
 import type { DataControlEditorState } from './types';
 import type { ReopenDataControlEditorOverrides } from '../open_data_control_editor';
 import { ConfigureValuesQuery } from './configure_values_query';
+
+const { maxLength: titleMaxLength } = STRING_HELPER_DEFAULTS.displayName;
 
 export interface ControlEditorProps<State extends DataControlEditorState = DataControlEditorState> {
   initialState: Partial<State>;
@@ -220,6 +223,7 @@ export const DataControlEditor = <State extends DataControlEditorState = DataCon
   const [panelTitle, setPanelTitle] = useState<string>(initialState.title ?? defaultPanelTitle);
   const [selectedControlType, setSelectedControlType] = useState<string | undefined>(controlType);
   const [controlOptionsValid, setControlOptionsValid] = useState<boolean>(true);
+  const isTitleTooLong = (editorState.title ?? '').length > titleMaxLength;
 
   const editorConfig = useMemo<ControlGroupEditorConfig | undefined>(() => {
     return apiHasEditorConfig(parentApi) ? parentApi.getEditorConfig() : undefined;
@@ -491,11 +495,17 @@ export const DataControlEditor = <State extends DataControlEditorState = DataCon
           </EuiFormRow>
           <EuiFormRow
             label={DataControlEditorStrings.manageControl.displaySettings.getTitleInputTitle()}
+            isInvalid={isTitleTooLong}
+            error={DataControlEditorStrings.manageControl.displaySettings.getTitleTooLongError(
+              titleMaxLength
+            )}
           >
             <EuiFieldText
               data-test-subj="control-editor-title-input"
               placeholder={defaultPanelTitle}
               value={panelTitle}
+              maxLength={titleMaxLength}
+              isInvalid={isTitleTooLong}
               compressed
               onChange={(e) => {
                 setPanelTitle(e.target.value ?? '');
@@ -530,7 +540,8 @@ export const DataControlEditor = <State extends DataControlEditorState = DataCon
                 fill
                 color="primary"
                 disabled={
-                  !(controlOptionsValid && Boolean(selectedControlType) && valuesSourceValid)
+                  !(controlOptionsValid && Boolean(selectedControlType) && valuesSourceValid) ||
+                  isTitleTooLong
                 }
                 hasAriaDisabled={esqlQueryNeedsRunning}
                 onClick={() => {

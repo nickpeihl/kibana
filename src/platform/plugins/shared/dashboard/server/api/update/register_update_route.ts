@@ -9,7 +9,7 @@
 
 import { once } from 'lodash';
 
-import { z } from '@kbn/zod';
+import { z, savedObjectId } from '@kbn/zod';
 import { telemetryHandler } from '@kbn/as-code-shared-telemetry';
 import { logRequest, writeErrorHandler } from '@kbn/as-code-utils';
 import type { VersionedRouter } from '@kbn/core-http-server';
@@ -57,9 +57,9 @@ export function registerUpdateRoute(
         request: {
           params: z
             .object({
-              // Can not validate id at route level
+              // Can not validate id format at route level
               // existing dashboards may have invalid "as code" ids
-              id: z.string().meta({
+              id: savedObjectId().meta({
                 description: 'The unique ID of the dashboard to be created or updated',
               }),
             })

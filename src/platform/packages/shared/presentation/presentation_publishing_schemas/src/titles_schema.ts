@@ -7,16 +7,22 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, description, displayName } from '@kbn/zod';
 
 export const serializedTitlesSchema = z
   .object({
-    description: z.string().optional().meta({ description: 'A short description of the panel.' }),
+    description: description
+      .warn({ label: 'panel.description' })
+      .optional()
+      .meta({ description: 'A short description of the panel.' }),
     hide_title: z
       .boolean()
       .optional()
       .meta({ description: 'When true, the panel title is hidden. Defaults to false.' }),
-    title: z.string().optional().meta({ description: 'The panel title.' }),
+    title: displayName
+      .warn({ minLength: 0, label: 'panel.title' })
+      .optional()
+      .meta({ description: 'The panel title.' }),
     hide_border: z
       .boolean()
       .optional()

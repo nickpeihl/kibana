@@ -28,6 +28,7 @@ import {
 } from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import { FormattedMessage } from '@kbn/i18n-react';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 
 import { UI_SETTINGS } from '@kbn/data-plugin/public';
 import type { PublishesUnifiedSearch } from '@kbn/presentation-publishing';
@@ -48,6 +49,8 @@ interface TimePickerQuickRange {
   to: string;
   display: string;
 }
+
+const { displayName: titleLimits, description: descriptionLimits } = STRING_HELPER_DEFAULTS;
 
 export const CustomizePanelEditor = ({
   api,
@@ -72,6 +75,15 @@ export const CustomizePanelEditor = ({
     api.timeRange$?.value ?? api.parentApi?.timeRange$?.value
   );
   const [isPanelBorderless, setIsPanelBorderless] = useState(api.hideBorder$?.value);
+
+  // Default title and description come from the library item and are not saved with the panel
+  const isTitleTooLong =
+    !hideTitle &&
+    panelTitle !== api.defaultTitle$?.value &&
+    (panelTitle ?? '').length > titleLimits.maxLength;
+  const isDescriptionTooLong =
+    panelDescription !== api.defaultDescription$?.value &&
+    (panelDescription ?? '').length > descriptionLimits.maxLength;
 
   const initialFocusRef = useRef<HTMLInputElement | null>(null);
 
@@ -168,6 +180,14 @@ export const CustomizePanelEditor = ({
               </EuiButtonEmpty>
             )
           }
+          isInvalid={isTitleTooLong}
+          error={i18n.translate(
+            'embeddableApi.action.customizePanel.flyout.optionsMenuForm.panelTitleTooLongError',
+            {
+              defaultMessage: 'Title must be {maxLength} characters or fewer',
+              values: { maxLength: titleLimits.maxLength },
+            }
+          )}
         >
           <EuiFieldText
             inputRef={initialFocusRef}
@@ -178,6 +198,8 @@ export const CustomizePanelEditor = ({
             type="text"
             disabled={hideTitle}
             value={panelTitle ?? ''}
+            maxLength={titleLimits.maxLength}
+            isInvalid={isTitleTooLong}
             onChange={(e) => setPanelTitle(e.target.value)}
             aria-label={i18n.translate(
               'embeddableApi.action.customizePanel.flyout.optionsMenuForm.panelTitleInputAriaLabel',
@@ -215,6 +237,14 @@ export const CustomizePanelEditor = ({
               </EuiButtonEmpty>
             )
           }
+          isInvalid={isDescriptionTooLong}
+          error={i18n.translate(
+            'embeddableApi.action.customizePanel.flyout.optionsMenuForm.panelDescriptionTooLongError',
+            {
+              defaultMessage: 'Description must be {maxLength} characters or fewer',
+              values: { maxLength: descriptionLimits.maxLength },
+            }
+          )}
         >
           <EuiTextArea
             id="panelDescriptionInput"
@@ -223,6 +253,8 @@ export const CustomizePanelEditor = ({
             disabled={!editMode}
             name="description"
             value={panelDescription ?? ''}
+            maxLength={descriptionLimits.maxLength}
+            isInvalid={isDescriptionTooLong}
             onChange={(e) => setPanelDescription(e.target.value)}
             aria-label={i18n.translate(
               'embeddableApi.action.customizePanel.flyout.optionsMenuForm.panelDescriptionAriaLabel',
@@ -345,7 +377,12 @@ export const CustomizePanelEditor = ({
             </EuiButtonEmpty>
           </EuiFlexItem>
           <EuiFlexItem grow={false}>
-            <EuiButton data-test-subj="saveCustomizePanelButton" onClick={save} fill>
+            <EuiButton
+              data-test-subj="saveCustomizePanelButton"
+              onClick={save}
+              fill
+              isDisabled={editMode && (isTitleTooLong || isDescriptionTooLong)}
+            >
               <FormattedMessage
                 id="embeddableApi.action.customizePanel.flyout.saveButtonTitle"
                 defaultMessage="Apply"

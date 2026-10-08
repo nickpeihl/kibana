@@ -62,6 +62,7 @@ dependsOn:
   - '@kbn/esql-utils'
   - '@kbn/licensing-plugin'
   - '@kbn/field-formats-common'
+  - '@kbn/schema-string-helpers'
 tags:
   - plugin
   - prod

@@ -51,6 +51,7 @@ dependsOn:
   - '@kbn/presentation-publishing-schemas'
   - '@kbn/controls-renderer'
   - '@kbn/ui-callout'
+  - '@kbn/schema-string-helpers'
 tags:
   - plugin
   - prod

@@ -24,6 +24,7 @@ dependsOn:
   - '@kbn/i18n-react'
   - '@kbn/react-kibana-mount'
   - '@kbn/ui-callout'
+  - '@kbn/schema-string-helpers'
 tags:
   - plugin
   - prod

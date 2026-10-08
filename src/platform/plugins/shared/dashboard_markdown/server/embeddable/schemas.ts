@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, savedObjectId } from '@kbn/zod';
 import { serializedTitlesSchema } from '@kbn/presentation-publishing-schemas';
 import { BY_REF_SCHEMA_META, BY_VALUE_SCHEMA_META } from '@kbn/presentation-publishing-schemas';
 
@@ -40,7 +40,7 @@ export const markdownByValueStateSchema = z
 const markdownByReferenceStateSchema = z
   .object({
     ...serializedTitlesSchema.shape,
-    ref_id: z.string().meta({
+    ref_id: savedObjectId.warn({ minLength: 0, label: 'markdown.ref_id' }).meta({
       description: 'The unique identifier of the markdown library item.',
     }),
   })

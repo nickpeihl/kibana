@@ -14,7 +14,7 @@
  * in * as Code APIs.
  */
 
-import { z } from '@kbn/zod';
+import { z, displayName, querySortField, savedObjectId, searchFilter } from '@kbn/zod';
 import {
   ASCODE_FILTER_OPERATOR,
   ASCODE_GROUPED_CONDITION_TYPE,
@@ -72,15 +72,21 @@ const commonBasePropertiesSchema = z
         'When `true`, the filter is inactive and does not affect query results. Defaults to `false`.',
     }),
     negate: negatePropertySchema,
-    controlled_by: z.string().optional().meta({
-      description:
-        'Identifier of the panel that manages this filter. When set, the filter is treated as owned by that panel.',
-    }),
-    data_view_id: z.string().optional().meta({
-      description: 'Identifier of the data view used as context for this filter.',
-    }),
-    label: z
-      .string()
+    controlled_by: savedObjectId
+      .warn({ minLength: 0, label: 'asCode.filter.controlled_by' })
+      .optional()
+      .meta({
+        description:
+          'Identifier of the panel that manages this filter. When set, the filter is treated as owned by that panel.',
+      }),
+    data_view_id: savedObjectId
+      .warn({ minLength: 0, label: 'asCode.filter.data_view_id' })
+      .optional()
+      .meta({
+        description: 'Identifier of the data view used as context for this filter.',
+      }),
+    label: displayName
+      .warn({ minLength: 0, label: 'asCode.filter.label' })
       .optional()
       .meta({ description: 'Human-readable label for the filter, used for display purposes.' }),
     is_multi_index: z.boolean().optional().meta({
@@ -99,7 +105,9 @@ const commonBasePropertiesSchema = z
  */
 const baseConditionSchema = z
   .object({
-    field: z.string().meta({ description: 'Name of the document field the condition evaluates.' }),
+    field: querySortField
+      .warn({ label: 'asCode.filter.condition.field' })
+      .meta({ description: 'Name of the document field the condition evaluates.' }),
     negate: negatePropertySchema,
   })
   .strict();
@@ -112,7 +120,7 @@ const singleConditionSchema = baseConditionSchema
     operator: z.literal(ASCODE_FILTER_OPERATOR.IS),
     value: z
       .union([
-        z.string().meta({
+        searchFilter.warn({ label: 'asCode.filter.condition.value' }).meta({
           title: 'value',
         }),
         z.number().meta({
@@ -138,7 +146,7 @@ const oneOfConditionSchema = baseConditionSchema
     operator: z.literal(ASCODE_FILTER_OPERATOR.IS_ONE_OF),
     value: z
       .union([
-        z.array(z.string()).max(10000),
+        z.array(searchFilter.warn({ label: 'asCode.filter.condition.value' })).max(10000),
         z.array(z.number()).max(10000),
         z.array(z.boolean()).max(10000),
       ])
@@ -262,7 +270,7 @@ export const asCodeDSLFilterSchema = commonBasePropertiesSchema
     dsl: z.record(z.string(), z.any()).meta({
       description: 'Elasticsearch Query DSL object passed directly to the query.',
     }),
-    field: z.string().optional().meta({
+    field: querySortField.warn({ label: 'asCode.filter.dsl.field' }).optional().meta({
       description:
         'Field name for scripted filters where the field cannot be extracted from the DSL query.',
     }),

@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, savedObjectId } from '@kbn/zod';
 import type { VersionedRouter } from '@kbn/core-http-server';
 import type { Logger, RequestHandlerContext } from '@kbn/core/server';
 import { telemetryHandler } from '@kbn/as-code-shared-telemetry';
@@ -45,9 +45,9 @@ If no item exists with the specified ID, a new one is created.`,
         request: {
           params: z
             .object({
-              // Can not validate id at route level
+              // Can not validate id format at route level
               // existing markdown panels may have invalid "as code" ids
-              id: z.string().meta({
+              id: savedObjectId().meta({
                 description: 'The unique ID of the markdown library item to be created or updated.',
               }),
             })

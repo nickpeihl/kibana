@@ -7,11 +7,11 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, searchFilter } from '@kbn/zod';
 
 export const asCodeQuerySchema = z
   .object({
-    expression: z.string().meta({
+    expression: searchFilter.warn({ label: 'asCode.query.expression' }).meta({
       description: 'A query expression in KQL or Lucene syntax.',
     }),
     language: z.enum(['kql', 'lucene']).meta({

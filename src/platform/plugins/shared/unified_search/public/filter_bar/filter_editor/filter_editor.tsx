@@ -53,6 +53,7 @@ import type { DocLinksStart } from '@kbn/core-doc-links-browser';
 import { css } from '@emotion/react';
 import { euiThemeVars } from '@kbn/ui-theme';
 import type { SuggestionsAbstraction } from '@kbn/kql/public';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 import { Subject } from 'rxjs';
 import { GenericComboBox } from './generic_combo_box';
 import {
@@ -68,6 +69,8 @@ import { filterBadgeStyle, filterPreviewLabelStyle } from './filter_editor.style
 import { ScrollableContainer } from './scrollable_container';
 
 const editorFormStyle = css({ padding: euiThemeVars.euiSizeM });
+
+const { maxLength: customLabelMaxLength } = STRING_HELPER_DEFAULTS.displayName;
 
 export const strings = {
   getPanelTitleAdd: () =>
@@ -98,6 +101,11 @@ export const strings = {
   getAddCustomLabel: () =>
     i18n.translate('unifiedSearch.filter.filterEditor.customLabelPlaceholder', {
       defaultMessage: 'Add a custom label here',
+    }),
+  getCustomLabelTooLong: () =>
+    i18n.translate('unifiedSearch.filter.filterEditor.customLabelTooLongError', {
+      defaultMessage: 'Custom label must be {maxLength} characters or fewer',
+      values: { maxLength: customLabelMaxLength },
     }),
   getSelectDataView: () =>
     i18n.translate('unifiedSearch.filter.filterBar.indexPatternSelectPlaceholder', {
@@ -264,9 +272,16 @@ class FilterEditorComponent extends Component<FilterEditorProps, State> {
                 : this.renderFiltersBuilderEditor()}
 
               <EuiSpacer size="l" />
-              <EuiFormRow label={strings.getCustomLabel()} fullWidth>
+              <EuiFormRow
+                label={strings.getCustomLabel()}
+                fullWidth
+                isInvalid={this.isCustomLabelTooLong()}
+                error={strings.getCustomLabelTooLong()}
+              >
                 <EuiFieldText
                   value={`${this.state.customLabel}`}
+                  maxLength={customLabelMaxLength}
+                  isInvalid={this.isCustomLabelTooLong()}
                   onChange={this.onCustomLabelChange}
                   placeholder={strings.getAddCustomLabel()}
                   fullWidth
@@ -289,7 +304,11 @@ class FilterEditorComponent extends Component<FilterEditorProps, State> {
               <EuiButton
                 fill
                 onClick={this.onSubmit}
-                isDisabled={!this.isFilterValid() || this.state.isLoadingDataView}
+                isDisabled={
+                  !this.isFilterValid() ||
+                  this.isCustomLabelTooLong() ||
+                  this.state.isLoadingDataView
+                }
                 data-test-subj="saveFilter"
                 size="s"
               >
@@ -501,6 +520,10 @@ class FilterEditorComponent extends Component<FilterEditorProps, State> {
       return false;
     }
   };
+
+  private isCustomLabelTooLong() {
+    return (this.state.customLabel ?? '').length > customLabelMaxLength;
+  }
 
   private isFilterValid() {
     const { isCustomEditorOpen, queryDsl, selectedDataView, localFilter } = this.state;

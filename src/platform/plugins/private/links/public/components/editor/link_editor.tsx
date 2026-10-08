@@ -30,6 +30,7 @@ import {
 import { DEFAULT_DASHBOARD_NAVIGATION_OPTIONS } from '@kbn/dashboard-navigation-options-common';
 import { DashboardNavigationOptionsEditor } from '@kbn/dashboard-navigation-options-components';
 import type { DashboardNavigationOptions } from '@kbn/dashboard-navigation-options-schema';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 
 import {
   DASHBOARD_LINK_TYPE,
@@ -43,6 +44,8 @@ import { ExternalLinkOptionsEditor } from '../external_link/external_link_option
 import { LinksStrings } from '../links_strings';
 import { LinkInfo } from './constants';
 import { LinkDestination } from './link_destination';
+
+const { maxLength: labelMaxLength } = STRING_HELPER_DEFAULTS.displayName;
 
 export const LinkEditor = ({
   link,
@@ -70,6 +73,10 @@ export const LinkEditor = ({
     ...(link && link.type === EXTERNAL_LINK_TYPE ? link.options : {}),
   });
   const [linkDestination, setLinkDestination] = useState<string | undefined>(link?.destination);
+
+  // The default label comes from the destination and is not saved with the link
+  const isLabelTooLong =
+    currentLinkLabel !== defaultLinkLabel && currentLinkLabel.length > labelMaxLength;
 
   const linkTypes: EuiRadioGroupOption[] = useMemo(() => {
     return ([DASHBOARD_LINK_TYPE, EXTERNAL_LINK_TYPE] as LinkType[]).map((type) => {
@@ -142,7 +149,11 @@ export const LinkEditor = ({
             selectedLinkType={selectedLinkType}
             setDestination={handleDestinationPicked}
           />
-          <EuiFormRow label={LinksStrings.editor.linkEditor.getLinkTextLabel()}>
+          <EuiFormRow
+            label={LinksStrings.editor.linkEditor.getLinkTextLabel()}
+            isInvalid={isLabelTooLong}
+            error={LinksStrings.editor.linkEditor.getLinkTextTooLongError(labelMaxLength)}
+          >
             <EuiFieldText
               compressed
               placeholder={
@@ -150,6 +161,8 @@ export const LinkEditor = ({
                 LinksStrings.editor.linkEditor.getLinkTextPlaceholder()
               }
               value={currentLinkLabel}
+              maxLength={labelMaxLength}
+              isInvalid={isLabelTooLong}
               onChange={(e) => setCurrentLinkLabel(e.target.value)}
               data-test-subj="links--linkEditor--linkLabel--input"
             />
@@ -187,7 +200,7 @@ export const LinkEditor = ({
           <EuiFlexItem grow={false}>
             <EuiButton
               fill
-              disabled={!linkDestination}
+              disabled={!linkDestination || isLabelTooLong}
               onClick={() => {
                 // this check should always be true, since the button is disabled otherwise - this is just for type safety
                 if (linkDestination) {

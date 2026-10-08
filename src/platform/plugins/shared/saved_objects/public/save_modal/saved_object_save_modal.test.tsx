@@ -169,6 +169,31 @@ describe('SavedObjectSaveModal', () => {
     });
   });
 
+  it('flags an existing title that exceeds the length limit and blocks saving', async () => {
+    const onSave = jest.fn();
+
+    render(
+      <EuiProvider>
+        <I18nProvider>
+          <SavedObjectSaveModal
+            hasLibraryItemWithTitle={mockHasLibraryItemWithTitle}
+            onSave={onSave}
+            onClose={mockClose}
+            lastSavedTitle={''}
+            title={'a'.repeat(1025)}
+            showCopyOnSave={false}
+            objectType="visualization"
+            showDescription={true}
+          />
+        </I18nProvider>
+      </EuiProvider>
+    );
+
+    expect(screen.getByText('Title must be 1024 characters or fewer')).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Save' }));
+    expect(onSave).not.toHaveBeenCalled();
+  });
+
   it('renders the form with noValidate to suppress native browser validation', () => {
     render(
       <I18nProvider>

@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, description, displayName } from '@kbn/zod';
 import { asCodeFilterSchema } from '@kbn/as-code-filters-schema';
 import {
   asCodeEsqlApproximationSchema,
@@ -68,8 +68,8 @@ export function getDashboardDataSchema<P extends z.ZodTypeAny>(
   return z
     .object({
       pinned_panels: effectivePinnedPanelsSchema,
-      description: z
-        .string()
+      description: description
+        .warn({ label: 'dashboard.description' })
         .optional()
         .meta({ description: 'A short description of the dashboard.' }),
       filters: z
@@ -104,7 +104,9 @@ export function getDashboardDataSchema<P extends z.ZodTypeAny>(
         isDashboardAppRequest && isReadRequest ? Number.MAX_SAFE_INTEGER : undefined
       ).optional(),
       time_range: timeRangeSchema.optional(),
-      title: z.string().min(1).meta({ description: 'A human-readable title for the dashboard.' }),
+      title: displayName
+        .warn({ label: 'dashboard.title' })
+        .meta({ description: 'A human-readable title for the dashboard.' }),
       access_control: accessControlSchema,
     })
     .strict()

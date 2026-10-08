@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, savedObjectId } from '@kbn/zod';
 import {
   CONTROL_WIDTH_LARGE,
   CONTROL_WIDTH_MEDIUM,
@@ -35,7 +35,10 @@ export const controlWidthSchema = z
 
 export const pinnedControlSchema = z
   .object({
-    id: z.string().optional().meta({ description: 'The unique ID of the control' }),
+    id: savedObjectId
+      .warn({ minLength: 0, label: 'control.id' })
+      .optional()
+      .meta({ description: 'The unique ID of the control' }),
     width: controlWidthSchema,
     grow: z.boolean().default(DEFAULT_PINNED_CONTROL_STATE.grow).meta({
       description:

@@ -7,12 +7,15 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-import { z } from '@kbn/zod';
+import { z, displayName, querySortField, savedObjectId, searchFilter } from '@kbn/zod';
 import { ControlValuesSource, DEFAULT_DATA_CONTROL_STATE } from '@kbn/controls-constants';
 
 export const controlTitleSchema = z
   .object({
-    title: z.string().optional().meta({ description: 'A human-readable title for the control.' }),
+    title: displayName
+      .warn({ minLength: 0, label: 'control.title' })
+      .optional()
+      .meta({ description: 'A human-readable title for the control.' }),
   })
   .strict();
 
@@ -57,10 +60,10 @@ export const dataControlFieldVariantSchema = z
   .object({
     ...sharedDataControlProps,
     values_source: dataControlFieldValuesSourceSchema,
-    data_view_id: z.string().min(1).meta({
+    data_view_id: savedObjectId.warn({ label: 'control.data_view_id' }).meta({
       description: 'The ID of the data view that provides field options for this control.', // this will generate a reference
     }),
-    field_name: z.string().min(1).meta({
+    field_name: querySortField.warn({ minLength: 1, label: 'control.field_name' }).meta({
       description: 'The name of the field in the data view that this control filters on.',
     }),
   })
@@ -70,7 +73,7 @@ export const dataControlEsqlVariantSchema = z
   .object({
     ...sharedDataControlProps,
     values_source: z.literal(ControlValuesSource.ESQL),
-    esql_query: z.string().min(1).meta({
+    esql_query: searchFilter.warn({ minLength: 1, label: 'control.esql_query' }).meta({
       description: 'The ES|QL query that provides field options for this control',
     }),
   })

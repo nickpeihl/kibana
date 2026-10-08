@@ -127,6 +127,11 @@ export const LinksStrings = {
         i18n.translate('links.linkEditor.linkTextPlaceholder', {
           defaultMessage: 'Enter text for link',
         }),
+      getLinkTextTooLongError: (maxLength: number) =>
+        i18n.translate('links.linkEditor.linkTextTooLongError', {
+          defaultMessage: 'Text must be {maxLength} characters or fewer',
+          values: { maxLength },
+        }),
       getLinkOptionsLabel: () =>
         i18n.translate('links.linkEditor.linkOptionsLabel', {
           defaultMessage: 'Options',

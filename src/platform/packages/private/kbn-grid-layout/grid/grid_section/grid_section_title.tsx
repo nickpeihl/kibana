@@ -21,9 +21,12 @@ import {
 } from '@elastic/eui';
 import { css } from '@emotion/react';
 import { i18n } from '@kbn/i18n';
+import { STRING_HELPER_DEFAULTS } from '@kbn/schema-string-helpers';
 
 import { useGridLayoutContext } from '../use_grid_layout_context';
 import type { CollapsibleSection } from './types';
+
+const { maxLength: titleMaxLength } = STRING_HELPER_DEFAULTS.displayName;
 
 export const GridSectionTitle = React.memo(
   ({
@@ -53,6 +56,8 @@ export const GridSectionTitle = React.memo(
       | CollapsibleSection
       | undefined;
     const [sectionTitle, setSectionTitle] = useState<string>(currentSection?.title ?? '');
+    const [draftTitle, setDraftTitle] = useState<string>(sectionTitle);
+    const isTitleTooLong = draftTitle.length > titleMaxLength;
 
     useEffect(() => {
       /**
@@ -85,8 +90,13 @@ export const GridSectionTitle = React.memo(
       }
     }, [editTitleOpen]);
 
+    useEffect(() => {
+      if (editTitleOpen) setDraftTitle(sectionTitle);
+    }, [editTitleOpen, sectionTitle]);
+
     const updateTitle = useCallback(
       (title: string) => {
+        if (title.length > titleMaxLength) return false; // keep the editor open until shortened
         const newLayout = cloneDeep(gridLayoutStateManager.gridLayout$.getValue());
         const section = newLayout[sectionId];
         if (section.isMainSection) return; // main sections cannot have titles
@@ -142,13 +152,22 @@ export const GridSectionTitle = React.memo(
               size="xs"
               heading="h2"
               defaultValue={sectionTitle}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setDraftTitle(e.target.value)}
               onSave={updateTitle}
               onCancel={() => setEditTitleOpen(false)}
               startWithEditOpen
+              isInvalid={isTitleTooLong}
               editModeProps={{
                 inputProps: {
                   inputRef,
                   css: styles.mediumFontWeight,
+                  maxLength: titleMaxLength,
+                },
+                formRowProps: {
+                  error: i18n.translate('kbnGridLayout.section.titleTooLongError', {
+                    defaultMessage: 'Title must be {maxLength} characters or fewer',
+                    values: { maxLength: titleMaxLength },
+                  }),
                 },
               }}
               inputAriaLabel={i18n.translate('kbnGridLayout.section.editTitleAriaLabel', {
