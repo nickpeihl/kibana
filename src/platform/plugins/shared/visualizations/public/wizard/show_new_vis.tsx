@@ -31,6 +31,8 @@ const NewVisModal = lazy(() => import('./new_vis_modal'));
 export interface ShowNewVisModalParams {
   editorParams?: string[];
   onClose?: () => void;
+  /** Called when an editor opened in place by a visualization type's `onCreate` closes. */
+  onCreateEditorClose?: () => void;
   originatingApp?: string;
   originatingPath?: string;
   breadcrumbs?: EmbeddableEditorBreadcrumb[];
@@ -48,6 +50,7 @@ export interface ShowNewVisModalParams {
 export function showNewVisModal({
   editorParams = [],
   onClose,
+  onCreateEditorClose,
   originatingApp,
   originatingPath,
   breadcrumbs,
@@ -84,6 +87,7 @@ export function showNewVisModal({
           <NewVisModal
             isOpen={true}
             onClose={handleClose}
+            onCreateEditorClose={onCreateEditorClose}
             originatingApp={originatingApp}
             originatingPath={originatingPath}
             breadcrumbs={breadcrumbs}

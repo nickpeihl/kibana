@@ -70,6 +70,7 @@ export interface TypeSelectionProps {
   contentClient: ContentClient;
   isOpen: boolean;
   onClose: () => void;
+  onCreateEditorClose?: () => void;
   visTypesRegistry: TypesStart;
   editorParams?: string[];
   addBasePath: (path: string) => string;
@@ -181,21 +182,31 @@ class NewVisModal extends React.Component<TypeSelectionProps, TypeSelectionState
         visType,
       });
     } else {
-      this.redirectToVis(visType);
+      void this.redirectToVis(visType);
     }
   };
 
   private onSearchSelected = (searchId: string, searchType: string) => {
-    this.redirectToVis(this.state.visType!, searchType, searchId);
+    void this.redirectToVis(this.state.visType!, searchType, searchId);
   };
 
-  private redirectToVis(
+  private async redirectToVis(
     visType: BaseVisType | VisTypeAlias,
     searchType?: string,
     searchId?: string
   ) {
     if (this.trackUiMetric) {
       this.trackUiMetric(METRIC_TYPE.CLICK, `${visType.name}:create`);
+    }
+
+    if (visType.onCreate) {
+      const handledInPlace = await visType.onCreate({
+        onEditorClose: () => this.props.onCreateEditorClose?.(),
+      });
+      if (handledInPlace) {
+        this.props.onClose();
+        return;
+      }
     }
 
     let params;

@@ -7,13 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export * from './types_service';
-export { Schemas } from './schemas';
-export { VisGroups } from './vis_groups_enum';
-export { BaseVisType } from './base_vis_type';
-export type { VisTypeDefinition, VisTypeOnCreate, ISchemas, Schema } from './types';
-export type {
-  VisualizationClient,
-  BasicVisualizationClient,
-  SerializableAttributes,
-} from './vis_type_alias_registry';
+import { Subject } from 'rxjs';
+
+/** Emits when something outside the visualization table changed the listed items. */
+export const visualizationListingRefresh$ = new Subject<void>();
