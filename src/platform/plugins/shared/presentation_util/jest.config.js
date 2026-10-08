@@ -7,11 +7,14 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-export { openLazyFlyout } from './src/open_lazy_flyout';
-export {
-  openLazySystemFlyout,
-  type OpenLazySystemFlyoutParams,
-} from './src/open_lazy_system_flyout';
-export { openLazyModal } from './src/open_lazy_modal';
-export { getPanelContextMenuTriggerId } from './src/focus_helpers';
-export { tracksOverlays, type TracksOverlays } from './src/tracks_overlays';
+module.exports = {
+  preset: '@kbn/test',
+  rootDir: '../../../../..',
+  roots: ['<rootDir>/src/platform/plugins/shared/presentation_util'],
+  coverageDirectory:
+    '<rootDir>/target/kibana-coverage/jest/src/platform/plugins/shared/presentation_util',
+  coverageReporters: ['text', 'html'],
+  collectCoverageFrom: [
+    '<rootDir>/src/platform/plugins/shared/presentation_util/public/**/*.{ts,tsx}',
+  ],
+};
