@@ -20,7 +20,6 @@ import type { SavedObjectTaggingOssPluginStart } from '@kbn/saved-objects-taggin
 import type { VisualizationsStart } from '@kbn/visualizations-plugin/public';
 import { VISUALIZE_APP_NAME } from '@kbn/visualizations-common';
 import { VisualizationTableList } from './components/visualization_table_list';
-import { visualizationListingRefresh$ } from './listing_refresh';
 
 export interface VisualizationListingPageServices {
   core: CoreStart;
@@ -76,7 +75,6 @@ export const showNewVisModalFromDashboard = async (
         ]
       : undefined;
     pluginsStart.visualizations.showNewVisModal({
-      onCreateEditorClose: () => visualizationListingRefresh$.next(),
       originatingApp: currentApp,
       originatingPath: window.location.hash,
       outsideVisualizeApp: currentApp !== VISUALIZE_APP_NAME,

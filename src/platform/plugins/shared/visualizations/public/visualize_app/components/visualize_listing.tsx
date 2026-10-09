@@ -107,7 +107,6 @@ const useTableListViewProps = (
 
   const createNewVis = useCallback(() => {
     closeNewVisModal.current = showNewVisModal({
-      onCreateEditorClose: refreshList,
       originatingApp: VisualizeConstants.APP_ID,
       breadcrumbs: [
         {
@@ -118,7 +117,7 @@ const useTableListViewProps = (
         },
       ],
     });
-  }, [closeNewVisModal, application, refreshList]);
+  }, [closeNewVisModal, application]);
 
   const editItem = useCallback(
     async ({ attributes: { id }, editor = { editUrl: '' } }: VisualizeUserContent) => {
