@@ -37,7 +37,7 @@ export type {
   BasicVisualizationClient,
   SerializableAttributes,
 } from './vis_types';
-export type { VisualizeEditorInput } from './embeddable/types';
+export type { VisualizeApi, VisualizeEditorInput } from './embeddable/types';
 export type { Vis, SerializedVis, SerializedVisData, VisData } from './vis';
 export type VisualizeEmbeddableContract = PublicContract<VisualizeEmbeddable>;
 export type { SchemaConfig } from '../common/types';

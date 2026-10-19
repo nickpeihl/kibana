@@ -32,4 +32,16 @@ changed.
 - The visualization's query and filters become the panel `query` and `filters`.
 - The panel title and description fall back to the visualization's, so the rendered title does not
   change.
-- By-reference legacy Vega panels are not migrated and stay `legacy_vis`.
+- By-reference legacy Vega panels are not migrated on read, because the dashboard doesn't store
+  their vis type, and stay `legacy_vis`.
+
+With the flag on, **Edit** on a by-reference legacy Vega dashboard panel opens the Vega library
+editor instead of the Visualize app (through the visualizations `editByReference` vis type hook):
+
+- Save creates a `vega` library item and replaces the panel with a by-reference `vega` panel in the
+  same place. The legacy visualization is not changed.
+- The item reuses the visualization's id when it is a valid as-code id. If an item with that id
+  already exists, because the visualization was converted on another dashboard, the panel links to
+  it right away and its editor opens.
+- Range selection drilldowns are dropped, since legacy Vega never fires them.
+- Panels whose container can't replace panels, such as Canvas elements, still open in Visualize.

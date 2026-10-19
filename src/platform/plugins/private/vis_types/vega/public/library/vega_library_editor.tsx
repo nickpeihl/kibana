@@ -15,6 +15,7 @@ import {
   EuiFlexItem,
   EuiFlyoutBody,
   EuiFlyoutHeader,
+  EuiSpacer,
   EuiTitle,
   EuiToolTip,
 } from '@elastic/eui';
@@ -26,6 +27,7 @@ import type { DefaultEmbeddableApi } from '@kbn/embeddable-plugin/public';
 import type { HasSerializableState, HasSerializedChildState } from '@kbn/presentation-publishing';
 import { EmbeddableEditorPreview, ManagedEditorFooter } from '@kbn/presentation-util-plugin/public';
 import type { SavedObjectsTaggingApi } from '@kbn/saved-objects-tagging-oss-plugin/public';
+import { KbnInfoCallout } from '@kbn/ui-callout';
 import { parse } from 'hjson';
 import { BehaviorSubject } from 'rxjs';
 import { VEGA_EMBEDDABLE_TYPE } from '../../common/constants';
@@ -69,12 +71,15 @@ export interface VegaLibraryEditorProps {
   client: VegaLibraryClient;
   SearchBar: VegaPluginStartDependencies['unifiedSearch']['ui']['SearchBar'];
   savedObjectsTagging?: SavedObjectsTaggingApi;
-  item: { id: string; data: VegaReadResponseBody['data'] };
+  /** The item to edit. With `onCreate`, the item isn't saved yet, and `id` is the id to create it with. */
+  item: { id?: string; data: VegaReadResponseBody['data'] };
   defaultDataView?: DataView;
   /** Whether the user may save library items. Without it, the editor can still be used to explore. */
   canSave: boolean;
   /** Whether "Save as new" is offered. Dashboard panels can't switch to the new item. */
   allowSaveAsNew?: boolean;
+  /** Called with the item once Save creates it. */
+  onCreate?: (created: { id: string; title: string }) => void;
   closeFlyout: () => void;
   ariaLabelledBy: string;
 }
@@ -99,6 +104,7 @@ export const VegaLibraryEditor = ({
   defaultDataView,
   canSave,
   allowSaveAsNew = true,
+  onCreate,
   closeFlyout,
   ariaLabelledBy,
 }: VegaLibraryEditorProps) => {
@@ -116,6 +122,7 @@ export const VegaLibraryEditor = ({
   const [isDiscardConfirmOpen, setIsDiscardConfirmOpen] = useState(false);
 
   const isDirty = !isSameDraft(draft, initialDraft);
+  const isNew = Boolean(onCreate);
   const canPreview = draft.spec !== previewedSpec.spec;
   const dataViews = specDataViews.length ? specDataViews : defaultDataView ? [defaultDataView] : [];
 
@@ -150,7 +157,10 @@ export const VegaLibraryEditor = ({
       }),
     });
 
-  const saveAsNewItem = async (initialDetails?: Partial<VegaReadResponseBody['data']>) => {
+  const saveAsNewItem = async (
+    initialDetails?: Partial<VegaReadResponseBody['data']>,
+    id?: string
+  ) => {
     setIsSaving(true);
     try {
       const created = await saveVegaToLibrary({
@@ -158,8 +168,10 @@ export const VegaLibraryEditor = ({
         state: fromDraft(draft),
         initialDetails,
         savedObjectsTagging,
+        id,
       });
       if (!created) return;
+      onCreate?.(created);
       core.notifications.toasts.addSuccess(savedMessage(created.title));
       closeFlyout();
     } catch (error) {
@@ -169,11 +181,11 @@ export const VegaLibraryEditor = ({
     }
   };
 
-  const saveChanges = async () => {
+  const saveChanges = async (id: string) => {
     setIsSaving(true);
     try {
       // The API replaces the whole item, so keep what the editor doesn't change.
-      await client.update(item.id, { ...item.data, ...fromDraft(draft) });
+      await client.update(id, { ...item.data, ...fromDraft(draft) });
       core.notifications.toasts.addSuccess(savedMessage(item.data.title));
       closeFlyout();
     } catch (error) {
@@ -182,6 +194,14 @@ export const VegaLibraryEditor = ({
       setIsSaving(false);
     }
   };
+
+  const { id } = item;
+  const initialDetails = {
+    title: item.data.title,
+    description: item.data.description,
+    tags: item.data.tags,
+  };
+  const onSave = id && !isNew ? () => saveChanges(id) : () => saveAsNewItem(initialDetails, id);
 
   const onCancel = () => {
     if (canSave && isDirty) {
@@ -226,6 +246,19 @@ export const VegaLibraryEditor = ({
             </EuiFlexItem>
           )}
         </EuiFlexGroup>
+        {isNew ? (
+          <>
+            <EuiSpacer size="s" />
+            <KbnInfoCallout
+              size="s"
+              data-test-subj="vegaLibraryEditorConvertCallout"
+              title={i18n.translate('visTypeVega.libraryEditor.convertCalloutTitle', {
+                defaultMessage:
+                  'Saving creates a Vega visualization in the library and uses it in this panel. The original visualization is not changed.',
+              })}
+            />
+          </>
+        ) : null}
       </EuiFlyoutHeader>
       <EuiFlyoutBody data-test-subj="vegaLibraryEditorBody" css={vegaEditorFlyoutBodyCss}>
         <VegaEditorBody
@@ -255,24 +288,19 @@ export const VegaLibraryEditor = ({
           'data-test-subj': 'vegaLibraryEditorPreviewButton',
         }}
         hideSave={!canSave}
-        onSave={saveChanges}
+        onSave={onSave}
         saveButtonLabel={saveLabel}
-        isSaveDisabled={!isDirty || hasTooManyFilters(draft.filters)}
+        isSaveDisabled={(!isNew && !isDirty) || hasTooManyFilters(draft.filters)}
         isSaving={isSaving}
         saveButtonDataTestSubj="vegaLibraryEditorSaveButton"
         saveMenuItems={
-          allowSaveAsNew
+          allowSaveAsNew && !isNew
             ? [
                 {
                   name: i18n.translate('visTypeVega.libraryEditor.saveAsNewButtonLabel', {
                     defaultMessage: 'Save as new…',
                   }),
-                  onClick: () =>
-                    saveAsNewItem({
-                      title: item.data.title,
-                      description: item.data.description,
-                      tags: item.data.tags,
-                    }),
+                  onClick: () => saveAsNewItem(initialDetails),
                   'data-test-subj': 'vegaLibraryEditorSaveAsNewButton',
                 },
               ]

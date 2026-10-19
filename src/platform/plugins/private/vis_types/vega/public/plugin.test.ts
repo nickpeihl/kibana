@@ -7,6 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
+import { BehaviorSubject } from 'rxjs';
 import {
   ADD_CANVAS_ELEMENT_TRIGGER,
   ADD_PANEL_TRIGGER,
@@ -16,6 +17,7 @@ import { dataPluginMock } from '@kbn/data-plugin/public/mocks';
 import { embeddablePluginMock } from '@kbn/embeddable-plugin/public/mocks';
 import { expressionsPluginMock } from '@kbn/expressions-plugin/public/mocks';
 import { inspectorPluginMock } from '@kbn/inspector-plugin/public/mocks';
+import type { VisualizeApi } from '@kbn/visualizations-plugin/public';
 import { visualizationsPluginMock } from '@kbn/visualizations-plugin/public/mocks';
 import { uiActionsPluginMock } from '@kbn/ui-actions-plugin/public/mocks';
 import { unifiedSearchPluginMock } from '@kbn/unified-search-plugin/public/mocks';
@@ -37,6 +39,11 @@ jest.mock('./embeddable/add_vega_embeddable_action', () => ({
 
 jest.mock('./library/open_vega_library_editor', () => ({
   openVegaLibraryEditor: (params: unknown) => mockOpenVegaLibraryEditor(params),
+}));
+
+const mockEditLegacyVegaByReference = jest.fn();
+jest.mock('./library/edit_legacy_vega_by_reference', () => ({
+  editLegacyVegaByReference: (...args: unknown[]) => mockEditLegacyVegaByReference(...args),
 }));
 
 jest.mock('./async_module', () => ({
@@ -73,6 +80,28 @@ describe('VegaPlugin', () => {
     });
 
     return { core, embeddable, expressions, plugin, startCore, startDeps, visualizations };
+  };
+
+  const startPlugin = ({ legacyPanelMigrationEnabled = false } = {}) => {
+    const setupResult = setup();
+    const { plugin, startCore } = setupResult;
+    startCore.featureFlags.getBooleanValue$.mockReturnValue(
+      new BehaviorSubject(legacyPanelMigrationEnabled)
+    );
+    const uiActions = uiActionsPluginMock.createStartContract();
+    plugin.start(startCore, {
+      data: dataPluginMock.createStartContract(),
+      dataViews: dataViewPluginMocks.createStartContract(),
+      embeddable: embeddablePluginMock.createStartContract(),
+      expressions: expressionsPluginMock.createStartContract(),
+      inspector: inspectorPluginMock.createStartContract(),
+      uiActions,
+      unifiedSearch: unifiedSearchPluginMock.createStartContract(),
+      // No public start mocks exist for these; the plugin only stores them at start.
+      mapsEms: {} as MapsEmsPluginPublicStart,
+      usageCollection: {} as UsageCollectionStart,
+    } as VegaPluginStartDependencies);
+    return { ...setupResult, uiActions };
   };
 
   it('registers the Vega embeddable definition', async () => {
@@ -166,25 +195,40 @@ describe('VegaPlugin', () => {
     });
   });
 
-  describe('add panel action', () => {
-    const startPlugin = () => {
-      const { plugin, startCore } = setup();
-      const uiActions = uiActionsPluginMock.createStartContract();
-      plugin.start(startCore, {
-        data: dataPluginMock.createStartContract(),
-        dataViews: dataViewPluginMocks.createStartContract(),
-        embeddable: embeddablePluginMock.createStartContract(),
-        expressions: expressionsPluginMock.createStartContract(),
-        inspector: inspectorPluginMock.createStartContract(),
-        uiActions,
-        unifiedSearch: unifiedSearchPluginMock.createStartContract(),
-        // No public start mocks exist for these; the plugin only stores them at start.
-        mapsEms: {} as MapsEmsPluginPublicStart,
-        usageCollection: {} as UsageCollectionStart,
-      } as VegaPluginStartDependencies);
-      return { uiActions };
+  describe('editing by-reference legacy Vega panels', () => {
+    const getEditByReference = async (
+      visualizations: ReturnType<typeof setup>['visualizations']
+    ) => {
+      const legacyLoader = jest.mocked(visualizations.createBaseVisualizationAsync).mock
+        .calls[0][1];
+      const { editByReference } = await legacyLoader();
+      if (!editByReference) throw new Error('Expected editByReference');
+      return editByReference;
     };
+    const api = {} as VisualizeApi;
 
+    beforeEach(() => {
+      mockEditLegacyVegaByReference.mockReset().mockResolvedValue(true);
+    });
+
+    it('leaves them to the Visualize app while vega.legacyPanelMigration is off', async () => {
+      const { visualizations } = startPlugin();
+
+      await expect((await getEditByReference(visualizations))(api)).resolves.toBe(false);
+      expect(mockEditLegacyVegaByReference).not.toHaveBeenCalled();
+    });
+
+    it('edits them as library items while vega.legacyPanelMigration is on', async () => {
+      const { startCore, startDeps, visualizations } = startPlugin({
+        legacyPanelMigrationEnabled: true,
+      });
+
+      await expect((await getEditByReference(visualizations))(api)).resolves.toBe(true);
+      expect(mockEditLegacyVegaByReference).toHaveBeenCalledWith(startCore, startDeps, api);
+    });
+  });
+
+  describe('add panel action', () => {
     it('attaches the standalone action to the Dashboard and Canvas add menus', () => {
       const { uiActions } = startPlugin();
 

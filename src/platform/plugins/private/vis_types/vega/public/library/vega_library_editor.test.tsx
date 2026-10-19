@@ -65,7 +65,14 @@ const lastPreviewState = () => mockPreview.mock.lastCall?.[0].serializedState;
 const renderEditor = ({
   canSave = true,
   allowSaveAsNew,
-}: { canSave?: boolean; allowSaveAsNew?: boolean } = {}) => {
+  editorItem = item,
+  onCreate,
+}: {
+  canSave?: boolean;
+  allowSaveAsNew?: boolean;
+  editorItem?: { id?: string; data: VegaReadResponseBody['data'] };
+  onCreate?: (created: { id: string; title: string }) => void;
+} = {}) => {
   const core = coreMock.createStart();
   core.uiSettings.get.mockReturnValue([]);
   const client = {
@@ -84,9 +91,10 @@ const renderEditor = ({
       core={core}
       client={client}
       SearchBar={SearchBar as VegaPluginStartDependencies['unifiedSearch']['ui']['SearchBar']}
-      item={item}
+      item={editorItem}
       canSave={canSave}
       allowSaveAsNew={allowSaveAsNew}
+      onCreate={onCreate}
       closeFlyout={closeFlyout}
       ariaLabelledBy="vegaLibraryEditorTitle"
     />
@@ -230,6 +238,44 @@ describe('VegaLibraryEditor', () => {
       fireEvent.click(await screen.findByTestId('vegaLibraryEditorSaveAsNewButton'));
 
       await waitFor(() => expect(saveVegaToLibrary).toHaveBeenCalledTimes(1));
+    });
+  });
+
+  describe('a new item', () => {
+    it('explains the conversion and can be saved unchanged with the id and details', async () => {
+      jest.mocked(saveVegaToLibrary).mockResolvedValue({ id: 'legacy-id', title: 'Saved' });
+      const onCreate = jest.fn();
+      const { client, closeFlyout } = renderEditor({
+        editorItem: { id: 'legacy-id', data: item.data },
+        onCreate,
+      });
+
+      expect(await screen.findByTestId('vegaLibraryEditorConvertCallout')).toBeInTheDocument();
+      expect(screen.queryByTestId('vegaLibraryEditorSaveButtonMenu')).not.toBeInTheDocument();
+      await userEvent.click(screen.getByTestId('vegaLibraryEditorSaveButton'));
+
+      await waitFor(() => expect(closeFlyout).toHaveBeenCalledTimes(1));
+      expect(saveVegaToLibrary).toHaveBeenCalledWith(
+        expect.objectContaining({
+          id: 'legacy-id',
+          state: { spec: { format: 'hjson', value: '{ mark: point }' } },
+          initialDetails: { title: 'My chart', description: 'A chart', tags: ['tag-1'] },
+        })
+      );
+      expect(onCreate).toHaveBeenCalledWith({ id: 'legacy-id', title: 'Saved' });
+      expect(client.update).not.toHaveBeenCalled();
+    });
+
+    it('stays open when the save modal is dismissed', async () => {
+      jest.mocked(saveVegaToLibrary).mockResolvedValue(undefined);
+      const onCreate = jest.fn();
+      const { closeFlyout } = renderEditor({ editorItem: { data: item.data }, onCreate });
+
+      await userEvent.click(await screen.findByTestId('vegaLibraryEditorSaveButton'));
+
+      await waitFor(() => expect(saveVegaToLibrary).toHaveBeenCalledTimes(1));
+      expect(onCreate).not.toHaveBeenCalled();
+      expect(closeFlyout).not.toHaveBeenCalled();
     });
   });
 

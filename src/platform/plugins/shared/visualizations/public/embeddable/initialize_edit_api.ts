@@ -12,12 +12,14 @@ import type { PublishingSubject } from '@kbn/presentation-publishing';
 import { apiHasAppContext, apiPublishesTimeRange } from '@kbn/presentation-publishing';
 import type { TimeRange } from '@kbn/es-query';
 import type { Vis } from '../vis';
+import type { VisualizeApi } from './types';
 import { urlFor } from '..';
 import { getCapabilities, getEmbeddable } from '../services';
 
 export function initializeEditApi({
   customTimeRange$,
   description$,
+  getApi,
   parentApi,
   savedObjectId$,
   searchSessionId$,
@@ -27,6 +29,7 @@ export function initializeEditApi({
 }: {
   customTimeRange$: PublishingSubject<TimeRange | undefined>;
   description$: PublishingSubject<string | undefined>;
+  getApi: () => VisualizeApi;
   parentApi?: unknown;
   savedObjectId$: PublishingSubject<string | undefined>;
   searchSessionId$: PublishingSubject<string | undefined>;
@@ -42,8 +45,11 @@ export function initializeEditApi({
             defaultMessage: 'visualization',
           }),
         onEdit: async () => {
-          const stateTransferService = getEmbeddable().getStateTransfer();
           const visId = savedObjectId$.getValue();
+          const { editByReference } = vis$.getValue().type;
+          if (visId && editByReference && (await editByReference(getApi()))) return;
+
+          const stateTransferService = getEmbeddable().getStateTransfer();
           const editPath = visId ? urlFor(visId) : '#/edit_by_value';
           const parentTimeRange = apiPublishesTimeRange(parentApi)
             ? parentApi.timeRange$.getValue()

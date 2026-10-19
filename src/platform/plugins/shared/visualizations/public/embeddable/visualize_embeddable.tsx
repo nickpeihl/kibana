@@ -300,6 +300,7 @@ export const visualizeEmbeddableFactory: EmbeddablePublicDefinition<
       ...initializeEditApi({
         customTimeRange$: timeRangeManager.api.timeRange$,
         description$: titleManager.api.description$,
+        getApi: () => api,
         parentApi,
         savedObjectId$,
         searchSessionId$,

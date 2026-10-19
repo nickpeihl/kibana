@@ -42,6 +42,7 @@ export class BaseVisType<TVisParams extends VisParams = VisParams> {
   public readonly editorConfig;
   public readonly disableCreate;
   public readonly disableEdit;
+  public readonly editByReference;
   public readonly requiresSearch;
   public readonly hasPartialRows;
   public readonly hierarchicalData;
@@ -80,6 +81,7 @@ export class BaseVisType<TVisParams extends VisParams = VisParams> {
     this.titleInWizard = opts.titleInWizard ?? '';
     this.disableCreate = opts.disableCreate ?? false;
     this.disableEdit = opts.disableEdit ?? false;
+    this.editByReference = opts.editByReference;
     this.requiresSearch = opts.requiresSearch ?? false;
     this.setup = opts.setup;
     this.hasPartialRows = opts.hasPartialRows ?? false;

@@ -102,6 +102,24 @@ describe('saveVegaToLibrary', () => {
     });
   });
 
+  it('creates the item with the given id', async () => {
+    const client = createClient();
+    client.update = jest.fn().mockResolvedValue({ id: 'legacy-id' });
+    const { result } = showModal({ client, id: 'legacy-id' });
+
+    await act(async () => {
+      await mockModalProps.onSave({
+        newTitle: 'My chart',
+        newDescription: '',
+        newCopyOnSave: false,
+      });
+    });
+
+    await expect(result).resolves.toEqual({ id: 'legacy-id', title: 'My chart' });
+    expect(client.update).toHaveBeenCalledWith('legacy-id', expect.objectContaining(state));
+    expect(client.create).not.toHaveBeenCalled();
+  });
+
   it('leaves out an empty description', async () => {
     const { client } = showModal();
 

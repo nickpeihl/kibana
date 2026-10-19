@@ -159,6 +159,6 @@ describe('migrateLegacyVegaPanel', () => {
   test('throws when the visualization has no spec', () => {
     expect(() =>
       migrateLegacyVegaPanel({ savedVis: { ...getSavedVis(), params: {} }, panelConfig: {} })
-    ).toThrow('By-value Vega visualization is missing spec');
+    ).toThrow('Vega visualization is missing spec');
   });
 });

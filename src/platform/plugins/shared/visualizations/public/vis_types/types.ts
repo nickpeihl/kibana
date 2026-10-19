@@ -21,6 +21,7 @@ import type { AggregateQuery } from '@kbn/es-query';
 import type { NavigateToLensContext } from '@kbn/lens-common';
 import type { Vis, VisEditorOptionsProps, VisParams, VisToExpressionAst } from '../types';
 import type { VisGroups } from './vis_groups_enum';
+import type { VisualizeApi } from '../embeddable/types';
 
 export interface VisTypeOptions {
   showTimePicker: boolean;
@@ -215,6 +216,12 @@ export interface VisTypeDefinition<TVisParams extends VisParams> {
   disableCreate?: boolean;
 
   disableEdit?: boolean;
+
+  /**
+   * If given, replaces Edit for by-reference panels of this type. Resolves `false` to edit in the
+   * Visualize app instead.
+   */
+  readonly editByReference?: (api: VisualizeApi) => Promise<boolean>;
 
   readonly options?: Partial<VisTypeOptions>;
 

@@ -21,15 +21,16 @@ import type {
   VisTypeVegaPluginSetup,
   VisTypeVegaPluginStart,
 } from './types';
-import { VEGA_EMBEDDABLE_TYPE, VEGA_VIS_NAME } from '../common/constants';
+import {
+  LEGACY_VEGA_PANEL_MIGRATION_DEFAULT,
+  LEGACY_VEGA_PANEL_MIGRATION_FEATURE_FLAG,
+  VEGA_EMBEDDABLE_TYPE,
+  VEGA_VIS_NAME,
+} from '../common/constants';
 import { getVegaEmbeddableSchema } from './embeddable/schema';
 import { getTransforms } from './embeddable/transforms';
 import { vegaLibraryItemSavedObjectType } from './vega_saved_object';
 import { registerRoutes } from './api/register_routes';
-import {
-  LEGACY_VEGA_PANEL_MIGRATION_DEFAULT,
-  LEGACY_VEGA_PANEL_MIGRATION_FEATURE_FLAG,
-} from './legacy_vega_panel_migration/constants';
 import { migrateLegacyVegaPanel } from './legacy_vega_panel_migration/migrate';
 
 export class VisTypeVegaPlugin implements Plugin<VisTypeVegaPluginSetup, VisTypeVegaPluginStart> {

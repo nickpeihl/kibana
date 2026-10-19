@@ -76,19 +76,21 @@ const SaveVegaModal = ({
 
 /**
  * Asks for the title, description and tags of a new library item, then creates it from the given
- * state. Resolves with the new item, or `undefined` when the modal is dismissed. Rejects when the
- * item can't be created.
+ * state, with `id` when given. Resolves with the new item, or `undefined` when the modal is
+ * dismissed. Rejects when the item can't be created.
  */
 export const saveVegaToLibrary = ({
   client,
   state,
   initialDetails,
   savedObjectsTagging,
+  id,
 }: {
   client: VegaLibraryClient;
   state: VegaEditableState;
   initialDetails?: Partial<VegaLibraryDetails>;
   savedObjectsTagging?: SavedObjectsTaggingApi;
+  id?: string;
 }): Promise<{ id: string; title: string } | undefined> =>
   new Promise((resolve, reject) => {
     const onSave = async (
@@ -96,14 +98,16 @@ export const saveVegaToLibrary = ({
       tags: string[]
     ): Promise<SaveResult> => {
       try {
-        const { id } = await client.create({
+        const item = {
           ...state,
           title: newTitle,
           description: newDescription || undefined,
           tags,
-        });
-        resolve({ id, title: newTitle });
-        return { id };
+        };
+        // Updating an item that doesn't exist creates it with that id.
+        const { id: savedId } = id ? await client.update(id, item) : await client.create(item);
+        resolve({ id: savedId, title: newTitle });
+        return { id: savedId };
       } catch (error) {
         reject(error);
         return { error };

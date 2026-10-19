@@ -25,3 +25,7 @@ export const VEGA_SUPPORTED_TRIGGERS = [ON_APPLY_FILTER, ON_OPEN_PANEL_MENU];
 
 /** The most filters a library item or a panel can store. */
 export const VEGA_MAX_FILTERS = 100;
+
+/** Converts legacy Vega visualization panels to `vega` panels. Dynamic, so it can be toggled at runtime. */
+export const LEGACY_VEGA_PANEL_MIGRATION_FEATURE_FLAG = 'vega.legacyPanelMigration';
+export const LEGACY_VEGA_PANEL_MIGRATION_DEFAULT = false;

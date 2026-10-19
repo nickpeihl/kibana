@@ -10,25 +10,30 @@
 import React from 'react';
 import type { CoreStart } from '@kbn/core/public';
 import { openLazySystemFlyout } from '@kbn/presentation-util';
+import type { VegaReadResponseBody } from '../../server';
 import type { VegaPluginStartDependencies } from '../plugin';
 import { vegaTitleInWizard } from '../vega_icon';
 import { createVegaLibraryClient } from './vega_library_client';
 
 /**
- * Opens the editor for a Vega library item. Resolves when the editor closes.
+ * Opens the editor for a Vega library item, or for an unsaved item when `data` is given. Resolves
+ * when the editor closes, with the item if Save created it.
  */
 export const openVegaLibraryEditor = async ({
   core,
   deps,
-  id,
   allowSaveAsNew,
+  ...target
 }: {
   core: CoreStart;
   deps: Pick<VegaPluginStartDependencies, 'dataViews' | 'unifiedSearch' | 'savedObjectsTaggingOss'>;
-  id: string;
   allowSaveAsNew?: boolean;
-}): Promise<void> => {
+} & ({ id: string } | { id?: string; data: VegaReadResponseBody['data'] })): Promise<
+  { id: string; title: string } | undefined
+> => {
   const client = createVegaLibraryClient(core.http);
+  const isNew = 'data' in target;
+  let created: { id: string; title: string } | undefined;
 
   const flyoutRef = openLazySystemFlyout({
     core,
@@ -45,7 +50,7 @@ export const openVegaLibraryEditor = async ({
     },
     loadContent: async ({ closeFlyout, ariaLabelledBy }) => {
       const [item, defaultDataView, { VegaLibraryEditor }] = await Promise.all([
-        client.get(id).then(({ data }) => ({ id, data })),
+        isNew ? target : client.get(target.id).then(({ data }) => ({ id: target.id, data })),
         // A missing default data view shouldn't block editing.
         deps.dataViews.getDefault().catch((): null => null),
         import('./vega_library_editor'),
@@ -61,6 +66,13 @@ export const openVegaLibraryEditor = async ({
           defaultDataView={defaultDataView ?? undefined}
           canSave={Boolean(core.application.capabilities.visualize_v2?.save)}
           allowSaveAsNew={allowSaveAsNew}
+          onCreate={
+            isNew
+              ? (savedItem) => {
+                  created = savedItem;
+                }
+              : undefined
+          }
           closeFlyout={closeFlyout}
           ariaLabelledBy={ariaLabelledBy}
         />
@@ -69,4 +81,5 @@ export const openVegaLibraryEditor = async ({
   });
 
   await flyoutRef.onClose;
+  return created;
 };

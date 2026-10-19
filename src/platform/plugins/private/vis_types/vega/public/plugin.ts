@@ -7,6 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
+import { distinctUntilChanged, type Subscription } from 'rxjs';
 import { i18n } from '@kbn/i18n';
 import type { PluginInitializerContext, CoreSetup, CoreStart, Plugin } from '@kbn/core/public';
 import type { Plugin as ExpressionsPublicPlugin } from '@kbn/expressions-plugin/public';
@@ -51,7 +52,13 @@ import type { VegaByReferenceState } from '../server';
 
 import { getVegaInspectorView } from './vega_inspector/vega_inspector';
 import { getServiceSettingsLazy } from './vega_view/vega_map_view/service_settings/get_service_settings_lazy';
-import { VEGA_EMBEDDABLE_TYPE, VEGA_SAVED_OBJECT_TYPE, VEGA_VIS_NAME } from '../common/constants';
+import {
+  LEGACY_VEGA_PANEL_MIGRATION_DEFAULT,
+  LEGACY_VEGA_PANEL_MIGRATION_FEATURE_FLAG,
+  VEGA_EMBEDDABLE_TYPE,
+  VEGA_SAVED_OBJECT_TYPE,
+  VEGA_VIS_NAME,
+} from '../common/constants';
 import { ADD_VEGA_EMBEDDABLE_ACTION_ID } from './constants';
 import { getVegaVisualizationClient } from './library/vega_library_client';
 import { VegaIcon, vegaTitleInWizard } from './vega_icon';
@@ -91,6 +98,8 @@ export interface VegaPluginStartDependencies {
 /** @internal */
 export class VegaPlugin implements Plugin<void, void> {
   initializerContext: PluginInitializerContext<ConfigSchema>;
+  private legacyVegaPanelMigrationEnabled = LEGACY_VEGA_PANEL_MIGRATION_DEFAULT;
+  private legacyVegaPanelMigrationSubscription?: Subscription;
 
   constructor(initializerContext: PluginInitializerContext<ConfigSchema>) {
     this.initializerContext = initializerContext;
@@ -130,7 +139,17 @@ export class VegaPlugin implements Plugin<void, void> {
         expressions.registerFunction(() => createVegaFn(visualizationDependencies));
         expressions.registerRenderer(getVegaVisRenderer(visualizationDependencies));
       }
-      return vegaVisType;
+      return {
+        ...vegaVisType,
+        editByReference: async (api) => {
+          if (!this.legacyVegaPanelMigrationEnabled) return false;
+          const [[coreStart, startDeps], { editLegacyVegaByReference }] = await Promise.all([
+            core.getStartServices(),
+            import('./library/edit_legacy_vega_by_reference'),
+          ]);
+          return editLegacyVegaByReference(coreStart, startDeps, api);
+        },
+      };
     });
 
     // Lists Vega library items in the Visualize library next to legacy Vega visualizations.
@@ -193,6 +212,16 @@ export class VegaPlugin implements Plugin<void, void> {
   }
 
   public start(core: CoreStart, deps: VegaPluginStartDependencies) {
+    this.legacyVegaPanelMigrationSubscription = core.featureFlags
+      .getBooleanValue$(
+        LEGACY_VEGA_PANEL_MIGRATION_FEATURE_FLAG,
+        LEGACY_VEGA_PANEL_MIGRATION_DEFAULT
+      )
+      .pipe(distinctUntilChanged())
+      .subscribe((enabled) => {
+        this.legacyVegaPanelMigrationEnabled = enabled;
+      });
+
     setNotifications(core.notifications);
     setHttp(core.http);
     setData(deps.data);
@@ -212,5 +241,9 @@ export class VegaPlugin implements Plugin<void, void> {
     for (const trigger of [ADD_PANEL_TRIGGER, ADD_CANVAS_ELEMENT_TRIGGER]) {
       deps.uiActions.attachAction(trigger, ADD_VEGA_EMBEDDABLE_ACTION_ID);
     }
+  }
+
+  public stop() {
+    this.legacyVegaPanelMigrationSubscription?.unsubscribe();
   }
 }
