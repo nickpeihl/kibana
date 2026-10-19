@@ -92,6 +92,7 @@ export const deserializeSavedObjectState = async ({
     serializedVis: {
       id: savedObjectId,
       title,
+      description,
       type: visState.type,
       params: visState.params,
       uiState: uiState ?? (uiStateJSON ? JSON.parse(uiStateJSON) : {}),
