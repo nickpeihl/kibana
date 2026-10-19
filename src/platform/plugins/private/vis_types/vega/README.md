@@ -19,3 +19,17 @@ discard unsaved edits.
 
 `visTypeVega` registers a server embeddable schema for `type: vega`, so Dashboard's public REST API
 and generated OpenAPI include `vega` and validate its config.
+
+## Legacy Vega panel migration
+
+The `vega.legacyPanelMigration` feature flag (off by default) converts by-value legacy Vega
+visualization panels (`legacy_vis` panels with a `vega` `savedVis`) into `vega` panels when a
+dashboard is read, through the public REST API and the Dashboard app. The stored dashboard is not
+changed.
+
+- Specs that parse as a JSON object become `{ format: 'json', value }`; any other spec is kept as
+  text with `{ format: 'hjson', value }`.
+- The visualization's query and filters become the panel `query` and `filters`.
+- The panel title and description fall back to the visualization's, so the rendered title does not
+  change.
+- By-reference legacy Vega panels are not migrated and stay `legacy_vis`.

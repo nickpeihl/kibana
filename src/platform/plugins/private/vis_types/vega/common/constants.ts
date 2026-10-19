@@ -18,6 +18,9 @@ export const VEGA_API_PATH = '/api/vega';
 
 export const VEGA_API_VERSION = '2023-10-31';
 
+/** Legacy Visualize vis type name, stored as `visState.type` in visualization saved objects. */
+export const VEGA_VIS_NAME = 'vega';
+
 export const VEGA_SUPPORTED_TRIGGERS = [ON_APPLY_FILTER, ON_OPEN_PANEL_MENU];
 
 /** The most filters a library item or a panel can store. */

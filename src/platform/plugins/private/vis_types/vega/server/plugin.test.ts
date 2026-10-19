@@ -7,23 +7,44 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
+import { BehaviorSubject } from 'rxjs';
 import { coreMock } from '@kbn/core/server/mocks';
-import { createEmbeddableSetupMock } from '@kbn/embeddable-plugin/server/mocks';
-import { mockGetDrilldownsSchema } from '@kbn/embeddable-plugin/server/mocks';
+import {
+  createEmbeddableSetupMock,
+  mockGetDrilldownsSchema,
+} from '@kbn/embeddable-plugin/server/mocks';
+import type { SerializedVis } from '@kbn/visualizations-plugin/common';
 import { VisTypeVegaPlugin } from './plugin';
 import { VEGA_EMBEDDABLE_TYPE } from '../common/constants';
 
 describe('VisTypeVegaPlugin (server)', () => {
-  const setup = () => {
+  const plugins: VisTypeVegaPlugin[] = [];
+
+  const setupPlugin = ({ legacyVegaPanelMigrationEnabled = false } = {}) => {
     const coreSetup = coreMock.createSetup();
+    const coreStart = coreMock.createStart();
+    const migrationFlag$ = new BehaviorSubject(legacyVegaPanelMigrationEnabled);
+    coreStart.featureFlags.getBooleanValue$.mockReturnValue(migrationFlag$);
     const embeddable = createEmbeddableSetupMock();
+    const visualizations = {
+      registerReadOnlyVisType: jest.fn(),
+      registerLegacyPanelMigration: jest.fn(),
+    };
+
     const plugin = new VisTypeVegaPlugin(coreMock.createPluginInitializerContext());
-    plugin.setup(coreSetup, { embeddable });
-    return embeddable;
+    plugins.push(plugin);
+    plugin.setup(coreSetup, { embeddable, visualizations });
+    plugin.start(coreStart);
+
+    return { embeddable, visualizations, migrationFlag$ };
   };
 
+  afterEach(() => {
+    plugins.splice(0).forEach((plugin) => plugin.stop());
+  });
+
   test('registers a server definition for vega', () => {
-    const embeddable = setup();
+    const { embeddable } = setupPlugin();
 
     expect(embeddable.registerEmbeddableServerDefinition).toHaveBeenCalledTimes(1);
     expect(embeddable.registerEmbeddableServerDefinition).toHaveBeenCalledWith(
@@ -33,7 +54,7 @@ describe('VisTypeVegaPlugin (server)', () => {
   });
 
   test('exposes a schema for by-value and by-reference panels', () => {
-    const embeddable = setup();
+    const { embeddable } = setupPlugin();
 
     const [, serverDefinition] = embeddable.registerEmbeddableServerDefinition.mock.calls[0];
     const schema = serverDefinition.getSchema(mockGetDrilldownsSchema);
@@ -55,5 +76,32 @@ describe('VisTypeVegaPlugin (server)', () => {
     expect(() => schema!.parse({ spec: '' })).toThrow();
     expect(() => schema!.parse({ spec: { format: 'hjson', value: '' } })).toThrow();
     expect(() => schema!.parse({ spec: { format: 'json', value: 'not-an-object' } })).toThrow();
+  });
+
+  test('registers a legacy Vega panel migration that follows the dynamic migration flag', () => {
+    const { visualizations, migrationFlag$ } = setupPlugin();
+    expect(visualizations.registerLegacyPanelMigration).toHaveBeenCalledWith('vega', {
+      to: VEGA_EMBEDDABLE_TYPE,
+      migrate: expect.any(Function),
+    });
+    const { migrate } = visualizations.registerLegacyPanelMigration.mock.calls[0][1];
+    const args = {
+      savedVis: {
+        title: 'Legacy Vega',
+        type: 'vega',
+        params: { spec: '{ mark: point }' },
+        data: { aggs: [], searchSource: {} },
+      } as SerializedVis,
+      panelConfig: {},
+    };
+
+    expect(migrate(args)).toBeUndefined();
+
+    migrationFlag$.next(true);
+    expect(migrate(args)).toEqual({
+      title: 'Legacy Vega',
+      description: undefined,
+      spec: { format: 'hjson', value: '{ mark: point }' },
+    });
   });
 });
