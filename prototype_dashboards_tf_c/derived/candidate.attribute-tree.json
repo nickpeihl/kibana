@@ -1,0 +1,3752 @@
+{
+  "format": "attribute-tree/v1",
+  "resource": "elasticstack_kibana_dashboard",
+  "source": "spike C schema_consumer.mjs from https://www.elastic.co/kibana/prototype/dashboards-terraform-shaped.schema.json (Monomorphic projection of the Dashboards API create body. Derived from oas_docs/output/kibana.yaml (Zod->OAS) at kibana@049ef516cea1.)",
+  "attributes": [
+    {
+      "path": "access_control",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "access_control.access_mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "esql_approximation",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "filters",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "filters[].filter_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "options",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "options.auto_apply_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "options.hide_panel_borders",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "options.hide_panel_titles",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "options.sync_colors",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "options.sync_cursor",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "options.sync_tooltips",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "options.use_margins",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "panels[].aiops_change_point_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].aiops_log_rate_analysis_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].aiops_pattern_analysis_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].apm_service_map_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].config_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].custom_content_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].discover_session_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].esql_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].field_stats_table_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].grid",
+      "kind": "object",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].grid.h",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].grid.w",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].grid.x",
+      "kind": "number",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].grid.y",
+      "kind": "number",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].id",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.alt_text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.background_color",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].dashboard_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].dashboard_drilldown.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].dashboard_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].dashboard_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].dashboard_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].dashboard_drilldown.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].dashboard_drilldown.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].url_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].url_drilldown.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].url_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].url_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].url_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.drilldowns[].url_drilldown.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.object_fit",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.src",
+      "kind": "object",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.src.file",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.src.file.file_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.src.url",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].image_config.src.url.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].image_config.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].links_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].markdown_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].ml_anomaly_charts_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].ml_anomaly_swimlane_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].ml_single_metric_viewer_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].options_list_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].range_slider_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].slo_alerts_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].slo_burn_rate_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].slo_error_budget_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].slo_overview_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].synthetics_monitors_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].synthetics_stats_overview_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].time_slider_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].dashboard",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].dashboard.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].dashboard.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].dashboard.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].dashboard.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].dashboard.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].dashboard.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].discover",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].discover.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].discover.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].discover.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].url",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].url.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].url.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].url.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].url.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.drilldowns[].url.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.ref_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.references_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.time_range",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.time_range.from",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.time_range.mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.time_range.to",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_reference.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.datatable_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.gauge_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.heatmap_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.legacy_metric_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.breakdown_by_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.data_source_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.filters",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.filters[].filter_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.ignore_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.metrics",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.metrics[].config_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.query",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.query.expression",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.query.language",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.references_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.sampling",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.density",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.icon",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.icon.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.icon.name",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.primary",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.primary.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.primary.labels.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.primary.position",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.primary.value",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.primary.value.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.primary.value.sizing",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.secondary",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.secondary.label",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.placement",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.secondary.value",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.styling.secondary.value.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.time_range",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.time_range.from",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.time_range.mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.time_range.to",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.metric_chart_config.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.mosaic_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.pie_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.region_map_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.tagcloud_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.treemap_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.waffle_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.domain_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.grid",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.grid.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.labels.orientation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.ticks",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.ticks.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.title",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.title.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.x.title.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.domain_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.grid",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.grid.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.labels.orientation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.ticks",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.ticks.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.title",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.title.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y.title.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.domain_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.grid",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.grid.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.labels.orientation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.title",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.title.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.axis.y2.title.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.filters",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.filters[].filter_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.breakdown_by_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.data_source_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.ignore_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.sampling",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.x_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.y",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.y[].config_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.data_source_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.ignore_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.sampling",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].axis",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].color_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].column",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].empty_as_null",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].field",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].fill",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.expression",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.language",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].format_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].formula",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].icon",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].label",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].multi_value",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].operation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].percentile",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].position",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].rank",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].reduced_time_range",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].stroke_dash",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].stroke_width",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_field",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_shift",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].value",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.layers[].type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.columns",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.layout",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.enabled",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.max_lines",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.layout.type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.placement",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.position",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.series_header",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.series_header.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.series_header.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.size",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.statistics",
+      "kind": "list",
+      "mode": "optional",
+      "element": "string"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.legend.visibility",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.query",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.query.expression",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.query.language",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.references_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.areas",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.areas.fill",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.areas.fill_opacity",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.bars",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.bars.minimum_height",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.fitting",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.fitting.emphasize",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.fitting.extend",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.fitting.type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.interpolation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.overlays",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.points",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.styling.points.visibility",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.time_range",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.time_range.from",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.time_range.mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.time_range.to",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "panels[].vis_config.by_value.xy_chart_config.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "pinned_panels[].esql_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].grow",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].id",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].options_list_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql.esql_query",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql.ignore_validations",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql.step",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql.use_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql.value",
+      "kind": "list",
+      "mode": "optional",
+      "element": "string"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_esql.values_source",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field.data_view_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field.field_name",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field.ignore_validations",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field.step",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field.use_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].range_slider_control_config.by_field.value",
+      "kind": "list",
+      "mode": "optional",
+      "element": "string"
+    },
+    {
+      "path": "pinned_panels[].time_slider_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "pinned_panels[].type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "pinned_panels[].width",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "project_routing",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "query",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "query.expression",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "query.language",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "refresh_interval",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "refresh_interval.pause",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "refresh_interval.value",
+      "kind": "number",
+      "mode": "required"
+    },
+    {
+      "path": "sections",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].collapsed",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].grid",
+      "kind": "object",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].grid.y",
+      "kind": "number",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].id",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].aiops_change_point_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].aiops_log_rate_analysis_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].aiops_pattern_analysis_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].apm_service_map_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].config_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].custom_content_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].discover_session_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].esql_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].field_stats_table_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].grid",
+      "kind": "object",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].grid.h",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].grid.w",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].grid.x",
+      "kind": "number",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].grid.y",
+      "kind": "number",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].id",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.alt_text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.background_color",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].dashboard_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].dashboard_drilldown.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].dashboard_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].dashboard_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].dashboard_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].dashboard_drilldown.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].dashboard_drilldown.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].url_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].url_drilldown.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].url_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].url_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].url_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.drilldowns[].url_drilldown.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.object_fit",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.src",
+      "kind": "object",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.src.file",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.src.file.file_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.src.url",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].image_config.src.url.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].image_config.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].links_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].markdown_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].ml_anomaly_charts_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].ml_anomaly_swimlane_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].ml_single_metric_viewer_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].options_list_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].range_slider_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].slo_alerts_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].slo_burn_rate_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].slo_error_budget_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].slo_overview_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].synthetics_monitors_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].synthetics_stats_overview_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].time_slider_control_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].discover",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].discover.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].discover.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].discover.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].url",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].url.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].url.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].url.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].url.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.drilldowns[].url.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.ref_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.references_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.time_range",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.time_range.from",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.time_range.mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.time_range.to",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_reference.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.datatable_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.gauge_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.heatmap_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.legacy_metric_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.breakdown_by_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.data_source_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.filters",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.filters[].filter_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.ignore_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.metrics",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.metrics[].config_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.query",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.query.expression",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.query.language",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.references_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.sampling",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.density",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.icon",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.icon.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.icon.name",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.labels.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.position",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.value",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.value.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.value.sizing",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.label",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.placement",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.value",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.value.alignment",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.time_range",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.time_range.from",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.time_range.mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.time_range.to",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.metric_chart_config.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.mosaic_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.pie_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.region_map_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.tagcloud_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.treemap_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.waffle_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.domain_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.grid",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.grid.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.labels.orientation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.ticks",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.ticks.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.title",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.title.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.title.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.domain_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.grid",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.grid.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.labels.orientation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.ticks",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.ticks.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.title",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.title.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.title.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.domain_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.grid",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.grid.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.labels.orientation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.title",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.title.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.title.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.description",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.dashboard_id",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.use_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown.use_time_range",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.encode_url",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.label",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.open_in_new_tab",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.trigger",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown.url",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.filters",
+      "kind": "list",
+      "mode": "optional",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.filters[].filter_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.hide_border",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.hide_title",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.breakdown_by_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.data_source_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.ignore_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.sampling",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.x_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.y",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer.y[].config_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.data_source_json",
+      "kind": "json-string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.ignore_global_filters",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.sampling",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds",
+      "kind": "list",
+      "mode": "required",
+      "element": "object"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].axis",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].color_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].column",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].empty_as_null",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].field",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].fill",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.expression",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.language",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].format_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].formula",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].icon",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].label",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].multi_value",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].operation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].percentile",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].position",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].rank",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].reduced_time_range",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].stroke_dash",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].stroke_width",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text.visible",
+      "kind": "bool",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_field",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_scale",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_shift",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].value",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.columns",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.enabled",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.max_lines",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.placement",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.position",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.series_header",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.series_header.text",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.series_header.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.size",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.statistics",
+      "kind": "list",
+      "mode": "optional",
+      "element": "string"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.legend.visibility",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.query",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.query.expression",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.query.language",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.references_json",
+      "kind": "json-string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.areas",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.areas.fill",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.areas.fill_opacity",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars.minimum_height",
+      "kind": "number",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting.emphasize",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting.extend",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting.type",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.interpolation",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets.visible",
+      "kind": "bool",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.points",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.styling.points.visibility",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.time_range",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.time_range.from",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.time_range.mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.time_range.to",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "sections[].panels[].vis_config.by_value.xy_chart_config.title",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "sections[].title",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "tags",
+      "kind": "list",
+      "mode": "optional",
+      "element": "string"
+    },
+    {
+      "path": "time_range",
+      "kind": "object",
+      "mode": "optional"
+    },
+    {
+      "path": "time_range.from",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "time_range.mode",
+      "kind": "string",
+      "mode": "optional"
+    },
+    {
+      "path": "time_range.to",
+      "kind": "string",
+      "mode": "required"
+    },
+    {
+      "path": "title",
+      "kind": "string",
+      "mode": "required"
+    }
+  ],
+  "groups": [
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "panels[].image_config.drilldowns[].dashboard_drilldown",
+        "panels[].image_config.drilldowns[].url_drilldown"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "panels[].image_config.src.file",
+        "panels[].image_config.src.url"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown",
+        "panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown",
+        "panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown"
+      ]
+    },
+    {
+      "kind": "conflicts_with",
+      "members": [
+        "panels[].vis_config.by_value.xy_chart_config.layers[].data_layer",
+        "panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown",
+        "panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown",
+        "panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "panels[].vis_config.by_value.datatable_config",
+        "panels[].vis_config.by_value.gauge_config",
+        "panels[].vis_config.by_value.heatmap_config",
+        "panels[].vis_config.by_value.legacy_metric_config",
+        "panels[].vis_config.by_value.metric_chart_config",
+        "panels[].vis_config.by_value.mosaic_config",
+        "panels[].vis_config.by_value.pie_chart_config",
+        "panels[].vis_config.by_value.region_map_config",
+        "panels[].vis_config.by_value.tagcloud_config",
+        "panels[].vis_config.by_value.treemap_config",
+        "panels[].vis_config.by_value.waffle_config",
+        "panels[].vis_config.by_value.xy_chart_config"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "panels[].vis_config.by_reference.drilldowns[].dashboard",
+        "panels[].vis_config.by_reference.drilldowns[].discover",
+        "panels[].vis_config.by_reference.drilldowns[].url"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "panels[].vis_config.by_reference",
+        "panels[].vis_config.by_value"
+      ]
+    },
+    {
+      "kind": "conflicts_with",
+      "members": [
+        "panels[].aiops_change_point_chart_config",
+        "panels[].aiops_log_rate_analysis_config",
+        "panels[].aiops_pattern_analysis_config",
+        "panels[].apm_service_map_config",
+        "panels[].config_json",
+        "panels[].custom_content_config",
+        "panels[].discover_session_config",
+        "panels[].esql_control_config",
+        "panels[].field_stats_table_config",
+        "panels[].image_config",
+        "panels[].links_config",
+        "panels[].markdown_config",
+        "panels[].ml_anomaly_charts_config",
+        "panels[].ml_anomaly_swimlane_config",
+        "panels[].ml_single_metric_viewer_config",
+        "panels[].options_list_control_config",
+        "panels[].range_slider_control_config",
+        "panels[].slo_alerts_config",
+        "panels[].slo_burn_rate_config",
+        "panels[].slo_error_budget_config",
+        "panels[].slo_overview_config",
+        "panels[].synthetics_monitors_config",
+        "panels[].synthetics_stats_overview_config",
+        "panels[].time_slider_control_config",
+        "panels[].vis_config"
+      ],
+      "discriminator": {
+        "path": "panels[].type",
+        "values": {
+          "panels[].ml_anomaly_charts_config": [
+            "ml_anomaly_charts"
+          ],
+          "panels[].ml_anomaly_swimlane_config": [
+            "ml_anomaly_swimlane"
+          ],
+          "panels[].apm_service_map_config": [
+            "apm_service_map"
+          ],
+          "panels[].aiops_change_point_chart_config": [
+            "aiops_change_point_chart"
+          ],
+          "panels[].custom_content_config": [
+            "custom_content"
+          ],
+          "panels[].discover_session_config": [
+            "discover_session"
+          ],
+          "panels[].esql_control_config": [
+            "esql_control"
+          ],
+          "panels[].field_stats_table_config": [
+            "field_stats_table"
+          ],
+          "panels[].image_config": [
+            "image"
+          ],
+          "panels[].links_config": [
+            "links"
+          ],
+          "panels[].aiops_log_rate_analysis_config": [
+            "aiops_log_rate_analysis"
+          ],
+          "panels[].markdown_config": [
+            "markdown"
+          ],
+          "panels[].options_list_control_config": [
+            "options_list_control"
+          ],
+          "panels[].aiops_pattern_analysis_config": [
+            "aiops_pattern_analysis"
+          ],
+          "panels[].range_slider_control_config": [
+            "range_slider_control"
+          ],
+          "panels[].ml_single_metric_viewer_config": [
+            "ml_single_metric_viewer"
+          ],
+          "panels[].slo_alerts_config": [
+            "slo_alerts"
+          ],
+          "panels[].slo_burn_rate_config": [
+            "slo_burn_rate"
+          ],
+          "panels[].slo_error_budget_config": [
+            "slo_error_budget"
+          ],
+          "panels[].slo_overview_config": [
+            "slo_overview"
+          ],
+          "panels[].synthetics_monitors_config": [
+            "synthetics_monitors"
+          ],
+          "panels[].synthetics_stats_overview_config": [
+            "synthetics_stats_overview"
+          ],
+          "panels[].time_slider_control_config": [
+            "time_slider_control"
+          ],
+          "panels[].vis_config": [
+            "vis"
+          ],
+          "panels[].config_json": [
+            "vis",
+            "markdown"
+          ]
+        }
+      }
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "sections[].panels[].image_config.drilldowns[].dashboard_drilldown",
+        "sections[].panels[].image_config.drilldowns[].url_drilldown"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "sections[].panels[].image_config.src.file",
+        "sections[].panels[].image_config.src.url"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].dashboard_drilldown",
+        "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].discover_drilldown",
+        "sections[].panels[].vis_config.by_value.metric_chart_config.drilldowns[].url_drilldown"
+      ]
+    },
+    {
+      "kind": "conflicts_with",
+      "members": [
+        "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].data_layer",
+        "sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].dashboard_drilldown",
+        "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].discover_drilldown",
+        "sections[].panels[].vis_config.by_value.xy_chart_config.drilldowns[].url_drilldown"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "sections[].panels[].vis_config.by_value.datatable_config",
+        "sections[].panels[].vis_config.by_value.gauge_config",
+        "sections[].panels[].vis_config.by_value.heatmap_config",
+        "sections[].panels[].vis_config.by_value.legacy_metric_config",
+        "sections[].panels[].vis_config.by_value.metric_chart_config",
+        "sections[].panels[].vis_config.by_value.mosaic_config",
+        "sections[].panels[].vis_config.by_value.pie_chart_config",
+        "sections[].panels[].vis_config.by_value.region_map_config",
+        "sections[].panels[].vis_config.by_value.tagcloud_config",
+        "sections[].panels[].vis_config.by_value.treemap_config",
+        "sections[].panels[].vis_config.by_value.waffle_config",
+        "sections[].panels[].vis_config.by_value.xy_chart_config"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "sections[].panels[].vis_config.by_reference.drilldowns[].dashboard",
+        "sections[].panels[].vis_config.by_reference.drilldowns[].discover",
+        "sections[].panels[].vis_config.by_reference.drilldowns[].url"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "sections[].panels[].vis_config.by_reference",
+        "sections[].panels[].vis_config.by_value"
+      ]
+    },
+    {
+      "kind": "conflicts_with",
+      "members": [
+        "sections[].panels[].aiops_change_point_chart_config",
+        "sections[].panels[].aiops_log_rate_analysis_config",
+        "sections[].panels[].aiops_pattern_analysis_config",
+        "sections[].panels[].apm_service_map_config",
+        "sections[].panels[].config_json",
+        "sections[].panels[].custom_content_config",
+        "sections[].panels[].discover_session_config",
+        "sections[].panels[].esql_control_config",
+        "sections[].panels[].field_stats_table_config",
+        "sections[].panels[].image_config",
+        "sections[].panels[].links_config",
+        "sections[].panels[].markdown_config",
+        "sections[].panels[].ml_anomaly_charts_config",
+        "sections[].panels[].ml_anomaly_swimlane_config",
+        "sections[].panels[].ml_single_metric_viewer_config",
+        "sections[].panels[].options_list_control_config",
+        "sections[].panels[].range_slider_control_config",
+        "sections[].panels[].slo_alerts_config",
+        "sections[].panels[].slo_burn_rate_config",
+        "sections[].panels[].slo_error_budget_config",
+        "sections[].panels[].slo_overview_config",
+        "sections[].panels[].synthetics_monitors_config",
+        "sections[].panels[].synthetics_stats_overview_config",
+        "sections[].panels[].time_slider_control_config",
+        "sections[].panels[].vis_config"
+      ],
+      "discriminator": {
+        "path": "sections[].panels[].type",
+        "values": {
+          "sections[].panels[].ml_anomaly_charts_config": [
+            "ml_anomaly_charts"
+          ],
+          "sections[].panels[].ml_anomaly_swimlane_config": [
+            "ml_anomaly_swimlane"
+          ],
+          "sections[].panels[].apm_service_map_config": [
+            "apm_service_map"
+          ],
+          "sections[].panels[].aiops_change_point_chart_config": [
+            "aiops_change_point_chart"
+          ],
+          "sections[].panels[].custom_content_config": [
+            "custom_content"
+          ],
+          "sections[].panels[].discover_session_config": [
+            "discover_session"
+          ],
+          "sections[].panels[].esql_control_config": [
+            "esql_control"
+          ],
+          "sections[].panels[].field_stats_table_config": [
+            "field_stats_table"
+          ],
+          "sections[].panels[].image_config": [
+            "image"
+          ],
+          "sections[].panels[].links_config": [
+            "links"
+          ],
+          "sections[].panels[].aiops_log_rate_analysis_config": [
+            "aiops_log_rate_analysis"
+          ],
+          "sections[].panels[].markdown_config": [
+            "markdown"
+          ],
+          "sections[].panels[].options_list_control_config": [
+            "options_list_control"
+          ],
+          "sections[].panels[].aiops_pattern_analysis_config": [
+            "aiops_pattern_analysis"
+          ],
+          "sections[].panels[].range_slider_control_config": [
+            "range_slider_control"
+          ],
+          "sections[].panels[].ml_single_metric_viewer_config": [
+            "ml_single_metric_viewer"
+          ],
+          "sections[].panels[].slo_alerts_config": [
+            "slo_alerts"
+          ],
+          "sections[].panels[].slo_burn_rate_config": [
+            "slo_burn_rate"
+          ],
+          "sections[].panels[].slo_error_budget_config": [
+            "slo_error_budget"
+          ],
+          "sections[].panels[].slo_overview_config": [
+            "slo_overview"
+          ],
+          "sections[].panels[].synthetics_monitors_config": [
+            "synthetics_monitors"
+          ],
+          "sections[].panels[].synthetics_stats_overview_config": [
+            "synthetics_stats_overview"
+          ],
+          "sections[].panels[].time_slider_control_config": [
+            "time_slider_control"
+          ],
+          "sections[].panels[].vis_config": [
+            "vis"
+          ],
+          "sections[].panels[].config_json": [
+            "vis",
+            "markdown"
+          ]
+        }
+      }
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "pinned_panels[].range_slider_control_config.by_esql",
+        "pinned_panels[].range_slider_control_config.by_field"
+      ]
+    },
+    {
+      "kind": "exactly_one_of",
+      "members": [
+        "pinned_panels[].esql_control_config",
+        "pinned_panels[].options_list_control_config",
+        "pinned_panels[].range_slider_control_config",
+        "pinned_panels[].time_slider_control_config"
+      ],
+      "discriminator": {
+        "path": "pinned_panels[].type",
+        "values": {
+          "pinned_panels[].esql_control_config": [
+            "esql_control"
+          ],
+          "pinned_panels[].options_list_control_config": [
+            "options_list_control"
+          ],
+          "pinned_panels[].range_slider_control_config": [
+            "range_slider_control"
+          ],
+          "pinned_panels[].time_slider_control_config": [
+            "time_slider_control"
+          ]
+        }
+      }
+    }
+  ]
+}
