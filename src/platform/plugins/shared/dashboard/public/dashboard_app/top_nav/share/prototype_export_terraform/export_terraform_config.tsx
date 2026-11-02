@@ -7,7 +7,7 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-// PROTOTYPE (dashboards-tf flyout). Export → Terraform, next to Export → JSON. Three variants + a floating switcher.
+// PROTOTYPE (dashboards-tf flyout). Export → Terraform, next to Export → JSON.
 
 import React from 'react';
 import { EuiButtonEmpty } from '@elastic/eui';
@@ -16,19 +16,14 @@ import type { DashboardState } from '@kbn/as-code-dashboard-schema';
 import type { ExportShareParameters } from '@kbn/share-plugin/public';
 import { useShareTypeContext } from '@kbn/share-plugin/public';
 import { useTerraformExport } from './use_terraform_export';
-import { PrototypeSwitcher, VARIANTS, useVariant } from './variants';
+import { TerraformModuleFlyout } from './terraform_module_flyout';
 
 const ExportTerraformFlyout = ({ closeFlyout }: { closeFlyout: () => void }) => {
   const { sharingData, objectId, isDirty } = useShareTypeContext('integration', 'exportDerivatives');
   const { title, getExportJson } = sharingData as unknown as ExportJsonSharingData<DashboardState>;
   const exp = useTerraformExport(getExportJson, title);
-  const { index, go } = useVariant();
-  const { Component } = VARIANTS[index];
   return (
-    <>
-      <Component exp={exp} title={title} dashboardId={objectId} isDirty={Boolean(isDirty)} closeFlyout={closeFlyout} />
-      <PrototypeSwitcher index={index} go={go} />
-    </>
+    <TerraformModuleFlyout exp={exp} title={title} dashboardId={objectId} isDirty={Boolean(isDirty)} closeFlyout={closeFlyout} />
   );
 };
 

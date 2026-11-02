@@ -7,14 +7,14 @@
  * License v3.0 only", or the "Server Side Public License, v 1".
  */
 
-// PROTOTYPE (dashboards-tf flyout). Text the variants put in front of the user.
+// PROTOTYPE (dashboards-tf flyout). The module files, all in Terraform JSON syntax (.tf.json). No HCL: there is no
+// JavaScript HCL parser/validator, so Kibana only emits JSON it can build with JSON.stringify. String values in
+// .tf.json are still Terraform templates; the converter already escapes `${` -> `$${` and `%{` -> `%%{`.
 
 import { RESOURCE_TYPE, TARGET_PROVIDER } from './use_terraform_export';
-import { resourceToHcl } from './to_hcl';
 
 type Json = any;
 export type Mode = 'manage' | 'copy';
-export type Format = 'hcl' | 'tfjson';
 
 export interface SnippetInput {
   body: Json;
@@ -22,47 +22,45 @@ export interface SnippetInput {
   mode: Mode;
   spaceId: string;
   dashboardId?: string;
-  jsonencode?: boolean;
 }
+
+const json = (v: Json) => `${JSON.stringify(v, null, 2)}\n`;
 
 /** Managing the existing dashboard pins its id and space; a copy lets Kibana assign both. */
 const withIds = ({ body, mode, spaceId, dashboardId }: SnippetInput) =>
   mode === 'manage' && dashboardId ? { space_id: spaceId, dashboard_id: dashboardId, ...body } : body;
 
-export const mainTf = (i: SnippetInput) => resourceToHcl(RESOURCE_TYPE, i.name, withIds(i), i.jsonencode ?? true);
+export const mainTfJson = (i: SnippetInput) => json({ resource: { [RESOURCE_TYPE]: { [i.name]: withIds(i) } } });
 
-export const mainTfJson = (i: SnippetInput) =>
-  JSON.stringify({ resource: { [RESOURCE_TYPE]: { [i.name]: withIds(i) } } }, null, 2);
+/** `to` is a reference expression; Terraform's JSON syntax takes it as a string. */
+export const importsTfJson = ({ name, spaceId, dashboardId }: SnippetInput) =>
+  json({ import: [{ to: `${RESOURCE_TYPE}.${name}`, id: `${spaceId}/${dashboardId}` }] });
 
-export const importTf = ({ name, spaceId, dashboardId }: SnippetInput) =>
-  `import {\n  to = ${RESOURCE_TYPE}.${name}\n  id = "${spaceId}/${dashboardId}"\n}\n`;
-
-export const versionsTf = () => `terraform {
-  required_providers {
-    elasticstack = {
-      source  = "${TARGET_PROVIDER.source}"
-      version = ">= ${TARGET_PROVIDER.minVersion}"
-    }
-  }
-}
-
-provider "elasticstack" {
-  # Reads ELASTICSEARCH_* / KIBANA_* environment variables by default.
-  kibana {}
-}
-`;
+export const versionsTfJson = () =>
+  json({
+    terraform: {
+      required_providers: {
+        elasticstack: { source: TARGET_PROVIDER.source, version: `>= ${TARGET_PROVIDER.minVersion}` },
+      },
+    },
+    // Reads ELASTICSEARCH_* / KIBANA_* environment variables by default.
+    provider: { elasticstack: {} },
+  });
 
 export const readme = ({ mode }: SnippetInput) => `# Dashboard exported from Kibana
 
 Generated for the ${TARGET_PROVIDER.source} provider ${TARGET_PROVIDER.version}
 (built from this Kibana's Dashboards API). Requires >= ${TARGET_PROVIDER.minVersion}.
 
-  export KIBANA_ENDPOINT=...  KIBANA_API_KEY=...
-  terraform init
-  terraform plan
+The files use Terraform's JSON configuration syntax (\`.tf.json\`). Terraform and
+OpenTofu load them like \`.tf\` files; you can convert them to HCL yourself if you prefer.
+
+    export KIBANA_ENDPOINT=...  KIBANA_API_KEY=...
+    terraform init
+    terraform plan
 ${
   mode === 'manage'
-    ? '\nimports.tf adopts the existing dashboard: the first plan should show "1 to import, 0 to change".\n'
+    ? '\nimports.tf.json adopts the existing dashboard: the first plan should show "1 to import, 0 to change".\n'
     : '\nThis creates a new dashboard; the original is untouched.\n'
 }`;
 
