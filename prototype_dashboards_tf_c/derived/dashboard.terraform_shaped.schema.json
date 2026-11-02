@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://www.elastic.co/kibana/prototype/dashboards-terraform-shaped.schema.json",
   "title": "Dashboard (Terraform-shaped, PROTOTYPE spike C)",
-  "description": "Monomorphic projection of the Dashboards API create body. Derived from oas_docs/output/kibana.yaml (Zod->OAS) at kibana@049ef516cea1.",
+  "description": "Monomorphic projection of the Dashboards API create body. Derived from oas_docs/output/kibana.yaml (Zod->OAS) at kibana@ea3c17b39420.",
   "type": "object",
   "properties": {
     "access_control": {

@@ -1,0 +1,15 @@
+pass  image_file_src.json  (valid vs derived schema)
+pass  image_url_src_drilldowns.json  (valid vs derived schema)
+pass  oas_create_simple.json  (valid vs derived schema)
+pass  oas_sections_and_controls.json  (valid vs derived schema)
+pass  pinned_range_slider.json  (valid vs derived schema)
+pass  root_filters.json  (valid vs derived schema)
+pass  vis_by_reference.json  (valid vs derived schema)
+pass  vis_metric_esql.json  (valid vs derived schema)
+pass  control: escapes ${ and %{ in *.tf.json strings
+pass  control: escaped strings round-trip
+pass  control: unknown API key -> conversion error (no silent loss)
+pass  control: annotation layer (dropped variant) -> conversion error
+pass  control: two panel variant keys -> invalid vs derived schema
+pass  control: vis_config with type=vis -> valid vs derived schema
+pass  control: vis_config with type=image -> invalid (dependentSchemas discriminator)

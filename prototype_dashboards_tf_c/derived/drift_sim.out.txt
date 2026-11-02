@@ -1,0 +1,52 @@
+
+## baseline
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): none
+  attributes removed (panels[] side): none
+
+## new chart type (13th): bar_gauge, ES|QL + DSL like gauge
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].vis_config.by_value.bar_gauge_config (object)
+  attributes removed (panels[] side): none
+
+## new panel type (25th): foo, shaped like markdown
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].foo_config (object)
+  attributes removed (panels[] side): none
+
+## new plain field: image_config.caption (string)
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].image_config.caption (string)
+  attributes removed (panels[] side): none
+
+## new union: image_config.caption = string | {text, style}
+  unmapped unions (build would fail): panels[].image_config.caption (<untitled> | <untitled>); sections[].panels[].image_config.caption (<untitled> | <untitled>)
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].image_config.caption (json-string)
+  attributes removed (panels[] side): none
+
+## renamed discriminator value: url_drilldown -> url
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].image_config.drilldowns[].url (object)
+    + panels[].image_config.drilldowns[].url.encode_url (bool)
+    + panels[].image_config.drilldowns[].url.label (string)
+    + panels[].image_config.drilldowns[].url.open_in_new_tab (bool)
+    + panels[].image_config.drilldowns[].url.trigger (string)
+    + panels[].image_config.drilldowns[].url.url (string)
+  attributes removed (panels[] side): 
+    - panels[].image_config.drilldowns[].url_drilldown (object)
+    - panels[].image_config.drilldowns[].url_drilldown.encode_url (bool)
+    - panels[].image_config.drilldowns[].url_drilldown.label (string)
+    - panels[].image_config.drilldowns[].url_drilldown.open_in_new_tab (bool)
+    - panels[].image_config.drilldowns[].url_drilldown.trigger (string)
+    - panels[].image_config.drilldowns[].url_drilldown.url (string)

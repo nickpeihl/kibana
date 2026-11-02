@@ -1,0 +1,90 @@
+
+## baseline
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): none
+  attributes removed (panels[] side): none
+
+## new chart type (13th): bar_gauge, ES|QL + DSL like gauge
+  unmapped unions (build would fail): panels[].vis_config.by_value.bar_gauge_config.metric (<untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled>); panels[].vis_config.by_value.bar_gauge_config.styling.shape (Shape (Bullet) | Shape (Circular)); sections[].panels[].vis_config.by_value.bar_gauge_config.metric (<untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled> | <untitled>); sections[].panels[].vis_config.by_value.bar_gauge_config.styling.shape (Shape (Bullet) | Shape (Circular))
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].vis_config.by_value.bar_gauge_config (object)
+    + panels[].vis_config.by_value.bar_gauge_config.data_source_json (json-string)
+    + panels[].vis_config.by_value.bar_gauge_config.description (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns (list)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].dashboard_drilldown (object)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].dashboard_drilldown.dashboard_id (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].dashboard_drilldown.label (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].dashboard_drilldown.open_in_new_tab (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].dashboard_drilldown.trigger (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].dashboard_drilldown.use_filters (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].dashboard_drilldown.use_time_range (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].discover_drilldown (object)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].discover_drilldown.label (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].discover_drilldown.open_in_new_tab (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].discover_drilldown.trigger (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].url_drilldown (object)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].url_drilldown.encode_url (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].url_drilldown.label (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].url_drilldown.open_in_new_tab (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].url_drilldown.trigger (string)
+    + panels[].vis_config.by_value.bar_gauge_config.drilldowns[].url_drilldown.url (string)
+    + panels[].vis_config.by_value.bar_gauge_config.filters (list)
+    + panels[].vis_config.by_value.bar_gauge_config.filters[].filter_json (json-string)
+    + panels[].vis_config.by_value.bar_gauge_config.hide_border (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.hide_title (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.ignore_global_filters (bool)
+    + panels[].vis_config.by_value.bar_gauge_config.metric (json-string)
+    + panels[].vis_config.by_value.bar_gauge_config.query (object)
+    + panels[].vis_config.by_value.bar_gauge_config.query.expression (string)
+    + panels[].vis_config.by_value.bar_gauge_config.query.language (string)
+    + panels[].vis_config.by_value.bar_gauge_config.references_json (json-string)
+    + panels[].vis_config.by_value.bar_gauge_config.sampling (number)
+    + panels[].vis_config.by_value.bar_gauge_config.styling (object)
+    + panels[].vis_config.by_value.bar_gauge_config.styling.shape (json-string)
+    + panels[].vis_config.by_value.bar_gauge_config.time_range (object)
+    + panels[].vis_config.by_value.bar_gauge_config.time_range.from (string)
+    + panels[].vis_config.by_value.bar_gauge_config.time_range.mode (string)
+    + panels[].vis_config.by_value.bar_gauge_config.time_range.to (string)
+    + panels[].vis_config.by_value.bar_gauge_config.title (string)
+  attributes removed (panels[] side): none
+
+## new panel type (25th): foo, shaped like markdown
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].foo_config (object)
+  attributes removed (panels[] side): none
+
+## new plain field: image_config.caption (string)
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].image_config.caption (string)
+  attributes removed (panels[] side): none
+
+## new union: image_config.caption = string | {text, style}
+  unmapped unions (build would fail): panels[].image_config.caption (<untitled> | <untitled>); sections[].panels[].image_config.caption (<untitled> | <untitled>)
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].image_config.caption (json-string)
+  attributes removed (panels[] side): none
+
+## renamed discriminator value: url_drilldown -> url
+  unmapped unions (build would fail): none
+  monomorphic: true
+  attributes added (panels[] side): 
+    + panels[].image_config.drilldowns[].url (object)
+    + panels[].image_config.drilldowns[].url.encode_url (bool)
+    + panels[].image_config.drilldowns[].url.label (string)
+    + panels[].image_config.drilldowns[].url.open_in_new_tab (bool)
+    + panels[].image_config.drilldowns[].url.trigger (string)
+    + panels[].image_config.drilldowns[].url.url (string)
+  attributes removed (panels[] side): 
+    - panels[].image_config.drilldowns[].url_drilldown (object)
+    - panels[].image_config.drilldowns[].url_drilldown.encode_url (bool)
+    - panels[].image_config.drilldowns[].url_drilldown.label (string)
+    - panels[].image_config.drilldowns[].url_drilldown.open_in_new_tab (bool)
+    - panels[].image_config.drilldowns[].url_drilldown.trigger (string)
+    - panels[].image_config.drilldowns[].url_drilldown.url (string)

@@ -1,7 +1,7 @@
 {
   "format": "attribute-tree/v1",
   "resource": "elasticstack_kibana_dashboard",
-  "source": "spike C schema_consumer.mjs from https://www.elastic.co/kibana/prototype/dashboards-terraform-shaped.schema.json (Monomorphic projection of the Dashboards API create body. Derived from oas_docs/output/kibana.yaml (Zod->OAS) at kibana@049ef516cea1.)",
+  "source": "spike C schema_consumer.mjs from https://www.elastic.co/kibana/prototype/dashboards-terraform-shaped.schema.json (Monomorphic projection of the Dashboards API create body. Derived from oas_docs/output/kibana.yaml (Zod->OAS) at kibana@ea3c17b39420.)",
   "attributes": [
     {
       "path": "access_control",

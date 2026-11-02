@@ -46,7 +46,12 @@ export type Rule =
   | { at: string; kind: 'split_sections'; why: string; into: string; recognize: (value: any) => 'section' | 'panel' };
 
 const SLICE_PANELS = new Set(['image_config', 'vis_config']);
-const SLICE_CHARTS = new Set(['xy_chart_config', 'metric_chart_config']);
+const SLICE_CHARTS = new Set([
+  'xy_chart_config',
+  'metric_chart_config',
+  // drift_sim.ts: expand extra charts to see what full support for a new chart would demand.
+  ...(process.env.PROTOTYPE_EXPAND_CHARTS ?? '').split(',').filter(Boolean),
+]);
 const SLICE_CONTROLS = new Set(['range_slider_control_config']);
 
 // U5: baseline chart keys that do not follow `{type}_config` (lenscommon/terraform_chart_block_key.go).
@@ -120,7 +125,6 @@ export const RULES: Rule[] = [
     recognize: (v) => (typeof v?.ref_id === 'string' ? 'By reference' : 'By value'),
     exclusivity: 'exactly_one',
   },
-  { at: '**.by_reference.references', kind: 'json', why: 'JSON leaf: references_json' },
   // U5 chart type.
   {
     at: '**.vis_config.by_value',
@@ -131,8 +135,8 @@ export const RULES: Rule[] = [
     opaque: (k) => !SLICE_CHARTS.has(k),
   },
   // U6/U7 ES|QL vs not: no variant key in the baseline; merge both shapes, differing parts become JSON leaves.
-  { at: '**.by_value.xy_chart_config', kind: 'merge', why: 'U6: merge ES|QL + DSL xy' },
-  { at: '**.by_value.metric_chart_config', kind: 'merge', why: 'U7: merge ES|QL + DSL metric' },
+  // One rule for every chart (xy = U6, metric = U7, and any future chart).
+  { at: '**.by_value.*', kind: 'merge', why: 'U6/U7: merge ES|QL + DSL chart shapes' },
   // U8 xy layer kind. Annotation layers are unsupported in the baseline.
   {
     at: '**.xy_chart_config.layers[]',
@@ -144,7 +148,8 @@ export const RULES: Rule[] = [
     exclusivity: 'conflicts',
   },
   // JSON leaves inside charts (baseline keeps these as *_json strings).
-  { at: '**.layers[].*.data_source', kind: 'json', why: 'JSON leaf data_source_json' },
+  { at: '**.data_source', kind: 'json', why: 'JSON leaf data_source_json (charts and layers)' },
+  { at: '**.references', kind: 'json', why: 'JSON leaf references_json (charts and by_reference)' },
   { at: '**.data_layer.x', kind: 'json', why: 'JSON leaf x_json' },
   { at: '**.data_layer.y[]', kind: 'json', why: 'JSON leaf y[].config_json', name: 'config_json' },
   { at: '**.breakdown_by', kind: 'json', why: 'JSON leaf breakdown_by_json' },
@@ -154,10 +159,7 @@ export const RULES: Rule[] = [
   { at: '**.axis.*.domain', kind: 'json', why: 'JSON leaf domain_json' },
   { at: '**.xy_chart_config.legend', kind: 'merge', why: 'legend placement union merged (baseline merges too)' },
   { at: '**.xy_chart_config.legend.layout', kind: 'merge', why: 'legend layout grid|list merged (forced by strict mode)' },
-  { at: '**.xy_chart_config.references', kind: 'json', why: 'JSON leaf references_json' },
-  { at: '**.metric_chart_config.data_source', kind: 'json', why: 'JSON leaf data_source_json' },
   { at: '**.metric_chart_config.metrics[]', kind: 'json', why: 'JSON leaf metrics[].config_json', name: 'config_json' },
-  { at: '**.metric_chart_config.references', kind: 'json', why: 'JSON leaf references_json' },
   // U11 filters (root and chart level): every variant is a JSON leaf.
   { at: '**.filters[]', kind: 'json', why: 'U11 JSON leaf filters[].filter_json', name: 'filter_json' },
 

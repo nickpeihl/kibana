@@ -1,0 +1,61 @@
+{
+  "resource": {
+    "elasticstack_kibana_dashboard": {
+      "vis_metric_esql": {
+        "panels": [
+          {
+            "type": "vis",
+            "grid": {
+              "h": 6,
+              "w": 12,
+              "x": 0,
+              "y": 0
+            },
+            "vis_config": {
+              "by_value": {
+                "metric_chart_config": {
+                  "data_source_json": "{\"type\":\"esql\",\"query\":\"FROM kibana_sample_data_logs | WHERE timestamp >= ?_tstart AND timestamp < ?_tend | STATS avg_bytes = AVG(bytes)\"}",
+                  "description": "ESQL Metric with trend background chart",
+                  "metrics": [
+                    {
+                      "config_json": "{\"type\":\"primary\",\"column\":\"avg_bytes\",\"background_chart\":{\"type\":\"trend\"}}"
+                    }
+                  ],
+                  "title": "Metric - ESQL with trendline"
+                }
+              }
+            }
+          },
+          {
+            "type": "vis",
+            "grid": {
+              "h": 6,
+              "w": 12,
+              "x": 12,
+              "y": 0
+            },
+            "vis_config": {
+              "by_value": {
+                "metric_chart_config": {
+                  "breakdown_by_json": "{\"column\":\"extension.keyword\"}",
+                  "data_source_json": "{\"type\":\"esql\",\"query\":\"FROM logs | STATS ...\"}",
+                  "description": "ESQL Metric with background chart and breakdown",
+                  "metrics": [
+                    {
+                      "config_json": "{\"type\":\"primary\",\"column\":\"count\",\"color\":{\"type\":\"dynamic\",\"range\":\"absolute\",\"steps\":[{\"lt\":0,\"color\":\"red\"}]},\"background_chart\":{\"type\":\"bar\",\"max_value\":{\"column\":\"bytes\"}}}"
+                    },
+                    {
+                      "config_json": "{\"type\":\"secondary\",\"column\":\"bytes\",\"compare\":{\"to\":\"baseline\",\"baseline\":100,\"palette\":\"status\",\"value\":false}}"
+                    }
+                  ],
+                  "title": "Metric - ESQL Complex case"
+                }
+              }
+            }
+          }
+        ],
+        "title": "Metric ES|QL"
+      }
+    }
+  }
+}

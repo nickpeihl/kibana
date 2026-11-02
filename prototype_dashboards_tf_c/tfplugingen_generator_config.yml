@@ -1,0 +1,11 @@
+# PROTOTYPE (spike C): config for HashiCorp tfplugingen-openapi run against the derived OAS.
+provider:
+  name: elasticstack
+resources:
+  kibana_dashboard:
+    create:
+      path: /api/dashboards
+      method: POST
+    read:
+      path: /api/dashboards/{id}
+      method: GET

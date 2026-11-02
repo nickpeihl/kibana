@@ -1,0 +1,252 @@
+candidate: prototype_dashboards_tf_c/derived/candidate.attribute-tree.json
+golden:    /Users/nickpeihl/Development/Elastic/kibana/.claude/dashboards-terraform/spike0/golden-attribute-tree.json
+
+Missing paths (in golden, not in candidate): 47
+  - dashboard_id
+  - id
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.label_orientation
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.title.value
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.label_orientation
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.title.value
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.label_orientation
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.title.value
+  - panels[].vis_config.by_value.xy_chart_config.decorations
+  - panels[].vis_config.by_value.xy_chart_config.decorations.fill_opacity
+  - panels[].vis_config.by_value.xy_chart_config.decorations.line_interpolation
+  - panels[].vis_config.by_value.xy_chart_config.decorations.minimum_bar_height
+  - panels[].vis_config.by_value.xy_chart_config.decorations.point_visibility
+  - panels[].vis_config.by_value.xy_chart_config.decorations.show_current_time_marker
+  - panels[].vis_config.by_value.xy_chart_config.decorations.show_end_zones
+  - panels[].vis_config.by_value.xy_chart_config.decorations.show_value_labels
+  - panels[].vis_config.by_value.xy_chart_config.fitting
+  - panels[].vis_config.by_value.xy_chart_config.fitting.dotted
+  - panels[].vis_config.by_value.xy_chart_config.fitting.end_value
+  - panels[].vis_config.by_value.xy_chart_config.fitting.type
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].value_json
+  - panels[].vis_config.by_value.xy_chart_config.legend.alignment
+  - panels[].vis_config.by_value.xy_chart_config.legend.inside
+  - panels[].vis_config.by_value.xy_chart_config.legend.truncate_after_lines
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.label_orientation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.title.value
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.label_orientation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.title.value
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.label_orientation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.title.value
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations.fill_opacity
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations.line_interpolation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations.minimum_bar_height
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations.point_visibility
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations.show_current_time_marker
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations.show_end_zones
+  - sections[].panels[].vis_config.by_value.xy_chart_config.decorations.show_value_labels
+  - sections[].panels[].vis_config.by_value.xy_chart_config.fitting
+  - sections[].panels[].vis_config.by_value.xy_chart_config.fitting.dotted
+  - sections[].panels[].vis_config.by_value.xy_chart_config.fitting.end_value
+  - sections[].panels[].vis_config.by_value.xy_chart_config.fitting.type
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].value_json
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.alignment
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.inside
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.truncate_after_lines
+  - space_id
+
+Extra paths (in candidate, not in golden): 169
+  - esql_approximation
+  - panels[].custom_content_config
+  - panels[].vis_config.by_reference.drilldowns[].dashboard.trigger
+  - panels[].vis_config.by_reference.drilldowns[].discover.trigger
+  - panels[].vis_config.by_value.metric_chart_config.styling
+  - panels[].vis_config.by_value.metric_chart_config.styling.density
+  - panels[].vis_config.by_value.metric_chart_config.styling.icon
+  - panels[].vis_config.by_value.metric_chart_config.styling.icon.alignment
+  - panels[].vis_config.by_value.metric_chart_config.styling.icon.name
+  - panels[].vis_config.by_value.metric_chart_config.styling.primary
+  - panels[].vis_config.by_value.metric_chart_config.styling.primary.labels
+  - panels[].vis_config.by_value.metric_chart_config.styling.primary.labels.alignment
+  - panels[].vis_config.by_value.metric_chart_config.styling.primary.position
+  - panels[].vis_config.by_value.metric_chart_config.styling.primary.value
+  - panels[].vis_config.by_value.metric_chart_config.styling.primary.value.alignment
+  - panels[].vis_config.by_value.metric_chart_config.styling.primary.value.sizing
+  - panels[].vis_config.by_value.metric_chart_config.styling.secondary
+  - panels[].vis_config.by_value.metric_chart_config.styling.secondary.label
+  - panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.placement
+  - panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.visible
+  - panels[].vis_config.by_value.metric_chart_config.styling.secondary.value
+  - panels[].vis_config.by_value.metric_chart_config.styling.secondary.value.alignment
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.grid.visible
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.labels
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.labels.orientation
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.ticks.visible
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.title.text
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.grid.visible
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.labels
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.labels.orientation
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.ticks.visible
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.title.text
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.grid.visible
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.labels
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.labels.orientation
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks.visible
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.title.text
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].empty_as_null
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].field
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.expression
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.language
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].format_json
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].formula
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].label
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].multi_value
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].percentile
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].position
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].rank
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].reduced_time_range
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text.visible
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_field
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_scale
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_shift
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].value
+  - panels[].vis_config.by_value.xy_chart_config.legend.layout
+  - panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate
+  - panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.enabled
+  - panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.max_lines
+  - panels[].vis_config.by_value.xy_chart_config.legend.layout.type
+  - panels[].vis_config.by_value.xy_chart_config.legend.placement
+  - panels[].vis_config.by_value.xy_chart_config.legend.series_header
+  - panels[].vis_config.by_value.xy_chart_config.legend.series_header.text
+  - panels[].vis_config.by_value.xy_chart_config.legend.series_header.visible
+  - panels[].vis_config.by_value.xy_chart_config.styling
+  - panels[].vis_config.by_value.xy_chart_config.styling.areas
+  - panels[].vis_config.by_value.xy_chart_config.styling.areas.fill
+  - panels[].vis_config.by_value.xy_chart_config.styling.areas.fill_opacity
+  - panels[].vis_config.by_value.xy_chart_config.styling.bars
+  - panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels
+  - panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels.visible
+  - panels[].vis_config.by_value.xy_chart_config.styling.bars.minimum_height
+  - panels[].vis_config.by_value.xy_chart_config.styling.fitting
+  - panels[].vis_config.by_value.xy_chart_config.styling.fitting.emphasize
+  - panels[].vis_config.by_value.xy_chart_config.styling.fitting.extend
+  - panels[].vis_config.by_value.xy_chart_config.styling.fitting.type
+  - panels[].vis_config.by_value.xy_chart_config.styling.interpolation
+  - panels[].vis_config.by_value.xy_chart_config.styling.overlays
+  - panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker
+  - panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker.visible
+  - panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets
+  - panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets.visible
+  - panels[].vis_config.by_value.xy_chart_config.styling.points
+  - panels[].vis_config.by_value.xy_chart_config.styling.points.visibility
+  - pinned_panels[].id
+  - project_routing
+  - sections[].panels[].custom_content_config
+  - sections[].panels[].vis_config.by_reference.drilldowns[].dashboard.trigger
+  - sections[].panels[].vis_config.by_reference.drilldowns[].discover.trigger
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.density
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.icon
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.icon.alignment
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.icon.name
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.labels
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.labels.alignment
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.position
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.value
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.value.alignment
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.primary.value.sizing
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.label
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.placement
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.label.visible
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.value
+  - sections[].panels[].vis_config.by_value.metric_chart_config.styling.secondary.value.alignment
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.grid.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.labels
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.labels.orientation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.ticks.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.title.text
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.grid.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.labels
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.labels.orientation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.ticks.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.title.text
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.grid.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.labels
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.labels.orientation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.title.text
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].empty_as_null
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].field
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.expression
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].filter.language
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].format_json
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].formula
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].label
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].multi_value
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].percentile
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].position
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].rank
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].reduced_time_range
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_field
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_scale
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].time_shift
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].value
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.enabled
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.truncate.max_lines
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.layout.type
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.placement
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.series_header
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.series_header.text
+  - sections[].panels[].vis_config.by_value.xy_chart_config.legend.series_header.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.areas
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.areas.fill
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.areas.fill_opacity
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars.data_labels.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.bars.minimum_height
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting.emphasize
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting.extend
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.fitting.type
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.interpolation
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.current_time_marker.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.overlays.partial_buckets.visible
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.points
+  - sections[].panels[].vis_config.by_value.xy_chart_config.styling.points.visibility
+
+Kind mismatches: 14
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.grid: golden bool, candidate object
+  - panels[].vis_config.by_value.xy_chart_config.axis.x.ticks: golden bool, candidate object
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.grid: golden bool, candidate object
+  - panels[].vis_config.by_value.xy_chart_config.axis.y.ticks: golden bool, candidate object
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.grid: golden bool, candidate object
+  - panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks: golden bool, candidate object
+  - panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text: golden string, candidate object
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.grid: golden bool, candidate object
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.x.ticks: golden bool, candidate object
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.grid: golden bool, candidate object
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y.ticks: golden bool, candidate object
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.grid: golden bool, candidate object
+  - sections[].panels[].vis_config.by_value.xy_chart_config.axis.y2.ticks: golden bool, candidate object
+  - sections[].panels[].vis_config.by_value.xy_chart_config.layers[].reference_line_layer.thresholds[].text: golden string, candidate object
+
+Mutual-exclusion groups missing from candidate: 2
+  - conflicts_with|panels[].aiops_change_point_chart_config,panels[].aiops_log_rate_analysis_config,panels[].aiops_pattern_analysis_config,panels[].apm_service_map_config,panels[].config_json,panels[].discover_session_config,panels[].esql_control_config,panels[].field_stats_table_config,panels[].image_config,panels[].links_config,panels[].markdown_config,panels[].ml_anomaly_charts_config,panels[].ml_anomaly_swimlane_config,panels[].ml_single_metric_viewer_config,panels[].options_list_control_config,panels[].range_slider_control_config,panels[].slo_alerts_config,panels[].slo_burn_rate_config,panels[].slo_error_budget_config,panels[].slo_overview_config,panels[].synthetics_monitors_config,panels[].synthetics_stats_overview_config,panels[].time_slider_control_config,panels[].vis_config
+  - conflicts_with|sections[].panels[].aiops_change_point_chart_config,sections[].panels[].aiops_log_rate_analysis_config,sections[].panels[].aiops_pattern_analysis_config,sections[].panels[].apm_service_map_config,sections[].panels[].config_json,sections[].panels[].discover_session_config,sections[].panels[].esql_control_config,sections[].panels[].field_stats_table_config,sections[].panels[].image_config,sections[].panels[].links_config,sections[].panels[].markdown_config,sections[].panels[].ml_anomaly_charts_config,sections[].panels[].ml_anomaly_swimlane_config,sections[].panels[].ml_single_metric_viewer_config,sections[].panels[].options_list_control_config,sections[].panels[].range_slider_control_config,sections[].panels[].slo_alerts_config,sections[].panels[].slo_burn_rate_config,sections[].panels[].slo_error_budget_config,sections[].panels[].slo_overview_config,sections[].panels[].synthetics_monitors_config,sections[].panels[].synthetics_stats_overview_config,sections[].panels[].time_slider_control_config,sections[].panels[].vis_config
+
+Mutual-exclusion groups only in candidate: 2
+  - conflicts_with|panels[].aiops_change_point_chart_config,panels[].aiops_log_rate_analysis_config,panels[].aiops_pattern_analysis_config,panels[].apm_service_map_config,panels[].config_json,panels[].custom_content_config,panels[].discover_session_config,panels[].esql_control_config,panels[].field_stats_table_config,panels[].image_config,panels[].links_config,panels[].markdown_config,panels[].ml_anomaly_charts_config,panels[].ml_anomaly_swimlane_config,panels[].ml_single_metric_viewer_config,panels[].options_list_control_config,panels[].range_slider_control_config,panels[].slo_alerts_config,panels[].slo_burn_rate_config,panels[].slo_error_budget_config,panels[].slo_overview_config,panels[].synthetics_monitors_config,panels[].synthetics_stats_overview_config,panels[].time_slider_control_config,panels[].vis_config
+  - conflicts_with|sections[].panels[].aiops_change_point_chart_config,sections[].panels[].aiops_log_rate_analysis_config,sections[].panels[].aiops_pattern_analysis_config,sections[].panels[].apm_service_map_config,sections[].panels[].config_json,sections[].panels[].custom_content_config,sections[].panels[].discover_session_config,sections[].panels[].esql_control_config,sections[].panels[].field_stats_table_config,sections[].panels[].image_config,sections[].panels[].links_config,sections[].panels[].markdown_config,sections[].panels[].ml_anomaly_charts_config,sections[].panels[].ml_anomaly_swimlane_config,sections[].panels[].ml_single_metric_viewer_config,sections[].panels[].options_list_control_config,sections[].panels[].range_slider_control_config,sections[].panels[].slo_alerts_config,sections[].panels[].slo_burn_rate_config,sections[].panels[].slo_error_budget_config,sections[].panels[].slo_overview_config,sections[].panels[].synthetics_monitors_config,sections[].panels[].synthetics_stats_overview_config,sections[].panels[].time_slider_control_config,sections[].panels[].vis_config
+
+Discriminator value -> variant key differences: 2
+  - panels[].type = panels[].custom_content_config: golden [], candidate [custom_content]
+  - sections[].panels[].type = sections[].panels[].custom_content_config: golden [], candidate [custom_content]
+
+236 difference(s).

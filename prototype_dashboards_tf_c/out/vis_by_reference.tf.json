@@ -1,0 +1,48 @@
+{
+  "resource": {
+    "elasticstack_kibana_dashboard": {
+      "vis_by_reference": {
+        "description": "vis vis_config.by_reference full acceptance",
+        "panels": [
+          {
+            "type": "vis",
+            "grid": {
+              "h": 10,
+              "w": 24,
+              "x": 0,
+              "y": 0
+            },
+            "vis_config": {
+              "by_reference": {
+                "description": "By reference desc",
+                "hide_border": false,
+                "hide_title": true,
+                "ref_id": "lensRef",
+                "references_json": "[{\"id\":\"aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee\",\"name\":\"lensRef\",\"type\":\"lens\"}]",
+                "time_range": {
+                  "from": "now-7d",
+                  "mode": "relative",
+                  "to": "now"
+                },
+                "title": "Ref title"
+              }
+            }
+          }
+        ],
+        "query": {
+          "expression": "",
+          "language": "kql"
+        },
+        "refresh_interval": {
+          "pause": true,
+          "value": 0
+        },
+        "time_range": {
+          "from": "now-15m",
+          "to": "now"
+        },
+        "title": "Vis by reference"
+      }
+    }
+  }
+}
