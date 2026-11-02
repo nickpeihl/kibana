@@ -18,7 +18,8 @@ export const markdownByValueStateSchema = z
     ...markdownStateSchema.shape,
   })
   .strip()
-  .meta(BY_VALUE_SCHEMA_META);
+  // PROTOTYPE (dashboards-tf spike A)
+  .meta({ ...BY_VALUE_SCHEMA_META, 'x-tf-variant': { key: 'by_value', match: { present: 'content' } } });
 
 const markdownByReferenceStateSchema = z
   .object({
@@ -28,12 +29,15 @@ const markdownByReferenceStateSchema = z
     }),
   })
   .strip()
-  .meta(BY_REF_SCHEMA_META);
+  // PROTOTYPE (dashboards-tf spike A)
+  .meta({ ...BY_REF_SCHEMA_META, 'x-tf-variant': { key: 'by_reference', match: { present: 'ref_id' } } });
 
 export const markdownEmbeddableSchema = z
   .union([markdownByValueStateSchema, markdownByReferenceStateSchema])
   .meta({
     description: 'Markdown panel config',
+    // PROTOTYPE (dashboards-tf spike A)
+    'x-tf-union': { structural: true },
   });
 
 export type MarkdownByValueState = z.output<typeof markdownByValueStateSchema>;
