@@ -170,6 +170,18 @@ export const lensApiConfigSchema: ZodType<LensApiConfig> = lazySchema(() =>
     .meta({
       id: 'visApiConfig',
       title: 'Visualizations',
+      // PROTOTYPE (spike A)
+      'x-tf-union': {
+        discriminator: 'type',
+        key_template: '{value}_config',
+        variant_keys: {
+          xy: 'xy_chart_config',
+          metric: 'metric_chart_config',
+          pie: 'pie_chart_config',
+          data_table: 'datatable_config',
+          tag_cloud: 'tagcloud_config',
+        },
+      },
       description:
         'Visualization configuration. Use the `type` field to specify the chart type. Each chart type has its own set of required and optional fields.',
     })

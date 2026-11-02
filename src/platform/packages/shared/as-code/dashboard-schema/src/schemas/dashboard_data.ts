@@ -45,7 +45,17 @@ export function getPanelSchema(
     );
 
   type PanelSchema = (typeof panelSchemas)[number];
-  return z.discriminatedUnion('type', panelSchemas as [PanelSchema, ...PanelSchema[]]);
+  return z.discriminatedUnion('type', panelSchemas as [PanelSchema, ...PanelSchema[]]).meta({
+    // PROTOTYPE (dashboards-tf spike A): Terraform variant mapping for the panel-type union.
+    'x-tf-union': {
+      discriminator: 'type',
+      key_template: '{value}_config',
+      discriminator_placement: 'outside',
+      content: 'config',
+      exclusivity: 'conflicts_with',
+      extra_json_variant: { key: 'config_json', values: ['markdown', 'vis'] },
+    },
+  });
 }
 
 /** Creates a full dashboard state schema, accepting runtime dependencies as parameters. */
@@ -93,10 +103,13 @@ export function getDashboardDataSchema<P extends z.ZodTypeAny>(
             'Panels and sections in the dashboard. Each entry is either a panel (with a `type` and `config`) or a collapsible section (with a `title`, `collapsed` state, and nested `panels`).',
         }),
       project_routing: z.string().optional().meta({
+        'x-tf-omit': true, // PROTOTYPE (spike A): API-only, not in the Terraform resource
         description:
           'Controls [cross-project search](https://www.elastic.co/docs/explore-analyze/cross-project-search/cross-project-search-project-routing) behavior for this dashboard (Serverless only). Set to `_alias:_origin` to scope data to the current project, or `_alias:*` to search across all projects. When omitted, the space default applies.',
       }),
-      ...asCodeEsqlApproximationSchema.shape,
+      esql_approximation: asCodeEsqlApproximationSchema.shape.esql_approximation.meta({
+        'x-tf-omit': true, // PROTOTYPE (spike A): API-only, not in the Terraform resource
+      }),
       query: asCodeQuerySchema.optional(),
       refresh_interval: refreshIntervalSchema.optional(),
       tags: getAsCodeTagsSchema(

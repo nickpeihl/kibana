@@ -600,6 +600,11 @@ export const metricConfigSchema = lazySchema(() =>
   z.union([metricConfigSchemaNoESQL, metricConfigSchemaESQL]).meta({
     id: 'visMetricChart',
     title: 'Metric Chart',
+    // PROTOTYPE (spike A)
+    'x-tf-union': {
+      merge: true,
+      json_leaves: { data_source: 'data_source_json', breakdown_by: 'breakdown_by_json', 'metrics[]': 'config_json' },
+    },
     description:
       'One or two metric values with optional color coding, trend line, and breakdown by dimension.',
   })

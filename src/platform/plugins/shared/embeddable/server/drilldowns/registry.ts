@@ -72,7 +72,15 @@ export function getDrilldownRegistry() {
 
       return z
         .object({
-          drilldowns: z.array(z.union(drilldownSchemas)).max(100).optional(),
+          drilldowns: z
+            .array(
+              z.union(drilldownSchemas).meta({
+                // PROTOTYPE (spike A): default drilldown mapping; locations can override.
+                'x-tf-union': { discriminator: 'type', key_template: '{value}' },
+              })
+            )
+            .max(100)
+            .optional(),
         })
         .strict();
     },

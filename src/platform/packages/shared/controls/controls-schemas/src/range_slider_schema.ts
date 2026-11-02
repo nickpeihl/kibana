@@ -33,6 +33,7 @@ export const rangeSliderControlSchema = z.preprocess(
     dataControlEsqlVariantSchema.extend(rangeSliderExtras).meta({
       id: 'kbn-controls-schemas-range-slider-control-schema-esql',
       title: 'EsqlRangeSliderControl',
+      'x-tf-variant': { keep_discriminator: true }, // PROTOTYPE (spike A): baseline keeps values_source in by_esql
       description: "A range slider control whose values come from an ES|QL query's results.",
     }),
     dataControlFieldVariantSchema.extend(rangeSliderExtras).meta({
@@ -40,5 +41,12 @@ export const rangeSliderControlSchema = z.preprocess(
       title: 'FieldRangeSliderControl',
       description: 'A range slider control whose values come from a numeric data view field.',
     }),
-  ])
+  ]).meta({
+    // PROTOTYPE (spike A): values_source defaults to `field` when absent (see withFieldValuesSourceDefault)
+    'x-tf-union': {
+      discriminator: 'values_source',
+      default_value: 'field',
+      variant_keys: { field: 'by_field', esql: 'by_esql' },
+    },
+  })
 );

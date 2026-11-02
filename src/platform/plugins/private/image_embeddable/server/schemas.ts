@@ -34,7 +34,11 @@ const imageUrlSrcSchema = z
 
 const imageConfigSchema = z
   .object({
-    src: z.union([imageFileSrcSchema, imageUrlSrcSchema]).meta({ description: 'Image source' }),
+    src: z.union([imageFileSrcSchema, imageUrlSrcSchema]).meta({
+      description: 'Image source',
+      // PROTOTYPE (spike A)
+      'x-tf-union': { discriminator: 'type', key_template: '{value}' },
+    }),
     alt_text: z.string().optional(),
     object_fit: z
       .union([z.literal('fill'), z.literal('contain'), z.literal('cover'), z.literal('none')])
@@ -50,7 +54,8 @@ export function getImageEmbeddableSchema(getDrilldownsSchemas: GetDrilldownsSche
     .object({
       ...getDrilldownsSchemas(IMAGE_EMBEDDABLE_SUPPORTED_TRIGGERS).shape,
       ...serializedTitlesSchema.shape,
-      image_config: imageConfigSchema,
+      // PROTOTYPE (spike A): Terraform drops this level (image_config.* sits directly under panels[].image_config)
+      image_config: imageConfigSchema.meta({ 'x-tf-flatten': true }),
     })
     .strict()
     .meta({

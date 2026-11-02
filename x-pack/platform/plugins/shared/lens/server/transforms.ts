@@ -77,7 +77,7 @@ export function registerLensEmbeddableTransforms(
 const getSharedPanelSchema = (getDrilldownsSchema: GetDrilldownsSchemaFnType) =>
   z
     .object({
-      references: referencesSchema.optional(),
+      references: referencesSchema.optional().meta({ 'x-tf-json-leaf': true }), // PROTOTYPE (spike A)
       ...serializedTimeRangeSchema.shape,
       ...serializedTitlesSchema.shape,
       ...getDrilldownsSchema(LENS_SUPPORTED_DRILLDOWN_TRIGGERS).shape,
@@ -87,17 +87,32 @@ const getSharedPanelSchema = (getDrilldownsSchema: GetDrilldownsSchemaFnType) =>
 export const getLensByValuePanelSchema = (getDrilldownsSchema: GetDrilldownsSchemaFnType) => {
   return lensApiConfigSchema
     .and(getSharedPanelSchema(getDrilldownsSchema))
-    .meta(BY_VALUE_SCHEMA_META);
+    .meta({ ...BY_VALUE_SCHEMA_META, 'x-tf-variant': { key: 'by_value', match: { absent: 'ref_id' } } });
 };
 
-const getLensByRefPanelSchema = (getDrilldownsSchema: GetDrilldownsSchemaFnType) =>
-  z
+const getLensByRefPanelSchema = (getDrilldownsSchema: GetDrilldownsSchemaFnType) => {
+  const sharedShape = getSharedPanelSchema(getDrilldownsSchema).shape;
+  return z
     .object({
       ref_id: z.string(),
     })
-    .extend(getSharedPanelSchema(getDrilldownsSchema).shape)
+    .extend({
+      ...sharedShape,
+      // PROTOTYPE (spike A): per-location override. The baseline names by-reference drilldown keys
+      // `dashboard` / `discover` / `url`, unlike every other location.
+      drilldowns: sharedShape.drilldowns.meta({
+        'x-tf-union-override': {
+          variant_keys: {
+            dashboard_drilldown: 'dashboard',
+            discover_drilldown: 'discover',
+            url_drilldown: 'url',
+          },
+        },
+      }),
+    })
     .strip()
-    .meta(BY_REF_SCHEMA_META);
+    .meta({ ...BY_REF_SCHEMA_META, 'x-tf-variant': { key: 'by_reference', match: { present: 'ref_id' } } });
+};
 
 export const getLensPanelSchema = (
   getDrilldownsSchema: GetDrilldownsSchemaFnType
@@ -114,4 +129,5 @@ export const getLensPanelSchema = (
     ])
     .meta({
       description: 'Lens embeddable schema',
+      'x-tf-union': { structural: true }, // PROTOTYPE (spike A): recognizers live on the branches
     });

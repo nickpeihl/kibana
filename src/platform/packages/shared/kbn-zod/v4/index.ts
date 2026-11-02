@@ -10,6 +10,7 @@
 // Side-effect import so the `GlobalMeta` augmentation (adding the typed
 // `openapi` field to `.meta()`) is included wherever `@kbn/zod` is imported.
 import './openapi';
+import './terraform_meta'; // PROTOTYPE (dashboards-tf spike A)
 
 export * from 'zod/v4';
 export { isZod } from './utils';

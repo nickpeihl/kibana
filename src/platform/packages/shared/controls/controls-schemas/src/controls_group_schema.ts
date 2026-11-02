@@ -35,7 +35,10 @@ export const controlWidthSchema = z
 
 export const pinnedControlSchema = z
   .object({
-    id: z.string().optional().meta({ description: 'The unique ID of the control' }),
+    id: z.string().optional().meta({
+      description: 'The unique ID of the control',
+      'x-tf-omit': true, // PROTOTYPE (spike A): not in the baseline resource
+    }),
     width: controlWidthSchema,
     grow: z.boolean().default(DEFAULT_PINNED_CONTROL_STATE.grow).meta({
       description:
@@ -94,7 +97,15 @@ export const getControlsSchema = () => {
         description:
           'A control panel that filters a time field to a selected sub-range of the global time range. Define the start and end positions in `config` as fractions of the global range (0 to 1).',
       }),
-  ]);
+  ]).meta({
+    // PROTOTYPE (spike A)
+    'x-tf-union': {
+      discriminator: 'type',
+      key_template: '{value}_config',
+      discriminator_placement: 'outside',
+      content: 'config',
+    },
+  });
 };
 
 export const getControlsGroupSchema = () => {

@@ -2,8 +2,9 @@
 // Kibana: the real Zod schema (getDashboardDataSchema + real embeddable/drilldown registrations) -> the real
 // OasConverter from @kbn/router-to-openapispec (what process_versioned_router does for a request body) -> a
 // minimal OAS document -> the real @kbn/openapi-bundler `merge` (what oas_docs/scripts/merge_ess_oas.js does).
-// Output: out/bundle.json (pre-merge, like oas_docs/bundle.json) and out/kibana.slice.yaml (post-merge, like
-// oas_docs/output/kibana.yaml). Consumers read ONLY out/kibana.slice.yaml.
+// Output: out/bundle.json (pre-merge, like oas_docs/bundle.json), out/kibana.slice.yaml (post-merge) and
+// out/kibana.slice.published.yaml (after the dashboards + bump-slim overlays and `redocly bundle`, like the published
+// oas_docs/output/kibana.yaml). Consumers read ONLY out/kibana.slice.published.yaml.
 //
 // Usage (from the worktree root): DISABLE_SWC_REGISTER_CACHE=1 node prototype_dashboards_tf_a/generate_oas.js
 require('@kbn/setup-node-env');
@@ -95,6 +96,20 @@ console.log(`wrote out/bundle.json (${Object.keys(doc.components.schemas).length
     options: { prototypeDocument: path.join(ROOT, 'oas_docs/kibana.info.yaml') },
   });
   console.log('wrote out/kibana.slice.yaml');
+
+  // The rest of `make api-docs` for the stateful bundle that touches Dashboards: the dashboards overlay, the
+  // bump-slim overlay (strips the Dashboards operations from kibana.yaml) and `redocly bundle`.
+  const { execFileSync } = require('child_process');
+  const bin = (b) => path.join(ROOT, 'node_modules/.bin', b);
+  const overlay = (from, ov, to) =>
+    fs.writeFileSync(path.join(OUT, to), execFileSync(bin('bump'), ['overlay', path.join(OUT, from), path.join(ROOT, 'oas_docs/overlays', ov)], { stdio: ['ignore', 'pipe', 'ignore'] }));
+  overlay('kibana.slice.yaml', 'dashboards.overlays.yaml', 'tmp1.yaml');
+  overlay('tmp1.yaml', 'kibana.overlays.bump_slim.yaml', 'tmp2.yaml');
+  execFileSync(bin('redocly'), ['bundle', path.join(OUT, 'tmp2.yaml'), '--ext', 'yaml', '-o', path.join(OUT, 'kibana.slice.published.yaml')], { stdio: 'ignore' });
+  fs.rmSync(path.join(OUT, 'tmp1.yaml'));
+  fs.rmSync(path.join(OUT, 'tmp2.yaml'));
+  const count = (f) => (fs.readFileSync(path.join(OUT, f), 'utf8').match(/x-tf/g) || []).length;
+  console.log(`wrote out/kibana.slice.published.yaml; x-tf* keys: bundle.json ${count('bundle.json')}, merged ${count('kibana.slice.yaml')}, published ${count('kibana.slice.published.yaml')}`);
 })().catch((e) => {
   console.error(e);
   process.exit(1);
