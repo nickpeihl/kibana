@@ -215,6 +215,17 @@ export class DashboardPlugin
           return exportJsonConfig;
         },
       });
+      // PROTOTYPE (dashboards-tf flyout): Export → Terraform.
+      share.registerShareIntegration<ExportShareDerivatives>('dashboard', {
+        id: 'exportTerraformPrototype',
+        groupId: 'exportDerivatives',
+        getShareIntegrationConfig: async () => {
+          const { exportTerraformPrototypeConfig } = await import(
+            './dashboard_app/top_nav/share/prototype_export_terraform/export_terraform_config'
+          );
+          return exportTerraformPrototypeConfig;
+        },
+      });
     }
 
     const {

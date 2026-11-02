@@ -37,6 +37,7 @@
     "@kbn/ui-actions-plugin",
     "@kbn/spaces-plugin",
     "@kbn/config-schema",
+    "@kbn/repo-info",
     "@kbn/zod",
     "@kbn/utility-types",
     "@kbn/es-query",

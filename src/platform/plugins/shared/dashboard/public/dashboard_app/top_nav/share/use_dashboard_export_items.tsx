@@ -113,6 +113,15 @@ export const getExportItemMeta = (integrationId: string) => {
     };
   }
 
+  if (integrationId === 'exportTerraformPrototype') {
+    return {
+      label: 'Terraform (prototype)',
+      testId: 'exportMenuItem-Terraform',
+      iconType: 'pipelineApp',
+      order: 0.5,
+    };
+  }
+
   if (integrationId === 'pdfReports') {
     return {
       label: topNavStrings.export.pdfLabel,

@@ -17,6 +17,7 @@ import { registerCreateRoute } from './create';
 import { registerDeleteRoute } from './delete';
 import { registerReadRoute } from './read';
 import { registerSanitizeRoute } from './sanitize';
+import { registerPrototypeTerraformExportRoute } from './prototype_terraform_export';
 import { registerSearchRoute } from './search';
 import { registerUpdateRoute } from './update';
 import { registerChangeHistoryRoutes } from '../change_history/register_routes';
@@ -39,6 +40,7 @@ export function registerRoutes(
   registerDeleteRoute(versionedRouter, usageCounter, logger);
   registerSearchRoute(versionedRouter, usageCounter, logger);
   registerSanitizeRoute(versionedRouter, logger);
+  registerPrototypeTerraformExportRoute(versionedRouter);
 
   //
   // Dashboard application specific routes
