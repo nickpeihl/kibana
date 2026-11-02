@@ -127,6 +127,7 @@ export const tagcloudConfigSchemaESQL = lazySchema(() =>
 export const tagcloudConfigSchema = lazySchema(() =>
   z.union([tagcloudConfigSchemaNoESQL, tagcloudConfigSchemaESQL]).meta({
     id: 'visTagcloudChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Tag Cloud Chart',
     description: 'A word cloud with terms sized by metric value.',
   })

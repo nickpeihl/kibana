@@ -81,6 +81,7 @@ export const regionMapConfigSchemaESQL = lazySchema(() =>
 export const regionMapConfigSchema = lazySchema(() =>
   z.union([regionMapConfigSchemaNoESQL, regionMapConfigSchemaESQL]).meta({
     id: 'visRegionMapChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Region Map',
     description: 'A choropleth map with geographic regions colored by the aggregated metric value.',
   })

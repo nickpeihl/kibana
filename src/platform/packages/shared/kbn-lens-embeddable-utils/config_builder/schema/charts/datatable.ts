@@ -477,6 +477,7 @@ export const datatableConfigSchemaESQL = lazySchema(() =>
 export const datatableConfigSchema = lazySchema(() =>
   z.union([datatableConfigSchemaNoESQL, datatableConfigSchemaESQL]).meta({
     id: 'visDatatableChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Datatable',
     description: 'Datatable chart configuration: DSL or ES|QL query based',
   })

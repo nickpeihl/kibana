@@ -112,6 +112,7 @@ export const optionsListDSLControlSchema = z.preprocess(
     dataControlEsqlVariantSchema.extend(optionsListDSLExtras).meta({
       id: 'kbn-controls-schemas-options-list-dsl-control-schema-esql',
       title: 'EsqlOptionsListControl',
+      'x-tf-variant': { keep_discriminator: true }, // PROTOTYPE (spike A)
       description:
         "An options list control whose available options come from an ES|QL query's results.",
     }),
@@ -120,7 +121,14 @@ export const optionsListDSLControlSchema = z.preprocess(
       title: 'FieldOptionsListControl',
       description: 'An options list control whose available options come from a data view field.',
     }),
-  ])
+  ]).meta({
+    // PROTOTYPE (spike A): same mapping as the range slider (outside the slice, needed by a fixture)
+    'x-tf-union': {
+      discriminator: 'values_source',
+      default_value: 'field',
+      variant_keys: { field: 'by_field', esql: 'by_esql' },
+    },
+  })
 );
 
 const baseEsqlControlSchema = z

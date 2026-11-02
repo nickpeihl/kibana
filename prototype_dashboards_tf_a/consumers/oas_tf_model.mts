@@ -43,6 +43,7 @@ export interface Prop {
   tfName: string;
   node: TNode;
   required: boolean;
+  hasDefault?: boolean;
   flatten?: boolean;
 }
 export interface Variant {
@@ -71,7 +72,9 @@ export const loadOas = (file = OAS_FILE): Raw => yaml.load(readFileSync(file, 'u
 export class Compiler {
   readonly schemas: Record<string, Raw>;
   readonly conflicts: string[] = [];
-  constructor(readonly doc: Raw) {
+  readonly doc: Raw;
+  constructor(doc: Raw) {
+    this.doc = doc;
     this.schemas = doc.components.schemas;
   }
 
@@ -139,6 +142,7 @@ export class Compiler {
     const na = this.normalize(a);
     const nb = this.normalize(b);
     if (JSON.stringify(na) === JSON.stringify(nb)) return a;
+    if (na['x-tf-json-leaf'] && nb['x-tf-json-leaf']) return a; // both already JSON leaves (json_leaves)
     const ua = this.unionBranches(na);
     const ub = this.unionBranches(nb);
     if (ua && ub && na['x-tf-union'] && !na['x-tf-union'].merge) {
@@ -202,6 +206,10 @@ export class Compiler {
   }
 
   discValues(branch: Raw, disc: string): string[] {
+    const sub = this.unionBranches(branch);
+    if (sub && !branch.properties) {
+      return [...new Set(sub.flatMap((b: Raw) => this.discValues(this.normalize(b), disc)))];
+    }
     const p = branch.properties?.[disc];
     if (!p) return [];
     const collect = (n: Raw): string[] => {
@@ -228,9 +236,11 @@ export class Compiler {
       if (!m) return { k: 'json' }; // convention: unmapped union of objects -> JSON leaf
       if (m.merge) {
         const merged = branches
-          .map((b: Raw) => this.normalize(b))
+          .map((b: Raw) => this.applyJsonLeaves(this.normalize(b), m.json_leaves))
           .reduce((acc: Raw, b: Raw) => this.mergeObjects(acc, b, 'any'));
-        return this.compile(this.applyJsonLeaves(merged, m.json_leaves), undefined, nextStack);
+        const drop: string | undefined = s['x-tf-drop'];
+        if (drop && !merged['x-tf-variant']?.keep_discriminator) delete merged.properties[drop];
+        return this.compile(merged, undefined, nextStack);
       }
       return this.compileKeyed(branches, m, nextStack);
     }
@@ -249,6 +259,7 @@ export class Compiler {
           tfName: isPropLeaf ? p['x-tf-json-name'] ?? `${name}_json` : name,
           node,
           required: (s.required ?? []).includes(name),
+          hasDefault: p.default !== undefined,
           flatten: !!p['x-tf-flatten'],
         });
       }
@@ -278,11 +289,14 @@ export class Compiler {
         content = nb.properties[m.content];
         const { [m.content]: _c, ...outsideProps } = restProps;
         outsideRaw ??= { type: 'object', properties: outsideProps, required: nb.required ?? [] };
+      } else if (this.unionBranches(nb) && !nb.properties) {
+        // The branch is itself a (merged) union: drop the discriminator after merging.
+        content = disc && !keepDisc ? { ...nb, 'x-tf-drop': disc } : nb;
       } else {
         content = { ...nb, properties: keepDisc ? nb.properties : restProps };
       }
       const entry = byKey.get(key) ?? { raws: [], values: [], keepDisc, leaves: {}, match: v.match };
-      entry.raws.push(content);
+      entry.raws.push(v.json_leaves ? this.applyJsonLeaves(content, v.json_leaves) : content);
       entry.values.push(...values);
       Object.assign(entry.leaves, v.json_leaves ?? {});
       byKey.set(key, entry);
@@ -292,8 +306,7 @@ export class Compiler {
       if (e.raws.length > 1) {
         raw = e.raws.map((r) => this.normalize(r)).reduce((a, b) => this.mergeObjects(a, b, 'any'));
       }
-      if (Object.keys(e.leaves).length) raw = this.applyJsonLeaves(raw, e.leaves);
-      return { key, values: e.values, match: e.match, keepDisc: e.keepDisc, content: this.compile(raw, undefined, stack) };
+      return { key, values: [...new Set(e.values)], match: e.match, keepDisc: e.keepDisc, content: this.compile(raw, undefined, stack) };
     });
     const outsideNode = outsideRaw ? this.compile(outsideRaw, undefined, stack) : undefined;
     return {

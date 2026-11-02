@@ -207,6 +207,7 @@ export const heatmapConfigSchemaESQL = lazySchema(() =>
 export const heatmapConfigSchema = lazySchema(() =>
   z.union([heatmapConfigSchemaNoESQL, heatmapConfigSchemaESQL]).meta({
     id: 'visHeatmapChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Heatmap Chart',
     description:
       'A grid of colored cells where color intensity represents the metric value at each X/Y intersection.',

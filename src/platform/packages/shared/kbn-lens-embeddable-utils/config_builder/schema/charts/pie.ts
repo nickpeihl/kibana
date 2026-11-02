@@ -221,6 +221,7 @@ export const pieConfigSchemaESQL = lazySchema(() =>
 export const pieConfigSchema = lazySchema(() =>
   z.union([pieConfigSchemaNoESQL, pieConfigSchemaESQL]).meta({
     id: 'visPieChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Pie Chart',
     description: 'Pie chart state: standard query or ES|QL query',
   })

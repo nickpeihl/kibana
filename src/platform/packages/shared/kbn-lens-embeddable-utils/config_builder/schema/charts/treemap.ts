@@ -221,6 +221,7 @@ export const treemapConfigSchemaESQL = lazySchema(() =>
 export const treemapConfigSchema = lazySchema(() =>
   z.union([treemapConfigSchemaNoESQL, treemapConfigSchemaESQL]).meta({
     id: 'visTreemapChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Treemap Chart',
     description:
       'Treemap chart configuration schema supporting both data source queries (non-ES|QL) and ES|QL query modes',

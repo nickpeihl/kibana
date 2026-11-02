@@ -202,6 +202,7 @@ export const gaugeConfigSchemaESQL = lazySchema(() =>
 export const gaugeConfigSchema = lazySchema(() =>
   z.union([gaugeConfigSchemaNoESQL, gaugeConfigSchemaESQL]).meta({
     id: 'visGaugeChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Gauge Chart',
     description:
       'A gauge chart with a metric value and optional minimum, maximum, and goal markers, in bullet or circular shape.',

@@ -174,6 +174,7 @@ export const waffleConfigSchemaESQL = lazySchema(() =>
 export const waffleConfigSchema = lazySchema(() =>
   z.union([waffleConfigSchemaNoESQL, waffleConfigSchemaESQL]).meta({
     id: 'visWaffleChart',
+    'x-tf-union': { merge: true }, // PROTOTYPE (spike A): ES|QL vs not, no variant key
     title: 'Waffle Chart',
     description: 'Waffle chart configuration: DSL or ES|QL query based',
   })

@@ -747,7 +747,7 @@ const referenceLineLayerSchemaNoESQL = lazySchema(() =>
     .strict()
     .meta({
       id: 'visXyReferenceLineLayerNoESQL',
-      'x-tf-variant': { key: 'reference_line_layer', json_leaves: { data_source: 'data_source_json', 'thresholds[].color': 'color_json', 'thresholds[].value': 'value_json' } }, // PROTOTYPE (spike A)
+      'x-tf-variant': { key: 'reference_line_layer', json_leaves: { data_source: 'data_source_json' } }, // PROTOTYPE (spike A)
       title: 'Reference Line Layer (DSL)',
       description: 'Reference line layer for standard queries',
     })
@@ -771,7 +771,7 @@ const esqlReferenceLineLayerSchema = lazySchema(() =>
     .strict()
     .meta({
       id: 'visXyReferenceLineLayerESQL',
-      'x-tf-variant': { key: 'reference_line_layer', json_leaves: { data_source: 'data_source_json', 'thresholds[].color': 'color_json', 'thresholds[].value': 'value_json' } }, // PROTOTYPE (spike A)
+      'x-tf-variant': { key: 'reference_line_layer', json_leaves: { data_source: 'data_source_json' } }, // PROTOTYPE (spike A)
       title: 'ES|QL Reference Line Layer',
       description: 'Reference lines defined by numeric columns from a layer-specific ES|QL query.',
     })
@@ -1023,7 +1023,7 @@ const staticReferenceLineLayerSchemaForESQLCharts = lazySchema(() =>
     .strict()
     .meta({
       id: 'visXyReferenceLineLayerESQLStatic',
-      'x-tf-variant': { key: 'reference_line_layer', json_leaves: { data_source: 'data_source_json', 'thresholds[].color': 'color_json', 'thresholds[].value': 'value_json' } }, // PROTOTYPE (spike A)
+      'x-tf-variant': { key: 'reference_line_layer', json_leaves: { data_source: 'data_source_json' } }, // PROTOTYPE (spike A)
       title: 'Static Reference Line Layer for ES|QL Charts',
       description: 'Reference lines defined by constant numeric values on ES|QL charts.',
     })
